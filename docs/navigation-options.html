@@ -1,0 +1,76 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>navigation-options · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="navigation-options · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://react-navigation.github.io/website/index.html"/><meta property="og:description" content="Each screen can configure various aspects about how it gets presented in parent navigators. You can configure "/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/spiro_white.svg"/><h2 class="headerTitle">React Navigation</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/getting-started.html" target="_self">Docs</a></li><li><a href="/docs/api-reference.html" target="_self">API</a></li><li><a href="/en/help.html" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>navigation-options</h1></header><article><div><span><p>Each screen can configure various aspects about how it gets presented in parent navigators. You can configure</p>
+<p><strong>Static configuration:</strong> Each navigation option can either be directly assigned:</p>
+<pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">MyScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">'Great'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token operator">...</span>
+</code></pre>
+<p><strong>Dynamic Configuration</strong></p>
+<p>Or, the options can be a function that takes the following arguments, and returns an object of navigation options that will override the route-defined and navigator-defined navigationOptions.</p>
+<ul>
+<li><code>props</code> - The same props that are available to the screen component
+<ul>
+<li><code>navigation</code> - The <a href="/docs/navigators/navigation-prop">navigation prop</a> for the screen, with the screen's route at <code>navigation.state</code></li>
+<li><code>screenProps</code> - The props passing from above the navigator component</li>
+<li><code>navigationOptions</code> - The default or previous options that would be used if new values are not provided</li>
+</ul></li>
+</ul>
+<pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">ProfileScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> navigation<span class="token punctuation">,</span> screenProps <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"'s Profile!"</span><span class="token punctuation">,</span>
+    headerRight<span class="token punctuation">:</span> <span class="token operator">&lt;</span>Button color<span class="token operator">=</span><span class="token punctuation">{</span>screenProps<span class="token punctuation">.</span>tintColor<span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">...</span>
+</code></pre>
+<p>The screenProps are passed in at render-time. If this screen was hosted in a SimpleApp navigator:</p>
+<pre><code class="language-jsx js"><span class="token operator">&lt;</span>SimpleApp
+  screenProps<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>tintColor<span class="token punctuation">:</span> <span class="token string">'blue'</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+  <span class="token comment">// navigation={{state, dispatch}} // optionally control the app</span>
+<span class="token operator">/</span><span class="token operator">></span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="generic-navigation-options"></a><a href="#generic-navigation-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generic Navigation Options</h4>
+<p>The <code>title</code> navigation option is generic between every navigator. It is used to set the title string for a given screen.</p>
+<pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">MyScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">'Great'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token operator">...</span>
+</code></pre>
+<p>Unlike the other nav options which are only utilized by the navigator view, the title option can be used by the environment to update the title in the browser window or app switcher.</p>
+<h4><a class="anchor" aria-hidden="true" name="default-navigation-options"></a><a href="#default-navigation-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Default Navigation Options</h4>
+<p>It's very common to define <code>navigationOptions</code> on a screen, but sometimes it is useful to define <code>navigationOptions</code> on a navigator too.</p>
+<p>Imagine the following scenario:
+Your <code>TabNavigator</code> represents one of the screens in the app, and is nested within a top-level <code>StackNavigator</code>:</p>
+<pre><code class="language-jsx"><span class="token function">StackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  route1<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> RouteOne <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  route2<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> MyTabNavigator <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Now, when <code>route2</code> is active, you would like to change the tint color of a header. It's easy to do it for <code>route1</code>, and it should also be easy to do it for <code>route2</code>. This is what Default Navigation Options are for - they are simply <code>navigationOptions</code> set on a navigator:</p>
+<pre><code class="language-jsx js"><span class="token keyword">const</span> MyTabNavigator <span class="token operator">=</span> <span class="token function">TabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    headerTintColor<span class="token punctuation">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Note that you can still decide to <strong>also</strong> specify the <code>navigationOptions</code> on the screens at the leaf level - e.g.  the <code>ProfileScreen</code> above. The <code>navigationOptions</code> from the screen will be merged key-by-key with the default options coming from the navigator. Whenever both the navigator and screen define the same option (e.g. <code>headerTintColor</code>), the screen wins. Therefore, you could change the tint color when <code>ProfileScreen</code> is active by doing the following:</p>
+<pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">ProfileScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    headerTintColor<span class="token punctuation">:</span> <span class="token string">'black'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" name="navigation-option-reference"></a><a href="#navigation-option-reference" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigation Option Reference</h2>
+<p>List of available navigation options depends on the <code>navigator</code> the screen is added to.</p>
+<p>Check available options for:</p>
+<ul>
+<li><a href="/docs/navigators/drawer#Screen-Navigation-Options"><code>drawer navigator</code></a></li>
+<li><a href="/docs/navigators/stack#Screen-Navigation-Options"><code>stack navigator</code></a></li>
+<li><a href="/docs/navigators/tab#Screen-Navigation-Options"><code>tab navigator</code></a></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/api-reference.html">API Reference</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div></body></html>
