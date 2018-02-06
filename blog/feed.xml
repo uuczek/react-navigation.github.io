@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>React Navigation Blog</title>
-        <link>https://react-navigation.github.io/website/blog</link>
+        <link>https://reactnavigation.org/blog</link>
         <description>The best place to stay up-to-date with the latest React Navigation news and events.</description>
         <lastBuildDate>Tue, 06 Feb 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
             <title>React Navigation Blog</title>
-            <url>https://react-navigation.github.io/websiteimg/spiro_white.svg</url>
-            <link>https://react-navigation.github.io/website/blog</link>
+            <url>https://reactnavigation.orgimg/spiro_white.svg</url>
+            <link>https://reactnavigation.org/blog</link>
         </image>
         <copyright>None</copyright>
         <item>
             <title><![CDATA[React Navigation 1.0 (goodbye, beta!)]]></title>
-            <link>https://react-navigation.github.io/website/blog/2018/02/06/react-navigation-1.0.html</link>
-            <guid>https://react-navigation.github.io/website/blog/2018/02/06/react-navigation-1.0.html</guid>
+            <link>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</link>
+            <guid>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</guid>
             <pubDate>Tue, 06 Feb 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “[Renewed Path to React Navigation V1.0](https://github.com/react-navigation/react-navigation/issues/2585)” issu]]></description>
         </item>
