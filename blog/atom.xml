@@ -2,47 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://react-navigation.github.io/website/blog</id>
     <title>React Navigation Blog</title>
-    <updated>2017-09-12T06:00:00Z</updated>
+    <updated>2018-02-06T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://react-navigation.github.io/website/blog"/>
     <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
     <logo>https://react-navigation.github.io/websiteimg/spiro_white.svg</logo>
     <rights>None</rights>
     <entry>
-        <title type="html"><![CDATA[A (Renewed) Path to React Navigation V1]]></title>
-        <id>https://react-navigation.github.io/website/blog/2017/09/12/Renewed-v1.html</id>
-        <link href="https://react-navigation.github.io/website/blog/2017/09/12/Renewed-v1.html">
+        <title type="html"><![CDATA[React Navigation 1.0 (goodbye, beta!)]]></title>
+        <id>https://react-navigation.github.io/website/blog/2018/02/06/react-navigation-1.0.html</id>
+        <link href="https://react-navigation.github.io/website/blog/2018/02/06/react-navigation-1.0.html">
         </link>
-        <updated>2017-09-12T06:00:00Z</updated>
-        <summary type="html"><![CDATA[It’s been awhile since the last post on this blog and I wanted to take a moment to bring everyone up to speed on what’s been going on with React Navigation.
-
-This project got big really fast: as the officially recommended navigation library for React]]></summary>
+        <updated>2018-02-06T06:00:00Z</updated>
+        <summary type="html"><![CDATA[As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “[Renewed Path to React Navigation V1.0](https://github.com/react-navigation/react-navigation/issues/2585)” issu]]></summary>
         <author>
-            <name>Spencer Carli</name>
-            <uri>http://twitter.com/spencer_carli</uri>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[On the path to React Navigation V1]]></title>
-        <id>https://react-navigation.github.io/website/blog/2017/04/26/On-the-path-to-v1.html</id>
-        <link href="https://react-navigation.github.io/website/blog/2017/04/26/On-the-path-to-v1.html">
-        </link>
-        <updated>2017-04-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[When we announced React Navigation earlier this year, the core team was blown away at the community's overwhelming excitement and support for the new project. Since the launch in late January, hundreds of contributors have sprung up, reported detaile]]></summary>
-        <author>
-            <name>React Navigation</name>
-        </author>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Introducing React Navigation for React Native]]></title>
-        <id>https://react-navigation.github.io/website/blog/2017/01/26/Introducing-React-Navigation.html</id>
-        <link href="https://react-navigation.github.io/website/blog/2017/01/26/Introducing-React-Navigation.html">
-        </link>
-        <updated>2017-01-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[Today we're excited to introduce React Navigation, a flexible navigation library for React Native and web, including customizable views for React Native, routers for any platform, and navigators that make it super easy to get started. We aim to provi]]></summary>
-        <author>
-            <name>Eric Vicenti</name>
-            <uri>http://twitter.com/EricVicenti</uri>
+            <name>Core Team</name>
+            <uri>https://twitter.com/reactnav</uri>
         </author>
     </entry>
 </feed>
