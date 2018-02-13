@@ -8,7 +8,7 @@
 <p>There are two pieces to this:</p>
 <ol>
 <li>Pass params to a route by putting them in an object as a second parameter to the <code>navigation.navigate</code> function: <code>this.props.navigation.navigate('RouteName', { /* params go here */ })</code></li>
-<li>Read the params in your screen component: <code>this.props.navigation.state.params</code>.</li>
+<li>Read the params in your screen component: <code>this.props.navigation.state.params</code>. Alternatively, if you want to access the params directly (eg. through <code>this.props.itemId</code>), you may use a community-developed <a href="https://github.com/vonovak/react-navigation-props-mapper">react-navigation-props-mapper</a> package.</li>
 </ol>
 <pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

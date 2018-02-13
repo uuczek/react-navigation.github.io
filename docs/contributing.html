@@ -7,22 +7,22 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/contributing.md" target="_blank">Edit</a><h1>React Navigation contributor guide</h1></header><article><div><span><p>Want to help improve React Navigation? Your help would be greatly appreciated!</p>
 <p>Here are some of some of the ways to contribute to the project:</p>
 <ul>
-<li><a href="#Reporting-Bugs">Reporting Bugs</a></li>
-<li><a href="#Improving-the-Documentation">Improving the Documentation</a></li>
-<li><a href="#Responding-to-Issues">Responding to Issues</a></li>
-<li><a href="#Bug-Fixes">Bug Fixes</a></li>
-<li><a href="#Suggesting-a-Feature">Suggesting a Feature</a></li>
-<li><a href="#Big-Pull-Requests">Big Pull Requests</a></li>
+<li><a href="#reporting-bugs">Reporting Bugs</a></li>
+<li><a href="#improving-the-documentation">Improving the Documentation</a></li>
+<li><a href="#responding-to-issues">Responding to Issues</a></li>
+<li><a href="#bug-fixes">Bug Fixes</a></li>
+<li><a href="#suggesting-a-feature">Suggesting a Feature</a></li>
+<li><a href="#big-pull-requests">Big Pull Requests</a></li>
 </ul>
 <p>And here are a few helpful resources to aid in getting started:</p>
 <ul>
-<li><a href="#Issue-Template">Issue Template</a></li>
-<li><a href="#Pull-Request-Template">Pull Request Template</a></li>
-<li><a href="#Forking-the-Repository">Forking the Repository</a></li>
-<li><a href="#Code-Review-Guidelines">Code Review Guidelines</a></li>
-<li><a href="#Run-the-Example-App">Run the Example App</a></li>
-<li><a href="#Run-the-Website">Run the Website</a></li>
-<li><a href="#Run-Tests">Run Tests</a></li>
+<li><a href="#issue-template">Issue Template</a></li>
+<li><a href="#pull-request-template">Pull Request Template</a></li>
+<li><a href="#forking-the-repository">Forking the Repository</a></li>
+<li><a href="#code-review-guidelines">Code Review Guidelines</a></li>
+<li><a href="#run-the-example-app">Run the Example App</a></li>
+<li><a href="#run-the-website">Run the Website</a></li>
+<li><a href="#run-tests">Run Tests</a></li>
 </ul>
 <blockquote>
 <p>Note that we used Yarn in the examples below but you're welcome to use NPM instead.</p>
@@ -70,6 +70,16 @@
 <li>Review the PR. This can take some time but, if you followed the steps above, hopefully it won't take too much time.</li>
 </ol>
 <p>The reason we want to do this is to save everyone time. Maybe that feature already exists but isn't documented? Or maybe it doesn't fit with the library. Regardless, by discussing a major change up front you're saving your time and others time as well.</p>
+<h3><a class="anchor" aria-hidden="true" name="interface-changes-types"></a><a href="#interface-changes-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interface Changes &amp; Types</h3>
+<p>If you ever find yourself making a change to the project's public interface (the API) then you should make sure to update the corresponding library definitions for Flow. These &quot;libdefs&quot; specify our API's types so that library users can typecheck their code. An example of a qualifying change would be adding a new navigation option.</p>
+<p>The libdef (located at <code>flow/react-navigation.js</code>) will need to be updated such that running <code>flow</code> in the <code>examples/NavigationPlayground</code> folder produces no errors.</p>
+<ol>
+<li>Follow the instructions in the <a href="#Run-the-Example-App">Run the Example App</a> section to prepare the <code>NavigationPlayground</code> example and install <code>flow</code> into the example's local <code>node_modules/.bin</code> folder.</li>
+<li>Run <code>flow</code> to see any current errors.</li>
+<li>If no errors occur as a result of an API change, that indicates that we don't have any coverage in the <code>NavigationPlayground</code> example project for your API change. This is frequently the case - for instance, if you add a new navigation option. In this case, you must add an example use of your new feature to <code>NavigationPlayground</code> so that you can test your libdef changes, and so that we can keep your feature properly tested and typed in perpetuity.</li>
+<li>Once you are seeing errors, go ahead and update the libdef (located at <code>flow/react-navigation.js</code>) so that there are no longer any errors when you run <code>flow</code> from within <code>examples/NavigationPlayground</code>.</li>
+<li>Include the libdef changes in the PR for your new feature. Make sure to flag to the maintainers that your PR has a libdef change, so that when the next version of the library is released, we make sure to upload the updated libdef to the <code>flow-typed</code> repo.</li>
+</ol>
 <h2><a class="anchor" aria-hidden="true" name="information"></a><a href="#information" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Information</h2>
 <h3><a class="anchor" aria-hidden="true" name="issue-template"></a><a href="#issue-template" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Issue Template</h3>
 <p>Before submitting and issue please take a look at the <a href="https://github.com/react-community/react-navigation/blob/master/.github/ISSUE_TEMPLATE.md">issue template</a> and follow it. This is in place to help everyone better understand the issue you're having and reduce the back and forth to get the necessary information.</p>
