@@ -52,5 +52,6 @@
 <url> <loc>https://reactnavigation.org/docs/tab-based-navigation.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactnavigation.org/docs/tab-based-navigation.html" /> </url>
 <url> <loc>https://reactnavigation.org/docs/tab-navigator.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactnavigation.org/docs/tab-navigator.html" /> </url>
 <url> <loc>https://reactnavigation.org/docs/transitioner.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactnavigation.org/docs/transitioner.html" /> </url>
+<url> <loc>https://reactnavigation.org/docs/with-navigation-focus.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactnavigation.org/docs/with-navigation-focus.html" /> </url>
 <url> <loc>https://reactnavigation.org/docs/with-navigation.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://reactnavigation.org/docs/with-navigation.html" /> </url>
 </urlset>
