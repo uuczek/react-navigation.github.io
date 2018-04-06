@@ -4,7 +4,7 @@
         <title>React Navigation Blog</title>
         <link>https://reactnavigation.org/blog</link>
         <description>The best place to stay up-to-date with the latest React Navigation news and events.</description>
-        <lastBuildDate>Tue, 06 Feb 2018 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Apr 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://reactnavigation.org/blog</link>
         </image>
         <copyright>None</copyright>
+        <item>
+            <title><![CDATA[2.0 release candidate]]></title>
+            <link>https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html</link>
+            <guid>https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html</guid>
+            <pubDate>Fri, 06 Apr 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[Exactly two months after the release of React Navigation 1.0, we are close to another major version release. We’d like to invite developers that use the library to give the release candidate a try in your app and let us know if you encounter any issu]]></description>
+        </item>
         <item>
             <title><![CDATA[React Navigation 1.0 (goodbye, beta!)]]></title>
             <link>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</link>

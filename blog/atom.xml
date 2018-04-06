@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://reactnavigation.org/blog</id>
     <title>React Navigation Blog</title>
-    <updated>2018-02-06T06:00:00Z</updated>
+    <updated>2018-04-06T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://reactnavigation.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
     <logo>https://reactnavigation.orgimg/spiro_white.svg</logo>
     <rights>None</rights>
+    <entry>
+        <title type="html"><![CDATA[2.0 release candidate]]></title>
+        <id>https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html</id>
+        <link href="https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html">
+        </link>
+        <updated>2018-04-06T06:00:00Z</updated>
+        <summary type="html"><![CDATA[Exactly two months after the release of React Navigation 1.0, we are close to another major version release. We’d like to invite developers that use the library to give the release candidate a try in your app and let us know if you encounter any issu]]></summary>
+        <author>
+            <name>Core Team</name>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[React Navigation 1.0 (goodbye, beta!)]]></title>
         <id>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</id>
