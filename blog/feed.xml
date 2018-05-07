@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>React Navigation Blog</title>
+        <title>React Navigation (v2) Blog</title>
         <link>https://reactnavigation.org/blog</link>
-        <description>The best place to stay up-to-date with the latest React Navigation news and events.</description>
-        <lastBuildDate>Fri, 06 Apr 2018 06:00:00 GMT</lastBuildDate>
+        <description>The best place to stay up-to-date with the latest React Navigation (v2) news and events.</description>
+        <lastBuildDate>Mon, 07 May 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
-            <title>React Navigation Blog</title>
+            <title>React Navigation (v2) Blog</title>
             <url>https://reactnavigation.orgimg/spiro_white.svg</url>
             <link>https://reactnavigation.org/blog</link>
         </image>
         <copyright>None</copyright>
+        <item>
+            <title><![CDATA[React Navigation 2.0]]></title>
+            <link>https://reactnavigation.org/blog/2018/05/07/react-navigation-2.0.html</link>
+            <guid>https://reactnavigation.org/blog/2018/05/07/react-navigation-2.0.html</guid>
+            <pubDate>Mon, 07 May 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[The documentation is now live at https://reactnavigation.org, and v1 lives on at https://v1.reactnavigation.org. 
+
+## Significant breaking changes
+
+The following changes are considered “significant” because they can’t be fixed by search and replace o]]></description>
+        </item>
         <item>
             <title><![CDATA[2.0 release candidate]]></title>
             <link>https://reactnavigation.org/blog/2018/04/06/react-navigation-2.0-rc.html</link>
