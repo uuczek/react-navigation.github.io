@@ -39,7 +39,7 @@ OR
 <ul>
 <li><code>routeName</code> - A destination routeName that has been registered somewhere in the app's router</li>
 <li><code>params</code> - Params to merge into the destination route</li>
-<li><code>action</code> - (advanced) The sub-action to run in the child router, if the screen is a navigator. See <a href="/docs/navigation-actions.html">Actions Doc</a> for a full list of supported actions.</li>
+<li><code>action</code> - (advanced) The sub-action to run in the child router, if the screen is a navigator. See <a href="navigation-actions.html">Actions Doc</a> for a full list of supported actions.</li>
 <li><code>key</code> - Optional identifier of what route to navigate to. Navigate <strong>back</strong> to this route, if it already exists</li>
 </ul>
 <pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -119,7 +119,7 @@ didBlurSubscription<span class="token punctuation">.</span><span class="token fu
 <p>Returns <code>true</code> if the screen is focused and <code>false</code> otherwise.</p>
 <pre><code class="language-jsx js"><span class="token keyword">let</span> isFocused <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">isFocused</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>You probably want to use <a href="/docs/with-navigation-focus.html">withNavigationFocus</a> instead of using this directly, it will pass in an <code>isFocused</code> boolean a prop to your component.</p>
+<p>You probably want to use <a href="with-navigation-focus.html">withNavigationFocus</a> instead of using this directly, it will pass in an <code>isFocused</code> boolean a prop to your component.</p>
 <h3><a class="anchor" aria-hidden="true" name="state-the-screen-s-current-state-route"></a><a href="#state-the-screen-s-current-state-route" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>state</code> - The screen's current state/route</h3>
 <p>A screen has access to its route via <code>this.props.navigation.state</code>. Each will return an object with the following:</p>
 <pre><code class="language-jsx js"><span class="token punctuation">{</span>
@@ -169,7 +169,7 @@ didBlurSubscription<span class="token punctuation">.</span><span class="token fu
 <ul>
 <li><code>routeName</code> - A destination routeName that has been registered somewhere in the app's router</li>
 <li><code>params</code> - Params to merge into the destination route</li>
-<li><code>action</code> - (advanced) The sub-action to run in the child router, if the screen is a navigator. See <a href="/docs/navigation-actions.html">Actions Doc</a> for a full list of supported actions.</li>
+<li><code>action</code> - (advanced) The sub-action to run in the child router, if the screen is a navigator. See <a href="navigation-actions.html">Actions Doc</a> for a full list of supported actions.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="pop"></a><a href="#pop" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pop</h3>
 <p>Take you to the previous screen in the stack. If you provide a number, &quot;n&quot;, it will specify how many screens to take you back within the stack.</p>
@@ -185,7 +185,7 @@ didBlurSubscription<span class="token punctuation">.</span><span class="token fu
 <h3><a class="anchor" aria-hidden="true" name="dispatch-send-an-action-to-the-router"></a><a href="#dispatch-send-an-action-to-the-router" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dispatch</code> - Send an action to the router</h3>
 <p>Use dispatch to send any navigation action to the router. The other navigation functions use dispatch behind the scenes.</p>
 <p>Note that if you want to dispatch react-navigation actions you should use the action creators provided in this library.</p>
-<p>See <a href="/docs/navigation-actions.html">Navigation Actions Docs</a> for a full list of available actions.</p>
+<p>See <a href="navigation-actions.html">Navigation Actions Docs</a> for a full list of available actions.</p>
 <pre><code class="language-jsx js"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> navigateAction <span class="token operator">=</span> NavigationActions<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
