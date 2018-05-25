@@ -129,40 +129,32 @@
 <p>By using the following snippet, your nav component will be aware of the back button press actions and will correctly interact with your stack. This is really useful on Android.</p>
 <pre><code class="language-jsx es6"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> BackHandler <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-native"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> addNavigationHelpers<span class="token punctuation">,</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-navigation"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-navigation"</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> AppNavigation <span class="token operator">=</span> <span class="token function">TabNavigator</span><span class="token punctuation">(</span>
-  <span class="token punctuation">{</span>
-    Home<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> HomeScreen <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    Settings<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> SettingScreen <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/* your other setup code here! this is not a runnable snippet */</span>
 
 <span class="token keyword">class</span> <span class="token class-name">ReduxNavigation</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     BackHandler<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"hardwareBackPress"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>onBackPress<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+
   <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     BackHandler<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"hardwareBackPress"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>onBackPress<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+
   <span class="token function-variable function">onBackPress</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> nav <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>nav<span class="token punctuation">.</span>index <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+
     <span class="token function">dispatch</span><span class="token punctuation">(</span>NavigationActions<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> nav <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
-    <span class="token keyword">const</span> navigation <span class="token operator">=</span> <span class="token function">addNavigationHelpers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      dispatch<span class="token punctuation">,</span>
-      state<span class="token punctuation">:</span> nav<span class="token punctuation">,</span>
-      addListener<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>AppNavigation</span> <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+    <span class="token comment">/* more setup code here! this is not a runnable snippet */</span> 
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>AppNavigator</span> <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
