@@ -39,17 +39,19 @@
 <p>The most commonly used pattern for giving a header button access to a function on the component instance is to use <code>params</code>. We'll demonstrate this with a classic example, the counter.</p>
 <pre><code class="language-jsx js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> params <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>params <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
       headerTitle<span class="token punctuation">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LogoTitle</span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span>
       headerRight<span class="token punctuation">:</span> <span class="token punctuation">(</span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>params<span class="token punctuation">.</span>increaseCount<span class="token punctuation">}</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>+1<span class="token punctuation">"</span></span> <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#fff<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Button</span>
+          <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'increaseCount'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+          <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>+1<span class="token punctuation">"</span></span>
+          <span class="token attr-name">color</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#fff<span class="token punctuation">"</span></span>
+        <span class="token punctuation">/></span></span>
       <span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-  <span class="token function">componentWillMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span> increaseCount<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_increaseCount <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
@@ -66,7 +68,7 @@
 </code></pre>
 <p><a href="https://snack.expo.io/@react-navigation/header-interacting-with-component-instance" target="blank" class="run-code-button">→ Run this code</a></p>
 <blockquote>
-<p>React Navigation doesn't guarantee that your screen component will begin mounting before the header for the screen is rendered, and because the <code>increaseCount</code> param is set in <code>componentWillMount</code>, we may not have it available to us in <code>navigationOptions</code>, which is why we include the <code>|| {}</code> when grabbing the params (there may not be any). We know this is an awkward API and we do plan on improving it!</p>
+<p>React Navigation doesn't guarantee that your screen component will be mounted before the header. Because the <code>increaseCount</code> param is set in <code>componentDidMount</code>, we may not have it available to us in <code>navigationOptions</code>. This usually will not be a problem because <code>onPress</code> for <code>Button</code> and <code>Touchable</code> components will do nothing if the callback is null. If you have your own custom component here, you should make sure it behaves as expected with <code>null</code> for its press handler prop.</p>
 </blockquote>
 <blockquote>
 <p>As an alternative to <code>setParams</code>, you could use a state management library (such as Redux or MobX) and communicate between the header and the screen in the same way you would with two distinct components.</p>
