@@ -19,10 +19,9 @@
 <p>If your only reason for doing this is that you want to be able to perform navigation actions from outside of your components (eg: from a Redux middleware), you can learn more about this in <a href="navigating-without-navigation-prop.html">navigating without the navigation prop</a>.</p>
 <h2><a class="anchor" aria-hidden="true" name="overview"></a><a href="#overview" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
 <ol>
-<li><p>To handle your app's navigation state in Redux, you can pass your own <a href="navigation-prop.html"><code>navigation</code></a> prop to a navigator. This <code>navigation</code> prop is an object that must contain the navigation <a href="navigation-prop.html#state-the-screen-s-current-state-route"><code>state</code></a>, <a href="navigation-prop.html#dispatch-send-an-action-to-the-router"><code>dispatch</code></a>, and <code>addListener</code> properties.</p></li>
-<li><p>The aforementioned navigation <code>state</code> will need to be kept updated using React Navigation's navigation reducer. You will call this reducer from your Redux master reducer.</p></li>
-<li><p>React Navigation's <code>dispatch</code> will just be Redux's default <code>dispatch</code>, which you pass in to React Navigation as part of the <code>navigation</code> prop. As such, you will be able to dispatch normal Redux actions using <code>this.props.navigation.dispatch(ACTION)</code>.</p></li>
-<li><p>A middleware is needed so that any events that mutate the navigation state properly trigger the event listeners. To properly trigger the event listeners with the initial state, a call to <code>initializeListeners</code> is also necessary.</p></li>
+<li><p>To handle your app's navigation state in Redux, you can pass your own <a href="navigation-prop.html"><code>navigation</code></a> prop to a navigator. <code>react-navigation-redux-helpers</code> handles this for you behind the scenes with a &quot;higher-order component&quot; called <code>reduxifyNavigator</code>. You pass in your root navigator component to the <code>reduxifyNavigator</code> function, and it returns a new component that takes your navigation <code>state</code> and <code>dispatch</code> function as props.</p></li>
+<li><p>A middleware is needed so that any events that mutate the navigation state properly trigger React Navigation's event listeners.</p></li>
+<li><p>The navigation state inside Redux will need to be kept updated using React Navigation's navigation reducer. You will call this reducer from your Redux master reducer.</p></li>
 </ol>
 <h2><a class="anchor" aria-hidden="true" name="step-by-step-guide"></a><a href="#step-by-step-guide" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step-by-step guide</h2>
 <p>The following steps apply to <code>react-navigation@^2.3.0</code> and <code>react-navigation-redux-helpers@^2.0.0-beta</code>.</p>
@@ -42,10 +41,9 @@
   combineReducers<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
-  createNavigationPropConstructor<span class="token punctuation">,</span>       <span class="token comment">// handles #1 above</span>
-  createNavigationReducer<span class="token punctuation">,</span>               <span class="token comment">// handles #2 above</span>
-  createReactNavigationReduxMiddleware<span class="token punctuation">,</span>  <span class="token comment">// handles #4 above</span>
-  initializeListeners<span class="token punctuation">,</span>                   <span class="token comment">// handles #4 above</span>
+  reduxifyNavigator<span class="token punctuation">,</span>
+  createReactNavigationReduxMiddleware<span class="token punctuation">,</span>
+  createNavigationReducer<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation-redux-helpers'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Provider<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-redux'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
@@ -58,34 +56,16 @@
   <span class="token operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">// Note: createReactNavigationReduxMiddleware must be run before createNavigationPropConstructor</span>
+<span class="token comment">// Note: createReactNavigationReduxMiddleware must be run before reduxifyNavigator</span>
 <span class="token keyword">const</span> middleware <span class="token operator">=</span> <span class="token function">createReactNavigationReduxMiddleware</span><span class="token punctuation">(</span>
   <span class="token string">"root"</span><span class="token punctuation">,</span>
   state <span class="token operator">=></span> state<span class="token punctuation">.</span>nav<span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> navigationPropConstructor <span class="token operator">=</span> <span class="token function">createNavigationPropConstructor</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">initializeListeners</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>nav<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>_navigation <span class="token operator">=</span> <span class="token function">navigationPropConstructor</span><span class="token punctuation">(</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>dispatch<span class="token punctuation">,</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>nav<span class="token punctuation">,</span>
-      AppNavigator<span class="token punctuation">.</span>router<span class="token punctuation">,</span>
-      <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>_navigation
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>AppNavigator</span> <span class="token attr-name">navigation</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>_navigation<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
+<span class="token keyword">const</span> App <span class="token operator">=</span> <span class="token function">reduxifyNavigator</span><span class="token punctuation">(</span>AppNavigator<span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token function-variable function">mapStateToProps</span> <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  nav<span class="token punctuation">:</span> state<span class="token punctuation">.</span>nav<span class="token punctuation">,</span>
+  state<span class="token punctuation">:</span> state<span class="token punctuation">.</span>nav<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
 <span class="token keyword">const</span> AppWithNavigationState <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">)</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>
