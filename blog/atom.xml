@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://reactnavigation.org/blog</id>
-    <title>React Navigation (next) Blog</title>
+    <title>React Navigation Blog</title>
     <updated>2018-05-07T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://reactnavigation.org/blog"/>
-    <subtitle>The best place to stay up-to-date with the latest React Navigation (next) news and events.</subtitle>
+    <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
     <logo>https://reactnavigation.orgimg/spiro_white.svg</logo>
     <rights>None</rights>
     <entry>
