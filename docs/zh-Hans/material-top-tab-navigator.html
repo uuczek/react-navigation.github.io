@@ -54,13 +54,13 @@
 <li><code>order</code> -定义选项卡顺序的 routeNames 数组。</li>
 <li><code>paths</code> - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。</li>
 <li><code>backBehavior</code> - 控制 &quot;返回&quot; 按钮是否会导致 Tab 页切换到初始 Tab 页? 如果是, 设置为 <code>initialRoute</code>, 否则 <code>none</code>。 默认为 <code>initialRoute</code>的行为。</li>
-<li><code>tabBarPosition</code> - Position of the tab bar, can be <code>'top'</code> or <code>'bottom'</code>, default is <code>top</code>.</li>
+<li><code>tabBarPosition</code> - 标签栏的位置, 可以是 <code>'top'</code> 或 <code>'bottom'</code>。默认值是<code>top</code>。</li>
 <li><code>swipeEnabled</code> -是否允许在标签页之间进行滑动。</li>
 <li><code>animationEnabled</code> -是否在更改标签页时进行动画处理。</li>
-<li><code>lazy</code> - Defaults to <code>false</code>. If <code>true</code>, tabs are rendered only when they are made active or on peek swipe. When <code>false</code>, all tabs are rendered immediately.</li>
-<li><code>optimizationsEnabled</code> - Whether to wrap scenes into <a href="https://github.com/react-navigation/react-navigation-tabs/blob/master/src/views/ResourceSavingScene.js"><code>&lt;ResourceSavingScene /&gt;</code></a> to move the scene out of the screen once it's unfocused, it improves memory usage.</li>
+<li><code>lazy</code> - 默认值是 <code>false</code>。如果是<code>true</code>，Tab 页只会在被选中或滑动到该页时被渲染。当为 <code>false</code> 时，所有的 Tab 页都将直接被渲染。（这个很实用，可以轻松实现多Tab 页面的懒加载😎）</li>
+<li><code>optimizationsEnabled</code> -是否将 Tab 页嵌套在到 <a href="https://github.com/react-navigation/react-navigation-tabs/blob/master/src/views/ResourceSavingScene.js"><code>&lt;ResourceSavingScene /&gt;</code></a> 中。如果是，一旦该 Tab 页失去焦点，将被移出当前页面, 从而提高内存使用率。</li>
 <li><code>initialLayout</code> -可选对象, 其中包含初始的 <code>height</code> 和 <code>width</code>，可以通过传递该对象，来防止 <a href="https://github.com/react-native-community/react-native-tab-view#avoid-one-frame-delay"> react-native-tab-view </a> 渲染时一个帧的延迟。</li>
-<li><code>tabBarComponent</code> - Optional, override the component to use as the tab bar.</li>
+<li><code>tabBarComponent</code> -可选，覆盖用作标签栏的组件.</li>
 <li><code>tabBarOptions</code> - 具有以下属性的对象:
 <ul>
 <li><code>activeTintColor</code> -活动选项卡的标签和图标颜色。</li>
