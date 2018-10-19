@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>React Navigation 简介 · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="在 web 浏览器中, 你可以使用 (`&lt;a&gt;`) 标签作为锚点，链接到不同的页面。 当用户单击某个链接时, 该 URL 就会被推送到浏览器历史记录堆栈。 当用户点击返回按钮时, 浏览器会从历史堆栈顶部删除正在访问的页面, 因此当前页现在就成了以前访问过的页面。 React Native没有像Web浏览器那样的内置全局历史堆栈的想法 -- 这就是 React Navigation 存在的意义"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="React Navigation 简介 · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="在 web 浏览器中, 你可以使用 (`&lt;a&gt;`) 标签作为锚点，链接到不同的页面。 当用户单击某个链接时, 该 URL 就会被推送到浏览器历史记录堆栈。 当用户点击返回按钮时, 浏览器会从历史堆栈顶部删除正在访问的页面, 因此当前页现在就成了以前访问过的页面。 React Native没有像Web浏览器那样的内置全局历史堆栈的想法 -- 这就是 React Navigation 存在的意义"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/next/getting-started.html" target="_self">文档</a></li><li class=""><a href="/docs/zh-Hans/next/api-reference.html" target="_self">接口</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/next/hello-react-navigation.html">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>基础</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">基础</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/getting-started.html">入门</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/next/hello-react-navigation.html">React Navigation 简介</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigating.html">页面切换</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/params.html">传递参数给路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/headers.html">配置标题栏</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/header-buttons.html">标题栏按钮</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/modal.html">打开全屏模式</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/next-steps.html">下一步</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/glossary-of-terms.html">专业术语</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/common-mistakes.html">常见错误</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/limitations.html">限制</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">各种指南</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/auth-flow.html">身份验证流程</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/handling-iphonex.html">适配 iPhone X</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/status-bar.html">基于路由的不同状态栏配置</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-options-resolution.html">导航选项解析</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-android-back-button-handling.html">自定义 Android Back 键的行为</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/connecting-navigation-prop.html">从任何组件访问 navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigating-without-navigation-prop.html">在没有 navigation 这个 prop 的情况下进行页面跳转</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-key.html">使用 navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/deep-linking.html">深度链接</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/screen-tracking.html">页面追踪</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/state-persistence.html">State 持久化</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/redux-integration.html">Redux 集成</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">构建自己的导航器</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-navigator-overview.html">概述</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/routers.html">路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-navigators.html">自定义 navigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-routers.html">自定义路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-views.html">导航视图</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/transitioner.html">转场动画</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Related Resources</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">元数据</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/pitch.html">优点和缺点</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/alternatives.html">可选库</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/hello-react-navigation.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">React Navigation 简介</h1></header><article><div><span><p>在 web 浏览器中, 你可以使用 (<code>&lt;a&gt;</code>) 标签作为锚点，链接到不同的页面。 当用户单击某个链接时, 该 URL 就会被推送到浏览器历史记录堆栈。 当用户点击返回按钮时, 浏览器会从历史堆栈顶部删除正在访问的页面, 因此当前页现在就成了以前访问过的页面。 React Native没有像Web浏览器那样的内置全局历史堆栈的想法 -- 这就是 React Navigation 存在的意义</p>
+<p>React Navigation 的 stack navigator 为你的应用提供了一种在屏幕之间切换并管理导航历史记录的方式。 如果您的应用程序只使用一个 stack navigator ，则它在概念上类似于Web浏览器处理导航状态的方式 - 当用户与它进行交互时，应用程序会从导航堆栈中新增和删除页面，这会导致用户看到不同的页面。 Web浏览器和 React Navigation 工作原理的一个主要区别是：React Navigation 的 stack navigator 提供了在 Android 和 iOS 设备上，在堆栈中的路由之间导航时你期望的手势和动画。</p>
+<p>我们开始使用React Navigation，只需要一个名为<code>createStackNavigator</code>的函数即可。</p>
+<h2><a class="anchor" aria-hidden="true" id="创建一个-stack-navigator"></a><a href="#创建一个-stack-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>创建一个 stack navigator</h2>
+<p><code>createStackNavigator</code>是一个返回 React 组件的方法。 它需要 <em>a route configuration object</em>（一个路由配置对象） 和 <em>an options object</em>（一个可选对象） (现在我们忽略下面的内容). 由于<code>createStackNavigator</code>函数会返回一个React组件，因此我们可以直接从<code>App.js</code>中导出它以用作我们应用程序的根组件。</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">// In App.js in a new project</span>
+
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { View, Text } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native'</span>;
+<span class="hljs-keyword">import</span> { createStackNavigator } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HomeScreen</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span> <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">flex:</span> <span class="hljs-attr">1</span>, <span class="hljs-attr">alignItems:</span> '<span class="hljs-attr">center</span>', <span class="hljs-attr">justifyContent:</span> '<span class="hljs-attr">center</span>' }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Text</span>&gt;</span>Home Screen<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span></span>
+    );
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createStackNavigator({
+  <span class="hljs-attr">Home</span>: {
+    <span class="hljs-attr">screen</span>: HomeScreen
+  },
+});
+</code></pre>
+<p><a href="https://snack.expo.io/@react-navigation/hello-world-v2" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p>如果你运行此代码，将看到一个页面，其中有一个空的导航栏和一个包含<code>HomeScreen</code>组件的灰色内容区域。 你看到的导航栏和内容区域的样式是 stack navigator 的默认配置，稍后我们将学习如何配置它们。</p>
+<blockquote>
+<p>路由名称的大小写无关紧要 -- 你可以使用小写字母<code>home</code>或大写字母<code>Home</code>，这取决于你的喜好。 我们更喜欢将路由名称大写。</p>
+<p>路由的唯一必需配置项是<code>screen</code>（此项设置一个组件）。 你可以阅读更多关于<a href="stack-navigator.html"> StackNavigator 参考</a>中可用的其他选项的信息。</p>
+</blockquote>
+<p>在React Native中，从<code>App.js</code>导出的组件是应用程序的入口点（或根组件） -- 它处在所有组件的最下层。 与导出 stack navigator 相比，对应用程序根部的组件进行更多的控制通常更有用，所以我们导出一个只渲染了 stack navigator 的组件。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Home<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    screen<span class="token punctuation">:</span> HomeScreen
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RootStack</span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="路由配置简写"></a><a href="#路由配置简写" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>路由配置简写</h2>
+<p>假设我们对<code>Home</code>唯一的路由配置是页面组件，我们不需要使用<code>{screen：HomeScreen}</code>配置格式，我们可以直接使用页面组件。</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Home<span class="token punctuation">:</span> HomeScreen
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="添加第二个路由"></a><a href="#添加第二个路由" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>添加第二个路由</h2>
+<p><code>RootStack</code>组件不接受任何 props -- 所有配置都在<code>createStackNavigator</code> 函数的<code>可选</code>参数中指定。 我们将<code>options</code>留空，所以它只使用默认配置。 为了展示一个使用<code>options</code>对象的示例，我们将向 stack navigator 添加第二个页面。</p>
+<pre><code class="hljs css language-js"><span class="token comment">// Other code for HomeScreen here...</span>
+
+<span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>View</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> flex<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> alignItems<span class="token punctuation">:</span> <span class="token string">'center'</span><span class="token punctuation">,</span> justifyContent<span class="token punctuation">:</span> <span class="token string">'center'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Text</span><span class="token punctuation">></span></span>Details Screen<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Text</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>View</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    Home<span class="token punctuation">:</span> HomeScreen<span class="token punctuation">,</span>
+    Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    initialRouteName<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Other code for App component here...</span>
+</code></pre>
+<p>现在我们的堆栈有两个路由，一个<code>Home</code>和一个<code>Details</code>。 <code>Home</code>路由对应<code>HomeScreen</code>组件，<code>Details</code>路由对应<code>DetailsScreen</code>组件。 堆栈的初始路由是<code>Home</code>路由。 现在的问题是：“我如何从<code>Home</code>路由跳转到<code>Details</code>路由？”。 下一节将对此进行介绍。</p>
+<h2><a class="anchor" aria-hidden="true" id="摘要"></a><a href="#摘要" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>摘要</h2>
+<ul>
+<li>React Native没有像Web浏览器那样的内置API用于导航。 React Navigation为您提供此功能，以及在iOS和Android上进行页面切换手势和动画。</li>
+<li><code>createStackNavigator</code>是一个函数，它接受一个路由配置对象和一个可选对象并返回一个 React 组件。</li>
+<li>路由配置对象中的<code>key</code>是路由名称，<code>value</code>是该路由的配置。 配置中唯一必须的属性是<code>screen</code>（用于路由的组件）。</li>
+<li>如果要指定堆栈中的初始路由，请在堆栈选项对象上设置<code>initialRouteName</code>。</li>
+<li><a href="https://snack.expo.io/@react-navigation/hello-react-navigation-v2">本文用到的所有源码地址</a>（在expo，请自备梯子）。</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/getting-started.html">← 入门</a><a class="docs-next button" href="/docs/zh-Hans/next/navigating.html">页面切换 →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#创建一个-stack-navigator">创建一个 stack navigator</a></li><li><a href="#路由配置简写">路由配置简写</a></li><li><a href="#添加第二个路由">添加第二个路由</a></li><li><a href="#摘要">摘要</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
