@@ -4,7 +4,7 @@
         <title>React Navigation Blog</title>
         <link>https://reactnavigation.org/blog</link>
         <description>The best place to stay up-to-date with the latest React Navigation news and events.</description>
-        <lastBuildDate>Mon, 07 May 2018 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 01 Nov 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://reactnavigation.org/blog</link>
         </image>
         <copyright>None</copyright>
+        <item>
+            <title><![CDATA[3.0 release candidate]]></title>
+            <link>https://reactnavigation.org/blog/2018/11/01/react-navigation-3.0-rc.html</link>
+            <guid>https://reactnavigation.org/blog/2018/11/01/react-navigation-3.0-rc.html</guid>
+            <pubDate>Thu, 01 Nov 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>We are excited to announce the release candidate of version 3.0 today!</p> <p>This is the first release where React Navigation depends on a native module outside of React Native core: it now depends on react-native-gesture-handler. This library provides an ...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[React Navigation 2.0]]></title>
             <link>https://reactnavigation.org/blog/2018/05/07/react-navigation-2.0.html</link>
