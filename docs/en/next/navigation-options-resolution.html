@@ -60,12 +60,12 @@
 <span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> SettingsStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">B</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span><span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   HomeStack<span class="token punctuation">,</span>
   SettingsStack<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@notbrent/nested-navigationoptions-wrong" target="blank" class="run-code-button">→ Run this code</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-wrong-v3" target="blank" class="run-code-button">→ Run this code</a></p>
 <p>As we mentioned earlier, you can only modify navigation options for a navigator from one of its screen components. <code>A</code> and <code>B</code> above are screen components in <code>HomeStack</code> and <code>SettingsStack</code> respectively, not in the tab navigator. So the result will be that the <code>tabBarLabel</code> property is not applied to the tab navigator. We can fix this though!</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> SettingsStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">B</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -78,12 +78,12 @@ SettingsStack<span class="token punctuation">.</span>navigationOptions <span cla
   tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span><span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   HomeStack<span class="token punctuation">,</span>
   SettingsStack<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@notbrent/nested-navigationoptions-correct" target="blank" class="run-code-button">→ Run this code</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-correct-v3" target="blank" class="run-code-button">→ Run this code</a></p>
 <p>To understand what is going on here, first recall that in the following example, <code>MyComponent</code> and <code>MyOtherComponent</code> are identical:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
