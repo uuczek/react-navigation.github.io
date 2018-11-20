@@ -164,7 +164,7 @@
 <h2><a class="anchor" aria-hidden="true" id="web-support"></a><a href="#web-support" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Support</h2>
 <p>Now that the core of React Navigation can be used outside of React Native, we can provide first-class web support to anyone using React.js on the web, including those who do not want to use <code>react-native-web</code>.</p>
 <p>Here is an example web app which demonstrates the new <code>createBrowserApp</code> container and the built-in  <code>Link</code> component:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createSwitchNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/core"</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createSwitchNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/core"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> createBrowserApp<span class="token punctuation">,</span> Link <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/web"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Home</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -198,7 +198,7 @@
 <span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span>
 </code></pre>
 <p>The above <code>Link</code> tag will render to:
-<code>&lt;a href=``&quot;``/profile/Brent?view=photos``&quot;``&gt;Brent's Photos&lt;/a&gt;</code></p>
+<code>&lt;a href=&quot;/profile/Brent?view=photos&quot;&gt;Brent's Photos&lt;/a&gt;</code></p>
 <p>See a simple web app with Create React App <a href="https://github.com/react-navigation/example-web">here</a>. Or take a look at <a href="https://github.com/react-navigation/web-server-example">this razzle app</a> for a more complicated example including server rendering.</p>
 <hr>
 <p>Thanks for reading, please post any issues you encounter to <a href="https://github.com/react-navigation/react-navigation/issues">https://github.com/react-navigation/react-navigation/issues</a>!</p>
