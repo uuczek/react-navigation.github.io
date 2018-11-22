@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>React Navigation contributor guide · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Want to help improve React Navigation? Your help would be greatly appreciated!"/><meta name="docsearch:version" content="3.x"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="React Navigation contributor guide · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="Want to help improve React Navigation? Your help would be greatly appreciated!"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>3.x</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/getting-started.html" target="_self">文档</a></li><li class=""><a href="/docs/zh-Hans/api-reference.html" target="_self">接口</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/contributing.html">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>元数据</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">基础</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/getting-started.html">入门</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/hello-react-navigation.html">React Navigation 简介</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigating.html">页面切换</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-lifecycle.html">Navigation lifecycle</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/params.html">传递参数给路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/headers.html">配置标题栏</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/header-buttons.html">标题栏按钮</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/app-containers.html">App Containers</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/modal.html">打开全屏模式</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next-steps.html">下一步</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/glossary-of-terms.html">专业术语</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/common-mistakes.html">常见错误</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/limitations.html">限制</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">各种指南</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/auth-flow.html">身份验证流程</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/handling-iphonex.html">适配 iPhone X</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/status-bar.html">基于路由的不同状态栏配置</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-options-resolution.html">导航选项解析</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-android-back-button-handling.html">自定义 Android Back 键的行为</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/connecting-navigation-prop.html">从任何组件访问 navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigating-without-navigation-prop.html">在没有 navigation 这个 prop 的情况下进行页面跳转</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-key.html">使用 navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/deep-linking.html">深度链接</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/screen-tracking.html">页面追踪</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/state-persistence.html">State 持久化</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/redux-integration.html">Redux 集成</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/web-support.html">Web Support</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">构建自己的导航器</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-navigator-overview.html">概述</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/routers.html">路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-navigators.html">自定义 navigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/custom-routers.html">自定义路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/navigation-views.html">导航视图</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/transitioner.html">转场动画</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Related Resources</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/more-resources.html">More Resources</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">元数据</h3><ul><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/pitch.html">优点和缺点</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/alternatives.html">可选库</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/contributing.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">React Navigation contributor guide</h1></header><article><div><span><p>Want to help improve React Navigation? Your help would be greatly appreciated!</p>
+<p>Here are some of the ways to contribute to the project:</p>
+<ul>
+<li><a href="#reporting-bugs">提 Bug</a></li>
+<li><a href="#improving-the-documentation">改进文档</a></li>
+<li><a href="#responding-to-issues">回答问题</a></li>
+<li><a href="#bug-fixes">修复 Bug</a></li>
+<li><a href="#suggesting-a-feature">建议一个功能</a></li>
+<li><a href="#big-pull-requests">提 PR</a></li>
+</ul>
+<p>以下是一些有助于入门的有用资源：</p>
+<ul>
+<li><a href="#issue-template">Issue 模板</a></li>
+<li><a href="#pull-request-template">PR 模板</a></li>
+<li><a href="#forking-the-repository">Forking the Repository</a></li>
+<li><a href="#code-review-guidelines">Code Review Guidelines</a></li>
+<li><a href="#run-the-example-app">Run the Example App</a></li>
+<li><a href="#run-the-website">Run the Website</a></li>
+<li><a href="#run-tests">Run Tests</a></li>
+</ul>
+<blockquote>
+<p>请注意，我们在下面的示例中使用了Yarn，但是欢迎你使用 NPM。</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="contributing"></a><a href="#contributing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributing</h2>
+<h3><a class="anchor" aria-hidden="true" id="提-bug"></a><a href="#提-bug" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提 Bug</h3>
+<p>You can't write code without writing the occasional bug. Especially as React Navigation is moving quickly, bugs happen. When you think you've found one here's what to do:</p>
+<ol>
+<li>在现有的问题中搜索与你遇到的类似问题。 If you see one, add a 👍 reaction (please no +1 comments). 请阅读评论，看看是否可以提供更有价值的信息。</li>
+<li>如果没有找到，请创建一个新的 issue。 请务必遵循<a href="https://github.com/react-community/react-navigation/blob/master/.github/ISSUE_TEMPLATE.md"> issue 模板 </a>。</li>
+</ol>
+<p>创造高质量的再生产至关重要。 没有它，我们可能无法修复这个 bug，并且在理想的情况下，你会发现它实际上并不是库的 bug，而只是在你的项目中用错了。 即时修复 bug！</p>
+<h3><a class="anchor" aria-hidden="true" id="改进文档"></a><a href="#改进文档" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>改进文档</h3>
+<p>任何成功的项目都需要高质量的文档，React Navigation 也不例外。</p>
+<p>请阅读有关<a href="https://github.com/react-navigation/website"> react-navigation </a>的更多信息。</p>
+<h3><a class="anchor" aria-hidden="true" id="回答问题"></a><a href="#回答问题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>回答问题</h3>
+<p>对 React Navigation 做出贡献的另一个好方法是回答问题。 也许它是回答某人的问题，指出他们的代码中有小小的拼写错误，或者帮助他们拼装一个项目 如果你对 React Navigation 中更积极的角色感兴趣，请先回答问题 - 这不仅有助于您的工作，还可以展示你的编码功力！</p>
+<h3><a class="anchor" aria-hidden="true" id="修复-bug"></a><a href="#修复-bug" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>修复 Bug</h3>
+<p>Find a bug, fix it up, all day long you'll have good luck! Like it was mentioned earlier, bugs happen. If you find a bug do the following:</p>
+<ol>
+<li>Check if a pull request already exists addressing that bug. If it does give it a review and leave your comments</li>
+<li>如果还没有 PR，那么找出 bug，修复它！ 如果相对较小，请继续解决问题并提一个 PR。 如果改动很大，请先提出问题，以便我们可以讨论它（请参阅<a href="#big-pull-requests"> 如何提大 Pr </a>）</li>
+<li>如果有与该 bug 有关的问题，请留下评论，并链接到您的 PR，以便其他人知道该 bug 已被解决。</li>
+</ol>
+<p>查看<a href="https://github.com/react-community/react-navigation/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22"> 需要帮助 </a>和<a href="https://github.com/react-community/react-navigation/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"> 第一个 issue </a>标签，看看你可以帮忙干点儿啥！</p>
+<h3><a class="anchor" aria-hidden="true" id="建议一个功能"></a><a href="#建议一个功能" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>建议一个功能</h3>
+<p>Is there something you want to see from React Navigation? Please <a href="https://react-navigation.canny.io/feature-requests">create a feature request on Canny</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="提-pr"></a><a href="#提-pr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提 PR</h3>
+<p>For any changes that will add/remove/modify multiple files in the project (new features or bug fixes) hold off on writing code right away. There's a few reasons for that</p>
+<ol>
+<li>大 PR 需要花费大量时间进行检查，并且有时很难提取上下文</li>
+<li>通常情况下，你可能不需要像预期的那样做出如此大的改变</li>
+</ol>
+<p>考虑到这一点，这里有几个建议：</p>
+<ol>
+<li>打开一个问题，并明确定义你想要完成什么以及你打算如何完成它</li>
+<li>Discuss that solution with the community and maintainers. Provide context, establish edge cases, and figure out the design</li>
+<li>制定一个行动计划</li>
+<li>编码并提交 PR</li>
+<li>Review the PR. This can take some time but, if you followed the steps above, hopefully it won't take too much time.</li>
+</ol>
+<p>我们想要这样做的原因是为了节省每个人的时间。 也许该功能已经存在，但没有相应的文档？ 或者，它不适合该库。 无论如何，通过讨论重大改变，你可以节省时间。</p>
+<h3><a class="anchor" aria-hidden="true" id="界面变更-类型"></a><a href="#界面变更-类型" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>界面变更 &amp; 类型</h3>
+<p>如果你发现自己对项目的公共接口（API）进行了更改，那么你应该确保为 Flow 更新相应的库定义。 这些“libdefs”指定了我们的API类型，以便用户可以检查他们的代码。 高质量修改的示例是添加一个新的导航选项。</p>
+<p>Libdef（位于<code>flow/react-navigation.js</code>）需要更新，以便在<code>examples/NavigationPlayground</code>文件夹中运行<code>flow</code> 没有错误。</p>
+<ol>
+<li>按照<a href="#Run-the-Example-App"> 运行示例应用程序 </a>部分中的说明准备<code>NavigationPlayground</code>示例并安装<code>flow</code>插入示例的本地<code>node_modules/.bin</code>文件夹中。</li>
+<li>运行<code>flow</code>以检查当前的错误。</li>
+<li>如果 API 的更改未导致错误，则表示我们没有在你的 API 更改的<code>NavigationPlayground</code>示例项目中使用任何覆盖范围。 这通常是这种情况 - 例如，如果你添加一个新的导航选项。 在这种情况下，你必须将新功能的示例用法添加到<code>NavigationPlayground</code>中，以便测试 libdef 更改，以便我们可以永久性地正确测试和使用你的功能。</li>
+<li>一旦看到错误，请继续执行并更新 libdef（位于<code>flow/react-navigation.js</code>），直到在<code>examples/NavigationPlayground</code>中运行<code>flow</code>不再有任何错误 。</li>
+<li>新功能的 PR 中包含 libdef 更改。 请确保向维护人员标记您的 PR 有 libdef 更改，以便下一版本的库发布时，我们确保将更新的 libdef 上传到<code>flow-typed</code> repo。</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="信息"></a><a href="#信息" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>信息</h2>
+<h3><a class="anchor" aria-hidden="true" id="issue-模板"></a><a href="#issue-模板" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Issue 模板</h3>
+<p>在提交一个 issue 之前，请参考<a href="https://github.com/react-community/react-navigation/blob/master/.github/ISSUE_TEMPLATE.md"> issue 模板 </a>，并按照模版填写。 这是为了帮助每个人更好地理解你所遇到的问题，并减少来回获取必要的信息。</p>
+<p>Yes, it takes time and effort to complete the issue template. But that's the only way to ask high quality questions that actually get responses.</p>
+<p>你愿意花1分钟时间创建一份不完整的 issue 报告，然后等待几个月得不到任何回应； 还是愿意花20分钟时间填写一份高质量的问题报告和所有必要的内容，并在几天内得到答复？ 对于愿意花时间审查你的问题的人来说，这也是一件值得尊敬的事情。</p>
+<h3><a class="anchor" aria-hidden="true" id="pr-模板"></a><a href="#pr-模板" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PR 模板</h3>
+<p>与 issue 模板非常相似，<a href="https://github.com/react-community/react-navigation/blob/master/.github/PULL_REQUEST_TEMPLATE.md"> PR 模板 </a>列出说明，以确保您的 PR 得到及时审查并减少反复。 确保在开始编码之前查看它。</p>
+<h3><a class="anchor" aria-hidden="true" id="forking-the-repository"></a><a href="#forking-the-repository" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Forking the Repository</h3>
+<ul>
+<li>Fork <a href="https://github.com/react-community/react-navigation"><code>react-navigation</code></a> on GitHub</li>
+<li>在终端中运行这些命令，从而在本地下载并安装它们：</li>
+</ul>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/&lt;USERNAME&gt;/react-navigation.git
+<span class="hljs-built_in">cd</span> react-navigation
+git remote add upstream https://github.com/react-community/react-navigation.git
+yarn install
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="code-review-guidelines"></a><a href="#code-review-guidelines" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code Review Guidelines</h3>
+<p>Look around. Match the style of the rest of the codebase. This project uses ESLint to ensure consistency throughout the project. You can check your project by running</p>
+<pre><code class="hljs css language-bash">yarn run eslint
+</code></pre>
+<p>如果发生任何错误，你必须手动修复它们，或者尝试通过运行<code>yarn run format</code>来自动修复它们。</p>
+<h3><a class="anchor" aria-hidden="true" id="run-the-example-app"></a><a href="#run-the-example-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run the Example App</h3>
+<p>The <a href="https://github.com/react-community/react-navigation/tree/master/examples/NavigationPlayground">NavigationPlayground</a> example app includes a variety of patterns and is used as a simple way for contributors to manually integration test changes.</p>
+<pre><code class="hljs css language-bash">yarn install
+<span class="hljs-built_in">cd</span> examples/NavigationPlayground
+yarn install
+yarn start
+</code></pre>
+<p>You will be shown a QR code to scan in the Expo app. You can get Expo <a href="https://docs.expo.io/versions/latest/index.html">here</a> if you don't have it yet.</p>
+<p>Commands are the same as above for any of the example apps. If you run into any issues, please try the following to start fresh:</p>
+<pre><code class="hljs css language-bash">watchman watch-del-all
+yarn start -- --reset-cache
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="run-the-website"></a><a href="#run-the-website" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run the Website</h3>
+<p>开发模式和热加载：</p>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">cd</span> website
+yarn install
+yarn start
+</code></pre>
+<p>使用服务端渲染在生产模式下运行网站：</p>
+<pre><code class="hljs css language-bash">yarn run prod
+</code></pre>
+<p>如果你对<code>docs</code>目录进行了任何更改，则需要在项目的根目录下运行<code>yarn run build-docs</code> 重新加载网站。</p>
+<h3><a class="anchor" aria-hidden="true" id="run-tests"></a><a href="#run-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run Tests</h3>
+<p>React Navigation 在<a href="https://facebook.github.io/jest/"> Jest </a>中实现了测试。 要从 React Navigation 目录运行，请运行以下任一命令（安装<code>node_modules</code>之后）以运行测试或类型检查。</p>
+<pre><code class="hljs css language-bash">yarn run jest
+</code></pre>
+<p>这些命令将由我们的 CI 运行，并且必须在合并任何贡献之前通过。</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/alternatives.html">← 可选库</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#contributing">Contributing</a><ul class="toc-headings"><li><a href="#提-bug">提 Bug</a></li><li><a href="#改进文档">改进文档</a></li><li><a href="#回答问题">回答问题</a></li><li><a href="#修复-bug">修复 Bug</a></li><li><a href="#建议一个功能">建议一个功能</a></li><li><a href="#提-pr">提 PR</a></li><li><a href="#界面变更-类型">界面变更 &amp; 类型</a></li></ul></li><li><a href="#信息">信息</a><ul class="toc-headings"><li><a href="#issue-模板">Issue 模板</a></li><li><a href="#pr-模板">PR 模板</a></li><li><a href="#forking-the-repository">Forking the Repository</a></li><li><a href="#code-review-guidelines">Code Review Guidelines</a></li><li><a href="#run-the-example-app">Run the Example App</a></li><li><a href="#run-the-website">Run the Website</a></li><li><a href="#run-tests">Run Tests</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

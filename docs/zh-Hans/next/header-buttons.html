@@ -53,7 +53,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/simple-header-button" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/simple-header-button-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <p>在<code>navigationOptions</code>中<code>this</code>绑定的不是<Home> HomeScreen </code>实例，所以你不能调用<code>setState</code>方法和其上的任何实例方法。 这一点非常重要，因为标题栏中的按钮与标题栏所属的页面进行交互是非常常见的。 所以，接下来我们将看看如何做到这一点。</p>
 <blockquote>
 <p>有一个社区开发包，用于渲染标题栏中的按钮，并提供正确的样式<a href="https://github.com/vonovak/react-navigation-header-buttons"> react-navigation-header-buttons </a>。</p>
@@ -89,7 +89,7 @@
   <span class="token comment">/* later in the render function we display the count */</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/header-interacting-with-component-instance" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/header-interacting-with-component-instance-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <blockquote>
 <p>React Navigation 不保证你的屏幕组件将被安装在标题之前。 由于<code>increaseCount</code>参数在<code>componentDidMount</code>中设置，因此我们可能无法在<code>navigationOptions</code>中使用它。 这通常不会成为问题，因为如果回调为空，<code>Button</code>和<code>Touchable</code>组件的<code>onPress</code>事件将不会执行任何操作。 如果你在此处有自己的自定义组件，则应确保它通过 prop 传递过去的点击事件处理行为与<code>null</code>一样。</p>
 <p>作为<code>setParams</code>的替代方法，你可以使用状态管理库（例如Redux或MobX），进行标题栏和页面之间的通信，就像两个不同组件之间的通信一样。</p>
@@ -105,7 +105,7 @@
 <ul>
 <li>您可以通过<code>navigationOptions</code>中的<code>headerLeft</code>和<code>headerRight</code>属性在标题栏中设置按钮。</li>
 <li>后退按钮可以通过<code>headerLeft</code>完全自定义，但是如果你只想更改标题或图片，那么还有其他<code>navigationOptions</code> — <code>headerBackTitle</code>，<code>headerTruncatedBackTitle</code>和<code>headerBackImage</code>。</li>
-<li><a href="https://snack.expo.io/@react-navigation/header-interacting-with-component-instance">本节涉及的所有代码（expo，请备好梯子）</a>。</li>
+<li><a href="https://snack.expo.io/@react-navigation/header-interacting-with-component-instance-v3">Full source of what we have built so far</a>.</li>
 </ul>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/headers.html">← 配置标题栏</a><a class="docs-next button" href="/docs/zh-Hans/next/app-containers.html">App Containers →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#向标题栏中添加一个按钮">向标题栏中添加一个按钮</a></li><li><a href="#标题栏和其所属的页面之间的交互">标题栏和其所属的页面之间的交互</a></li><li><a href="#自定义返回按钮">自定义返回按钮</a></li><li><a href="#覆盖返回按钮">覆盖返回按钮</a></li><li><a href="#摘要">摘要</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({

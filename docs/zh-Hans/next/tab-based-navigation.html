@@ -42,7 +42,7 @@
 <h2><a class="anchor" aria-hidden="true" id="基于-tab-navigation-的最小示例"></a><a href="#基于-tab-navigation-的最小示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>基于 Tab navigation 的最小示例</h2>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> createBottomTabNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createBottomTabNavigator<span class="token punctuation">,</span> createAppContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -64,18 +64,20 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   Home<span class="token punctuation">:</span> HomeScreen<span class="token punctuation">,</span>
   Settings<span class="token punctuation">:</span> SettingsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span>TabNavigator<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/basic-tabs" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/basic-tabs-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <h2><a class="anchor" aria-hidden="true" id="自定义外观"></a><a href="#自定义外观" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>自定义外观</h2>
 <p>这与如何自定义 stack navigator 类似 — 有些属性可以在初始化 tab navigator 时设置，有些可以在每个页面的<code>navigationOptions</code>中自定义。</p>
 <pre><code class="hljs css language-js"><span class="token comment">// You can import Ionicons from @expo/vector-icons if you use Expo or</span>
 <span class="token comment">// react-native-vector-icons/Ionicons otherwise.</span>
 <span class="token keyword">import</span> Ionicons <span class="token keyword">from</span> <span class="token string">'react-native-vector-icons/Ionicons'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> createBottomTabNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createBottomTabNavigator<span class="token punctuation">,</span> createAppContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
@@ -83,7 +85,7 @@
     Settings<span class="token punctuation">:</span> SettingsScreen<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
-    navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
       tabBarIcon<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> focused<span class="token punctuation">,</span> horizontal<span class="token punctuation">,</span> tintColor <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> <span class="token punctuation">{</span> routeName <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
         <span class="token keyword">let</span> iconName<span class="token punctuation">;</span>
@@ -105,7 +107,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/tabs-with-icons" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/tabs-with-icons-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <p>我们来剖析一下：</p>
 <ul>
 <li><code>tabBarIcon</code>是<code>navigationOptions</code>上的一个属性，所以我们知道我们可以在我们的页面上使用它，但在这种情况下，选择将它放在<code>createBottomTabNavigator</code>的配置中，是为了方便集中配置图标。</li>
@@ -144,12 +146,13 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/jumping-between-tabs" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/jumping-between-tabs-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <h2><a class="anchor" aria-hidden="true" id="每个-tab-的-stack-navigator"></a><a href="#每个-tab-的-stack-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>每个 Tab 的 stack navigator</h2>
 <p>通常， tabs 不仅仅显示一个页面 — 例如，在你的 Twitter 上，您可以点击一条 tweet，它将会把你带到某个 Tab 的一个新页面，该页面包含关于这条 tweet 的所有回复。 你可以将此视为在每个选项卡中存在单独的导航堆栈，这正是我们在 React Navigation 中对其进行建模的方式。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>
   createBottomTabNavigator<span class="token punctuation">,</span>
   createStackNavigator<span class="token punctuation">,</span>
+  createAppContainer<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -200,7 +203,7 @@
   Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span><span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
     Home<span class="token punctuation">:</span> HomeStack<span class="token punctuation">,</span>
     Settings<span class="token punctuation">:</span> SettingsStack<span class="token punctuation">,</span>
@@ -208,9 +211,9 @@
   <span class="token punctuation">{</span>
     <span class="token comment">/* Other configuration remains unchanged */</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><a href="https://snack.expo.io/@react-navigation/stacks-in-tabs" target="blank" class="run-code-button">→ 运行代码</a></p>
+<p><a href="https://snack.expo.io/@react-navigation/stacks-in-tabs-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <h2><a class="anchor" aria-hidden="true" id="为什么我们需要-tabnavigator-而不是-tabbarios-或其他组件"></a><a href="#为什么我们需要-tabnavigator-而不是-tabbarios-或其他组件" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>为什么我们需要 TabNavigator 而不是 TabBarIOS 或其他组件？</h2>
 <p>使用独立的 tab bar 组件，而不将其集成到你在应用中使用的导航库中是很常见的。 在某些情况下，这没有任何问题！ 但是，你应该警告自己，在这样做时可能会遇到一些令人沮丧的意外问题。</p>
 <p>例如，React Navigation 的<code>TabNavigator</code>可以负责为您处理 Android 返回按钮，而独立组件通常不会。 此外，如果你执行 “跳转到此 Tab, 然后转到此页面” 这种需要调用两个不同API的操作，将会更加困难。 最后，手机用户界面有许多小的设计细节，需要某些组件知道其他组件的布局或存在 — 例如，如果您有一个半透明的 tab bar，内容应该滚动到其下方，并且滚动视图的底部应该有一个等于 tab bar 高度的插图，以便您可以看到所有内容。 双击 tab bar 应使活动导航堆栈弹出到堆栈顶部，再次双击时应将该堆栈中的当前滚动视图滚动到顶部。 尽管并非所有这些行为都是通过 React Navigation 来实现的，但如果你使用独立的 tab 视图组件，则也许不能进行这些操作。</p>

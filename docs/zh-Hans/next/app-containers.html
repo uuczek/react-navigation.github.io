@@ -39,7 +39,7 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/app-containers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">App Containers</h1></header><article><div><span><p>Containers are responsible for managing your app state and linking your top-level navigator to the app environment. On Android, the app container uses the Linking API to handle the back button. The container can also be configured to persist your navigation state. On web, you'd use different containers than React Native.</p>
 <blockquote>
-<p>Note: In v2 and earlier, the containers in React Navigation were automatically provided by the <code>create*Navigator</code> functions. Now you are required to use the container directly. In v3 we also renamed <code>createNavigationContainer</code> to <code>createAppContainer</code>.</p>
+<p>Note: In v2 and earlier, the containers in React Navigation are automatically provided by the <code>create*Navigator</code> functions. As of v3, you are required to use the container directly. In v3 we also renamed <code>createNavigationContainer</code> to <code>createAppContainer</code>.</p>
 </blockquote>
 <p>A quick example of <code>createAppContainer</code>:</p>
 <pre><code class="hljs">import { createAppContainer } from 'react-navigation';

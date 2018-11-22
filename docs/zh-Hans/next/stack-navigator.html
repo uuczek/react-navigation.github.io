@@ -70,7 +70,7 @@
 <li><code>initialRouteName</code> - 设置堆栈的默认屏幕。 必须匹配路由配置中的某个 Key。</li>
 <li><code>initialRouteParams</code> - 初始路由的参数</li>
 <li><code>initialRouteKey</code> - 初始路由的可选标识符</li>
-<li><code>navigationOptions</code> - 用于屏幕的默认导航选项</li>
+<li><code>defaultNavigationOptions</code> - Default navigation options to use for screens</li>
 <li><code>paths</code> - 覆盖路由配置中设置的路径的映射</li>
 </ul>
 <p>视觉选项：</p>
@@ -95,6 +95,8 @@
   * `left` - 将标题锚定在左侧，靠近后退按钮或其他左侧组件。 在 Android 上默认的。 在 iOS 上，Header 组件的返回标题是隐藏的 左侧组件的内容将在标题下方溢出，如果你需要调整此内容，可以使用` headerLeftContainerStyle `和` headerTitleContainerStyle `。 Additionally, this alignment is incompatible with `headerTransitionPreset: 'uikit'`.
   * `center` - 将标题居中，这是iOS上的默认设置。
 * ` cardStyle ` - 使用此 props 覆盖或扩展堆栈中单个 Card 的默认样式。
+* `cardShadowEnabled` - Use this prop to have visible shadows during transitions. Defaults to `true`
+* `cardOverlayEnabled` - Use this prop to have visible stack card overlays during transitions. Defaults to `false`.
 * `transitionConfig` 函数返回与默认屏幕转换合并的对象 (查看 TransitionConfig 中的 [类型定义](https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation.js)). 提供的函数将传递以下参数: 
   * `transitionProps` -新屏幕的过渡道具。 
   * `prevTransitionProps` -为旧屏幕过渡道具。 
@@ -176,6 +178,8 @@
 <p>默认为 <code>false</code>。如果 <code>true</code>, 则标头将不会有背景, 除非您显式提供 <code>headerStyle</code> 或 <code>headerBackground</code>。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbackground"></a><a href="#headerbackground" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackground</code></h4>
 <p>与<code>headerTransparent</code>一起使用，以提供在标题后台呈现的组件。 例如，您可以使用模糊视图来创建半透明标题。</p>
+<h4><a class="anchor" aria-hidden="true" id="headerbackgroundtransitionpreset"></a><a href="#headerbackgroundtransitionpreset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackgroundTransitionPreset</code></h4>
+<p>One of <code>toggle</code> | <code>fade</code> | <code>translate</code>; lets you choose how to transition your custom <code>headerBackground</code> components between screens.</p>
 <h4><a class="anchor" aria-hidden="true" id="gesturesenabled"></a><a href="#gesturesenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gesturesEnabled</code></h4>
 <p>是否允许使用手势来关闭页面，在 iOS 上默认为<code>true</code>，在 Android 上默认为<code>false</code>。</p>
 <h4><a class="anchor" aria-hidden="true" id="gestureresponsedistance"></a><a href="#gestureresponsedistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureResponseDistance</code></h4>
@@ -186,6 +190,13 @@
 </ul>
 <h4><a class="anchor" aria-hidden="true" id="gesturedirection"></a><a href="#gesturedirection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureDirection</code></h4>
 <p>用于覆盖关闭手势方向的字符串。 正常行为使用<code>default</code>，从右向左滑动设置为<code>reverse</code>。</p>
+<h4><a class="anchor" aria-hidden="true" id="params"></a><a href="#params" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>params</code></h4>
+<p>You can provide default params inside route definitions:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> Store <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Playstation<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> ProductScreen<span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> product<span class="token punctuation">:</span> <span class="token string">'Playstation'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  Xbox<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> ProductScreen<span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> product<span class="token punctuation">:</span> <span class="token string">'Xbox'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h3><a class="anchor" aria-hidden="true" id="navigator-props"></a><a href="#navigator-props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigator Props</h3>
 <p><code>StackNavigator(...)</code>创建的 navigator 组件使用下面这些 props：</p>
 <ul>
