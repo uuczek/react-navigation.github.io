@@ -94,10 +94,14 @@
 <p>要在 Android 中配置外部链接，您可以在清单文件中创建新的 intent。</p>
 <p>在<code>SimpleApp/android/app/src/main/AndroidManifest.xml</code>中，<code>MainActivity</code>条目中添加包含<code>VIEW</code>类型的 Action 的新的<code>intent-filter</code>：</p>
 <pre><code class="hljs">&lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+&lt;/intent-filter&gt;
+&lt;intent-filter&gt;
     &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
     &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
     &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
-    &lt;data android:scheme=&quot;mychat&quot; android:host=&quot;mychat&quot; /&gt;
+    &lt;data android:scheme=&quot;mychat&quot; android:host=&quot;mychat&quot; /&gt;            
 &lt;/intent-filter&gt;
 </code></pre>
 <p>现在，重新安装应用</p>

@@ -94,10 +94,14 @@
 <p>To configure the external linking in Android, you can create a new intent in the manifest.</p>
 <p>In <code>SimpleApp/android/app/src/main/AndroidManifest.xml</code>, add the new <code>intent-filter</code> inside the <code>MainActivity</code> entry with a <code>VIEW</code> type action:</p>
 <pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.MAIN"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.LAUNCHER"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.VIEW"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.DEFAULT"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.BROWSABLE"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"mychat"</span> <span class="hljs-attr">android:host</span>=<span class="hljs-string">"mychat"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"mychat"</span> <span class="hljs-attr">android:host</span>=<span class="hljs-string">"mychat"</span> /&gt;</span>            
 <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
 </code></pre>
 <p>Now, re-install the app:</p>

@@ -98,8 +98,8 @@
 * `cardShadowEnabled` - Use this prop to have visible shadows during transitions. Defaults to `true`
 * `cardOverlayEnabled` - Use this prop to have visible stack card overlays during transitions. Defaults to `false`.
 * `transitionConfig` - Function to return an object that is merged with the default screen transitions (take a look at TransitionConfig in [type definitions](https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation.js)). Provided function will be passed the following arguments: 
-  * `transitionProps` -新屏幕的过渡道具。 
-  * `prevTransitionProps` -为旧屏幕过渡道具。 
+  * `transitionProps` -新屏幕的过渡道具。
+  * `prevTransitionProps` -为旧屏幕过渡道具。
   * `isModal` -布尔值指定屏幕是否为模式。
 * `onTransitionStart` -当卡过渡动画即将启动时要调用的函数。
 * `onTransitionEnd` -在卡过渡动画完成后调用的函数。
@@ -222,7 +222,7 @@
   <span class="token punctuation">{</span>
     headerMode<span class="token punctuation">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>
     mode<span class="token punctuation">:</span> <span class="token string">'modal'</span><span class="token punctuation">,</span>
-    navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       gesturesEnabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     transitionConfig<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
