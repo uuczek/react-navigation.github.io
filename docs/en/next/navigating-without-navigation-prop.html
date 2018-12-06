@@ -41,16 +41,19 @@
 <p>You can get access to a navigator through a <code>ref</code> and pass it to the <code>NavigationService</code> which we will later use to navigate. Use this only with the top-level (root) navigator of your app.</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// App.js</span>
 
+<span class="hljs-keyword">import</span> { createStackNavigator, createAppContainer } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation'</span>;
 <span class="hljs-keyword">import</span> NavigationService <span class="hljs-keyword">from</span> <span class="hljs-string">'./NavigationService'</span>;
 
 <span class="hljs-keyword">const</span> TopLevelNavigator = createStackNavigator({ <span class="hljs-comment">/* ... */</span> })
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<span class="hljs-keyword">const</span> AppContainer = createAppContainer(TopLevelNavigator);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   <span class="hljs-comment">// ...</span>
 
   render() {
     <span class="hljs-keyword">return</span> (
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TopLevelNavigator</span>
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AppContainer</span>
         <span class="hljs-attr">ref</span>=<span class="hljs-string">{navigatorRef</span> =&gt;</span> {
           NavigationService.setTopLevelNavigator(navigatorRef);
         }}
