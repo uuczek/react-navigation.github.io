@@ -67,52 +67,52 @@
 <h3><a class="anchor" aria-hidden="true" id="stacknavigatorconfig"></a><a href="#stacknavigatorconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StackNavigatorConfig</h3>
 <p>路由的选项：</p>
 <ul>
-<li><code>initialRouteName</code> - Sets the default screen of the stack. Must match one of the keys in route configs.</li>
+<li><code>initialRouteName</code> - 设置 stack navigator 的默认页面， 必须是路由配置中的某一个。</li>
 <li><code>initialRouteParams</code> - 初始路由的参数</li>
 <li><code>initialRouteKey</code> - 初始路由的可选标识符</li>
-<li><code>defaultNavigationOptions</code> - Default navigation options to use for screens</li>
+<li><code>defaultNavigationOptions</code> - 用于屏幕的默认导航选项</li>
 <li><code>paths</code> - 覆盖路由配置中设置的路径的映射</li>
 </ul>
 <p>视觉选项：</p>
 <ul>
 <li><code>mode</code> - 定义渲染和转换的样式：
 <ul>
-<li><code>card</code> - Use the standard iOS and Android screen transitions. This is the default.</li>
-<li><code>modal</code> - Make the screens slide in from the bottom which is a common iOS pattern. Only works on iOS, has no effect on Android.</li>
+<li><code>card</code> - 使用标准的 iOS 和 Android 屏幕转换， 这是默认设置。</li>
+<li><code>modal</code> - 页面从屏幕底部滑入，这是iOS的常用模式， 只在 iOS 上生效，在 Android 上无效。</li>
 </ul></li>
-<li><code>headerMode</code> -指定页眉的呈现方式:
+<li><code>headerMode</code> -指定页眉的呈现方式：
 <ul>
-<li><code>float</code> - Render a single header that stays at the top and animates as screens are changed. This is a common pattern on iOS.</li>
-<li><code>screen</code> - Each screen has a header attached to it and the header fades in and out together with the screen. This is a common pattern on Android.</li>
-<li><code>无</code> -不会呈现页眉。</li>
+<li><code>float</code> -呈现一个位于顶部的单个页眉, 并在屏幕被更改时进行动画显示， 这是 iOS 上常见的模式。</li>
+<li><code>screen</code> -每个屏幕都有一个标头, 并且页眉随屏幕一起淡入和淡出， 这是 Android 的常见模式。</li>
+<li><code>none</code> -不会呈现页眉。</li>
 </ul></li>
 <li><code>headerBackTitleVisible</code> - 提供合理的默认值以确定后退按钮标题是否可见，但如果要覆盖它，则可以使用<code>true</code>或` false &lt; /code&gt;在此选项中。</li></li>
 </ul>
-<li><code>headerTransitionPreset` - Specifies how the header should transition from one screen to another when `headerMode: float` is enabled. 
-  * `fade-in-place` - Header components cross-fade without moving, similar to the Twitter, Instagram, and Facebook app for iOS. This is the default value.
+<li><code>headerTransitionPreset` - `headerMode: float` 时，指定 header 应该如何过渡，当页面跳转时。 
+  * `淡入就地的` -头组件跨淡出而不移动, 类似于 Twitter、Instagram 和 Facebook 应用程序的 iOS， 这是默认值。
   * `uikit` -iOS 的默认行为的近似值。
 * `headerLayoutPreset` - 指定 Header 组件如何布局 
-  * `left` - 将标题锚定在左侧，靠近后退按钮或其他左侧组件。 在 Android 上默认的。 在 iOS 上，Header 组件的返回标题是隐藏的 左侧组件的内容将在标题下方溢出，如果你需要调整此内容，可以使用` headerLeftContainerStyle `和` headerTitleContainerStyle `。 Additionally, this alignment is incompatible with `headerTransitionPreset: 'uikit'`.
+  * `left` - 将标题锚定在左侧，靠近后退按钮或其他左侧组件。 在 Android 上默认的。 在 iOS 上，Header 组件的返回标题是隐藏的 左侧组件的内容将在标题下方溢出，如果你需要调整此内容，可以使用` headerLeftContainerStyle `和` headerTitleContainerStyle `。 此外，此对齐与`headerTransitionPreset: 'ui-kit'`不兼容。
   * `center` - 将标题居中，这是iOS上的默认设置。
 * ` cardStyle ` - 使用此 props 覆盖或扩展堆栈中单个 Card 的默认样式。
-* `cardShadowEnabled` - Use this prop to have visible shadows during transitions. Defaults to `true`
-* `cardOverlayEnabled` - Use this prop to have visible stack card overlays during transitions. Defaults to `false`.
-* `transitionConfig` - Function to return an object that is merged with the default screen transitions (take a look at TransitionConfig in [type definitions](https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation.js)). Provided function will be passed the following arguments: 
+* `cardShadowEnabled` - 使用此 prop 可在页面切换时，显示可见阴影， 默认值： `true`。
+* `cardOverlayEnabled` - 使用此 prop 在页面切换时显示堆栈卡片浮层， 默认值： `false`。
+* `transitionConfig` - 返回与默认的页面切换效果合并的对象的函数（在[切换效果类型定义](https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation.js)中查看） 提供的函数将传递以下参数: 
   * `transitionProps` -新屏幕的过渡道具。
   * `prevTransitionProps` -为旧屏幕过渡道具。
   * `isModal` -布尔值指定屏幕是否为模式。
 * `onTransitionStart` -当卡过渡动画即将启动时要调用的函数。
 * `onTransitionEnd` -在卡过渡动画完成后调用的函数。
-* `transparentCard` - *Experimental* - Prop to keep all cards in the stack visible and add a transparent background instead of a white one. This is useful to implement things like modal dialogs where the previous scene should still be visible underneath the current one.
+* `transparentCard` - *Experimental* - 保持堆栈中所有卡片可见的 prop, 并添加透明的背景而不是白色的 这对于实现像模式对话框这样的事情很有用, 在这种对话框中, 前面的场景在当前场景的下方仍然可见。
 <h3><a class="anchor" aria-hidden="true" id="用于导航器内部页面的-navigationoptions"></a><a href="#用于导航器内部页面的-navigationoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>用于导航器内部页面的<code>navigationOptions</code></h3>
 <h4><a class="anchor" aria-hidden="true" id="标题"></a><a href="#标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>标题</code></h4>
 <p>可用作 <code>headerTitle</code> 的回退的字符串。 此外, 将用作 <code>tabBarLabel</code> 的回退 (如果嵌套在 TabNavigator 中) 或 <code>drawerLabel</code> (如果嵌套在DrawerNavigator)。</p>
 <h4><a class="anchor" aria-hidden="true" id="header"></a><a href="#header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>header</code></h4>
-<p>React Element or a function that given <code>HeaderProps</code> returns a React Element, to display as a header. Setting to <code>null</code> hides header.</p>
+<p>React 元素或一个给定 <code>HeaderProps</code> 然后返回一个 React 元素的函数，将作为一个标题来显示。 设为 <code>null</code> ，则隐藏标题。</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitle"></a><a href="#headertitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitle</code></h4>
 <p>Header 使用的字符串，React 元素或React组件。 默认是页面的 <code>title</code> 当一个组件被使用时，它会接受 <code>allowFontScaling</code>、 <code>style</code> 和 <code>children</code> 这几个 props。 标题字符串在<code>children</code>中传递。</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitleallowfontscaling"></a><a href="#headertitleallowfontscaling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleAllowFontScaling</code></h4>
-<p>Whether header title font should scale to respect Text Size accessibility settings. Defaults to true.</p>
+<p>AllowFontScaling -无论标签字体是否应缩放以尊重文字大小可访问性设置， 默认值都是 true。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbackimage"></a><a href="#headerbackimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackImage</code></h4>
 <p>React 元素或组件在标题的后退按钮中显示自定义图片。 当组件被调用时，它会在渲染时收到许多 props 如：（<code>tintColor</code>，<code>title</code>）。 默认为带有 <code>react-navigation/views/assets/back-icon.png</code> 这张图片的组件，后者是平台的默认后图标图像（iOS上为向左的符号，Android上为箭头）。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbacktitle"></a><a href="#headerbacktitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackTitle</code></h4>
@@ -155,7 +155,7 @@
 <h4><a class="anchor" aria-hidden="true" id="headerright"></a><a href="#headerright" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerRight</code></h4>
 <p>在标题栏右侧展示的 React 组件。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerleft"></a><a href="#headerleft" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerLeft</code></h4>
-<p>在标题栏左侧展示的 React 元素或组件。 When a component is used, it receives a number of props when rendered (<code>onPress</code>, <code>title</code>, <code>titleStyle</code> and more - check <a href="https://github.com/react-navigation/react-navigation-stack/blob/master/src/views/Header/Header.js">Header.js</a> for the complete list).</p>
+<p>在标题栏左侧展示的 React 元素或组件。 使用组件时，它在渲染时会收到许多 prop（<code>onPress</code>、<code>title</code>、<code>titleStyle</code>等等 - 查看<a href="https://github.com/react-navigation/react-navigation-stack/blob/master/src/views/Header/Header.js">Header.js</a>获取完整列表）。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerstyle"></a><a href="#headerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStyle</code></h4>
 <p>标题的样式对象</p>
 <h4><a class="anchor" aria-hidden="true" id="headerforceinset"></a><a href="#headerforceinset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerForceInset</code></h4>
@@ -175,23 +175,23 @@
 <h4><a class="anchor" aria-hidden="true" id="headerpresscolorandroid"></a><a href="#headerpresscolorandroid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerPressColorAndroid</code></h4>
 <p>颜色为材料波纹 (Android &gt;= 5.0)</p>
 <h4><a class="anchor" aria-hidden="true" id="headertransparent"></a><a href="#headertransparent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTransparent</code></h4>
-<p>Defaults to <code>false</code>. If <code>true</code>, the header will not have a background unless you explicitly provide it with <code>headerStyle</code> or <code>headerBackground</code>.</p>
+<p>默认值： <code>false</code>。 如果 <code>true</code>, 则标头将不会有背景, 除非您显式提供 <code>headerStyle</code> 或 <code>headerBackground</code>。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbackground"></a><a href="#headerbackground" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackground</code></h4>
-<p>Use this with <code>headerTransparent</code> to provide a component to render in the background of the header. You can use this with a blur view, for example, to create a translucent header.</p>
+<p>将其与 <code>headerTransparent</code> 一起使用, 以提供要在标头背景下呈现的组件。 例如, 可以将其与模糊视图一起使用, 以创建半透明的标头。</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbackgroundtransitionpreset"></a><a href="#headerbackgroundtransitionpreset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackgroundTransitionPreset</code></h4>
-<p>One of <code>toggle</code> | <code>fade</code> | <code>translate</code>; lets you choose how to transition your custom <code>headerBackground</code> components between screens.</p>
-<h4><a class="anchor" aria-hidden="true" id="gesturesenabled"></a><a href="#gesturesenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gesturesEnabled</code></h4>
-<p>Whether you can use gestures to dismiss this screen. Defaults to true on iOS, false on Android.</p>
+<p>取值范围：<code>toggle</code> | <code>fade</code> | <code>translate</code>；让您选择如何在屏幕之间转换自定义` headerBackground &lt;/ code&gt;组件。</p></p>
+<p><h4><code>gesturesEnabled`</h4></p>
+<p>是否可以使用手势关闭此页面。 在 ios 上默认为 true, 在 android 上默认为 false。</p>
 <h4><a class="anchor" aria-hidden="true" id="gestureresponsedistance"></a><a href="#gestureresponsedistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureResponseDistance</code></h4>
-<p>Object to override the distance of touch start from the edge of the screen to recognize gestures. It takes the following properties:</p>
+<p>用于覆盖从屏幕边缘开始触摸的距离以识别手势的对象， 它具有以下属性：</p>
 <ul>
-<li><code>horizontal</code> - <em>number</em> - Distance for horizontal direction. Defaults to 25.</li>
-<li><code>vertical</code> - <em>number</em> - Distance for vertical direction. Defaults to 135.</li>
+<li><code>horizontal</code> - <em>number</em> - 水平方向的距离， 默认 25。</li>
+<li><code>vertical</code> - <em>number</em> - 垂直方向的距离， 默认 135。</li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" id="gesturedirection"></a><a href="#gesturedirection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureDirection</code></h4>
-<p>String to override the direction for dismiss gesture. <code>default</code> for normal behaviour or <code>inverted</code> for right-to-left swipes.</p>
+<p>覆写关闭页面的手势的方向的字符串， 默认情况下是从左向右，<code>inverted</code>是从右向左。</p>
 <h4><a class="anchor" aria-hidden="true" id="params"></a><a href="#params" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>params</code></h4>
-<p>You can provide default params inside route definitions:</p>
+<p>您可以在路由定义内提供默认参数:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> Store <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   Playstation<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> ProductScreen<span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> product<span class="token punctuation">:</span> <span class="token string">'Playstation'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
   Xbox<span class="token punctuation">:</span> <span class="token punctuation">{</span> screen<span class="token punctuation">:</span> ProductScreen<span class="token punctuation">,</span> params<span class="token punctuation">:</span> <span class="token punctuation">{</span> product<span class="token punctuation">:</span> <span class="token string">'Xbox'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -253,32 +253,29 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>也可以使用 <code>headerLeftInterpolator</code>、 <code>headerTitleInterpolator</code> 和 <code>headerRightInterpolator</code> 字段 <code>transitionConfig</code>。</p>
-<h4><a class="anchor" aria-hidden="true" id="specifying-the-transition-mode-for-a-stack-s-screens-explicitly"></a><a href="#specifying-the-transition-mode-for-a-stack-s-screens-explicitly" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifying the transition mode for a stack's screens explicitly</h4>
-<p>We can't set the <code>StackNavigatorConfig</code>'s <code>mode</code> dynamically. Instead we are going to use a custom <code>transitionConfig</code> to render the specfific transition we want - modal or card - on a screen by screen basis.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStackNavigator<span class="token punctuation">,</span> StackViewTransitionConfigs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
-
-<span class="token comment">/* The screens you add to IOS_MODAL_ROUTES will have the modal transition.  */</span>
-<span class="token keyword">const</span> <span class="token constant">IOS_MODAL_ROUTES</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'OptionsScreen'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token keyword">let</span> <span class="token function-variable function">dynamicModalTransition</span> <span class="token operator">=</span> <span class="token punctuation">(</span>transitionProps<span class="token punctuation">,</span> prevTransitionProps<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> isModal <span class="token operator">=</span> <span class="token constant">IOS_MODAL_ROUTES</span><span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>
-    screenName <span class="token operator">=></span>
-      screenName <span class="token operator">===</span> transitionProps<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>route<span class="token punctuation">.</span>routeName <span class="token operator">||</span>
-      <span class="token punctuation">(</span>prevTransitionProps <span class="token operator">&amp;&amp;</span> screenName <span class="token operator">===</span> prevTransitionProps<span class="token punctuation">.</span>scene<span class="token punctuation">.</span>route<span class="token punctuation">.</span>routeName<span class="token punctuation">)</span>
-  <span class="token punctuation">)</span>
-  <span class="token keyword">return</span> StackViewTransitionConfigs<span class="token punctuation">.</span><span class="token function">defaultTransitionConfig</span><span class="token punctuation">(</span>
-    transitionProps<span class="token punctuation">,</span>
-    prevTransitionProps<span class="token punctuation">,</span>
-    isModal
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
-  <span class="token punctuation">{</span> DetailScreen<span class="token punctuation">,</span> HomeScreen<span class="token punctuation">,</span> OptionsScreen <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span> initialRouteName<span class="token punctuation">:</span> <span class="token string">'HomeScreen'</span><span class="token punctuation">,</span> transitionConfig<span class="token punctuation">:</span> dynamicModalTransition <span class="token punctuation">}</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/drawer-actions.html">← DrawerActions reference</a><a class="docs-next button" href="/docs/zh-Hans/switch-navigator.html">createSwitchNavigator →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-定义">API 定义</a><ul class="toc-headings"><li><a href="#routeconfigs">RouteConfigs</a></li><li><a href="#stacknavigatorconfig">StackNavigatorConfig</a></li><li><a href="#用于导航器内部页面的-navigationoptions">用于导航器内部页面的<code>navigationOptions</code></a></li><li><a href="#navigator-props">Navigator Props</a></li><li><a href="#例子">例子</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<h4><a class="anchor" aria-hidden="true" id="明确指定-stack-navigator-中的页面的切换效果"></a><a href="#明确指定-stack-navigator-中的页面的切换效果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>明确指定 stack navigator 中的页面的切换效果</h4>
+<p>我们无法动态设置<code>StackNavigatorConfig</code> 的 <code>mode</code>， 所以我们将使用自定义` transitionConfig &lt;/ code&gt;来逐屏呈现我们想要的特定转换效果 - modal 或 card。</p></p>
+<pre><code class="js">import { createStackNavigator, StackViewTransitionConfigs } from 'react-navigation';
+<p>/* The screens you add to IOS_MODAL_ROUTES will have the modal transition.  */
+const IOS_MODAL_ROUTES = ['OptionsScreen'];</p>
+<p>let dynamicModalTransition = (transitionProps, prevTransitionProps) =&gt; {
+const isModal = IOS_MODAL_ROUTES.some(
+screenName =&gt;
+screenName === transitionProps.scene.route.routeName ||
+(prevTransitionProps &amp;&amp; screenName === prevTransitionProps.scene.route.routeName)
+)
+return StackViewTransitionConfigs.defaultTransitionConfig(
+transitionProps,
+prevTransitionProps,
+isModal
+);
+};</p>
+<p>const HomeStack = createStackNavigator(
+{ DetailScreen, HomeScreen, OptionsScreen },
+{ initialRouteName: 'HomeScreen', transitionConfig: dynamicModalTransition }
+);
+`</pre></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/drawer-actions.html">← DrawerActions 参考</a><a class="docs-next button" href="/docs/zh-Hans/switch-navigator.html">createSwitchNavigator →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-定义">API 定义</a><ul class="toc-headings"><li><a href="#routeconfigs">RouteConfigs</a></li><li><a href="#stacknavigatorconfig">StackNavigatorConfig</a></li><li><a href="#用于导航器内部页面的-navigationoptions">用于导航器内部页面的<code>navigationOptions</code></a></li><li><a href="#navigator-props">Navigator Props</a></li><li><a href="#例子">例子</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
                 
                 apiKey: 'c967b4a1491b9cb486d3dca087b771e6',

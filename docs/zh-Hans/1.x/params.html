@@ -40,7 +40,7 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/params.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Passing parameters to routes</h1></header><article><div><span><p>Now that we know how to <a href="hello-react-navigation.html">create a StackNavigator with some routes</a> and <a href="navigating.html">navigate between those routes</a>, let's look at how we can pass data to routes when we navigate to them.</p>
 <p>两个知识点，了解一下：</p>
 <ol>
-<li>Pass params to a route by putting them in an object as a second parameter to the <code>navigation.navigate</code> function: <code>this.props.navigation.navigate('RouteName', { /* params go here */ })</code></li>
+<li>需要将参数包装成一个对象，作为<code>navigation.navigate</code>方法的第二个参数传递给路由。如： <code>this.props.navigation.navigate('RouteName', { /* params go here */ })</code></li>
 <li>Read the params in your screen component: <code>this.props.navigation.state.params</code>. Alternatively, if you want to access the params directly (eg. through <code>this.props.itemId</code>), you may use a community-developed <a href="https://github.com/vonovak/react-navigation-props-mapper">react-navigation-props-mapper</a> package.</li>
 </ol>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>

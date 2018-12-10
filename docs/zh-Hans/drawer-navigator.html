@@ -44,12 +44,12 @@
 <h3><a class="anchor" aria-hidden="true" id="drawernavigatorconfig"></a><a href="#drawernavigatorconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DrawerNavigatorConfig</h3>
 <ul>
 <li><code>drawerWidth</code> -抽屉的宽度或返回它的函数。</li>
-<li><code>drawerPosition</code> - Options are <code>left</code> or <code>right</code>. Default is <code>left</code> position.</li>
+<li><code>drawerPosition</code> - 可选值： <code>left</code> 或 <code>right</code>， 默认值： <code>left</code>。</li>
 <li><code>contentComponent</code> -用于呈现抽屉内容 (例如, 导航项) 的组件。 接收用于抽屉的 <code>navigation</code> 支柱。 默认为 <code>DrawerItems</code>。 有关详细信息, 请参阅下文。</li>
 <li><code>contentOptions</code> -配置抽屉内容, 请参阅下面。</li>
-<li><code>useNativeAnimations</code> - Enable native animations. Default is <code>true</code>.</li>
-<li><code>drawerBackgroundColor</code> - Use the Drawer background for some color. The Default is <code>white</code>.</li>
-<li><code>drawerType</code> - One of <code>front</code> | <code>back</code> | <code>slide</code></li>
+<li><code>useNativeAnimations</code> - 使用原生动画， 默认值： <code>true</code>。</li>
+<li><code>drawerBackgroundColor</code> - 使用抽屉背景色， 默认值：<code>white</code>。</li>
+<li><code>drawerType</code> - 可选值：<code>front</code> | <code>back</code> | <code>slide</code></li>
 </ul>
 <p>几个被传递到底层路由以修改导航逻辑的选项：</p>
 <ul>
@@ -107,7 +107,7 @@
 <h4><a class="anchor" aria-hidden="true" id="标题"></a><a href="#标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>标题</code></h4>
 <p>可用作<code>headerTitle</code>和<code>tabBarLabel</code>的后备的通用标题。</p>
 <h4><a class="anchor" aria-hidden="true" id="drawerlabel"></a><a href="#drawerlabel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerLabel</code></h4>
-<p>String, React Element or a function that given <code>{ focused: boolean, tintColor: string }</code> returns a React.Node, to display in drawer sidebar. When undefined, scene <code>title</code> is used</p>
+<p>字符串，React 元素或给定<code>{ focused: boolean, tintColor: string }</code>返回一个 React.Node 的函数，用于在标签栏中显示。 未定义时，使用<code>title</code>。</p>
 <h4><a class="anchor" aria-hidden="true" id="drawericon"></a><a href="#drawericon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerIcon</code></h4>
 <p>React 元素或给定<code>{ focused: boolean, tintColor: string }</code>的函数返回一个 React.Node，用于在标签栏中显示。</p>
 <h4><a class="anchor" aria-hidden="true" id="drawerlockmode"></a><a href="#drawerlockmode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerLockMode</code></h4>
