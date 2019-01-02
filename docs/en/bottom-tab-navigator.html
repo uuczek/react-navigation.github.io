@@ -51,6 +51,7 @@
 <li><code>order</code> - Array of routeNames which defines the order of the tabs.</li>
 <li><code>paths</code> - Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs.</li>
 <li><code>backBehavior</code> - Should the back button cause a tab switch to the initial tab? If yes, set to <code>initialRoute</code>, otherwise <code>none</code>. Defaults to <code>initialRoute</code> behavior.</li>
+<li><code>lazy</code> - Defaults to <code>true</code>. If <code>false</code>, all tabs are rendered immediately. When <code>true</code>, tabs are rendered only when they are made active for the first time. Note: tabs are <strong>not</strong> re-rendered upon subsequent visits.</li>
 <li><code>tabBarComponent</code> - Optional, override component to use as the tab bar.</li>
 <li><code>tabBarOptions</code> - An object with the following properties:
 <ul>
