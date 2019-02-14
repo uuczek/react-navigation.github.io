@@ -42,7 +42,7 @@
 <p>注意: 在 v2 和更早版本中， React Navigation 中的容器由 <code>create*Navigator</code> 函数自动提供， 从 v3 开始, 需要直接使用容器。 在第3节中, 我们还将 <code>createNavigationContainer</code> 重命名为 <code>createAppContainer</code>。</p>
 </blockquote>
 <p>关于 <code>createAppContainer</code> 的一个简单示例：</p>
-<pre><code class="hljs">import { createAppContainer } from 'react-navigation';
+<pre><code class="hljs">import { createAppContainer, createStackNavigator } from 'react-navigation';
 // you can also import from @react-navigation/native
 
 const AppNavigator = createStackNavigator(...);

@@ -42,7 +42,7 @@
 <p>Note: In v2 and earlier, the containers in React Navigation are automatically provided by the <code>create*Navigator</code> functions. As of v3, you are required to use the container directly. In v3 we also renamed <code>createNavigationContainer</code> to <code>createAppContainer</code>.</p>
 </blockquote>
 <p>A quick example of <code>createAppContainer</code>:</p>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> { createAppContainer } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation'</span>;
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { createAppContainer, createStackNavigator } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-navigation'</span>;
 <span class="hljs-comment">// you can also import from @react-navigation/native</span>
 
 <span class="hljs-keyword">const</span> AppNavigator = createStackNavigator(...);

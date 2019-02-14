@@ -51,6 +51,7 @@
 <li><code>order</code> -定义选项卡顺序的 routeNames 数组。</li>
 <li><code>paths</code> - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。</li>
 <li><code>backBehavior</code> - 控制 &quot;返回&quot; 按钮是否会导致 Tab 页切换到初始 Tab 页? 如果是, 设置为 <code>initialRoute</code>, 否则 <code>none</code>。 默认为 <code>initialRoute</code>的行为。</li>
+<li><code>lazy</code> - Defaults to <code>true</code>. If <code>false</code>, all tabs are rendered immediately. When <code>true</code>, tabs are rendered only when they are made active for the first time. Note: tabs are <strong>not</strong> re-rendered upon subsequent visits.</li>
 <li><code>tabBarComponent</code> -可选，覆盖用作标签栏的组件.</li>
 <li><code>tabBarOptions</code> - 具有以下属性的对象:
 <ul>

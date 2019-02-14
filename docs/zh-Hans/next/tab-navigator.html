@@ -50,7 +50,7 @@
 <li><code>tabBarPosition</code> - 标签栏的位置, 可以是 <code>'top'</code> 或 <code>'bottom'</code>。</li>
 <li><code>swipeEnabled</code> -是否允许在标签页之间进行滑动。</li>
 <li><code>animationEnabled</code> -是否在更改标签页时进行动画处理。</li>
-<li><code>lazy</code> -默认为 <code>true</code>。如果 <code>false</code>， 则会立即呈现所有选项卡。当 <code>true</code>时， 选项卡仅在活动时才呈现。</li>
+<li><code>lazy</code> - Defaults to <code>true</code>. If <code>false</code>, all tabs are rendered immediately. When <code>true</code>, tabs are rendered only when they are made active for the first time. Note: tabs are <strong>not</strong> re-rendered upon subsequent visits.</li>
 <li><code>removeClippedSubviews</code> -默认为 <code>true</code>。通过释放非活动选项卡使用的资源来减少内存使用的优化方案。</li>
 <li><code>initialLayout</code> -可选对象, 其中包含初始的 <code>height</code> 和 <code>width</code>，可以通过传递该对象，来防止 <a href="https://github.com/react-native-community/react-native-tab-view#avoid-one-frame-delay"> react-native-tab-view </a> 渲染时一个帧的延迟。</li>
 <li><code>tabBarOptions</code> -配置选项卡栏, 请参阅下文。</li>
