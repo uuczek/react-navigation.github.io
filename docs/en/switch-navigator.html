@@ -81,6 +81,8 @@ This is the exact behavior that we want from the <a href="auth-flow.html">authen
 <p>Several options get passed to the underlying router to modify navigation logic:</p>
 <ul>
 <li><code>initialRouteName</code> - The routeName for the initial tab route when first loading.</li>
+<li><code>navigationOptions</code> - Navigation options for the navigator itself, to configure a parent navigator</li>
+<li><code>defaultNavigationOptions</code> - Default navigation options to use for screens</li>
 <li><code>resetOnBlur</code> - Reset the state of any nested navigators when switching away from a screen. Defaults to <code>true</code>.</li>
 <li><code>paths</code> - Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs.</li>
 <li><code>backBehavior</code> - <code>initialRoute</code> to return to initial route, <code>order</code> to return to previous route, <code>history</code> to return to last visited route, or <code>none</code>.</li>
