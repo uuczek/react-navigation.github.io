@@ -82,9 +82,15 @@
 <li><code>contentOptions</code> - Configure the drawer content, see below.</li>
 <li><code>useNativeAnimations</code> - Enable native animations. Default is <code>true</code>.</li>
 <li><code>drawerBackgroundColor</code> - Use the Drawer background for some color. The Default is <code>white</code>.</li>
-<li><code>drawerType</code> - One of <code>front</code> | <code>back</code> | <code>slide</code></li>
 <li><code>navigationOptions</code> - Navigation options for the navigator itself, to configure a parent navigator</li>
 <li><code>defaultNavigationOptions</code> - Default navigation options to use for screens</li>
+</ul>
+<p>The DrawerNavigator uses <a href="https://kmagiera.github.io/react-native-gesture-handler/docs/component-drawer-layout.html"><code>DrawerLayout</code></a> under the hood, therefore it inherits the following props:</p>
+<ul>
+<li><code>drawerType</code> - One of front | back | slide</li>
+<li><code>edgeWidth</code> - Allows for defining how far from the edge of the content view the swipe gesture should activate</li>
+<li><code>hideStatusBar</code> - when set to true Drawer component will hide the OS status bar whenever the drawer is pulled or when its in an &quot;open&quot; state.</li>
+<li><code>overlayColor</code> - Color overlay to be displayed on top of the content view when drawer gets open. A solid color should be used as the opacity is added by the Drawer itself and the opacity of the overlay is animated (from 0% to 70%).</li>
 </ul>
 <p>Several options get passed to the underlying router to modify navigation logic:</p>
 <ul>

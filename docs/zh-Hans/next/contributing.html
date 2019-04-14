@@ -97,7 +97,7 @@
 <h3><a class="anchor" aria-hidden="true" id="提-bug"></a><a href="#提-bug" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提 Bug</h3>
 <p>编码过程中偶尔出现 bug，是无法避免的。 特别是当 React Navigation 还处于测试阶段并在快速更新。 当你认为你找到一个 bug，可以这么做：</p>
 <ol>
-<li>在现有的问题中搜索与你遇到的类似问题。 If you see one, add a 请阅读评论，看看是否可以提供更有价值的信息。</li>
+<li>在现有的问题中搜索与你遇到的类似问题。 如果你找到一个， 请阅读评论，看看是否可以提供更有价值的信息。</li>
 <li>如果没有找到，请创建一个新的 issue。 请务必遵循<a href="https://github.com/react-community/react-navigation/blob/master/.github/ISSUE_TEMPLATE.md"> issue 模板 </a>。</li>
 </ol>
 <p>创造高质量的再生产至关重要。 没有它，我们可能无法修复这个 bug，并且在理想的情况下，你会发现它实际上并不是库的 bug，而只是在你的项目中用错了。 即时修复 bug！</p>
@@ -135,7 +135,7 @@
 <p>如果你发现自己对项目的公共接口（API）进行了更改，那么你应该确保为 Flow 更新相应的库定义。 这些“libdefs”指定了我们的API类型，以便用户可以检查他们的代码。 高质量修改的示例是添加一个新的导航选项。</p>
 <p>Libdef（位于<code>flow/react-navigation.js</code>）需要更新，以便在<code>examples/NavigationPlayground</code>文件夹中运行<code>flow</code> 没有错误。</p>
 <ol>
-<li>Follow the instructions in the <a href="#run-the-example-app">Run the Example App</a> section to prepare the <code>NavigationPlayground</code> example and install <code>flow</code> into the example's local <code>node_modules/.bin</code> folder.</li>
+<li>按照<a href="#run-the-example-app"> 运行示例应用程序 </a>部分中的说明准备<code>NavigationPlayground</code>示例并安装<code>flow</code>插入示例的本地<code>node_modules/.bin</code>文件夹中。</li>
 <li>运行<code>flow</code>以检查当前的错误。</li>
 <li>如果 API 的更改未导致错误，则表示我们没有在你的 API 更改的<code>NavigationPlayground</code>示例项目中使用任何覆盖范围。 这通常是这种情况 - 例如，如果你添加一个新的导航选项。 在这种情况下，你必须将新功能的示例用法添加到<code>NavigationPlayground</code>中，以便测试 libdef 更改，以便我们可以永久性地正确测试和使用你的功能。</li>
 <li>一旦看到错误，请继续执行并更新 libdef（位于<code>flow/react-navigation.js</code>），直到在<code>examples/NavigationPlayground</code>中运行<code>flow</code>不再有任何错误 。</li>
