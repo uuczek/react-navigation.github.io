@@ -80,13 +80,13 @@
 <p>The route configs object is a mapping from route name to a route config, which tells the navigator what to present for that route, see <a href="stack-navigator.html#routeconfigs">example</a> from stack navigator.</p>
 <h2><a class="anchor" aria-hidden="true" id="bottomtabnavigatorconfig"></a><a href="#bottomtabnavigatorconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BottomTabNavigatorConfig</h2>
 <ul>
-<li><code>initialRouteName</code> - O routeName para a rota da guia inicial no primeiro carregamento.</li>
+<li><code>initialRouteName</code> - O nome da rota inicial a ser carregada.</li>
 <li><code>navigationOptions</code> - Navigation options for the navigator itself, to configure a parent navigator</li>
 <li><code>defaultNavigationOptions</code> - Default navigation options to use for screens</li>
 <li><code>resetOnBlur</code> - redefinir o estado de qualquer navegadores aninhados quando se muda para uma tela. O padrão é <code>false</code>.</li>
 <li><code>order</code> - Array de routeNames que define a ordem das guias.</li>
 <li><code>paths</code> - Forneça um mapeamento de routeName para path config, que substitui os caminhos definidos no routeConfigs.</li>
-<li><code>backBehavior</code> - <code>initialRoute</code> to return to initial tab, <code>order</code> to return to previous tab, <code>history</code> to return to last visited tab, or <code>none</code>.</li>
+<li><code>backBehavior</code> - <code>initialRoute</code> to return to initial tab, <code>order</code> to return to previous tab, <code>history</code> to return to last visited tab, or <code>none</code>. <code>backBehavior</code> - <code>initialRoute</code> para retornar à aba inicial, <code>order</code> para retornar à aba anterior, <code>history</code> para retornar à última aba visitada, ou <code>none</code>.</li>
 <li><code>lazy</code> - Defaults to <code>true</code>. If <code>false</code>, all tabs are rendered immediately. When <code>true</code>, tabs are rendered only when they are made active for the first time. Note: tabs are <strong>not</strong> re-rendered upon subsequent visits.</li>
 <li><code>tabBarComponent</code> - opcional, substitui o componente para usar como o tab bar.</li>
 <li><code>tabBarOptions</code> -Um objeto com as propriedades a seguir:
@@ -101,7 +101,7 @@
 <li><code>labelStyle</code> - Style object for the tab label.</li>
 <li><code>tabStyle</code> - Style object for the tab.</li>
 <li><code>allowFontScaling</code> - Whether label font should scale to respect Text Size accessibility settings, default is true.</li>
-<li><code>adaptive</code> - Should the tab icons and labels alignment change based on screen size? Defaults to <code>true</code> for iOS 11. If <code>false</code>, tab icons and labels align vertically all the time. When <code>true</code>, tab icons and labels align horizontally on tablet.</li>
+<li><code>adaptive</code> - O alinhamento dos ícones e rótulos das guias deve mudar de acordo com o tamanho da tela? O padrão é <code>true</code> para iOS 11. Se <code>false</code>, os ícones e rótulos das guias são alinhados verticalmente o tempo todo. Quando <code>true</code>, ícones de guia e rótulos alinham horizontalmente no tablet.</li>
 <li><code>safeAreaInset</code> - Override the <code>forceInset</code> prop for <code>&lt;SafeAreaView&gt;</code>. Defaults to <code>{ bottom: 'always', top: 'never' }</code>. Available keys are <code>top | bottom | left | right</code> provided with the values <code>'always' | 'never'</code>.</li>
 </ul></li>
 </ul>
@@ -152,9 +152,9 @@
 <li><code>navigation</code>: navigation prop para a tela</li>
 <li><code>defaultHandler</code>: o manipulador padrão para tabulação</li>
 </ul>
-<p>Useful for adding a custom logic before the transition to the next scene (the tapped one) starts.</p>
+<p>Útil para adicionar uma lógica personalizada antes da transição para a próxima cena (a chamada) começa.</p>
 <h4><a class="anchor" aria-hidden="true" id="tabbaronlongpress"></a><a href="#tabbaronlongpress" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarOnLongPress</code></h4>
-<p>Callback to handle long press events; the argument is an object containing:</p>
+<p>Retorno de chamada para lidar com eventos de long press; o argumento é um objeto contendo:</p>
 <ul>
 <li><code>navigation</code>: navigation prop para a tela</li>
 <li><code>defaultHandler</code>: o manipulador padrão para tabulação</li>
