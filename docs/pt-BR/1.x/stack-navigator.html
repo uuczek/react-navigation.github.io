@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>StackNavigator reference · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Provides a way for your app to transition between screens where each new screen is placed on top of a stack.&lt;/p&gt;
-"/><meta name="docsearch:version" content="1.x"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="StackNavigator reference · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="&lt;p&gt;Provides a way for your app to transition between screens where each new screen is placed on top of a stack.&lt;/p&gt;
+<!DOCTYPE html><html lang="pt-BR"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>StackNavigator reference · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Permite a transição de telas no seu app de modo que cada tela é posta no topo de uma pilha.&lt;/p&gt;
+"/><meta name="docsearch:version" content="1.x"/><meta name="docsearch:language" content="pt-BR"/><meta property="og:title" content="StackNavigator reference · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="&lt;p&gt;Permite a transição de telas no seu app de modo que cada tela é posta no topo de uma pilha.&lt;/p&gt;
 "/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -70,25 +70,25 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/stack-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">StackNavigator reference</h1></header><article><div><span><p>Provides a way for your app to transition between screens where each new screen is placed on top of a stack.</p>
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/stack-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">StackNavigator reference</h1></header><article><div><span><p>Permite a transição de telas no seu app de modo que cada tela é posta no topo de uma pilha.</p>
 <p>By default the StackNavigator is configured to have the familiar iOS and Android look &amp; feel: new screens slide in from the right on iOS, fade in from the bottom on Android. On iOS the StackNavigator can also be configured to a modal style where screens slide in from the bottom.</p>
 <h2><a class="anchor" aria-hidden="true" id="api-definition"></a><a href="#api-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Definition</h2>
 <pre><code class="hljs css language-js"><span class="token function">StackNavigator</span><span class="token punctuation">(</span>RouteConfigs<span class="token punctuation">,</span> StackNavigatorConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="routeconfigs"></a><a href="#routeconfigs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RouteConfigs</h3>
-<p>The route configs object is a mapping from route name to a route config, which tells the navigator what to present for that route.</p>
+<p>O objeto de configuração de rotas é um mapeamento do nome da rota para a configuração da rota, que diz ao navigator o que deve ser exibido para aquela rota.</p>
 <pre><code class="hljs css language-js"><span class="token function">StackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment">// For each screen that you can navigate to, create a new entry like this:</span>
   Profile<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token comment">// `ProfileScreen` is a React component that will be the main content of the screen.</span>
     screen<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
-    <span class="token comment">// When `ProfileScreen` is loaded by the StackNavigator, it will be given a `navigation` prop.</span>
+    <span class="token comment">// `ProfileScreen` receberá a prop `navigation` quando for carregado pelo StackNavigator.</span>
 
-    <span class="token comment">// Optional: When deep linking or using react-navigation in a web app, this path is used:</span>
+    <span class="token comment">// Opcional: Quando utilizar um Deep Link ou utilizar o react-navigation em um aplicativo web, este caminho será utilizado:</span>
     path<span class="token punctuation">:</span> <span class="token string">'people/:name'</span><span class="token punctuation">,</span>
-    <span class="token comment">// The action and route params are extracted from the path.</span>
+    <span class="token comment">// Os parâmetros action e route são extraídos do caminho.</span>
 
-    <span class="token comment">// Optional: Override the `navigationOptions` for the screen</span>
+    <span class="token comment">// Opcional: Sobreponha as `navigationOptions` para a tela</span>
     navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
       title<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>navigation<span class="token punctuation">.</span>state<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'s Profile'`</span></span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -98,32 +98,32 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="stacknavigatorconfig"></a><a href="#stacknavigatorconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StackNavigatorConfig</h3>
-<p>Options for the router:</p>
+<p>Opções para o router:</p>
 <ul>
-<li><code>initialRouteName</code> - Sets the default screen of the stack. Must match one of the keys in route configs.</li>
-<li><code>initialRouteParams</code> - The params for the initial route</li>
+<li><code>initialRouteName</code> - Define a tela padrão da stack. Deve corresponder a uma das keys nas configurações de rota.</li>
+<li><code>initialRouteParams</code> - Os parametros da rota inicial</li>
 <li><code>navigationOptions</code> - opções de navegação padrão a ser usado para telas</li>
 <li><code>paths</code> - A mapping of overrides for the paths set in the route configs</li>
 </ul>
-<p>Visual options:</p>
+<p>Opções Visuais:</p>
 <ul>
-<li><code>mode</code> - Defines the style for rendering and transitions:
+<li><code>mode</code> Define o estilo para renderização e transições:
 <ul>
-<li><code>card</code> - Use the standard iOS and Android screen transitions. This is the default.</li>
-<li><code>modal</code> - Make the screens slide in from the bottom which is a common iOS pattern. Only works on iOS, has no effect on Android.</li>
+<li><code>card</code> - Usa as transições de tela padrão do iOS e do Android. É o padrão.</li>
+<li><code>modal</code> - Faz com que a tela deslize de baixo para cima, o que é um padrão iOS comum. Funciona apenas no iOS, não tem efeito no Android.</li>
 </ul></li>
-<li><code>headerMode</code> - Specifies how the header should be rendered:
+<li><code>headerMode</code> - Especifica como o header deve ser renderizado:
 <ul>
-<li><code>float</code> - Render a single header that stays at the top and animates as screens are changed. This is a common pattern on iOS.</li>
-<li><code>screen</code> - Each screen has a header attached to it and the header fades in and out together with the screen. This is a common pattern on Android.</li>
-<li><code>none</code> - No header will be rendered.</li>
+<li><code>float</code> - Renderiza um único header que fica no topo e é animado quando as telas são mudadas. É um padrão comum no iOS.</li>
+<li><code>screen</code> - Cada tela possui seu próprio header que some ou aparece junto da tela. É um padrão comum no Android.</li>
+<li><code>none</code> - Nenhum header será renderizado.</li>
 </ul></li>
-<li><code>headerTransitionPreset</code> - Specifies how the header should transition from one screen to another when <code>headerMode: float</code> is enabled.
+<li><code>headerTransitionPreset</code> - Especifica como deve ocorrer a transição do header de uma tela para outra quando <code>headerMode: float</code> está habilitado.
 <ul>
-<li><code>fade-in-place</code> - Header components cross-fade without moving, similar to the Twitter, Instagram, and Facebook app for iOS. This is the default value.</li>
-<li><code>uikit</code> - An approximation of the default behavior for iOS.</li>
+<li><code>fade-in-place</code> - Componentes de Header desaparecem sem se mover, similar aos aplicativos do Twitter, Intagram e Facebook para iOS. É o valor padrão.</li>
+<li><code>uikit</code> - Uma aproximação do comportamento padrão para iOS.</li>
 </ul></li>
-<li><code>cardStyle</code> - Use this prop to override or extend the default style for an individual card in stack.</li>
+<li><code>cardStyle</code> - Use esta propriedade para sobrepor ou extender o estilo padrão para um único card na stack.</li>
 <li><code>transitionConfig</code> -Função para retornar um objeto que é mesclado com as transições de tela padrão (dê uma olhada TransitionConfig em <a href="https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation.js">type definitions</a>). A função fornecida será passada os seguintes argumentos:
 <ul>
 <li><code>transitionProps</code> - Transition props for the new screen.</li>
@@ -135,11 +135,11 @@
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="navigationoptions-used-by-stacknavigator"></a><a href="#navigationoptions-used-by-stacknavigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>navigationOptions</code> used by <code>StackNavigator</code></h3>
 <h4><a class="anchor" aria-hidden="true" id="title"></a><a href="#title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>title</code></h4>
-<p>String that can be used as a fallback for <code>headerTitle</code>. Additionally, will be used as a fallback for <code>tabBarLabel</code> (if nested in a TabNavigator) or <code>drawerLabel</code> (if nested in a DrawerNavigator).</p>
+<p>String que pode ser usada como substituta para <code>headerTitle</code>. Adicionalmente, pode ser usada como substituta para <code>tabBarLabel</code> (se estiver dentro de um TabNavigator) ou <code>drawerLabel</code> (se estiver dentro de um DrawerNavigator).</p>
 <h4><a class="anchor" aria-hidden="true" id="header"></a><a href="#header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>header</code></h4>
-<p>React Element or a function that given <code>HeaderProps</code> returns a React Element, to display as a header. Setting to <code>null</code> hides header.</p>
+<p>React Element ou uma função que dado <code>HeaderProps</code> retorna um React Element, para exibir como um cabeçalho. Caso <code>null</code> o header não será exibido.</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitle"></a><a href="#headertitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitle</code></h4>
-<p>String, React Element or React Component used by the header. Defaults to scene <code>title</code>. When a component is used, it receives <code>allowFontScaling</code>, <code>style</code> and <code>children</code> props. The title string is passed in <code>children</code>.</p>
+<p>String, React Element ou React Component usado pelo header. O padrão é a propriedade <code>title</code>. Quando um componente é usado, ele recebe as propriedades <code>allowFontScaling</code>, <code>style</code> e <code>children</code>. A string do título é passada em <code>children</code>.</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitleallowfontscaling"></a><a href="#headertitleallowfontscaling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleAllowFontScaling</code></h4>
 <p>Whether header title font should scale to respect Text Size accessibility settings. Defaults to true.</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbackimage"></a><a href="#headerbackimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackImage</code></h4>
@@ -173,15 +173,15 @@
 <h4><a class="anchor" aria-hidden="true" id="gestureresponsedistance"></a><a href="#gestureresponsedistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureResponseDistance</code></h4>
 <p>Object to override the distance of touch start from the edge of the screen to recognize gestures. It takes the following properties:</p>
 <ul>
-<li><code>horizontal</code> - <em>number</em> - Distance for horizontal direction. Defaults to 25.</li>
-<li><code>vertical</code> - <em>number</em> - Distance for vertical direction. Defaults to 135.</li>
+<li><code>horizontal</code> - <em>number</em> - Distância para a direção horizontal. O padrão é 25.</li>
+<li><code>vertical</code> - <em>number</em> - Distância para a direção vertical. O padrão é 135.</li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" id="gesturedirection"></a><a href="#gesturedirection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureDirection</code></h4>
 <p>String to override the direction for dismiss gesture. <code>default</code> for normal behaviour or <code>inverted</code> for right-to-left swipes.</p>
 <h3><a class="anchor" aria-hidden="true" id="navigator-props"></a><a href="#navigator-props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigator Props</h3>
 <p>The navigator component created by <code>StackNavigator(...)</code> takes the following props:</p>
 <ul>
-<li><code>screenProps</code> - Pass down extra options to child screens, for example:</li>
+<li><code>screenProps</code> - Passa opções extras para as telas filhas, como por exemplo:</li>
 </ul>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> SomeStack <span class="token operator">=</span> <span class="token function">StackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment">// config</span>

@@ -86,7 +86,19 @@
 <span class="hljs-comment"># ou com npm</span>
 <span class="hljs-comment"># npm install --save react-native-gesture-handler</span>
 </code></pre>
-<p>Vincule todas as dependências nativas:</p>
+<p>If you're on React Native &gt;= 0.60, you need to <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library">disable autolinking for <code>react-native-gesture-handler</code> first</a>. To disable autolinking for it, create a <code>react-native.config.js</code> file in the root of your project with the following content:</p>
+<pre><code class="hljs css language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  dependencies<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      platforms<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        android<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        ios<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Then run the following to link it (for all React Native versions):</p>
 <pre><code class="hljs css language-bash">react-native link react-native-gesture-handler
 </code></pre>
 <p>Não há etapas adicionais necessárias para iOS.</p>
@@ -124,7 +136,7 @@ public class MainActivity extends ReactActivity {
     . . .
   ]
 </code></pre>
-<p>Você é bom para ir! Continue em <a href="hello-react-navigation.html"> &quot;Hello React Navigation&quot;</a> para começar a escrever um código.</p>
+<p>You're good to go! Continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/pt-BR/hello-react-navigation.html"><span>Olá React Navigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#o-que-esperar">O que esperar</a></li><li><a href="#instalacão">Instalação</a></li><li><a href="#aplicativos-ios-hibridos-pule-para-projetos-somente-em-rn">Aplicativos iOS híbridos (pule para projetos somente em RN)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/api-reference.html">API Reference</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {

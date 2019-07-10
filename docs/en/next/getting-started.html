@@ -86,7 +86,19 @@
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install react-native-gesture-handler</span>
 </code></pre>
-<p>Link all native dependencies:</p>
+<p>If you're on React Native &gt;= 0.60, you need to <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library">disable autolinking for <code>react-native-gesture-handler</code> first</a>. To disable autolinking for it, create a <code>react-native.config.js</code> file in the root of your project with the following content:</p>
+<pre><code class="hljs css language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  dependencies<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      platforms<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        android<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        ios<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Then run the following to link it (for all React Native versions):</p>
 <pre><code class="hljs css language-bash">react-native link react-native-gesture-handler
 </code></pre>
 <p>No additional steps are required for iOS.</p>
