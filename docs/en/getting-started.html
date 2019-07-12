@@ -86,11 +86,11 @@
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install react-native-gesture-handler</span>
 </code></pre>
-<p>Then run the following to link it:</p>
+<p>On React Native &gt;= 0.60, <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">linking is automatic</a>. If you're on an older React Native version, you need to manually link it. To do that, run:</p>
 <pre><code class="hljs css language-bash">react-native link react-native-gesture-handler
 </code></pre>
 <p>No additional steps are required for iOS.</p>
-<p>To finalise installation of react-native-gesture-handler for Android, be sure to make the necessary modifications to <code>MainActivity.java</code>:</p>
+<p>To finalise installation of <code>react-native-gesture-handler</code> for Android, be sure to make the necessary modifications to <code>MainActivity.java</code>:</p>
 <pre><code class="hljs css language-diff">package com.reactnavigation.example;
 
 import com.facebook.react.ReactActivity;
@@ -116,26 +116,13 @@ public class MainActivity extends ReactActivity {
 <span class="hljs-addition">+  }</span>
 }
 </code></pre>
-<p>If you're on React Native &gt;= 0.60, you also need to do the following:</p>
-<p><a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md#how-can-i-disable-autolinking-for-unsupported-library">Disable autolinking for <code>react-native-gesture-handler</code></a>. To disable autolinking for it, create a <code>react-native.config.js</code> file in the root of your project with the following content:</p>
-<pre><code class="hljs css language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  dependencies<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token string">'react-native-gesture-handler'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      platforms<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        android<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-        ios<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
 <p>Use <a href="https://github.com/mikehardy/jetifier">jetifier</a> to work around libraries using the support library on Android:</p>
 <p>Add <code>jetify</code> under <code>scripts.postinstall</code> in your <code>package.json</code>:</p>
 <pre><code class="hljs css language-json">"scripts": {
   "postinstall": "jetify"
 }
 </code></pre>
-<p>Then install it:</p>
+<p>Then install it (make sure to run this <strong>after</strong> adding the <code>postinstall</code> script)::</p>
 <pre><code class="hljs css language-sh">yarn add --dev jetifier
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install jetifier</span>
