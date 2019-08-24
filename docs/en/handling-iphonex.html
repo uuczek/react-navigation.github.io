@@ -93,7 +93,7 @@
 </code></pre>
 <p><img src="/docs/assets/iphoneX/02-iphonex-content-hidden.png" alt="Text hidden by iPhoneX UI elements"></p>
 <p>To fix this issue you can wrap your content in a <code>SafeAreaView</code>, which can be imported from <code>react-navigation</code>. Recall that <code>SafeAreaView</code> should not wrap entire navigators, just the screen components or any content in them.</p>
-<pre><code class="hljs css language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> SafeAreaView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> SafeAreaView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span>
 
 <span class="token keyword">class</span> <span class="token class-name">MyHomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -102,7 +102,7 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Text</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>paragraph<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>This is top text<span class="token punctuation">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Text</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Text</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>paragraph<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>This is bottom text<span class="token punctuation">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Text</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>SafeAreaView</span><span class="token punctuation">></span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -131,14 +131,15 @@
 <li>Check if the device has a notch with <code>DeviceInfo.hasNotch()</code> - this compares the device brand and model to a list of devices with notches - a crude but effective workaround.</li>
 <li>If the device has a notch, you may want to increase the status bar height known to the SafeAreaView by doing something like this:</li>
 </ul>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Platform <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> SafeAreaView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> DeviceInfo <span class="token keyword">from</span> <span class="token string">'react-native-device-info'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Platform <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> SafeAreaView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span>
+<span class="token keyword">import</span> DeviceInfo <span class="token keyword">from</span> <span class="token string">'react-native-device-info'</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span>Platform<span class="token punctuation">.</span><span class="token constant">OS</span> <span class="token operator">===</span> <span class="token string">'android'</span> <span class="token operator">&amp;&amp;</span> Device<span class="token punctuation">.</span><span class="token function">hasNotch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  SafeAreaView<span class="token punctuation">.</span><span class="token function">setStatusBarHeight</span><span class="token punctuation">(</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Platform<span class="token punctuation">.</span><span class="token constant">OS</span> <span class="token operator">===</span> <span class="token string">'android'</span> <span class="token operator">&amp;&amp;</span> DeviceInfo<span class="token punctuation">.</span><span class="token function">hasNotch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  SafeAreaView
+    <span class="token punctuation">.</span>setStatusBarHeight
     <span class="token comment">/* Some value for status bar height + notch height */</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Work is in progress on a longer term solution, see <a href="https://github.com/facebook/react-native/pull/20999">this pull request</a> for more information.</p>
