@@ -85,69 +85,9 @@
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install react-navigation</span>
 </code></pre>
-<p>Now we need to install <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a> and <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a>.</p>
-<p>If you are using Expo, to ensure that you get the compatible versions of the libraries, run:</p>
-<pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated
-</code></pre>
-<p>If you are not using Expo, run the following:</p>
-<pre><code class="hljs css language-sh">yarn add react-native-reanimated react-native-gesture-handler
-</code></pre>
-<p>If you are using Expo, you are done. Otherwise, continue to the next steps.</p>
-<p>Next, we need to link these libraries. The steps depends on your React Native version:</p>
-<ul>
-<li><p><strong>React Native 0.60 and higher</strong></p>
-<p>On newer versions of React Native, <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">linking is automatic</a>.</p>
-<p>To complete the linking on iOS, make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p></li>
-</ul>
-<pre><code class="hljs css language-sh">  <span class="hljs-built_in">cd</span> ios
-  pod install
-  <span class="hljs-built_in">cd</span> ..
-</code></pre>
-<ul>
-<li><p><strong>React Native 0.59 and lower</strong></p>
-<p>If you're on an older React Native version, you need to manually link the dependencies. To do that, run:</p>
-<pre><code class="hljs css language-sh">react-native link react-native-reanimated
-react-native link react-native-gesture-handler
-</code></pre></li>
-</ul>
-<p>To finalize installation of <code>react-native-gesture-handler</code> for Android, be sure to make the necessary modifications to <code>MainActivity.java</code>:</p>
-<pre><code class="hljs css language-diff">package com.reactnavigation.example;
-
-import com.facebook.react.ReactActivity;
-
-<span class="hljs-addition">+ import com.facebook.react.ReactActivityDelegate;</span>
-<span class="hljs-addition">+ import com.facebook.react.ReactRootView;</span>
-<span class="hljs-addition">+ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;</span>
-
-public class MainActivity extends ReactActivity {
-
-  @Override
-  protected String getMainComponentName() {
-    return "Example";
-  }
-
-<span class="hljs-addition">+  @Override</span>
-<span class="hljs-addition">+  protected ReactActivityDelegate createReactActivityDelegate() {</span>
-<span class="hljs-addition">+    return new ReactActivityDelegate(this, getMainComponentName()) {</span>
-<span class="hljs-addition">+      @Override</span>
-<span class="hljs-addition">+      protected ReactRootView createRootView() {</span>
-<span class="hljs-addition">+       return new RNGestureHandlerEnabledRootView(MainActivity.this);</span>
-<span class="hljs-addition">+      }</span>
-<span class="hljs-addition">+    };</span>
-<span class="hljs-addition">+  }</span>
-}
-</code></pre>
-<p>Finally, run <code>react-native run-android</code> or <code>react-native run-ios</code> to launch the app on your device/simulator.</p>
-<h2><a class="anchor" aria-hidden="true" id="aplicativos-ios-hibridos-pule-para-projetos-somente-em-rn"></a><a href="#aplicativos-ios-hibridos-pule-para-projetos-somente-em-rn" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Aplicativos iOS híbridos (pule para projetos somente em RN)</h2>
-<p>If you're using React Navigation within a hybrid app - an iOS app that has both Swift/ObjC and React Native parts - you may be missing the <code>RCTLinkingIOS</code> subspec in your Podfile, which is installed by default in new RN projects. To add this, ensure your Podfile looks like the following:</p>
-<pre><code class="hljs"> pod 'React', :path =&gt; '../node_modules/react-native', :subspecs =&gt; [
-    . . . // other subspecs
-    'RCTLinkingIOS',
-    . . .
-  ]
-</code></pre>
-<p>You're good to go! Continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/pt-BR/hello-react-navigation.html"><span>Olá React Navigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#o-que-esperar">O que esperar</a></li><li><a href="#instalacão">Instalação</a></li><li><a href="#aplicativos-ios-hibridos-pule-para-projetos-somente-em-rn">Aplicativos iOS híbridos (pule para projetos somente em RN)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/api-reference.html">API Reference</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p>When you use a navigator, you'll need to follow the installation instructions of that navigator for any additional configuration.</p>
+<p>Continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/pt-BR/hello-react-navigation.html"><span>Olá React Navigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#o-que-esperar">O que esperar</a></li><li><a href="#instalacão">Instalação</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/api-reference.html">API Reference</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
