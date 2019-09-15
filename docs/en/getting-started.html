@@ -117,14 +117,12 @@ pod install
 react-native link react-native-gesture-handler
 react-native link react-native-screens
 </code></pre></li>
-<li><p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p></li>
 </ul>
-<pre><code class="hljs"><span class="hljs-keyword">implementation</span> <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
-<span class="hljs-keyword">implementation</span> <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
+<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
+<pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
+implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
 </code></pre>
-<ul>
-<li>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</li>
-</ul>
+<p>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</p>
 <pre><code class="hljs css language-diff">package com.reactnavigation.example;
 
 import com.facebook.react.ReactActivity;
