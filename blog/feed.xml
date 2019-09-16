@@ -4,7 +4,7 @@
         <title>React Navigation Blog</title>
         <link>https://reactnavigation.org/blog</link>
         <description>The best place to stay up-to-date with the latest React Navigation news and events.</description>
-        <lastBuildDate>Sat, 17 Nov 2018 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Sep 2019 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://reactnavigation.org/blog</link>
         </image>
         <copyright>None</copyright>
+        <item>
+            <title><![CDATA[React Navigation 4.0]]></title>
+            <link>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</link>
+            <guid>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</guid>
+            <pubDate>Mon, 16 Sep 2019 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v3 lives <a href="/docs/en/3.x/getting-started.html">here</a>.</p> <p>In this release, we have removed the navigators from the <code>react-navigation</code> package. The navigators have lived in separate packages for a quite a while and you could alrea...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[React Navigation 3.0]]></title>
             <link>https://reactnavigation.org/blog/2018/11/17/react-navigation-3.0.html</link>

@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://reactnavigation.org/blog</id>
     <title>React Navigation Blog</title>
-    <updated>2018-11-17T06:00:00Z</updated>
+    <updated>2019-09-16T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://reactnavigation.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
     <logo>https://reactnavigation.org/img/spiro_white.svg</logo>
     <rights>None</rights>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 4.0]]></title>
+        <id>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</id>
+        <link href="https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html">
+        </link>
+        <updated>2019-09-16T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v3 lives <a href="/docs/en/3.x/getting-started.html">here</a>.</p> <p>In this release, we have removed the navigators from the <code>react-navigation</code> package. The navigators have lived in separate packages for a quite a while and you could alrea...</p>]]></summary>
+        <author>
+            <name>Core Team</name>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[React Navigation 3.0]]></title>
         <id>https://reactnavigation.org/blog/2018/11/17/react-navigation-3.0.html</id>
