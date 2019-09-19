@@ -94,7 +94,7 @@
 
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> navigationRef = React.createRef;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> navigationRef = React.createRef();
 
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">navigate</span>(<span class="hljs-params">name, params</span>) </span>{
   navigationRef.current &amp;&amp; navigationRef.current.navigate(name, params);
