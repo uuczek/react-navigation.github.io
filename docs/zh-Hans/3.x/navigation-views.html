@@ -78,14 +78,14 @@
 <p>导航视图是可以呈现当前 navigation state 的受控 React 组件。 他们管理页面、动画和手势的切换。 他们还呈现持久导航视图，如标签栏和标题栏。</p>
 <h2><a class="anchor" aria-hidden="true" id="内置视图"></a><a href="#内置视图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>内置视图</h2>
 <ul>
-<li><a href="https://github.com/react-navigation/react-navigation-stack/blob/master/src/views/StackView/StackView.js">StackView</a> - 呈现一个适合任何平台的堆栈
+<li><a href="https://github.com/react-navigation/stack/blob/1.0/src/views/StackView/StackView.tsx">StackView</a> - 呈现一个适合任何平台的堆栈
 <ul>
-<li><a href="https://github.com/react-navigation/react-navigation-stack/blob/master/src/views/StackView/StackViewCard.js">StackViewCard</a> - 从 Card堆栈中呈现一张 Card， 并带有手势操作</li>
-<li><a href="https://github.com/react-navigation/react-navigation-stack/blob/master/src/views/Header/Header.js"> Header </a> - Card 堆栈的标题栏视图</li>
+<li><a href="https://github.com/react-navigation/stack/blob/1.0/src/views/StackView/StackViewCard.tsx">StackViewCard</a> - Present one card from the card stack, with gestures</li>
+<li><a href="https://github.com/react-navigation/stack/blob/1.0/src/views/Header/Header.tsx">Header</a> - The header view for the card stack</li>
 </ul></li>
-<li><a href="https://github.com/react-navigation/react-navigation-core/blob/master/src/views/SwitchView/SwitchView.js">SwitchView</a> - A navigator that only ever show one screen at a time, useful for authentication flows.</li>
-<li><a href="https://github.com/react-navigation/react-navigation-tabs"> Tabs </a> - 可配置的 tab switcher / pager</li>
-<li><a href="https://github.com/react-navigation/react-navigation-drawer"> Drawer </a> - 从左边滑入的带抽屉的视图</li>
+<li><a href="https://github.com/react-navigation/core/blob/ad6e5cecccb8bce081f773fdff7af000e0450746/src/views/SwitchView/SwitchView.js">SwitchView</a> - A navigator that only ever show one screen at a time, useful for authentication flows.</li>
+<li><a href="https://github.com/react-navigation/tabs">Tabs</a> - A configurable tab switcher / pager</li>
+<li><a href="https://github.com/react-navigation/drawer">Drawer</a> - A view with a drawer that slides from the left</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="转场动画-transitionerhtml"></a><a href="#转场动画-transitionerhtml" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a href="transitioner.html">转场动画</a></h2>
 <p><code>Transitioner</code>管理页面切换期间的动画，可用于构建完全自定义的导航视图。 它在<code>CardStack</code>视图中使用。 <a href="transitioner.html"> 了解更多关于 Transitioner 的信息 </a></p>
