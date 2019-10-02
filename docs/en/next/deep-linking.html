@@ -255,11 +255,10 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
 
 <span class="hljs-comment">// Add this above the `@end`:</span>
-- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application openURL:(<span class="hljs-built_in">NSURL</span> *)url
-  sourceApplication:(<span class="hljs-built_in">NSString</span> *)sourceApplication annotation:(<span class="hljs-keyword">id</span>)annotation
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)app openURL:(<span class="hljs-built_in">NSURL</span> *)url
+            options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options
 {
-  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url
-                      sourceApplication:sourceApplication annotation:annotation];
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:app openURL:url options:options];
 }
 </code></pre>
 <p>In Xcode, open the project at <code>SimpleApp/ios/SimpleApp.xcodeproj</code>. Select the project in sidebar and navigate to the info tab. Scroll down to &quot;URL Types&quot; and add one. In the new URL type, set the identifier and the url scheme to your desired url scheme.</p>

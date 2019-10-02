@@ -255,11 +255,10 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
 
 <span class="hljs-comment">// Add this above the `@end`:</span>
-- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application openURL:(<span class="hljs-built_in">NSURL</span> *)url
-  sourceApplication:(<span class="hljs-built_in">NSString</span> *)sourceApplication annotation:(<span class="hljs-keyword">id</span>)annotation
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)app openURL:(<span class="hljs-built_in">NSURL</span> *)url
+            options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options
 {
-  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url
-                      sourceApplication:sourceApplication annotation:annotation];
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:app openURL:url options:options];
 }
 </code></pre>
 <p>在Xcode中，在<code>SimpleApp/ios/SimpleApp.xcodeproj</code>处打开项目。 选择侧边栏中的项目并导航到信息选项卡。 滚动到 &quot;URL Types&quot; 并添加一项。 在新的 URL 类型中，将标识符和 url 方案设置为你想要的 url 方案。</p>

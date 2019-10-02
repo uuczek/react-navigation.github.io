@@ -175,11 +175,10 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <span class="hljs-comment">#import &lt;React/RCTLinkingManager.h&gt;</span>
 
 // Add this above the `@end`:
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+            options:(NSDictionary&lt;UIApplicationOpenURLOptionsKey,id&gt; *)options
 {
-  <span class="hljs-built_in">return</span> [RCTLinkingManager application:application openURL:url
-                      sourceApplication:sourceApplication annotation:annotation];
+  <span class="hljs-built_in">return</span> [RCTLinkingManager application:app openURL:url options:options];
 }
 </code></pre>
 <p>In Xcode, open the project at <code>SimpleApp/ios/SimpleApp.xcodeproj</code>. Select the project in sidebar and navigate to the info tab. Scroll down to &quot;URL Types&quot; and add one. In the new URL type, set the identifier and the url scheme to your desired url scheme.</p>
