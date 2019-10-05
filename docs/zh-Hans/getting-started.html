@@ -83,66 +83,66 @@
 <h2><a class="anchor" aria-hidden="true" id="从一个小模版开始演示-reactnavigation-的用法"></a><a href="#从一个小模版开始演示-reactnavigation-的用法" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>从一个小模版开始演示 ReactNavigation 的用法</h2>
 <p>使用 <code>react-navigation</code> 的最简单方式,就是使用 <code>expo-cli</code> 初始化一个项目 你可已使用 <code>npm i -g expo-cli</code> 进行安装</p>
 <ul>
-<li>如果你要创建一个 <a href="https://docs.expo.io/versions/latest/introduction/managed-vs-bare">managed React Native project</a> 请在<code>Managed workflow</code>标题下选择<code>blank</code>模板</li>
-<li>If you'd like a <a href="https://docs.expo.io/versions/latest/introduction/managed-vs-bare/#bare-workflow">bare React Native project</a>, then choose <code>minimal</code> under the Bare workflow heading.</li>
-<li>In both cases you can pick the TypeScript version of the template if you prefer — React Navigation ships with TypeScript types.</li>
+<li>如果你要创建一个 <a href="https://docs.expo.io/versions/latest/introduction/managed-vs-bare">managed React Native project</a> 请在<code>Managed</code>工作流的开始选择<code>blank</code>模板</li>
+<li>如果你想创建一个 <a href="https://docs.expo.io/versions/latest/introduction/managed-vs-bare/#bare-workflow">原生的 React Native 项目</a>, 在 Bare 工作流的开始选择 <code>minimal</code> 模版</li>
+<li>如果你喜欢<code>TypeScript</code>,两种情况下,你都可以选择模板的<code>TypeScript</code>版本。 React Navigation 附带<code>TypeScript</code>类型。</li>
 </ul>
-<p>Once the project is initialized, in the project directory run <code>expo install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens</code>, and you're ready to go! You can now continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
+<p>项目初始化成功后, 只要运行命令:<code>expo install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens</code>就可以了 现在你可以继续阅读 <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> 来写一些代码</p>
 <hr>
-<h2><a class="anchor" aria-hidden="true" id="install-into-an-existing-project"></a><a href="#install-into-an-existing-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Install into an existing project</h2>
+<h2><a class="anchor" aria-hidden="true" id="在已创建的项目中安装-react-navigation"></a><a href="#在已创建的项目中安装-react-navigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在已创建的项目中安装 React Navigation</h2>
 <p>在你的 React Native 项目中安装<code>react-navigation</code>这个包</p>
 <pre><code class="hljs css language-bash">yarn add react-navigation
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install react-navigation</span>
 </code></pre>
-<p>React Navigation is made up of some core utilities and those are then used by navigators to create the navigation structure in your app. Don't worry too much about this for now, it'll become clear soon enough! To frontload the installation work, let's also install and configure dependencies used by most navigators, then we can move forward with starting to write some code.</p>
-<p>The libraries we will install now are <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a>, and <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>. If you already have these libraries installed and at the latest version, you are done here! Otherwise, read on.</p>
-<h4><a class="anchor" aria-hidden="true" id="installing-dependencies-into-an-expo-managed-project"></a><a href="#installing-dependencies-into-an-expo-managed-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into an Expo managed project</h4>
-<p>In your project directory, run <code>expo install react-native-gesture-handler react-native-reanimated</code>. This will install versions of these libraries that are compatible</p>
-<p>You can now continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
-<h4><a class="anchor" aria-hidden="true" id="installing-dependencies-into-a-bare-react-native-project"></a><a href="#installing-dependencies-into-a-bare-react-native-project" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installing dependencies into a bare React Native project</h4>
-<p>In your project directory, run <code>yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23</code>.</p>
-<p>Next, we need to link these libraries. The steps depends on your React Native version:</p>
+<p>React Navigation由一些核心实用程序组成，然后导航使用它们在您的应用程序中创建导航结构。现在不必为此担心太多，它很快就会变得清楚起来！ 为了提前完成安装工作，我们还要安装和配置大多数导航器使用的依赖项，然后我们就可以开始编写一些代码了。</p>
+<p>接下来,我们需要安装的是 <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>、 <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a> 和 <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>. 如果你已经安装了这些库,并且是最新版本,那么到这儿就完成了 否则，请继续阅读。</p>
+<h4><a class="anchor" aria-hidden="true" id="给-expo-管理的项目安装依赖"></a><a href="#给-expo-管理的项目安装依赖" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>给 Expo 管理的项目安装依赖</h4>
+<p>在项目根目录运行命令: <code>expo install react-native-gesture-handler react-native-reanimated</code> 这将安装这些库的兼容版本</p>
+<p>现在你可以继续阅读 <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> 来写一些代码</p>
+<h4><a class="anchor" aria-hidden="true" id="给原生的-react-native-项目安装依赖"></a><a href="#给原生的-react-native-项目安装依赖" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>给原生的 React Native 项目安装依赖</h4>
+<p>在项目根目录运行命令: <code>yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23</code></p>
+<p>接下来，我们需要链接这些库。 接下来的步骤取决于你的 React Native 版本：</p>
 <ul>
-<li><p><strong>React Native 0.60 and higher</strong></p>
-<p>On newer versions of React Native, <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">linking is automatic</a>.</p>
-<p>To complete the linking on iOS, make sure you have <a href="https://cocoapods.org/">Cocoapods</a> installed. Then run:</p></li>
+<li><p><strong>React Native 0.60 及更高版本</strong></p>
+<p>在新版本的 React Native 中 <a href="https://github.com/react-native-community/cli/blob/master/docs/autolinking.md">链接是自动的</a>(我们不再需要手动的 link 一个 库).</p>
+<p>为了在 iOS 上完成自动链接, 请确保你已经安装了<a href="https://cocoapods.org/">Cocoapods</a> 然后运行命令:</p></li>
 </ul>
 <pre><code class="hljs css language-sh">  <span class="hljs-built_in">cd</span> ios
   pod install
   <span class="hljs-built_in">cd</span> ..
 </code></pre>
-<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
+<p>为了完成 <code>react-native-screens</code> 在 Android 上的安装, 请在<code>android/app/build.gradle</code> 中 <code>dependencies</code> 选项中添加下面这两行:</p>
 <pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
 implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
 </code></pre>
 <ul>
-<li><p><strong>React Native 0.59 and lower</strong></p>
-<p>If you're on an older React Native version, you need to manually link the dependencies. To do that, run:</p>
+<li><strong>React Native 0.59 及更低版本</strong></li>
+</ul>
+<p>如果你在使用更老版本的 React Native, 你需要手动链接依赖 运行命令:</p>
 <pre><code class="hljs css language-sh">react-native link react-native-reanimated
 react-native link react-native-gesture-handler
 react-native link react-native-screens
 </code></pre>
-<p>You also need to configure <a href="https://github.com/mikehardy/jetifier">jetifier</a> to support dependencies using <code>androidx</code>:</p>
+<p>为了支持依赖使用 <code>androidx</code>,你还需要配置 <a href="https://github.com/mikehardy/jetifier">jetifier</a> :</p>
 <pre><code class="hljs css language-sh">yarn add --dev jetifier
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm install --save-dev jetifier</span>
 </code></pre>
-<p>Then add it to the <code>postinstall</code> script in <code>package.json</code>:</p>
+<p>然后将下面的内容添加到 <code>package.json</code> 中的 <code>postinstall</code> 选项中:</p>
 <pre><code class="hljs css language-json">"scripts": {
   "postinstall": "jetifier -r"
 }
 </code></pre>
 <blockquote>
-<p><strong>NOTE</strong>: Remember to remove this when you upgrade to React Native 0.60 and higher.</p>
+<p><strong>注意</strong>: 当你升级到 React Native 0.60 或更高版本后, 记得将配置这些删除</p>
 </blockquote>
-<p>Now, run the <code>postinstall</code> script manually:</p>
+<p>现在,手动运行 <code>postinstall</code> 脚本:</p>
 <pre><code class="hljs css language-sh">yarn postinstall
 <span class="hljs-comment"># or with npm</span>
 <span class="hljs-comment"># npm run postinstall</span>
-</code></pre></li>
-</ul>
-<p>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</p>
+</code></pre>
+<p>为了完成 <code>react-native-gesture-handler</code> 在 Android 上的安装,请在 <code>MainActivity.java</code> 中做如下修改:</p>
 <pre><code class="hljs css language-diff">package com.reactnavigation.example;
 
 import com.facebook.react.ReactActivity;
@@ -169,9 +169,9 @@ public class MainActivity extends ReactActivity {
 <span class="hljs-addition">+  }</span>
 }
 </code></pre>
-<p>Now you are ready to build and run your app on the device/simulator.</p>
-<p>Continue to <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> to start writing some code.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/zh-Hans/hello-react-navigation.html"><span>React Navigation 简介</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#期待什么">期待什么？</a></li><li><a href="#从一个小模版开始演示-reactnavigation-的用法">从一个小模版开始演示 ReactNavigation 的用法</a></li><li><a href="#install-into-an-existing-project">Install into an existing project</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p>现在可以在真机/模拟器上运行你的 App 啦</p>
+<p>继续阅读 <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> 开始编码吧</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/zh-Hans/hello-react-navigation.html"><span>React Navigation 简介</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#期待什么">期待什么？</a></li><li><a href="#从一个小模版开始演示-reactnavigation-的用法">从一个小模版开始演示 ReactNavigation 的用法</a></li><li><a href="#在已创建的项目中安装-react-navigation">在已创建的项目中安装 React Navigation</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
