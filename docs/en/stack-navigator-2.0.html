@@ -82,12 +82,12 @@
 <p>To use this navigator, you need to install <a href="https://github.com/react-navigation/stack"><code>react-navigation-stack</code></a>:</p>
 <pre><code class="hljs css language-sh">yarn add react-navigation react-navigation-stack@alpha @react-native-community/masked-view
 </code></pre>
-<p>Now we need to install <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a> and <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>.</p>
+<p>Now we need to install <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a>, <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a> and <a href="https://github.com/th3rdwave/react-native-safe-area-context"><code>react-native-safe-area-context</code></a>.</p>
 <p>If you are using Expo, to ensure that you get the compatible versions of the libraries, run:</p>
-<pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated react-native-screens
+<pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context
 </code></pre>
 <p>If you are not using Expo, run the following:</p>
-<pre><code class="hljs css language-sh">yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23
+<pre><code class="hljs css language-sh">yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23 react-native-safe-area-context
 </code></pre>
 <p>If you are using Expo, you are done. Otherwise, continue to the next steps.</p>
 <p>Next, we need to link these libraries. The steps depends on your React Native version:</p>
@@ -98,11 +98,35 @@
 <pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios
 pod install
 <span class="hljs-built_in">cd</span> ..
+</code></pre>
+<p>To finalize installation of <code>react-native-screens</code> for Android, add the following two lines to <code>dependencies</code> section in <code>android/app/build.gradle</code>:</p>
+<pre><code class="hljs css language-gradle">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0-rc01'</span>
+implementation <span class="hljs-string">'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'</span>
 </code></pre></li>
 <li><p><strong>React Native 0.59 and lower</strong></p>
 <p>If you're on an older React Native version, you need to manually link the dependencies. To do that, run:</p>
 <pre><code class="hljs css language-sh">react-native link react-native-reanimated
 react-native link react-native-gesture-handler
+react-native link react-native-screens
+react-native link react-native-safe-area-context
+</code></pre>
+<p>You also need to configure <a href="https://github.com/mikehardy/jetifier">jetifier</a> to support dependencies using <code>androidx</code>:</p>
+<pre><code class="hljs css language-sh">yarn add --dev jetifier
+<span class="hljs-comment"># or with npm</span>
+<span class="hljs-comment"># npm install --save-dev jetifier</span>
+</code></pre>
+<p>Then add it to the <code>postinstall</code> script in <code>package.json</code>:</p>
+<pre><code class="hljs css language-json">"scripts": {
+  "postinstall": "jetifier -r"
+}
+</code></pre>
+<blockquote>
+<p><strong>NOTE</strong>: Remember to remove this when you upgrade to React Native 0.60 and higher.</p>
+</blockquote>
+<p>Now, run the <code>postinstall</code> script manually:</p>
+<pre><code class="hljs css language-sh">yarn postinstall
+<span class="hljs-comment"># or with npm</span>
+<span class="hljs-comment"># npm run postinstall</span>
 </code></pre></li>
 </ul>
 <p>To finalize installation of <code>react-native-gesture-handler</code> for Android, be sure to make the necessary modifications to <code>MainActivity.java</code>:</p>
@@ -187,7 +211,7 @@ public class MainActivity extends ReactActivity {
 <h4><a class="anchor" aria-hidden="true" id="title"></a><a href="#title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>title</code></h4>
 <p>String that can be used as a fallback for <code>headerTitle</code>. Additionally, will be used as a fallback for <code>tabBarLabel</code> (if nested in a TabNavigator) or <code>drawerLabel</code> (if nested in a DrawerNavigator).</p>
 <h4><a class="anchor" aria-hidden="true" id="header"></a><a href="#header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>header</code></h4>
-<p>Function that given <code>HeaderProps</code> returns a React Element, to display as a header. Setting to <code>null</code> hides header.</p>
+<p>Function that given <code>HeaderProps</code> returns a React Element, to display as a header.</p>
 <p>Example:</p>
 <pre><code class="hljs css language-js"><span class="token function-variable function">header</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> scene<span class="token punctuation">,</span> previous<span class="token punctuation">,</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> options <span class="token punctuation">}</span> <span class="token operator">=</span> scene<span class="token punctuation">.</span>descriptor<span class="token punctuation">;</span>
@@ -210,6 +234,8 @@ public class MainActivity extends ReactActivity {
 </code></pre>
 <p>When using a custom header, it's recommended set the <code>headerMode</code> option on the navigator to <code>screen</code>.</p>
 <p>To set a custom header for all the screens in the navigator, you can specify this option in the <code>defaultNavigationOptions</code> option of the navigator.</p>
+<h4><a class="anchor" aria-hidden="true" id="headershown"></a><a href="#headershown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerShown</code></h4>
+<p>Whether to show or hide the header for the screen. The header is shown by default unless <code>headerMode</code> was set to <code>none</code>. Setting this to <code>false</code> hides the header.</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitle"></a><a href="#headertitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitle</code></h4>
 <p>String or a function that returns a React Element to be used by the header. Defaults to scene <code>title</code>. When a function is specified, it receives <code>allowFontScaling</code>, <code>onLayout</code>, <code>style</code> and <code>children</code> as the arguments. The title string is passed in <code>children</code>.</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitleallowfontscaling"></a><a href="#headertitleallowfontscaling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleAllowFontScaling</code></h4>
@@ -230,8 +256,6 @@ public class MainActivity extends ReactActivity {
 <p>Function which returns a React Element to display on the left side of the header. When a function is used, it receives a number of arguments when rendered (<code>onPress</code>, <code>label</code>, <code>labelStyle</code> and more - check <a href="https://github.com/react-navigation/stack/blob/master/src/types.tsx">types.tsx</a> for the complete list).</p>
 <h4><a class="anchor" aria-hidden="true" id="headerstyle"></a><a href="#headerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStyle</code></h4>
 <p>Style object for the header. You can specify a custom background color here, for example.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerstatusbarheight"></a><a href="#headerstatusbarheight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStatusBarHeight</code></h4>
-<p>Allows to pass a custom status bar height to set as the top padding in the header.</p>
 <h4><a class="anchor" aria-hidden="true" id="headertitlestyle"></a><a href="#headertitlestyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleStyle</code></h4>
 <p>Style object for the title component</p>
 <h4><a class="anchor" aria-hidden="true" id="headerbacktitlestyle"></a><a href="#headerbacktitlestyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackTitleStyle</code></h4>
@@ -275,6 +299,8 @@ public class MainActivity extends ReactActivity {
 <li><code>horizontal</code> - <em>number</em> - Distance for horizontal direction. Defaults to 25.</li>
 <li><code>vertical</code> - <em>number</em> - Distance for vertical direction. Defaults to 135.</li>
 </ul>
+<h4><a class="anchor" aria-hidden="true" id="gesturevelocityimpact"></a><a href="#gesturevelocityimpact" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureVelocityImpact</code></h4>
+<p>Number which determines the relevance of velocity for the gesture. Defaults to 0.3.</p>
 <h4><a class="anchor" aria-hidden="true" id="gesturedirection"></a><a href="#gesturedirection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureDirection</code></h4>
 <p>Direction of the gesture. Refer the <a href="#animations">Animations section</a> for details.</p>
 <h4><a class="anchor" aria-hidden="true" id="transitionspec"></a><a href="#transitionspec" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>transitionSpec</code></h4>
