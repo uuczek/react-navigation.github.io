@@ -159,7 +159,7 @@ HomeStack<span class="token punctuation">.</span>navigationOptions <span class="
   tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Another way you could write this is:</p>
+<p>你可以这样写：</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
@@ -176,7 +176,7 @@ HomeStack<span class="token punctuation">.</span>navigationOptions <span class="
 </code></pre>
 <p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-title-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
 <h1><a class="anchor" aria-hidden="true" id="getactivechildnavigationoptions"></a><a href="#getactivechildnavigationoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getActiveChildNavigationOptions</h1>
-<p>If you would like to get the <code>navigationOptions</code> from the active child of a navigator, you can do that with <code>getActiveChildNavigationOptions</code>. This makes it possible for you to set the <code>tabBarLabel</code> directly on a screen inside of a stack that is inside of a tab, for example.</p>
+<p>如果您想从导航器的活动子级获取<code>navigationOptions</code>，则可以使用<code>getActiveChildNavigationOptions</code>来实现。 例如，这使你可以直接在选项卡内部的堆栈内部的屏幕上设置<code>tabBarLabel</code>。</p>
 <pre><code class="hljs css language-jsx"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> <span class="token string">'Welcome'</span><span class="token punctuation">,</span>
@@ -201,7 +201,7 @@ HomeStack<span class="token punctuation">.</span>navigationOptions <span class="
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p><a href="https://snack.expo.io/@react-navigation/nested-navigationoptions-active-child-v3" target="blank" class="run-code-button">→ 运行代码</a></p>
-<h1><a class="anchor" aria-hidden="true" id="note-the-navigationoptions-property-vs-navigator-configuration"></a><a href="#note-the-navigationoptions-property-vs-navigator-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Note</strong>: the navigationOptions property vs navigator configuration</h1>
+<h1><a class="anchor" aria-hidden="true" id="注意-navigationoptions-属性-vs-navigator-配置"></a><a href="#注意-navigationoptions-属性-vs-navigator-配置" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>注意</strong>: navigationOptions 属性 vs navigator 配置</h1>
 <p>导航器使用<code>create*Navigator(routeConfig, navigatorConfig)</code>进行初始化。 在<code>navigatorConfig</code>内部，我们可以添加一个 <code>defaultNavigationOptions</code> 属性。 这些<code>defaultNavigationOptions</code>是该导航器中屏幕的默认选项（<a href="headers.html#sharing-common-navigationoptions-across-screens">详细了解共享常见导航选项</a>） ，它们不会引用该导航器的<code>navigationOptions</code>— 正如我们上面所见，我们直接在导航器上为该用例设置了<code>navigationOptions</code>属性。</p>
 <h1><a class="anchor" aria-hidden="true" id="堆栈包含一个选项卡导航器-并且您想要在堆栈标题栏上设置标题"></a><a href="#堆栈包含一个选项卡导航器-并且您想要在堆栈标题栏上设置标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>堆栈包含一个选项卡导航器，并且您想要在堆栈标题栏上设置标题</h1>
 <p>想象一下以下配置：</p>
@@ -232,7 +232,7 @@ TabNavigator<span class="token punctuation">.</span><span class="token function-
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Another option is to re-organize your navigators, such that each tab has its own stack. You can then hide the top-level stack's header when the tab screen is focused.</p>
+<p>另一个选项是重新组织你的 navigators，每个tab 都有自己的 stack， 当 tab 页面处于顶层时，你可以隐藏 stack 的 header。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* other routes here */</span>
@@ -296,7 +296,7 @@ FeedStack<span class="token punctuation">.</span><span class="token function-var
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>只要我们离开 Feed 主页面，Tab Bar 就会被隐藏。 我们可以根据路由名称切换 Tab bar 的可见性, 但是在路由跳转时，反复切换 Tab Bar 的可见性，会看起来很奇怪。我们应该只设置原本 Tab Bar 就是可见的页面。</p>
-<p>Another option here would be to add another stack navigator as a parent of the tab navigator, and put the details screen there. This is recommended.</p>
+<p>另一种做法是添加另一个 Stack Navigator 作为 Tab Navigator 的父级, 并将 Detail 页面放在里面。 官方建议这样做。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* any other route you want to render under the tab bar */</span>
@@ -353,7 +353,7 @@ FeedStack<span class="token punctuation">.</span><span class="token function-var
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Another option here would be to add another stack navigator as a parent of the drawer navigator, and put the details screen there. This is recommended.</p>
+<p>另一种做法是添加另一个 Stack Navigator 作为 Drawer Navigator 的父级, 并将 Detail 页面放在里面。 官方建议这样做。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* any other route where you want the drawer to remain available */</span>

@@ -79,10 +79,10 @@
 <pre><code class="hljs css language-sh">yarn add @react-navigation/core@next @react-navigation/drawer@next
 </code></pre>
 <p>Now we need to install <a href="https://github.com/kmagiera/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/kmagiera/react-native-reanimated"><code>react-native-reanimated</code></a>, <a href="https://github.com/th3rdwave/react-native-safe-area-context"><code>react-native-safe-area-context</code></a>.</p>
-<p>If you are using Expo, to ensure that you get the compatible versions of the libraries, run:</p>
+<p>如果使用的是Expo，请确保运行兼容版本的库，请运行：</p>
 <pre><code class="hljs css language-sh">expo install react-native-gesture-handler react-native-reanimated react-native-safe-area-context
 </code></pre>
-<p>If you are not using Expo, run the following:</p>
+<p>如果您没有使用Expo，请运行以下命令：</p>
 <pre><code class="hljs css language-sh">yarn add react-native-reanimated react-native-gesture-handler react-native-safe-area-context
 </code></pre>
 <p>If you are using Expo, you are done. Otherwise, continue to the next steps.</p>
@@ -157,9 +157,9 @@ public class MainActivity extends ReactActivity {
 <h4><a class="anchor" aria-hidden="true" id="drawertype"></a><a href="#drawertype" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerType</code></h4>
 <p>Type of the drawer. It determines how the drawer looks and animates.</p>
 <ul>
-<li><code>front</code>: Traditional drawer which covers the screen with a overlay behind it.</li>
-<li><code>back</code>: The drawer is revealed behind the screen on swipe.</li>
-<li><code>slide</code>: Both the screen and the drawer slide on swipe to reveal the drawer.</li>
+<li><code>front</code>: 传统的抽屉覆盖屏幕，并在屏幕后面覆盖。</li>
+<li><code>back</code>: 滑动后，抽屉就会显示在屏幕后面。</li>
+<li><code>slide</code>: 屏幕和抽屉都在滑动时滑动以露出抽屉。</li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" id="drawerwidth"></a><a href="#drawerwidth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerWidth</code></h4>
 <p>Number or a function which returns the width of the drawer. If a function is provided, it'll be called again when the screen's dimensions change.</p>
@@ -229,7 +229,7 @@ public class MainActivity extends ReactActivity {
 <li><code>activeBackgroundColor</code> -活动选项卡的背景色。</li>
 <li><code>inactiveTintColor</code> -&quot;非活动&quot; 选项卡的标签和图标颜色。</li>
 <li><code>inactiveBackgroundColor</code> -非活动选项卡的背景色。</li>
-<li><code>onItemPress({ route, focused })</code> - function to be invoked when an item is pressed</li>
+<li><code>onItemPress({ route, focused })</code> - 按下项目时要调用的功能</li>
 <li><code>itemsContainerStyle</code> -内容节的样式对象</li>
 <li><code>itemStyle</code> 样式对象的单个项, 可以包含图标和/或标签</li>
 <li><code>labelStyle</code> 样式对象要覆盖 <code>文本</code> 样式内部内容部分, 当您的标签是一个字符串</li>

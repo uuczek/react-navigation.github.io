@@ -94,8 +94,8 @@
   }
 }
 </span></code></pre>
-<p>To resolve this exception, you could pass the <code>navigation</code> prop in to <code>MyBackButton</code> when you render it from a screen, like so: <code>&lt;MyBackButton navigation={this.props.navigation} /&gt;</code>.</p>
-<p>Alternatively, you can use the <code>withNavigation</code> function to provide the <code>navigation</code> prop automatically (through React context, if you're curious). 该函数的行为与Redux的<code>connect</code>函数类似，虽然它不向派生的组件提供<code>dispatch</code> 这个 prop，但它提供了<code>navigation</code> 这个 prop。</p>
+<p>要解决这个问题, 你可以在页面中渲染它时传递 <code>navigation</code> prop 到 <code>MyBackButton</code> ,像这样: <code>&lt;MyBackButton navigation={this.props.navigation} /&gt;</code>.</p>
+<p>也可以使用 <code>withNavigation</code> 函数自动提供一个 <code>navigation</code> prop (如果你好奇,也可以使用 React Context). 该函数的行为与Redux的<code>connect</code>函数类似，虽然它不向派生的组件提供<code>dispatch</code> 这个 prop，但它提供了<code>navigation</code> 这个 prop。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> withNavigation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>

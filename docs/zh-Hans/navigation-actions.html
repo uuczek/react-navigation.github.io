@@ -76,7 +76,7 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/navigation-actions.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">NavigationActions reference</h1></header><article><div><span><p>所有<code>NavigationActions</code>返回可以使用<code>navigation.dispatch()</code>方法发送到路由器的对象。</p>
 <p>请注意，如果您想分发 react-navigation 操作，则应使用此库中提供的操作创建者。</p>
-<p>It's important to highlight that dispatching a <code>NavigationAction</code> doesn't throw any error when the action is unhandled (similar to when you dispatch an action that isn't handled by a reducer in redux and nothing happens). However, if the app state changes as a result of a dispatch then the return value of the dispatch is <code>true</code> and <code>false</code> otherwise.</p>
+<p>重要的是要强调指出，未处理动作时分派<code>NavigationAction</code>不会引发任何错误（类似于您在redux中分派未由reducer处理的动作且无任何反应）。 但是，如果应用程序的状态由于调度而改变，则调度的返回值为<code>true</code>和<code>false</code>。</p>
 <p>支持以下操作：</p>
 <ul>
 <li><a href="#navigate">Navigate</a> - 导航到另一条路由</li>
@@ -84,7 +84,7 @@
 <li><a href="#setparams">Set Params</a> - 设置给定路由的参数</li>
 <li><a href="#init">Init</a> - 用于在状态未定义时初始化第一个状态</li>
 </ul>
-<p>有关特定于 StackNavigator 的操作，请参阅<a href="stack-actions.html"> StackActions </a>。 For actions specific to a switch-based navigators such as TabNavigator, see <a href="switch-actions.html">SwitchActions</a>.</p>
+<p>有关特定于 StackNavigator 的操作，请参阅<a href="stack-actions.html"> StackActions </a>。 有关特定于基于开关的导航器（例如TabNavigator）的操作，请参见<a href="switch-actions.html"> SwitchActions </a>。</p>
 <p>操作创建者函数定义 <code>toString ()</code> 以返回操作类型, 这样可以方便地使用第三方 Redux 库, 包括redux-actions and redux-saga。</p>
 <h3><a class="anchor" aria-hidden="true" id="navigate"></a><a href="#navigate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>navigate</h3>
 <p><code>Navigate</code> 操作将使用 <code>Navigate</code> 操作的结果更新当前状态。</p>
@@ -92,7 +92,7 @@
 <li><code>routeName</code> - <em>String</em> - 必需 - 已在应用程序的路由器中注册的目标路由名称</li>
 <li><code>params</code> - <em>Object</em> - 可选 - 将参数合并到目标路由中</li>
 <li><code>action</code> - <em>Object</em> - 可选 - （高级）如果屏幕是导航器，则在子路由器中运行的子操作。 此文档中描述的任何一个操作都可以设置为子操作。</li>
-<li><code>key</code> - <em>String</em> - Optional - The identifier for the route to navigate to. Navigate back to this route if it already exists</li>
+<li><code>key</code> - <em>String</em> - Optional - 导航到的路线的标识符。 导航回到该路线（如果已存在）</li>
 </ul>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 
@@ -107,9 +107,9 @@
 <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>navigateAction<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="back"></a><a href="#back" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>back</h3>
-<p>Go back to previous screen and close current screen. <code>back</code> action creator takes in one optional parameter:</p>
+<p>返回上一页面并关闭当前页面。 <code>back</code> 动作创建者采用一个可选参数：。</p>
 <ul>
-<li><code>key</code> - <em>string or null</em> - optional - If set, navigation will go back from the given key. If null, navigation will go back anywhere.</li>
+<li><code>key</code> - <em>string or null</em> - 可选-如果设置，导航将从给定的键返回。 如果为null，导航将返回到任何地方。</li>
 </ul>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-navigation'</span><span class="token punctuation">;</span>
 

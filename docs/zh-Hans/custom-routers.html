@@ -134,9 +134,9 @@
 <p>返回可放入 URL 的 path 和 param，以将用户链接回应用程序中的同一位置。</p>
 <p>从此输出的 path/params 应该在传递回路由的<code>getActionForPathAndParams</code>时形成一个操作。 一旦通过<code>getStateForAction</code>传递，该操作返回类似的 state。</p>
 <h3><a class="anchor" aria-hidden="true" id="getscreenoptionsnavigation-screenprops"></a><a href="#getscreenoptionsnavigation-screenprops" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getScreenOptions(navigation, screenProps)</code></h3>
-<p>Used to retrieve the navigation options for a screen. Must provide the screen's current navigation prop and optionally, other props that your navigation options may need to consume.</p>
+<p>用于检索屏幕的导航选项。 必须提供页面当前的 <code>navigation prop</code> 以及（可选）导航选项可能需要使用的其他 prop。</p>
 <ul>
-<li><code>navigation</code> - This is the navigation prop that the screen will use, where the state refers to the screen's route/state. Dispatch will trigger actions in the context of that screen.</li>
+<li><code>navigation &lt;/ code&gt;-这是页面将使用的 &lt;code&gt;navigation prop</code>，其中状态是指屏幕的路线/状态。 调度将在该页面的上下文中触发操作。</li>
 <li><code>screenProps</code> - 导航选项可能会用到的其他 prop</li>
 <li><code>navigationOptions</code> - 以前的一组选项，这些选项是默认的或由前一个配置提供的</li>
 </ul>

@@ -75,7 +75,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/material-top-tab-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">createMaterialTopTabNavigator</h1></header><article><div><span><p>屏幕顶部的材料设计主题标签栏, 可通过点击路线或水平滑动来切换不同的路由。 默认情况下, 转换是动态的。 每个路由的屏幕组件将立即安装。</p>
-<p>To use this navigator, ensure that you have <a href="getting-started.html">react-navigation and its dependencies installed</a>, then install <a href="https://github.com/react-navigation/tabs"><code>react-navigation-tabs</code></a>.</p>
+<p>要使用此导航器，请确保已安装<a href="getting-started.html"> react-navigation及其依赖项</a>，然后安装&lt;a href =“ https://github.com/react- navigation/tabs“&gt; <code>react-navigation-tabs</code> </a>。</p>
 <pre><code class="hljs css language-sh">yarn add react-navigation-tabs
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
@@ -88,18 +88,18 @@
 <h2><a class="anchor" aria-hidden="true" id="tabnavigatorconfig"></a><a href="#tabnavigatorconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TabNavigatorConfig</h2>
 <ul>
 <li><code>initialRouteName</code> -第一次加载时初始选项卡路由的 routeName。</li>
-<li><code>navigationOptions</code> - Navigation options for the navigator itself, to configure a parent navigator</li>
+<li><code>navigationOptions</code> - 导航器本身的导航选项，用于配置父导航器</li>
 <li><code>defaultNavigationOptions</code> - 用于屏幕的默认导航选项</li>
 <li><code>order</code> -定义选项卡顺序的 routeNames 数组。</li>
 <li><code>paths</code> - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。</li>
-<li><code>backBehavior</code> - <code>initialRoute</code> to return to initial tab, <code>order</code> to return to previous tab, <code>history</code> to return to last visited tab, or <code>none</code>.</li>
+<li><code>backBehavior</code>-<code>initialRoute</code>返回初始选项卡，<code>order</code>返回上一个选项卡，<code>history</code>返回上次访问标签或<code>none</code>。</li>
 <li><code>tabBarPosition</code> - 标签栏的位置, 可以是 <code>'top'</code> 或 <code>'bottom'</code>。默认值是<code>top</code>。</li>
 <li><code>swipeEnabled</code> -是否允许在标签页之间进行滑动。</li>
-<li><code>lazy</code> - Defaults to <code>false</code>. If <code>true</code>, tabs are rendered only when they are made active or on peek swipe. When <code>false</code>, all tabs are rendered immediately.</li>
-<li><code>lazyPlaceholderComponent</code> - React component to render for routes that haven't been rendered yet. Receives an object containing the route as the argument. The <code>lazy</code> prop also needs to be enabled.</li>
+<li><code>lazy</code> - 默认值 <code>false</code>. 如果<code>true</code>，则仅在使选项卡处于活动状态或快速扫视时才显示它们。 如果<code>false</code>，则所有选项卡都将立即呈现。</li>
+<li><code>lazyPlaceholderComponent</code> - React组件以渲染尚未渲染的路由。 接收包含路由作为参数的对象。 还需要启用<code>lazy</code> prop。</li>
 <li><code>initialLayout</code> -可选对象, 其中包含初始的 <code>height</code> 和 <code>width</code>，可以通过传递该对象，来防止 <a href="https://github.com/react-native-community/react-native-tab-view#avoid-one-frame-delay"> react-native-tab-view </a> 渲染时一个帧的延迟。</li>
 <li><code>tabBarComponent</code> -可选，覆盖用作标签栏的组件.</li>
-<li><code>tabBarOptions</code> - An object with the following properties:
+<li><code>tabBarOptions</code>-具有以下属性的对象：
 <ul>
 <li><code>activeTintColor</code> -活动选项卡的标签和图标颜色。</li>
 <li><code>inactiveTintColor</code> -&quot;非活动&quot; 选项卡的标签和图标颜色。</li>
@@ -107,7 +107,7 @@
 <li><code>showLabel</code> -是否显示选项卡的标签, 默认值为 true。</li>
 <li><code>upperCaseLabel</code> -是否使标签大写，默认为 true。</li>
 <li><code>pressColor</code> -Color for material ripple（仅支持 Android &gt;= 5.0）</li>
-<li><code>pressOpacity</code> - Opacity for pressed tab (iOS and Android &lt; 5.0 only).</li>
+<li><code>pressOpacity</code> -按下标签时的不透明度（支持 iOS 和 Android 5.0）。</li>
 <li><code>scrollEnabled</code> -是否支持 选项卡滚动</li>
 <li><code>tabStyle</code> -选项卡的样式对象。</li>
 <li><code>indicatorStyle</code> -选项卡指示器的样式对象（选项卡底部的行）。</li>
@@ -115,7 +115,7 @@
 <li><code>iconStyle</code> -选项卡图标的样式对象。</li>
 <li><code>style</code> -选项卡栏的样式对象。</li>
 <li><code>allowFontScaling</code> -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。</li>
-<li><code>renderIndicator</code> - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.</li>
+<li><code>renderIndicator</code> - 该函数采用当前路线的对象并返回自定义的React元素以用作标签指示符。</li>
 </ul></li>
 </ul>
 <p>例子:</p>
@@ -150,9 +150,9 @@
 <li><code>navigation</code>：页面的 navigation props</li>
 <li><code>defaultHandler</code>: tab press 的默认 handler</li>
 </ul>
-<p>Useful for adding a custom logic before the transition to the next scene (the tapped one) starts. When setting tabBarOnPress the defaultHandler needs to be called in order to execute the default action (i.e. switch tab).</p>
+<p>在过渡到下一个场景之前添加自定义逻辑很有用（ 点击一个）开始。 设置tabBarOnPress时，需要调用defaultHandler来执行默认操作（即switch选项卡）。</p>
 <h4><a class="anchor" aria-hidden="true" id="tabbaronlongpress"></a><a href="#tabbaronlongpress" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarOnLongPress</code></h4>
-<p>Callback to handle long press events; the argument is an object containing:</p>
+<p>回调以处理长按事件；参数是一个包含以下内容的对象：</p>
 <ul>
 <li><code>navigation</code>：页面的 navigation props</li>
 <li><code>defaultHandler</code>: tab press 的默认 handler</li>
