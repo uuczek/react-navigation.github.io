@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Upgrading from 4.x · React Navigation</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&gt; TODO: This guide is a work in progress. Please send pull requests to improve it."/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="zh-Hans"/><meta property="og:title" content="Upgrading from 4.x · React Navigation"/><meta property="og:type" content="website"/><meta property="og:url" content="https://reactnavigation.org/index.html"/><meta property="og:description" content="&gt; TODO: This guide is a work in progress. Please send pull requests to improve it."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css"/><link rel="alternate" type="application/atom+xml" href="https://reactnavigation.org/blog/atom.xml" title="React Navigation Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://reactnavigation.org/blog/feed.xml" title="React Navigation Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-10128745-16', 'auto');
+              ga('send', 'pageview');
+            </script><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="/js/snack.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/zh-Hans"><img class="logo" src="/img/spiro_white.svg" alt="React Navigation"/><h2 class="headerTitleWithLogo">React Navigation</h2></a><a href="/zh-Hans/versions.html"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/zh-Hans/next/getting-started.html" target="_self">文档</a></li><li class=""><a href="/docs/zh-Hans/next/api-reference.html" target="_self">API</a></li><li class=""><a href="/zh-Hans/help.html" target="_self">帮助</a></li><li class=""><a href="/blog/" target="_self">博客</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>中文</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/next/upgrading-from-4.x.html">English</a></li><li><a href="/docs/pt-BR/next/upgrading-from-4.x.html">Português (Brasil)</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>指南</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">基础</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/getting-started.html">入门</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/hello-react-navigation.html">React Navigation 简介</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigating.html">页面切换</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-lifecycle.html">Navigation 生命周期</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/params.html">传递参数给路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/headers.html">配置标题栏</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/header-buttons.html">标题栏按钮</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/app-containers.html">App 容器</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/modal.html">打开全屏模式</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/next-steps.html">下一步</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/glossary-of-terms.html">专业术语</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/compatibility.html">Compatibility layer</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/common-mistakes.html">常见错误</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/limitations.html">限制</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">指南</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/tab-based-navigation.html">Tab navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/drawer-based-navigation.html">Drawer navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/auth-flow.html">身份验证流程</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/handling-safe-area.html">Supporting safe areas</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/status-bar.html">基于路由的不同状态栏配置</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/screen-options-resolution.html">Screen options resolution</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-android-back-button-handling.html">自定义 Android Back 键的行为</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/connecting-navigation-prop.html">从任何组件访问 navigation prop</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigating-without-navigation-prop.html">在没有 navigation 这个 prop 的情况下进行页面跳转</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-key.html">使用 navigation key</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/deep-linking.html">深度链接</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/screen-tracking.html">Screen tracking for analytics</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/themes.html">Themes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/state-persistence.html">State 持久化</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/typescript.html">Type checking with TypeScript</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/redux-integration.html">Redux 集成</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/MST-integration.html">MobX State Tree integration</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/localization.html">Localization</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/web-support.html">Web support</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/function-after-focusing-screen.html">Call a function when focused screen changes</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/react-native-screens.html">Optimize memory usage and performance</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/zh-Hans/next/upgrading-from-4.x.html">Upgrading from 4.x</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">构建自己的导航</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/routers.html">路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-navigators.html">自定义 navigator</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/custom-routers.html">自定义路由</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/navigation-views.html">导航视图</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">附加资源</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/supported-react-native-versions.html">支持的react-native版本</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/community-libraries-and-navigators.html">Community Navigators and Libraries</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/more-resources.html">更多资源</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">其他</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/pitch.html">优点&amp;缺点</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/alternatives.html">可选库</a></li><li class="navListItem"><a class="navItem" href="/docs/zh-Hans/next/contributing.html">Contributing</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/upgrading-from-4.x.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Upgrading from 4.x</h1></header><article><div><span><blockquote>
+<p>TODO: This guide is a work in progress. Please send pull requests to improve it.</p>
+</blockquote>
+<p>React Navigation 5 has a completely new component based API. While the main concepts are the same, the API is different. In this guide, we aim to document all the differences so that it's easier to upgrade your app.</p>
+<p>You can also use the <a href="/docs/zh-Hans/next/compatibility.html">compatibility layer</a> to reuse code using the old API with minimal changes.</p>
+<h2><a class="anchor" aria-hidden="true" id="configuring-the-navigator"></a><a href="#configuring-the-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuring the navigator</h2>
+<p>In React Navigation 4.x, we used to statically configure our navigator to <code>createXNavigator</code> functions. The first parameter was an object containing route configuration, and the second parameter was configuration for the navigator.</p>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    Home<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      screen<span class="token punctuation">:</span> HomeScreen<span class="token punctuation">,</span>
+      navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">'My app'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    Profile<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      screen<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+      params<span class="token punctuation">:</span> <span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'me'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    initialRouteName<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>With 5.x, we now configure the navigator inside a component. First, we create <code>Navigator</code> and <code>Screen</code> pair using <code>createXNavigator</code> and then use them to render our navigator.</p>
+<p>There are few key differences here:</p>
+<ul>
+<li>All of the configuration is passed as props to the navigator</li>
+<li>The route configuration is done using <code>Screen</code> elements and passed as children</li>
+<li><code>params</code> becomes <code>initialParams</code> prop on <code>Screen</code></li>
+<li><code>navigationOptions</code> becomes <code>options</code> prop on <code>Screen</code></li>
+<li><code>defaultNavigationOptions</code> becomes <code>screenOptions</code> prop on <code>Navigator</code></li>
+</ul>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> Stack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">RootStack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span>
+      <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
+      <span class="token attr-name">screenOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
+        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">}</span></span>
+        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> <span class="token string">'My app'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
+        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ProfileScreen<span class="token punctuation">}</span></span>
+        <span class="token attr-name">initialParams</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'me'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="the-navigation-prop"></a><a href="#the-navigation-prop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The <code>navigation</code> prop</h2>
+<p>In React Navigation 4.x, the <code>navigation</code> prop contained various helper methods as well as the current screen's state. In React Navigation 5.x, we have split the <code>navigation</code> prop into 2 props: <code>navigation</code> prop contains helper methods such as <code>navigate</code>, <code>goBack</code> etc., <code>route</code> prop contains the current screen's data (previously accessed via <code>navigation.state</code>).</p>
+<p>This means, now we can access screen's params through <code>route.params</code> instead of <code>navigation.state.params</code>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">ProfileScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> route <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> useerId <span class="token operator">=</span> route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>me<span class="token punctuation">;</span>
+
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Previously we could also use <code>navigation.getParam('someParam', 'defaultValue')</code> to get a param value. It addressed 2 things:</p>
+<ul>
+<li>Guard against <code>params</code> being <code>undefined</code> in some cases</li>
+<li>Provide a default value if the <code>params.someParam</code> was <code>undefined</code> or <code>null</code></li>
+</ul>
+<p>Now, the same thing can be achieved using the upcoming <a href="https://github.com/tc39/proposal-optional-chaining">optional chaining</a> and <a href="https://github.com/tc39/proposal-nullish-coalescing">nullish coalescing</a> operators:</p>
+<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'someParam'</span><span class="token punctuation">,</span> <span class="token string">'defaultValue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>is equivalent to:</p>
+<pre><code class="hljs css language-js">route<span class="token punctuation">.</span>params<span class="token operator">?</span><span class="token punctuation">.</span>someParam <span class="token operator">?</span><span class="token operator">?</span> <span class="token string">'defaultValue'</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Remember to add the Babel plugins for <a href="https://babeljs.io/docs/en/babel-plugin-proposal-optional-chaining">optional-chaining</a> and <a href="https://babeljs.io/docs/en/next/babel-plugin-proposal-nullish-coalescing-operator">nullish-coalescing-operator</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="specifying-navigationoptions-for-a-screen"></a><a href="#specifying-navigationoptions-for-a-screen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifying <code>navigationOptions</code> for a screen</h2>
+<p>In React Navigation 4.x, we could do the following to specify <code>navigationOption</code>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">ProfileScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    headerShown<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>With React Navigation 5.x, we need to pass the configuration when defining the screen:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
+  <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ProfileScreen<span class="token punctuation">}</span></span>
+  <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> headerShown<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
+</code></pre>
+<p>For dynamic options, the <code>options</code> prop also accepts a function which receives the <code>navigation</code> and <code>route</code> props:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
+  <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ProfileScreen<span class="token punctuation">}</span></span>
+  <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> route <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">:</span> route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>user <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
+</code></pre>
+<p>In addition to this, React Navigation 5.x has another way to configure screen dynamically based on a screen's props or state by calling <code>navigation.setOptions</code>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">SelectionScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>selctionCount<span class="token punctuation">,</span> setSelectionCount<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  navigation<span class="token punctuation">.</span><span class="token function">setOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span>
+      selctionCount <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token string">'Select items'</span> <span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>selectionCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> items selected</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/react-native-screens.html"><span class="arrow-prev">← </span><span>Optimize memory usage and performance</span></a><a class="docs-next button" href="/docs/zh-Hans/next/routers.html"><span>路由</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#configuring-the-navigator">Configuring the navigator</a></li><li><a href="#the-navigation-prop">The <code>navigation</code> prop</a></li><li><a href="#specifying-navigationoptions-for-a-screen">Specifying <code>navigationOptions</code> for a screen</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'c967b4a1491b9cb486d3dca087b771e6',
+                indexName: 'reactnavigation',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
