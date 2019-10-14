@@ -78,7 +78,7 @@
 <blockquote>
 <p>如果你正在寻找易于使用的解决方案，则可以查看社区开发的软件包<a href="https://github.com/vonovak/react-navigation-backhandler"> react-navigation-backhandler</a>。 以下内容将向你展示这个 package 表面下的实际工作原理。</p>
 </blockquote>
-<p>例如，在一个页面中，用户正在列表中选择某一项，并且“选择模式”处于活跃状态。 在按下返回按钮时，你首先需要停用“选择模式”，然后在第二次按下返回键时，返回上一页。 以下代码片段演示了这种情况。 我们利用 react-native 提供的<a href="https://facebook.github.io/react-native/docs/backhandler.html"><code>BackHandler</code></a>这个 Api，并<a href="navigation-prop.html#addlistener-subscribe-to-updates-to-navigation-lifecycle"> 订阅navigation 的生命周期方法 </a>以添加我们自定义的<code>hardwareBackPress</code>事件监听器。</p>
+<p>例如，在一个页面中，用户正在列表中选择某一项，并且“选择模式”处于活跃状态。 在按下返回按钮时，你首先需要停用“选择模式”，然后在第二次按下返回键时，返回上一页。 The following code snippet demonstrates the situation. 我们利用 react-native 提供的<a href="https://facebook.github.io/react-native/docs/backhandler.html"><code>BackHandler</code></a>这个 Api，并<a href="navigation-prop.html#addlistener-subscribe-to-updates-to-navigation-lifecycle"> 订阅navigation 的生命周期方法 </a>以添加我们自定义的<code>hardwareBackPress</code>事件监听器。</p>
 <p>从<code>onBackButtonPressAndroid</code>方法返回<code>true</code>表示我们已经处理了该事件，并且 react-navigation 的事件监听器不会被调用，因此不会销毁当前页。 返回<code>false</code>会该方法继续执行 - react-navigation 的事件监听器将销毁当前页面。</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> BackHandler <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>

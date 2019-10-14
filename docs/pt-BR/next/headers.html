@@ -87,7 +87,7 @@
       <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="usando-params-no-titulo"></a><a href="#usando-params-no-titulo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usando params no título</h2>
 <p>In order to use params in the title, we need to make <code>options</code> prop for the screen a function that returns a configuration object. It might be tempting to try to use <code>this.props</code> inside of <code>options</code>, but because it is defined before the component is rendered, <code>this</code> does not refer to an instance of the component and therefore no props are available. Instead, if we make <code>options</code> a function then React Navigation will call it with an object containing <code>{ navigation, route }</code> -- in this case, all we care about is <code>navigation</code>, which is the same object that is passed to your screen props as <code>navigation</code> prop. You may recall that we can get the params through <code>route.params</code>, and so we do this below to extract a param and use it as a title.</p>
@@ -106,7 +106,7 @@
       <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>The argument that is passed in to the <code>options</code> function is an object with the following properties:</p>
 <ul>
@@ -148,7 +148,7 @@
       <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>There are a couple of things to notice here:</p>
 <ol>
@@ -177,7 +177,7 @@
       <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>Now, any screen that belongs to the <code>StackScreen</code> will have our wonderful branded styles. Surely though, there must be a way to override these options if we need to?</p>
 <h2><a class="anchor" aria-hidden="true" id="substituindo-o-titulo-por-um-componente-personalizado"></a><a href="#substituindo-o-titulo-por-um-componente-personalizado" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substituindo o título por um componente personalizado</h2>
@@ -201,13 +201,13 @@
       <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
 <p>You might be wondering, why <code>headerTitle</code> when we provide a component and not <code>title</code>, like before? The reason is that <code>headerTitle</code> is a property that is specific to a stack navigator, the <code>headerTitle</code> defaults to a <code>Text</code> component that displays the <code>title</code>.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="configuracão-adicional"></a><a href="#configuracão-adicional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuração adicional</h2>
-<p>You can read the full list of available <code>options</code> for screens inside of a stack navigator in the <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator">createStackNavigator reference</a>.</p>
+<p>You can read the full list of available <code>options</code> for screens inside of a stack navigator in the <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator"><code>createStackNavigator</code> reference</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="sumario"></a><a href="#sumario" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sumário</h2>
 <ul>
 <li>You can customize the header inside of the <code>options</code> prop of your screen components. Leia a lista completa de opções <a href="stack-navigator.html#navigationoptions-used-by-stacknavigator">na referência da API</a>.</li>
