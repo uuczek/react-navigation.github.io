@@ -330,7 +330,7 @@ public class MainActivity extends ReactActivity {
 <li><code>config</code> - The configuration object for the timing function. For <code>timing</code>, it can be <code>duration</code> and <code>easing</code>. For <code>spring</code>, it can be <code>stiffness</code>, <code>damping</code>, <code>mass</code>, <code>overshootClamping</code>, <code>restDisplacementThreshold</code> and <code>restSpeedThreshold</code>.</li>
 </ul>
 <p>A config which uses spring animation looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
 animation<span class="token punctuation">:</span> <span class="token string">'spring'</span><span class="token punctuation">,</span>
 config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   stiffness<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
@@ -340,7 +340,18 @@ config<span class="token punctuation">:</span> <span class="token punctuation">{
   restDisplacementThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
   restSpeedThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this config in the <code>transitionSpec</code> option:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
+<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+  transitionSpec<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    open<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
+    close<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
 </code></pre></li>
 <li><p><code>cardStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the card. Is expected to return at least empty object, possibly containing interpolated styles for container, the card itself, overlay and shadow. Supported properties are:</p>
 <ul>
@@ -373,6 +384,12 @@ cardStyle<span class="token punctuation">:</span> <span class="token punctuation
   <span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this function in <code>cardStyleInterpolator</code> option:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
+<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> cardStyleInterpolator<span class="token punctuation">:</span> forFade <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
 </code></pre></li>
 <li><p><code>headerStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the header. Is expected to return at least empty object, possibly containing interpolated styles for left label and button, right button, title and background. Supported properties are:</p>
 <ul>
@@ -410,6 +427,12 @@ cardStyle<span class="token punctuation">:</span> <span class="token punctuation
   backgroundStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this function in <code>headerStyleInterpolator</code> option:</p>
+<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
+<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
+<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> headerStyleInterpolator<span class="token punctuation">:</span> forFade <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
 </code></pre></li>
 </ul>
 <p>With these options, it's possible to build custom transition animations for screens. We also export various configs from the library with ready-made animations which you can use:</p>
@@ -462,9 +485,9 @@ cardStyle<span class="token punctuation">:</span> <span class="token punctuation
 <pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span>
   <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
   <span class="token attr-name">screenOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalPresentationIOS<span class="token punctuation">,</span>
     gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     cardOverlayEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalPresentationIOS<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
 <span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>

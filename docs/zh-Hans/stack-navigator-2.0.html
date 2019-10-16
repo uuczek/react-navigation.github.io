@@ -361,7 +361,7 @@ public class MainActivity extends ReactActivity {
 </ul>
 <p>使用spring动画的配置如下所示：</p></li>
 </ul>
-<pre><code class="hljs css language-js">  <span class="token punctuation">{</span>
+<pre><code class="hljs css language-js">  <span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
     animation<span class="token punctuation">:</span> <span class="token string">'spring'</span><span class="token punctuation">,</span>
     config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       stiffness<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
@@ -371,7 +371,15 @@ public class MainActivity extends ReactActivity {
       restDisplacementThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
       restSpeedThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this function in <code>transitionSpec</code> option:</p>
+<pre><code class="hljs css language-js">Profile<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  transitionSpec<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    open<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
+    close<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <ul>
 <li><p><code>cardStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the card. Is expected to return at least empty object, possibly containing interpolated styles for container, the card itself, overlay and shadow. Supported properties are:</p>
@@ -408,6 +416,11 @@ public class MainActivity extends ReactActivity {
     <span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this function in <code>cardStyleInterpolator</code> option:</p>
+<pre><code class="hljs css language-js">Profile<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  cardStyleInterpolator<span class="token punctuation">:</span> forFade<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></li>
 <li><p><code>headerStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the header. Is expected to return at least empty object, possibly containing interpolated styles for left label and button, right button, title and background. Supported properties are:</p>
 <ul>
@@ -447,6 +460,11 @@ public class MainActivity extends ReactActivity {
     titleStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
     backgroundStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>We can pass this function in <code>headerStyleInterpolator</code> option:</p>
+<pre><code class="hljs css language-js">Profile<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  headerStyleInterpolator<span class="token punctuation">:</span> forFade<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre></li>
 </ul>
@@ -503,9 +521,9 @@ public class MainActivity extends ReactActivity {
     mode<span class="token punctuation">:</span> <span class="token string">'modal'</span><span class="token punctuation">,</span>
     headerMode<span class="token punctuation">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>
     defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalPresentationIOS<span class="token punctuation">,</span>
       gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
       cardOverlayEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalPresentationIOS<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
