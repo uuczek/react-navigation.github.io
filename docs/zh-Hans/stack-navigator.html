@@ -141,7 +141,7 @@
 - ` cardStyle ` - 使用此 props 覆盖或扩展堆栈中单个 Card 的默认样式。
 - `cardShadowEnabled` - 使用此 prop 可在页面切换时，显示可见阴影， 默认值： `true`。
 - `cardOverlayEnabled` - 使用此 prop 在页面切换时显示堆栈卡片浮层， 默认值： `false`。
-- `transitionConfig` - 返回与默认屏幕过渡合并的对象的函数（请查看[类型定义](https://github.com/react-navigation/react-navigation/blob/master/flow/react-navigation中的TransitionConfig .js)）。 提供的函数将传递以下参数: 
+- `transitionConfig` - Function to return an object that is merged with the default screen transitions (take a look at TransitionConfig in [type definitions](https://github.com/react-navigation/stack/blob/1.0/src/types.tsx#L232)). 提供的函数将传递以下参数: 
   - `transitionProps` -新屏幕的过渡道具。
   - `prevTransitionProps` -为旧屏幕过渡道具。
   - `isModal` -布尔值指定屏幕是否为模式。
