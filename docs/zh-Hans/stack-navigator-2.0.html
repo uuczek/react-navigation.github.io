@@ -391,12 +391,15 @@ public class MainActivity extends ReactActivity {
 </ul>
 <p>The function receives the following properties in it's argument:</p>
 <ul>
-<li><code>index</code> - The index of the card in the stack.</li>
-<li><code>progress</code>- Reanimated nodes representing the progress of the animation:
+<li><code>current</code> - Values for the current screen:
 <ul>
-<li><code>current</code>: Progress value of the current screen.</li>
-<li><code>next</code> - Progress value for the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.</li>
+<li><code>progress</code> - Renimated node representing the progress value of the current screen.</li>
 </ul></li>
+<li><code>next</code> - Values for the current screen the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.
+<ul>
+<li><code>progress</code> - Renimated node representing the progress value of the next screen.</li>
+</ul></li>
+<li><code>index</code> - The index of the card in the stack.</li>
 <li><code>closing</code> - Animated node representing whether the card is closing. <code>1</code> when closing, <code>0</code> if not.</li>
 <li><code>layouts</code> - Layout measurements for various items we use for animation.
 <ul>
@@ -404,12 +407,12 @@ public class MainActivity extends ReactActivity {
 </ul></li>
 </ul>
 <p>A config which just fades the card looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> progress<span class="token punctuation">,</span> closing <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> current<span class="token punctuation">,</span> closing <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
   cardStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     opacity<span class="token punctuation">:</span> <span class="token function">cond</span><span class="token punctuation">(</span>
       closing<span class="token punctuation">,</span>
-      progress<span class="token punctuation">.</span>current<span class="token punctuation">,</span>
-      <span class="token function">interpolate</span><span class="token punctuation">(</span>progress<span class="token punctuation">.</span>current<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      current<span class="token punctuation">.</span>progress<span class="token punctuation">,</span>
+      <span class="token function">interpolate</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>progress<span class="token punctuation">,</span> <span class="token punctuation">{</span>
         inputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         outputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token number">0.7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -426,16 +429,19 @@ public class MainActivity extends ReactActivity {
 <ul>
 <li><code>leftLabelStyle</code> - Style for the label of the left button (back button label).</li>
 <li><code>leftButtonStyle</code> - Style for the left button (usually the back button).</li>
-<li><code>leftButtonStyle</code> - Style for the left button (usually the back button).</li>
+<li><code>rightButtonStyle</code> - Style for the right button.</li>
 <li><code>titleStyle</code> - Style for the header title text.</li>
 <li><code>backgroundStyle</code> - Style for the header background.</li>
 </ul>
 <p>The function receives the following properties in it's argument:</p>
 <ul>
-<li><code>progress</code>- Reanimated nodes representing the progress of the animation:
+<li><code>current</code> - Values for the current screen (the screen which owns this header).
 <ul>
-<li><code>current</code>: Progress value of the current screen (the screen which owns this header).</li>
-<li><code>next</code> - Progress value for the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.</li>
+<li><code>progress</code> - Renimated node representing the progress value of the current screen.</li>
+</ul></li>
+<li><code>next</code> - Values for the current screen the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.
+<ul>
+<li><code>progress</code> - Renimated node representing the progress value of the next screen.</li>
 </ul></li>
 <li><code>layouts</code> - Layout measurements for various items we use for animation. Each layout object contain <code>height</code> and <code>width</code> properties.
 <ul>
@@ -445,9 +451,9 @@ public class MainActivity extends ReactActivity {
 </ul></li>
 </ul>
 <p>A config which just fades the elements looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> progress <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> current<span class="token punctuation">,</span> next <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> opacity <span class="token operator">=</span> <span class="token function">interpolate</span><span class="token punctuation">(</span>
-    <span class="token function">add</span><span class="token punctuation">(</span>progress<span class="token punctuation">.</span>current<span class="token punctuation">,</span> progress<span class="token punctuation">.</span>next <span class="token operator">?</span> progress<span class="token punctuation">.</span>next <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">add</span><span class="token punctuation">(</span>current<span class="token punctuation">.</span>progress<span class="token punctuation">,</span> next <span class="token operator">?</span> next<span class="token punctuation">.</span>progress <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
       inputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       outputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
