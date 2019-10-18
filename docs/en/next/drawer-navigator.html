@@ -260,6 +260,19 @@ public class MainActivity extends ReactActivity {
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p>The <code>DrawerItem</code> component accepts the following props:</p>
+<ul>
+<li><code>label</code> (required): The label text of the item. Can be string, or a function returning a react element. e.g. <code>({ focused, color }) =&gt; &lt;Text style={{ color }}&gt;{focused ? 'Focused text' : 'Unfocused text'}&lt;/Text&gt;</code>.</li>
+<li><code>icon</code>: Icon to display for the item. Accepts a function returning a react element. e.g. <code>({ focused, color, size }) =&gt; &lt;Icon color={color} size={size} name={focused ? 'heart' : 'heart-outline'} /&gt;</code>.</li>
+<li><code>focused</code>: Boolean indicating whether to highlight the drawer item as active.</li>
+<li><code>onPress</code> (required): Function to execute on press.</li>
+<li><code>activeTintColor</code>: Color for the icon and label when the item is active.</li>
+<li><code>inactiveTintColor</code>: Color for the icon and label when the item is inactive.</li>
+<li><code>activeBackgroundColor</code>: Background color for item when its active.</li>
+<li><code>inactiveBackgroundColor</code>: Background color for item when its inactive.</li>
+<li><code>labelStyle</code>: Style object for the label <code>Text</code>.</li>
+<li><code>style</code>: Style object for the wrapper <code>View</code>.</li>
+</ul>
 <p>The <code>progress</code> node can be used to do interesting animations in your <code>contentComponent</code>, such as parallax motion of the drawer contents:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">CustomDrawerContent</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> progress<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> translateX <span class="token operator">=</span> props<span class="token punctuation">.</span>drawerOpenProgress<span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
