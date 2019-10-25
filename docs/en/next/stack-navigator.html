@@ -493,8 +493,10 @@ public class MainActivity extends ReactActivity {
 <li><code>forStatic</code> - Simple translate animation to translate the header along with the sliding screen.</li>
 </ul></li>
 </ul>
-<p><strong>IMPORTANT</strong>: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.</p>
-<p>We export various transition presets (under <code>TransitionPresets</code>) which bundle various set of these options together to match certain native animations:</p>
+<blockquote>
+<p>Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.</p>
+</blockquote>
+<p>We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under <code>TransitionPresets</code>. Currently the following presets are available:</p>
 <ul>
 <li><code>SlideFromRightIOS</code> - Standard iOS navigation transition.</li>
 <li><code>ModalSlideFromBottomIOS</code> - Standard iOS navigation transition for modals.</li>
@@ -510,7 +512,7 @@ public class MainActivity extends ReactActivity {
   <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
   <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-    <span class="token operator">...</span>TransitionSpecs<span class="token punctuation">.</span>ModalSlideFromBottomIOS<span class="token punctuation">,</span>
+    <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalSlideFromBottomIOS<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
 <span class="token punctuation">/></span></span>
 </code></pre>

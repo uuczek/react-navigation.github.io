@@ -497,8 +497,10 @@ public class MainActivity extends ReactActivity {
 <li><code>forStatic</code> - Simple translate animation to translate the header along with the sliding screen.</li>
 </ul></li>
 </ul>
-<p><strong>IMPORTANT</strong>: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.</p>
-<p>We export various transition presets (under <code>TransitionPresets</code>) which bundle various set of these options together to match certain native animations:</p>
+<blockquote>
+<p>Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.</p>
+</blockquote>
+<p>We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under <code>TransitionPresets</code>. Currently the following presets are available:</p>
 <ul>
 <li><code>SlideFromRightIOS</code> - Standard iOS navigation transition.</li>
 <li><code>ModalSlideFromBottomIOS</code> - Standard iOS navigation transition for modals.</li>
@@ -511,7 +513,7 @@ public class MainActivity extends ReactActivity {
 <p>You can spread these presets in <code>navigationOptions</code> to customize the animation for a screen:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
   title<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-  <span class="token operator">...</span>TransitionSpecs<span class="token punctuation">.</span>ModalSlideFromBottomIOS
+  <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalSlideFromBottomIOS
 <span class="token punctuation">}</span>
 </code></pre>
 <p>If you want to customize the transition animations for all of the screens in the navigator, you can specify it in <code>defaultNavigationOptions</code> when defining a navigator.</p>
