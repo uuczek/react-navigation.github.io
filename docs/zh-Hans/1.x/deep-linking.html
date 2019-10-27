@@ -147,7 +147,7 @@ adb shell am start -W -a android.intent.action.VIEW -d &quot;exp://127.0.0.1:190
                       sourceApplication:sourceApplication annotation:annotation];
 }
 </code></pre>
-<p>在Xcode中，在<code>SimpleApp/ios/SimpleApp.xcodeproj</code>处打开项目。 选择侧边栏中的项目并导航到信息选项卡。 滚动到 &quot;URL Types&quot; 并添加一项。 在新的 URL 类型中，将标识符和 url 方案设置为你想要的 url 方案。</p>
+<p>在Xcode中，在<code>SimpleApp/ios/SimpleApp.xcodeproj</code>处打开项目。 选择侧边栏中的项目并导航到信息选项卡。 滚动到 &quot;URL Types&quot; 并添加一项。 In the new URL type, set the identifier and the URL scheme to your desired URL scheme.</p>
 <p><img src="/docs/assets/deep-linking/xcode-linking.png" alt="Xcode project info URL types with mychat added"></p>
 <p>现在你可以在Xcode中运行项目，或者在命令行上 re-build：</p>
 <pre><code class="hljs css language-sh">react-native run-ios

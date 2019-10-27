@@ -75,7 +75,7 @@
               }
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/connecting-navigation-prop.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">从任何组件访问 navigation prop</h1></header><article><div><span><p><a href="/docs/zh-Hans/next/use-navigation.html"><code>useNavigation</code></a> is a a hook which gives access to the <code>navigation</code> object. 当你无法直接将<code>navigation</code> 这个 prop 传递给组件，或者不想在深度嵌套的子组件中传递它时，它将非常有用。</p>
-<p>An ordinary component that is not a screen component will not receive the navigation prop automatically. for example in this <code>MyBackButton</code> component:</p>
+<p>An ordinary component that is not a screen component will not receive the navigation prop automatically. For example in this <code>MyBackButton</code> component:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
 
@@ -92,7 +92,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>To resolve this exception, you could pass the <code>navigation</code> prop in to <code>MyBackButton</code> when you render it from a screen, like so: <code>&lt;MyBackButton navigation={props.navigation} /&gt;</code>.</p>
-<p>Alternatively, you can use the <code>useNavigation</code> to provide the <code>navigation</code> automatically automatically (through React context, if you're curious).</p>
+<p>Alternatively, you can use the <code>useNavigation</code> to provide the <code>navigation</code> prop automatically (through React context, if you're curious).</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> useNavigation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/core'</span><span class="token punctuation">;</span>
