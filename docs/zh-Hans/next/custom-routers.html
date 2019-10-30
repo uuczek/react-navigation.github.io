@@ -78,6 +78,7 @@
 <p>The router is responsible for handling actions dispatched by calling methods on the navigation object. If the router cannot handle an action, it can return <code>null</code>, which would propagate the action to other routers until it's handled.</p>
 <p>您可以通过构建具有以下功能的对象来创建自己的路由：</p>
 <ul>
+<li><code>type</code> - String representing the type of the router, e.g. <code>'stack'</code>, <code>'tab'</code>, <code>'drawer'</code> etc.</li>
 <li><code>getInitialState</code> - Function which returns the initial state for the navigator. Receives an options object with <code>routeNames</code> and <code>routeParamList</code> properties.</li>
 <li><code>getRehydratedState</code> - Function which rehydrates the full navigation state from a given partial state. Receives a partial state object and an options object with <code>routeNames</code> and <code>routeParamList</code> properties.</li>
 <li><code>getStateForRouteNamesChange</code> - Function which takes the current state and updated list of route names, and returns a new state. Receives the state object and an options object with <code>routeNames</code> and <code>routeParamList</code> properties.</li>
@@ -88,6 +89,8 @@
 </ul>
 <p>例子:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
+
   <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> routeNames<span class="token punctuation">,</span> routeParamList <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> index <span class="token operator">=</span>
       options<span class="token punctuation">.</span>initialRouteName <span class="token operator">===</span> <span class="token keyword">undefined</span>
@@ -96,6 +99,7 @@
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
       stale<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
       key<span class="token punctuation">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       index<span class="token punctuation">,</span>
       routeNames<span class="token punctuation">,</span>
@@ -133,6 +137,7 @@
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
       stale<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
       key<span class="token punctuation">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       index<span class="token punctuation">:</span>
         <span class="token keyword">typeof</span> state<span class="token punctuation">.</span>index <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> state<span class="token punctuation">.</span>index <span class="token operator">&lt;</span> routes<span class="token punctuation">.</span>length
