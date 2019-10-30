@@ -149,7 +149,7 @@
 <p>我们来剖析一下：</p>
 <ul>
 <li><code>tabBarIcon</code> is a property on <code>navigationOptions</code>, so we know we can use it on our screen components, but in this case chose to put it in the <code>TabNavigator</code> configuration in order to centralize the icon configuration for convenience.</li>
-<li><code>tabBarIcon</code> is a function that is given the <code>focused</code> state and <code>tintColor</code>. 如果你在配置中进一步查看，您将看到<code>tabBarOptions</code>、<code>activeTintColor</code>和<code>inactiveTintColor</code>。 这些默认为 iOS 平台的默认值，但您可以在这里更改它们。 传递给<code>tabBarIcon</code>的<code>tintColor</code>取决于<code>focused</code>这个 state （判断该 Tab 是否获得了焦点），可以是活动，也可以是非活动状态。</li>
+<li><code>tabBarIcon</code> is a function that is given the <code>focused</code> state and <code>tintColor</code>. 如果你在配置中进一步查看，您将看到<code>tabBarOptions</code>、<code>activeTintColor</code>和<code>inactiveTintColor</code>。 These default to the iOS platform defaults, but you can change them here. 传递给<code>tabBarIcon</code>的<code>tintColor</code>取决于<code>focused</code>这个 state （判断该 Tab 是否获得了焦点），可以是活动，也可以是非活动状态。</li>
 <li>In order to make the behavior the same on iOS and Android, we have explicitly provided <code>tabBarComponent</code>, <code>tabBarPosition</code>, <code>animationEnabled</code>, and <code>swipeEnabled</code>. The default behavior of <code>TabNavigator</code> is to show a tab bar on the top of the screen on Android and on the bottom on iOS, but here we force it to be on the bottom on both platforms.</li>
 <li>Read the <a href="tab-navigator.html">full API reference</a> for further information on <code>TabNavigator</code> configuration options.</li>
 </ul>

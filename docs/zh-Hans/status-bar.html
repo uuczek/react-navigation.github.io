@@ -136,7 +136,7 @@ onPress={() =&gt; this.props.navigation.navigate('Screen1')}
 <p>如果你使用的是 TabNavigator，则会更复杂一些，因为所有 tab 上的页面都要同时渲染 - 这意味着你将使用你设置的最后一个<code>StatusBar</code>进行配置（可能位于 tab navigator 的最后一个 tab，并不是你想让用户看到的）。</p>
 <p>为了解决这个问题，我们必须做两件事</p>
 <ol>
-<li>在单独的页面中使用 <code>StatusBar</code> 组件， 这可以确保使用正确的 <code>StatusBar</code> 配置</li>
+<li>Only use the <code>StatusBar</code> component on our initial screen. 这可以确保使用正确的 <code>StatusBar</code> 配置</li>
 <li>当一个 tab 处于激活状态时，利用 React Navigation 和<code>StatusBar</code>的隐式API中的事件系统更改<code>StatusBar</code>配置。</li>
 </ol>
 <p>首先，新的<code>Screen2.js</code>将不再使用<code>StatusBar</code>组件。</p>
