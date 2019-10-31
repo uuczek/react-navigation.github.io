@@ -81,6 +81,7 @@
 <p>Considere um &quot;stack navigator&quot; com as telas A e B. Depois de navegar para A, seu <code>componentDidMount</code> é chamado. Ao empurrar B para a tela, seu <code>componentDidMount</code> também é chamado, mas A permanece montado na &quot;stack&quot; e seu <code>componentWillUnmount</code> não é, portanto, chamado.</p>
 <p>Ao voltar de B para A, <code>componentWillUnmount</code> de B é chamado, mas <code>componentDidMount</code> de A não é porque A permaneceu montado o tempo todo.</p>
 <p>Resultados semelhantes podem ser observados (em combinação) com outros navegadores também. Considere um &quot;tab navigator&quot; com duas tabs, em que cada tab é um &quot;stack navigator&quot;:</p>
+<p><samp id="navigation-lifecycle">navigation lifecycle</samp></p>
 <pre><code class="hljs css language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>

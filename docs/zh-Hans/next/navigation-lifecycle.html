@@ -81,6 +81,7 @@
 <p>一个包含 页面 A 和 B 的 StackNavigator ，当跳转到 A 时，<code>componentDidMount</code> 方法会被调用； 当跳转到 B 时，<code>componentDidMount</code> 方法也会被调用，但是 A 依然在堆栈中保持 被加载状态，他的 <code>componentWillUnMount</code> 也不会被调用。</p>
 <p>当从 B 跳转到 A，B的 <code>componentWillUnmount</code> 方法会被调用，但是 A 的 <code>componentDidMount</code>方法不会被调用，应为此时 A 依然是被加载状态。</p>
 <p>其他的 navigator 也会产生类似的结果。 比如带有两个选项卡的 TabNavigator，其中每个选项卡都是一个 StackNavigator：</p>
+<p><samp id="navigation-lifecycle">navigation lifecycle</samp></p>
 <pre><code class="hljs css language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>

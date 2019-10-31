@@ -81,6 +81,7 @@
 <p>Consider a stack navigator with screens A and B. After navigating to A, its <code>componentDidMount</code> is called. When pushing B, its <code>componentDidMount</code> is also called, but A remains mounted on the stack and its <code>componentWillUnmount</code> is therefore not called.</p>
 <p>When going back from B to A, <code>componentWillUnmount</code> of B is called, but <code>componentDidMount</code> of A is not because A remained mounted the whole time.</p>
 <p>Similar results can be observed (in combination) with other navigators as well. Consider a tab navigator with two tabs, where each tab is a stack navigator:</p>
+<p><samp id="navigation-lifecycle">navigation lifecycle</samp></p>
 <pre><code class="hljs css language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
