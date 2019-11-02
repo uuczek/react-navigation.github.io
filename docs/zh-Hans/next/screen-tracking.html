@@ -99,33 +99,25 @@
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> navigationRef <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">const</span> routeNameRef <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>NavigationNativeContainer
-      ref<span class="token operator">=</span><span class="token punctuation">{</span>navigationRef<span class="token punctuation">}</span>
-      onStateChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> navigation <span class="token operator">=</span> navigationRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationNativeContainer</span></span>
+      <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigationRef<span class="token punctuation">}</span></span>
+      <span class="token attr-name">onStateChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> previousRouteName <span class="token operator">=</span> routeNameRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
+        <span class="token keyword">const</span> currentRouteName <span class="token operator">=</span> <span class="token function">getActiveRouteName</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>navigation<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">const</span> previousRouteName <span class="token operator">=</span> routeNameRef<span class="token punctuation">.</span>current<span class="token punctuation">;</span>
-          <span class="token keyword">const</span> currentRouteName <span class="token operator">=</span> <span class="token function">getActiveRouteName</span><span class="token punctuation">(</span>
-            <span class="token comment">// Get the root navigator state to find the active route</span>
-            navigation<span class="token punctuation">.</span><span class="token function">getRootState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-          <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>previousRouteName <span class="token operator">!==</span> currentRouteName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// The line below uses the @react-native-firebase/analytics tracker</span>
-            <span class="token comment">// Change this line to use another Mobile analytics SDK</span>
-            <span class="token function">analytics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCurrentScreen</span><span class="token punctuation">(</span>currentRouteName<span class="token punctuation">,</span> currentRouteName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-
-          <span class="token comment">// Save the current route name for later comparision</span>
-          routeNameRef<span class="token punctuation">.</span>current <span class="token operator">=</span> currentRouteName<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>previousRouteName <span class="token operator">!==</span> currentRouteName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">// The line below uses the @react-native-firebase/analytics tracker</span>
+          <span class="token comment">// Change this line to use another Mobile analytics SDK</span>
+          <span class="token function">analytics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCurrentScreen</span><span class="token punctuation">(</span>currentRouteName<span class="token punctuation">,</span> currentRouteName<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span><span class="token punctuation">}</span>
-    <span class="token operator">></span>
+
+        <span class="token comment">// Save the current route name for later comparision</span>
+        routeNameRef<span class="token punctuation">.</span>current <span class="token operator">=</span> currentRouteName<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+    <span class="token punctuation">></span></span>
       <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationNativeContainer</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
