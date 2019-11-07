@@ -178,6 +178,45 @@
         id<span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>It's important to note that the state object must match the hierarchy of nested navigators. Otherwise the state will be discarded.</p>
+<p>Sometimes we'll have the target navigator nested in other navigators which aren't part of the deep link. In this case, specifying the mapping isn't sufficient and we need to account for the additional navigators as well. For example, let's say the navigator containing the <code>Catalog</code> screen is nested inside a screen named <code>Tabs</code> in another navigator. In this case, we'll need to modify the returned state object to include it. We can use the <code>getStateFromPath</code> option to achieve it:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> getStateFromPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/core'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  prefixes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    Chat<span class="token punctuation">:</span> <span class="token string">'feed/:sort'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">getStateFromPath</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">getStateFromPath</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Tabs'</span><span class="token punctuation">,</span> state <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This will result in the following state object:</p>
+<pre><code class="hljs css language-js"><span class="token punctuation">{</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'Tabs'</span><span class="token punctuation">,</span>
+      state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            name<span class="token punctuation">:</span> <span class="token string">'Catalog'</span><span class="token punctuation">,</span>
+            params<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              id<span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -250,15 +289,39 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <h2><a class="anchor" aria-hidden="true" id="使用-react-native-init-创建项目"></a><a href="#使用-react-native-init-创建项目" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用 <code>react-native init</code> 创建项目</h2>
 <h3><a class="anchor" aria-hidden="true" id="ios"></a><a href="#ios" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>iOS</h3>
 <p>让我们将原生的 iOS 应用程序配置为使用 <code>mychat://</code> URI 方案打开。</p>
-<p>In <code>SimpleApp/ios/SimpleApp/AppDelegate.m</code>:</p>
+<p>You'll need to link <code>RCTLinking</code> to your project by following the steps described here. To be able to listen to incoming app links, you'll need to add the following lines to <code>SimpleApp/ios/SimpleApp/AppDelegate.m</code>.</p>
+<p>If you're targeting iOS 9.x or newer:</p>
 <pre><code class="hljs css language-objc"><span class="hljs-comment">// Add the header at the top of the file:</span>
 <span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
 
-<span class="hljs-comment">// Add this above the `@end`:</span>
-- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)app openURL:(<span class="hljs-built_in">NSURL</span> *)url
-            options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options
+<span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application
+   openURL:(<span class="hljs-built_in">NSURL</span> *)url
+   options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options
 {
-  <span class="hljs-keyword">return</span> [RCTLinkingManager application:app openURL:url options:options];
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url options:options];
+}
+</code></pre>
+<p>If you're targeting iOS 8.x or older, you can use the following code instead:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// Add the header at the top of the file:</span>
+<span class="hljs-meta">#import <span class="hljs-meta-string">&lt;React/RCTLinkingManager.h&gt;</span></span>
+
+<span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application openURL:(<span class="hljs-built_in">NSURL</span> *)url
+  sourceApplication:(<span class="hljs-built_in">NSString</span> *)sourceApplication annotation:(<span class="hljs-keyword">id</span>)annotation
+{
+  <span class="hljs-keyword">return</span> [RCTLinkingManager application:application openURL:url
+                      sourceApplication:sourceApplication annotation:annotation];
+}
+</code></pre>
+<p>If your app is using Universal Links, you'll need to add the following code as well:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// Add this above `@end`:</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application continueUserActivity:(<span class="hljs-keyword">nonnull</span> <span class="hljs-built_in">NSUserActivity</span> *)userActivity
+ restorationHandler:(<span class="hljs-keyword">nonnull</span> <span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-keyword">id</span>&lt;<span class="hljs-built_in">UIUserActivityRestoring</span>&gt;&gt; * _Nullable))restorationHandler
+{
+ <span class="hljs-keyword">return</span> [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                    restorationHandler:restorationHandler];
 }
 </code></pre>
 <p>在Xcode中，在<code>SimpleApp/ios/SimpleApp.xcodeproj</code>处打开项目。 选择侧边栏中的项目并导航到信息选项卡。 滚动到 &quot;URL Types&quot; 并添加一项。 In the new URL type, set the identifier and the URL scheme to your desired URL scheme.</p>
@@ -306,15 +369,7 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
     . . .
   ]
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="disable-deep-linking"></a><a href="#disable-deep-linking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Disable deep linking</h2>
-<p>If you're using React Navigation within a hybrid app - an iOS app that has both Swift/ObjC and React Native parts - you may be missing the <code>RCTLinkingIOS</code> subspec in your Podfile, which is installed by default in new RN projects. To add this, ensure your Podfile looks like the following:</p>
-<pre><code class="hljs css language-pod"> pod <span class="hljs-string">'React'</span>, :<span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> <span class="hljs-string">'../node_modules/react-native'</span>, :<span class="hljs-function"><span class="hljs-params">subspecs</span> =&gt;</span> [
-    . . . <span class="hljs-comment">// other subspecs</span>
-    <span class="hljs-string">'RCTLinkingIOS'</span>,
-    . . .
-  ]
-</code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/navigation-key.html"><span class="arrow-prev">← </span><span>使用 navigation key</span></a><a class="docs-next button" href="/docs/zh-Hans/next/screen-tracking.html"><span>Screen tracking for analytics</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#创建-expo-项目">创建 Expo 项目</a><ul class="toc-headings"><li><a href="#uri前缀">URI前缀</a></li><li><a href="#在-ios-上测试深度链接">在 iOS 上测试深度链接</a></li><li><a href="#在-android-上测试深度链接">在 Android 上测试深度链接</a></li></ul></li><li><a href="#使用-react-native-init-创建项目">使用 <code>react-native init</code> 创建项目</a><ul class="toc-headings"><li><a href="#ios">iOS</a></li><li><a href="#android">Android</a></li></ul></li><li><a href="#混合ios应用-仅针对rn项目请跳过">混合iOS应用（仅针对RN项目请跳过）</a></li><li><a href="#disable-deep-linking">Disable deep linking</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/navigation-key.html"><span class="arrow-prev">← </span><span>使用 navigation key</span></a><a class="docs-next button" href="/docs/zh-Hans/next/screen-tracking.html"><span>Screen tracking for analytics</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#创建-expo-项目">创建 Expo 项目</a><ul class="toc-headings"><li><a href="#uri前缀">URI前缀</a></li><li><a href="#在-ios-上测试深度链接">在 iOS 上测试深度链接</a></li><li><a href="#在-android-上测试深度链接">在 Android 上测试深度链接</a></li></ul></li><li><a href="#使用-react-native-init-创建项目">使用 <code>react-native init</code> 创建项目</a><ul class="toc-headings"><li><a href="#ios">iOS</a></li><li><a href="#android">Android</a></li></ul></li><li><a href="#混合ios应用-仅针对rn项目请跳过">混合iOS应用（仅针对RN项目请跳过）</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/api-reference.html">API Reference</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
