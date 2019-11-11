@@ -25,7 +25,7 @@
             <link>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</link>
             <guid>https://reactnavigation.org/blog/2019/09/16/react-navigation-4.0.html</guid>
             <pubDate>Mon, 16 Sep 2019 06:00:00 GMT</pubDate>
-            <description><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v3 lives <a href="/docs/en/3.x/getting-started.html">here</a>.</p> <p>In this release, we have removed the navigators from the react-navigation package. The navigators have lived in separate packages for quite a while and you could already ...</p>]]></description>
+            <description><![CDATA[<p>The documentation is now live at <a href="https://reactnavigation.org">https://reactnavigation.org</a>, and v3 lives <a href="/docs/en/3.x/getting-started.html">here</a>.</p> <p>In this release, we have removed the navigators from the react-navigation package. The navigators have lived in separate packages for quite a while and you could already...</p>]]></description>
         </item>
         <item>
             <title><![CDATA[React Navigation 3.0]]></title>
