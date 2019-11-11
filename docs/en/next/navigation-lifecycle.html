@@ -107,9 +107,43 @@
 </code></pre>
 <p>We start on the <code>HomeScreen</code> and navigate to <code>DetailsScreen</code>. Then we use the tab bar to switch to the <code>SettingsScreen</code> and navigate to <code>ProfileScreen</code>. After this sequence of operations is done, all 4 of the screens are mounted! If you use the tab bar to switch back to the <code>HomeStack</code>, you'll notice you'll be presented with the <code>DetailsScreen</code> - the navigation state of the <code>HomeStack</code> has been preserved!</p>
 <h2><a class="anchor" aria-hidden="true" id="react-navigation-lifecycle-events"></a><a href="#react-navigation-lifecycle-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>React Navigation lifecycle events</h2>
-<p>Now that we understand how React lifecycle methods work in React Navigation, let's answer the question we asked at the beginning: &quot;How do we find out that a user is leaving it or coming back to it?&quot;</p>
-<p>React Navigation emits events to screen components that subscribe to them. There are 2 different events that you can subscribe to: <code>focus</code> and <code>blur</code>. Read more about them in the <a href="navigation-prop.html#addlistener-subscribe-to-updates-to-navigation-lifecycle">API reference</a>.</p>
-<p>Many of your use cases may be covered with the <a href="use-focus-effect.html"><code>useFocusEffect</code></a> hook or the <a href="use-is-focused.html"><code>useIsFocused</code></a> hook.</p>
+<p>Now that we understand how React lifecycle methods work in React Navigation, let's answer the question we asked at the beginning: &quot;How do we find out that a user is leaving (blur) it or coming back to it (focus)?&quot;</p>
+<p>React Navigation emits events to screen components that subscribe to them. We can listen to <code>focus</code> and <code>blur</code> events to know when a screen comes into focus or goes out of focus respectively.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> unsubscribe <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token string">'focus'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// Screen was focused</span>
+      <span class="token comment">// Do something</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> unsubscribe<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ProfileContent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Read more about events in the <a href="navigation-prop.html#navigation-events">API reference</a>.</p>
+<p>Instead of adding event listeners manually, we can use the <a href="use-focus-effect.html"><code>useFocusEffect</code></a> hook to perform side effects. It's like React's <code>useEffect</code> hook, but it ties into the navigation lifecycle.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useFocusEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/core'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">useFocusEffect</span><span class="token punctuation">(</span>
+    React<span class="token punctuation">.</span><span class="token function">useCallback</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// Do something when the screen is focused</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token comment">// Do something when the screen is unfocused</span>
+        <span class="token comment">// Useful for cleanup functions</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ProfileContent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>If you want to render different things based on if the screen is focused or not, you can use the <a href="use-is-focused.html"><code>useIsFocused</code></a> hook which returns a boolean indicating whether the screen is focused.</p>
 <h2><a class="anchor" aria-hidden="true" id="summary"></a><a href="#summary" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Summary</h2>
 <ul>
 <li>While React's lifecycle methods are still valid, React Navigation adds more events that you can subscribe to through the <code>navigation</code> prop.</li>
