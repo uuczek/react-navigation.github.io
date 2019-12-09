@@ -127,8 +127,15 @@
   React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// Fetch the token from storage then navigate to our appropriate place</span>
     <span class="token keyword">const</span> <span class="token function-variable function">bootstrapAsync</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token comment">// We should also handle error for production apps</span>
-      <span class="token keyword">const</span> userToken <span class="token operator">=</span> <span class="token keyword">await</span> AsyncStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'userToken'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">let</span> userToken<span class="token punctuation">;</span>
+
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        userToken <span class="token operator">=</span> <span class="token keyword">await</span> AsyncStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'userToken'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Restoring token failed</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// After restoring token, we may need to validate it in production apps</span>
 
       <span class="token comment">// This will switch to the App screen or Auth screen and this loading</span>
       <span class="token comment">// screen will be unmounted and thrown away.</span>
