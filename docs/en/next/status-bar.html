@@ -153,7 +153,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Then, in both <code>Screen1.js</code> and <code>Screen2.js</code> we'll use <code>useFocusEffect</code> to change the <code>StatusBar</code> configuration when that tab <code>didFocus</code>. We'll also make sure to remove the listener when the <code>TabNavigator</code> has been unmounted.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useFocusEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/core'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useFocusEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">function</span> <span class="token function">Screen1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">useFocusEffect</span><span class="token punctuation">(</span>

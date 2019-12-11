@@ -181,7 +181,7 @@
 </code></pre>
 <p>It's important to note that the state object must match the hierarchy of nested navigators. Otherwise the state will be discarded.</p>
 <p>Sometimes we'll have the target navigator nested in other navigators which aren't part of the deep link. In this case, specifying the mapping isn't sufficient and we need to account for the additional navigators as well. For example, let's say the navigator containing the <code>Catalog</code> screen is nested inside a screen named <code>Tabs</code> in another navigator. In this case, we'll need to modify the returned state object to include it. We can use the <code>getStateFromPath</code> option to achieve it:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> getStateFromPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/core'</span><span class="token punctuation">;</span>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> getStateFromPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// ...</span>
 
