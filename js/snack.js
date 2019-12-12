@@ -15,7 +15,7 @@ const DEPS_VERSIONS = {
     "@react-navigation/material-top-tabs@^5.0.0-alpha.22",
     "@react-navigation/native-stack@^5.0.0-alpha.16",
     "@react-navigation/stack@^5.0.0-alpha.43",
-    "react-native-gesture-handler@1.5.2"
+    "react-native-gesture-handler@1.5.2",
     "react-native-reanimated@1.4.0",
     "react-native-safe-area-context@0.6.0",
     "react-native-screens@2.0.0-alpha.17",
