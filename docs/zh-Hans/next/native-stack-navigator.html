@@ -77,13 +77,16 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/native-stack-navigator.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">createNativeStackNavigator</h1></header><article><div><span><p>为你的应用程序提供一种在每个新屏幕放置在堆栈顶部的屏幕之间转换的方法。</p>
 <p>默认情况下，stack navigator 被配置为具有熟悉的iOS和Android外观 &amp; 感觉：新屏幕从iOS右侧滑入，从Android底部淡入。 在iOS上，stack navigator 也可以配置为屏幕从底部滑入的模式样式。</p>
 <p>This uses native primitives for navigation using <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a> under the hood, as opposed to the JS based stack navigator. While this provides native feeling and performance, it's not as customizable.</p>
-<p>Expo is currently not supported as it includes an older version of <code>react-native-screens</code>.</p>
 <p>To use this navigator, you need to install <a href="https://github.com/react-navigation/navigation-ex/tree/master/packages/native-stack"><code>@react-navigation/native-stack</code></a>:</p>
 <pre><code class="hljs css language-sh">yarn add @react-navigation/native@next @react-navigation/native-stack@next
 </code></pre>
-<p>Now we need to install <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>.</p>
+<p>如果使用的是Expo，请确保运行兼容版本的库，请运行：</p>
+<pre><code class="hljs css language-sh">expo install react-native-screens
+</code></pre>
+<p>如果您没有使用Expo，请运行以下命令：</p>
 <pre><code class="hljs css language-sh">yarn add react-native-screens
 </code></pre>
+<p>如果您正在使用Expo，则已完成。 否则，请继续以下步骤。</p>
 <p>为了在 iOS 上完成自动链接, 请确保你已经安装了<a href="https://cocoapods.org/">Cocoapods</a> Then run:</p>
 <pre><code class="hljs css language-sh"><span class="hljs-built_in">cd</span> ios
 pod install
