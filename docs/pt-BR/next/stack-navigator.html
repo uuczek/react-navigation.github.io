@@ -190,7 +190,9 @@ public class MainActivity extends ReactActivity {
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code>.</p>
+<p>When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code>. You should also specify a height in <code>headerStyle</code> to avoid glitches:</p>
+<pre><code class="hljs css language-js">headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> height<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token comment">// Specify the height of your custom header</span>
+</code></pre>
 <p>To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.</p>
 <h4><a class="anchor" aria-hidden="true" id="headershown"></a><a href="#headershown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerShown</code></h4>
 <p>Whether to show or hide the header for the screen. The header is shown by default unless <code>headerMode</code> was set to <code>none</code>. Setting this to <code>false</code> hides the header.</p>
@@ -240,6 +242,13 @@ public class MainActivity extends ReactActivity {
 <p>O padrão é <code>false</code>. If <code>true</code>, the header will not have a background unless you explicitly provide it with <code>headerBackground</code>. The header will also float over the screen so that it overlaps the content underneath.</p>
 <p>This is useful if you want to render a semi-transparent header or a blurred background.</p>
 <p>Note that if you don't want your content to appear under the header, you need to manually add a top margin to your content. React Navigation won't do it automatically.</p>
+<p>To get the height of the header, you can use <code>useHeaderHeight</code>:</p>
+<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useHeaderHeight <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/stack'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">const</span> headerHeight <span class="token operator">=</span> <span class="token function">useHeaderHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h4><a class="anchor" aria-hidden="true" id="headerbackground"></a><a href="#headerbackground" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackground</code></h4>
 <p>Function which returns a React Element to render as the background of the header. This is useful for using backgrounds such as an image or a gradient.</p>
 <p>You can use this with <code>headerTransparent</code> to render a blur view, for example, to create a translucent header.</p>
