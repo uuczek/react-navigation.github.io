@@ -76,39 +76,40 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/navigating-without-navigation-prop.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">在没有 navigation 这个 prop 的情况下进行页面跳转</h1></header><article><div><span><p>Calling functions such as <code>navigate</code> or <code>popToTop</code> on the <code>navigation</code> prop is not the only way to navigate around your app. As an alternative, you can dispatch navigation actions on the navigation container. 当你想要从无法访问<code>navigation</code> prop的地方触发导航操作，或者你正在寻找替代方法来使用<code>navigation</code> prop 时，这个方法是非常有用的。</p>
 <p>You can get access to the root navigation object through a <code>ref</code> and pass it to the <code>NavigationService</code> which we will later use to navigate.</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-comment">// App.js</span>
+<pre><code class="hljs css language-js"><span class="token comment">// App.js</span>
 
-<span class="hljs-keyword">import</span> { NavigationNativeContainer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@react-navigation/native'</span>;
-<span class="hljs-keyword">import</span> { navigationRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'./NavigationService'</span>;
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationNativeContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> navigationRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./NavigationService'</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">NavigationNativeContainer</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{navigationRef}</span>&gt;</span>
-      {/* ... */}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationNativeContainer</span>&gt;</span></span>
-  );
-}
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationNativeContainer</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigationRef<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
+      <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationNativeContainer</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>在下一步中，我们定义<code>NavigationService</code>，它是一个可以调度用户定义的导航操作的简单模块。</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-comment">// NavigationService.js</span>
+<pre><code class="hljs css language-js"><span class="token comment">// NavigationService.js</span>
 
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> navigationRef = React.createRef();
+<span class="token keyword">export</span> <span class="token keyword">const</span> navigationRef <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">navigate</span>(<span class="hljs-params">name, params</span>) </span>{
-  navigationRef.current &amp;&amp; navigationRef.current.navigate(name, params);
-}
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> params</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  navigationRef<span class="token punctuation">.</span>current <span class="token operator">&amp;&amp;</span> navigationRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="hljs-comment">// add other navigation functions that you need and export them</span>
+<span class="token comment">// add other navigation functions that you need and export them</span>
 </code></pre>
 <p>然后，在你的任何 javascript 模块中，只需导入<code>NavigationService</code>并调用你从它导出的函数。 你就可以在你的React组件之外使用这种方法（事实上，它在内部使用时也可以）。</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-comment">// any js module</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> NavigationService <span class="hljs-keyword">from</span> <span class="hljs-string">'./path/to/NavigationService.js'</span>;
+<p><samp id="no-nav-prop" /></p>
+<pre><code class="hljs css language-js"><span class="token comment">// any js module</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> NavigationService <span class="token keyword">from</span> <span class="token string">'./path/to/NavigationService.js'</span><span class="token punctuation">;</span>
 
-<span class="hljs-comment">// ...</span>
+<span class="token comment">// ...</span>
 
-NavigationService.navigate(<span class="hljs-string">'ChatScreen'</span>, { <span class="hljs-attr">userName</span>: <span class="hljs-string">'Lucy'</span> });
+NavigationService<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'ChatScreen'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> userName<span class="token punctuation">:</span> <span class="token string">'Lucy'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>在<code>NavigationService</code>中，您可以创建自己的导航操作，或将多个导航操作组合成一个，然后在整个应用程序中轻松地复用它们。 在编写测试代码时，你可以模拟导航功能，并使用正确的参数来决定是否调用正确的功能。</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/connecting-navigation-prop.html"><span class="arrow-prev">← </span><span>从任何组件访问 navigation prop</span></a><a class="docs-next button" href="/docs/zh-Hans/next/deep-linking.html"><span>深度链接</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>

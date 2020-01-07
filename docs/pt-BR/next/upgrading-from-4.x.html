@@ -135,7 +135,7 @@
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// ...</span>
@@ -144,7 +144,7 @@
   <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
   <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">}</span></span>
   <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">.</span>navigationOptions<span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
+<span class="token punctuation">/></span></span><span class="token punctuation">;</span>
 </code></pre>
 <p>You might be curious, why don't we support it by default anymore if it's so easy?</p>
 <ul>
@@ -159,7 +159,7 @@
 <p>In React Navigation 4.x, the <code>navigation</code> prop contained various helper methods as well as the current screen's state. In React Navigation 5.x, we have split the <code>navigation</code> prop into 2 props: <code>navigation</code> prop contains helper methods such as <code>navigate</code>, <code>goBack</code> etc., <code>route</code> prop contains the current screen's data (previously accessed via <code>navigation.state</code>).</p>
 <p>This means, now we can access screen's params through <code>route.params</code> instead of <code>navigation.state.params</code>:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">ProfileScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> route <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> useerId <span class="token operator">=</span> route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>me<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> userId <span class="token operator">=</span> route<span class="token punctuation">.</span>params<span class="token punctuation">.</span>me<span class="token punctuation">;</span>
 
   <span class="token comment">// ...</span>
 <span class="token punctuation">}</span>
