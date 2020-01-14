@@ -151,13 +151,14 @@
 xcrun simctl openurl booted exp://127.0.0.1:19000/--/chat/Eric
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="在-android-上测试深度链接"></a><a href="#在-android-上测试深度链接" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在 Android 上测试深度链接</h3>
-<p>要测试Android中的 intent 处理(Expo client app )，请运行以下命令：</p>
-<pre><code class="hljs css language-sh">adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"[ put your URI prefix in here ]"</span> com.simpleapp
+<p>To test the intent handling in the Expo client app on Android, run the following:</p>
+<pre><code class="hljs css language-sh">adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"[ put your URI prefix in here ]"</span> host.exp.exponent
 
-// <span class="hljs-keyword">for</span> example
+<span class="hljs-comment"># for example</span>
 
-adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"exp://127.0.0.1:19000/--/chat/Eric"</span> com.simpleapp
+adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"exp://127.0.0.1:19000/--/chat/jane"</span> host.exp.exponent
 </code></pre>
+<p>Change <code>host.exp.exponent</code> to your app package name if you are testig on a standalone app.</p>
 <p>阅读<a href="https://docs.expo.io/versions/latest/guides/linking.html">expo 链接指南</a>，了解更多关于如何配置 expo 项目链接的信息。</p>
 <h2><a class="anchor" aria-hidden="true" id="使用-react-native-init-创建项目"></a><a href="#使用-react-native-init-创建项目" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>使用 <code>react-native init</code> 创建项目</h2>
 <h3><a class="anchor" aria-hidden="true" id="uri前缀-1"></a><a href="#uri前缀-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>URI前缀</h3>
@@ -193,7 +194,7 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <p>要在真机上测试 URI，请打开 Safari 并输入<code>mychat://chat/Eric</code>。</p>
 <h3><a class="anchor" aria-hidden="true" id="android"></a><a href="#android" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Android</h3>
 <p>要在 Android 中配置外部链接，您可以在清单文件中创建新的 intent。</p>
-<p>在 <code>SimpleApp/android/app/src/main/AndroidManifest.xml</code> 中进行以下调整:</br></p>
+<p>In <code>SimpleApp/android/app/src/main/AndroidManifest.xml</code>, do these followings adjustments:</p>
 <ol>
 <li>为了在已经存在的 <code>MainActivity</code> 上接收 intent, 请设置 <code>MainActivity</code> 的 <code>launchMode</code> 为 <code>singleTask</code> 如果你想在已经注册的 - <a href="http://developer.android.com/training/app-indexing/deep-linking.html#adding-filters">details</a> 页面中使用深度链接进行导航, 这么做是有用的</br></li>
 <li>在 <code>MainActivity</code> 入口处添加新的 <code>intent-filter</code> 类型为 <code>VIEW</code>:</li>
@@ -220,7 +221,7 @@ adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string"
 <pre><code class="hljs css language-sh">adb shell am start -W -a android.intent.action.VIEW -d <span class="hljs-string">"mychat://chat/Eric"</span> com.simpleapp
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="禁用-deep-linking"></a><a href="#禁用-deep-linking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>禁用 deep linking</h2>
-<p>如果你希望自己通过深层链接而不是<code>react-navigation</code>来处理路由，可以将<code>enableURLHandling = {false}</code>属性传递到你的 App Container：</p>
+<p>In case you want to handle routing with deep-linking by yourself instead of <code>react-navigation</code>, you can pass <code>enableURLHandling={false}</code> prop to your app container:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> SimpleApp <span class="token operator">=</span> <span class="token function">createAppContainer</span><span class="token punctuation">(</span><span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">MainApp</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SimpleApp</span></span> <span class="token attr-name">enableURLHandling</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
