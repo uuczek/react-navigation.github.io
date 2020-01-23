@@ -80,239 +80,555 @@
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="api-definition"></a><a href="#api-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Definition</h2>
 <p>To use this drawer navigator, import it from <code>@react-navigation/drawer</code>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createDrawerNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/drawer'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> Drawer <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Feed<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Article<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Article<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<p><samp id="simple-drawer"></p></p>
+<pre><code class="js">import { createDrawerNavigator } from '@react-navigation/drawer';
+<p>const Drawer = createDrawerNavigator();</p>
+<p>function MyDrawer() {
+return (
+&lt;Drawer.Navigator&gt;
+&lt;Drawer.Screen name=&quot;Feed&quot; component={Feed} /&gt;
+&lt;Drawer.Screen name=&quot;Article&quot; component={Article} /&gt;
+&lt;/Drawer.Navigator&gt;
+);
+}
+</code></pre></p>
 <blockquote>
-<p>For a complete usage guide please visit <a href="https://reactnavigation.org/docs/drawer-based-navigation.html">Drawer Navigation</a>.</p>
+  <p>
+    For a complete usage guide please visit <a href="drawer-based-navigation.md">Drawer Navigation</a>.
+  </p>
 </blockquote>
-<h3><a class="anchor" aria-hidden="true" id="props"></a><a href="#props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Props</h3>
-<p>The <code>Drawer.Navigator</code> component accepts following props:</p>
-<h4><a class="anchor" aria-hidden="true" id="initialroutename"></a><a href="#initialroutename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>initialRouteName</code></h4>
-<p>The name of the route to render on first load of the navigator.</p>
-<h4><a class="anchor" aria-hidden="true" id="screenoptions"></a><a href="#screenoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>screenOptions</code></h4>
-<p>Default options to use for the screens in the navigator.</p>
-<h4><a class="anchor" aria-hidden="true" id="backbehavior"></a><a href="#backbehavior" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>backBehavior</code></h4>
-<p>Behavior of back button handling.</p>
+<p><h3>
+Props
+</h3></p>
+<p>
+  The <code>Drawer.Navigator</code> component accepts following props:
+</p>
+<p><h4>
+<code>initialRouteName</code>
+</h4></p>
+<p>
+  The name of the route to render on first load of the navigator.
+</p>
+<p><h4>
+<code>screenOptions</code>
+</h4></p>
+<p>
+  Default options to use for the screens in the navigator.
+</p>
+<p><h4>
+<code>backBehavior</code>
+</h4></p>
+<p>
+  Behavior of back button handling.
+</p>
 <ul>
-<li><code>initialRoute</code> to return to initial tab</li>
-<li><code>order</code> to return to previous tab (in the order they are shown in the tab bar)</li>
-<li><code>history</code> to return to last visited tab</li>
-<li><code>none</code> to not handle back button</li>
+  <li>
+    <code>initialRoute</code> to return to initial tab
+  </li>
+  <li>
+    <code>order</code> to return to previous tab (in the order they are shown in the tab bar)
+  </li>
+  <li>
+    <code>history</code> to return to last visited tab
+  </li>
+  <li>
+    <code>none</code> to not handle back button
+  </li>
 </ul>
-<h4><a class="anchor" aria-hidden="true" id="drawerposition"></a><a href="#drawerposition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerPosition</code></h4>
-<p>Options are <code>left</code> or <code>right</code>. Default is <code>left</code> position.</p>
-<h4><a class="anchor" aria-hidden="true" id="drawertype"></a><a href="#drawertype" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerType</code></h4>
-<p>Type of the drawer. It determines how the drawer looks and animates.</p>
+<p><h4>
+<code>drawerPosition</code>
+</h4></p>
+<p>
+  Options are <code>left</code> or <code>right</code>. Default is <code>left</code> position.
+</p>
+<p><h4>
+<code>drawerType</code>
+</h4></p>
+<p>
+  Type of the drawer. It determines how the drawer looks and animates.
+</p>
 <ul>
-<li><code>front</code>: Traditional drawer which covers the screen with a overlay behind it.</li>
-<li><code>back</code>: The drawer is revealed behind the screen on swipe.</li>
-<li><code>slide</code>: Both the screen and the drawer slide on swipe to reveal the drawer.</li>
+  <li>
+    <code>front</code>: Traditional drawer which covers the screen with a overlay behind it.
+  </li>
+  <li>
+    <code>back</code>: The drawer is revealed behind the screen on swipe.
+  </li>
+  <li>
+    <code>slide</code>: Both the screen and the drawer slide on swipe to reveal the drawer.
+  </li>
 </ul>
-<h4><a class="anchor" aria-hidden="true" id="edgewidth"></a><a href="#edgewidth" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>edgeWidth</code></h4>
-<p>Allows for defining how far from the edge of the content view the swipe gesture should activate</p>
-<h4><a class="anchor" aria-hidden="true" id="hidestatusbar"></a><a href="#hidestatusbar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>hideStatusBar</code></h4>
-<p>When set to true Drawer component will hide the OS status bar whenever the drawer is pulled or when it's in an &quot;open&quot; state.</p>
-<h4><a class="anchor" aria-hidden="true" id="statusbaranimation"></a><a href="#statusbaranimation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>statusBarAnimation</code></h4>
-<p>Animation of the statusbar when hiding it. use in combination with <code>hideStatusBar</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="keyboarddismissmode"></a><a href="#keyboarddismissmode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyboardDismissMode</code></h4>
-<p>Whether the keyboard should be dismissed when the swipe gesture begins. Defaults to <code>'on-drag'</code>. Set to <code>'none'</code> to disable keyboard handling.</p>
-<h4><a class="anchor" aria-hidden="true" id="minswipedistance"></a><a href="#minswipedistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>minSwipeDistance</code></h4>
-<p>Minimum swipe distance threshold that should activate opening the drawer.</p>
-<h4><a class="anchor" aria-hidden="true" id="overlaycolor"></a><a href="#overlaycolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>overlayColor</code></h4>
-<p>Color overlay to be displayed on top of the content view when drawer gets open. The opacity is animated from <code>0</code> to <code>1</code> when the drawer opens.</p>
-<h4><a class="anchor" aria-hidden="true" id="gesturehandlerprops"></a><a href="#gesturehandlerprops" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureHandlerProps</code></h4>
-<p>Props to pass to the underlying pan gesture handler.</p>
-<h4><a class="anchor" aria-hidden="true" id="lazy"></a><a href="#lazy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>lazy</code></h4>
-<p>Whether the screens should render the first time they are accessed. Defaults to <code>true</code>. Set it to <code>false</code> if you want to render all screens on initial render.</p>
-<h4><a class="anchor" aria-hidden="true" id="unmountinactivescreens"></a><a href="#unmountinactivescreens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>unmountInactiveScreens</code></h4>
-<p>Whether a screen should be unmounted when navigating away from it. Unmounting a screen resets any local state in the screen as well as state of nested navigators in the screen. O padrão é <code>false</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="scenecontainerstyle"></a><a href="#scenecontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sceneContainerStyle</code></h4>
-<p>Style object for the component wrapping the screen content.</p>
-<h4><a class="anchor" aria-hidden="true" id="drawerstyle"></a><a href="#drawerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerStyle</code></h4>
-<p>Style object for the drawer component. You can pass a custom background color for a drawer or a custom width here.</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Navigator</span></span>
-  <span class="token attr-name">drawerStyle</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    backgroundColor<span class="token punctuation">:</span> <span class="token string">'#c6cbef'</span><span class="token punctuation">,</span>
-    width<span class="token punctuation">:</span> <span class="token number">240</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">></span></span>
-  <span class="token punctuation">{</span><span class="token comment">/* screens */</span><span class="token punctuation">}</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
+<p><h4>
+<code>edgeWidth</code>
+</h4></p>
+<p>
+  Allows for defining how far from the edge of the content view the swipe gesture should activate
+</p>
+<p><h4>
+<code>hideStatusBar</code>
+</h4></p>
+<p>
+  When set to true Drawer component will hide the OS status bar whenever the drawer is pulled or when it's in an "open" state.
+</p>
+<p><h4>
+<code>statusBarAnimation</code>
+</h4></p>
+<p>
+  Animation of the statusbar when hiding it. use in combination with <code>hideStatusBar</code>.
+</p>
+<p><h4>
+<code>keyboardDismissMode</code>
+</h4></p>
+<p>
+  Whether the keyboard should be dismissed when the swipe gesture begins. Defaults to <code>'on-drag'</code>. Set to <code>'none'</code> to disable keyboard handling.
+</p>
+<p><h4>
+<code>minSwipeDistance</code>
+</h4></p>
+<p>
+  Minimum swipe distance threshold that should activate opening the drawer.
+</p>
+<p><h4>
+<code>overlayColor</code>
+</h4></p>
+<p>
+  Color overlay to be displayed on top of the content view when drawer gets open. The opacity is animated from <code>0</code> to <code>1</code> when the drawer opens.
+</p>
+<p><h4>
+<code>gestureHandlerProps</code>
+</h4></p>
+<p>
+  Props to pass to the underlying pan gesture handler.
+</p>
+<p><h4>
+<code>lazy</code>
+</h4></p>
+<p>
+  Whether the screens should render the first time they are accessed. Defaults to <code>true</code>. Set it to <code>false</code> if you want to render all screens on initial render.
+</p>
+<p><h4>
+<code>unmountInactiveScreens</code>
+</h4></p>
+<p>
+  Whether a screen should be unmounted when navigating away from it. Unmounting a screen resets any local state in the screen as well as state of nested navigators in the screen. O padrão é <code>false</code>.
+</p>
+<p><h4>
+<code>sceneContainerStyle</code>
+</h4></p>
+<p>
+  Style object for the component wrapping the screen content.
+</p>
+<p><h4>
+<code>drawerStyle</code>
+</h4></p>
+<p>
+  Style object for the drawer component. You can pass a custom background color for a drawer or a custom width here.
+</p>
+<p>
+  <samp id="drawer-with-style"></p> 
+  <pre><code class="js">&lt;Drawer.Navigator
+  drawerStyle={{
+    backgroundColor: '#c6cbef',
+    width: 240,
+  }}
+&gt;
+  {/* screens */}
+&lt;/Drawer.Navigator&gt;
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="drawercontent"></a><a href="#drawercontent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerContent</code></h4>
-<p>Function that returns React element to render as the content of the drawer, for example, navigation items</p>
-<p>The content component receives following props by default:</p>
-<ul>
-<li><code>state</code> - The navigation state of the navigator, <code>state.routes</code> contains list of all routes</li>
-<li><code>navigation</code> - The navigation object for the navigator.</li>
-<li><code>descriptors</code> - An descriptor object containing options for the drawer screens. The options can be accessed at <code>descriptors[route.key].options</code>.</li>
-<li><code>progress</code> - Reanimated Node that represents the animated position of the drawer (0 is closed; 1 is open).</li>
-</ul>
-<h5><a class="anchor" aria-hidden="true" id="providing-a-custom-drawercontent"></a><a href="#providing-a-custom-drawercontent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Providing a custom <code>drawerContent</code></h5>
-<p>O componente padrão do drawer é rolável e contém apenas links para as rotas no RouteConfig. Você pode facilmente substituir o componente padrão para adicionar um cabeçalho, rodapé ou outro conteúdo ao drawer. The default content component is exported as <code>DrawerContent</code>. It renders a <code>DrawerItemList</code> component inside a <code>ScrollView</code>.</p>
-<p>By default the drawer is scrollable and supports devices with notches. If you customize the content, you can use <code>DrawerContentScrollView</code> to handle this automatically:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DrawerContentScrollView<span class="token punctuation">,</span> DrawerItemList <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/drawer'</span><span class="token punctuation">;</span>
+<p><h4>
+<code>drawerContent</code>
+</h4></p>
+  <p>
+    Function that returns React element to render as the content of the drawer, for example, navigation items
+  </p>
+  <p>
+    The content component receives following props by default:
+  </p>
+  <ul>
+    <li>
+      <code>state</code> - The navigation state of the navigator, <code>state.routes</code> contains list of all routes
+    </li>
+    <li>
+      <code>navigation</code> - The navigation object for the navigator.
+    </li>
+    <li>
+      <code>descriptors</code> - An descriptor object containing options for the drawer screens. The options can be accessed at <code>descriptors[route.key].options</code>.
+    </li>
+    <li>
+      <code>progress</code> - Reanimated Node that represents the animated position of the drawer (0 is closed; 1 is open).
+    </li>
+  </ul>
+<p><h5>
+Providing a custom <code>drawerContent</code>
+</h5></p>
+  <p>
+    O componente padrão do drawer é rolável e contém apenas links para as rotas no RouteConfig. Você pode facilmente substituir o componente padrão para adicionar um cabeçalho, rodapé ou outro conteúdo ao drawer. The default content component is exported as <code>DrawerContent</code>. It renders a <code>DrawerItemList</code> component inside a <code>ScrollView</code>.
+  </p>
+  <p>
+    By default the drawer is scrollable and supports devices with notches. If you customize the content, you can use <code>DrawerContentScrollView</code> to handle this automatically:
+  </p>
+  <pre><code class="js">import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+<p>function CustomDrawerContent(props) {
+return (
+&lt;DrawerContentScrollView {...props}&gt;
+&lt;DrawerItemList {...props} /&gt;
+&lt;/DrawerContentScrollView&gt;
+);
+}
+</code></pre></p>
+  <p>
+    To add additional items in the drawer, you can use the <code>DrawerItem</code> component:
+  </p>
+  <p>
+    <samp id="custom-drawer-content"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function CustomDrawerContent(props) {
+</code></pre>
+<p>return (
+&lt;DrawerContentScrollView {...props}&gt;
+&lt;DrawerItemList {...props} /&gt;
+&lt;DrawerItem
+label=&quot;Help&quot;
+onPress={() =&gt; Linking.openUrl('<a href="https://mywebsite.com/help'">https://mywebsite.com/help'</a>)}
+/&gt;
+&lt;/DrawerContentScrollView&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">&lt;p&gt;
+  The &lt;code&gt;DrawerItem&lt;/code&gt; component accepts the following props:
+&lt;/p&gt;
 
-<span class="token keyword">function</span> <span class="token function">CustomDrawerContent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DrawerContentScrollView</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DrawerItemList</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">DrawerContentScrollView</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>To add additional items in the drawer, you can use the <code>DrawerItem</code> component:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">CustomDrawerContent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DrawerContentScrollView</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DrawerItemList</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DrawerItem</span></span>
-        <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Help<span class="token punctuation">"</span></span>
-        <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> Linking<span class="token punctuation">.</span><span class="token function">openUrl</span><span class="token punctuation">(</span><span class="token string">'https://mywebsite.com/help'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">DrawerContentScrollView</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>The <code>DrawerItem</code> component accepts the following props:</p>
-<ul>
-<li><code>label</code> (required): The label text of the item. Can be string, or a function returning a react element. e.g. <code>({ focused, color }) =&gt; &lt;Text style={{ color }}&gt;{focused ? 'Focused text' : 'Unfocused text'}&lt;/Text&gt;</code>.</li>
-<li><code>icon</code>: Icon to display for the item. Accepts a function returning a react element. e.g. <code>({ focused, color, size }) =&gt; &lt;Icon color={color} size={size} name={focused ? 'heart' : 'heart-outline'} /&gt;</code>.</li>
-<li><code>focused</code>: Boolean indicating whether to highlight the drawer item as active.</li>
-<li><code>onPress</code> (required): Function to execute on press.</li>
-<li><code>activeTintColor</code>: Color for the icon and label when the item is active.</li>
-<li><code>inactiveTintColor</code>: Color for the icon and label when the item is inactive.</li>
-<li><code>activeBackgroundColor</code>: Background color for item when it's active.</li>
-<li><code>inactiveBackgroundColor</code>: Background color for item when it's inactive.</li>
-<li><code>labelStyle</code>: Style object for the label <code>Text</code>.</li>
-<li><code>style</code>: Style object for the wrapper <code>View</code>.</li>
-</ul>
-<p>The <code>progress</code> node can be used to do interesting animations in your <code>drawerContent</code>, such as parallax motion of the drawer contents:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">CustomDrawerContent</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> progress<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> translateX <span class="token operator">=</span> Animated<span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span>progress<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    inputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    outputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;code&gt;label&lt;/code&gt; (required): The label text of the item. Can be string, or a function returning a react element. e.g. &lt;code&gt;({ focused, color }) =&amp;gt; &amp;lt;Text style={{ color }}&amp;gt;{focused ? 'Focused text' : 'Unfocused text'}&amp;lt;/Text&amp;gt;&lt;/code&gt;.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;icon&lt;/code&gt;: Icon to display for the item. Accepts a function returning a react element. e.g. &lt;code&gt;({ focused, color, size }) =&amp;gt; &amp;lt;Icon color={color} size={size} name={focused ? 'heart' : 'heart-outline'} /&amp;gt;&lt;/code&gt;.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;focused&lt;/code&gt;: Boolean indicating whether to highlight the drawer item as active.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;onPress&lt;/code&gt; (required): Function to execute on press.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;activeTintColor&lt;/code&gt;: Color for the icon and label when the item is active.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;inactiveTintColor&lt;/code&gt;: Color for the icon and label when the item is inactive.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;activeBackgroundColor&lt;/code&gt;: Background color for item when it's active.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;inactiveBackgroundColor&lt;/code&gt;: Background color for item when it's inactive.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;labelStyle&lt;/code&gt;: Style object for the label &lt;code&gt;Text&lt;/code&gt;.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;style&lt;/code&gt;: Style object for the wrapper &lt;code&gt;View&lt;/code&gt;.
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Animated.View</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> transform<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> translateX <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-      <span class="token punctuation">{</span><span class="token comment">/* ... drawer contents */</span><span class="token punctuation">}</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Animated.View</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>To use the custom component, we need to pass it in the <code>drawerContent</code> prop:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Navigator</span></span> <span class="token attr-name">drawerContent</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">props</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">CustomDrawerContent</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">{</span><span class="token comment">/* screens */</span><span class="token punctuation">}</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="drawercontentoptions"></a><a href="#drawercontentoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerContentOptions</code></h4>
-<p>An object containing the props for the drawer content component. See below for more details.</p>
-<h5><a class="anchor" aria-hidden="true" id="activetintcolor"></a><a href="#activetintcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>activeTintColor</code></h5>
-<p>Color for the icon and label in the active item in the drawer.</p>
-<h5><a class="anchor" aria-hidden="true" id="activebackgroundcolor"></a><a href="#activebackgroundcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>activeBackgroundColor</code></h5>
-<p>Background color for the active item in the drawer.</p>
-<h5><a class="anchor" aria-hidden="true" id="inactivetintcolor"></a><a href="#inactivetintcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>inactiveTintColor</code></h5>
-<p>Color for the icon and label in the inactive items in the drawer.</p>
-<h5><a class="anchor" aria-hidden="true" id="inactivebackgroundcolor"></a><a href="#inactivebackgroundcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>inactiveBackgroundColor</code></h5>
-<p>Background color for the inactive items in the drawer.</p>
-<h5><a class="anchor" aria-hidden="true" id="itemstyle"></a><a href="#itemstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>itemStyle</code></h5>
-<p>Style object for the single item, which can contain an icon and/or a label.</p>
-<h5><a class="anchor" aria-hidden="true" id="labelstyle"></a><a href="#labelstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>labelStyle</code></h5>
-<p>Style object to apply to the <code>Text</code> style inside content section which renders a label.</p>
-<h5><a class="anchor" aria-hidden="true" id="contentcontainerstyle"></a><a href="#contentcontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>contentContainerStyle</code></h5>
-<p>Style object for the content section inside the <code>ScrollView</code>.</p>
-<h5><a class="anchor" aria-hidden="true" id="style"></a><a href="#style" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>style</code></h5>
-<p>Style object for the wrapper view.</p>
-<p>Exemplo:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Navigator</span></span>
-  <span class="token attr-name">drawerContentOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    activeTintColor<span class="token punctuation">:</span> <span class="token string">'#e91e63'</span><span class="token punctuation">,</span>
-    itemStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> marginVertical<span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">></span></span>
-  <span class="token punctuation">{</span><span class="token comment">/* screens */</span><span class="token punctuation">}</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h3>
-<p>The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:</p>
-<h4><a class="anchor" aria-hidden="true" id="title"></a><a href="#title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>title</code></h4>
-<p>Título genérico que pode ser usado como fallback para <code>headerTitle</code> e <code>drawerLabel</code></p>
-<h4><a class="anchor" aria-hidden="true" id="drawerlabel"></a><a href="#drawerlabel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerLabel</code></h4>
-<p>String or a function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in drawer sidebar. When undefined, scene <code>title</code> is used</p>
-<h4><a class="anchor" aria-hidden="true" id="drawericon"></a><a href="#drawericon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerIcon</code></h4>
-<p>Function, that given <code>{ focused: boolean, color: string, size: number }</code> returns a React.Node, to display in drawer sidebar</p>
-<h4><a class="anchor" aria-hidden="true" id="gestureenabled"></a><a href="#gestureenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureEnabled</code></h4>
-<p>Whether you can use gestures to open or close the drawer. Defaults to <code>true</code> on iOS, <code>false</code> on Android.</p>
-<h3><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h3>
-<p>The navigator can emit events on certain actions. Supported events are:</p>
-<h4><a class="anchor" aria-hidden="true" id="draweropen"></a><a href="#draweropen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerOpen</code></h4>
-<p>This event is fired when the drawer opens.</p>
-<h4><a class="anchor" aria-hidden="true" id="drawerclose"></a><a href="#drawerclose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>drawerClose</code></h4>
-<p>This event is fired when the drawer closes.</p>
-<h3><a class="anchor" aria-hidden="true" id="helpers"></a><a href="#helpers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Helpers</h3>
-<p>The drawer navigator adds the following methods to the navigation prop:</p>
-<h4><a class="anchor" aria-hidden="true" id="opendrawer"></a><a href="#opendrawer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>openDrawer</code></h4>
-<p>Opens the drawer pane.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">openDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="closedrawer"></a><a href="#closedrawer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>closeDrawer</code></h4>
-<p>Closes the drawer pane.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">closeDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="toggledrawer"></a><a href="#toggledrawer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>toggleDrawer</code></h4>
-<p>Opens the drawer pane if closed, closes the drawer pane if opened.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">toggleDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="jumpto"></a><a href="#jumpto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>jumpTo</code></h4>
-<p>Navigates to an existing screen in the drawer navigator. The method accepts following arguments:</p>
-<ul>
-<li><code>name</code> - <em>string</em> - Name of the route to jump to.</li>
-<li><code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).</li>
-</ul>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">jumpTo</span><span class="token punctuation">(</span><span class="token string">'Profile'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Satya'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createDrawerNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/drawer'</span><span class="token punctuation">;</span>
+&lt;p&gt;
+  The &lt;code&gt;progress&lt;/code&gt; node can be used to do interesting animations in your &lt;code&gt;drawerContent&lt;/code&gt;, such as parallax motion of the drawer contents:
+&lt;/p&gt;
 
-<span class="token keyword">const</span> Drawer <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Navigator</span></span> <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Feed<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> drawerLabel<span class="token punctuation">:</span> <span class="token string">'Home'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Notifications<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Notifications<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> drawerLabel<span class="token punctuation">:</span> <span class="token string">'Updates'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Drawer.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> drawerLabel<span class="token punctuation">:</span> <span class="token string">'Profile'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Drawer.Navigator</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+&lt;p&gt;
+  &lt;samp id=&quot;animated-drawer-content&quot;&gt;&lt;/p&gt; 
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function CustomDrawerContent({ progress, ...rest }) {
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="nesting-drawer-navigators-inside-others"></a><a href="#nesting-drawer-navigators-inside-others" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nesting drawer navigators inside others</h2>
-<p>Se um navegador drawer estiver aninhado em outro navegador que forneça alguma interface do usuário, por exemplo, um navegador tabs ou um navegador stack, a gaveta será renderizada abaixo da interface do usuário a partir desses navegadores. O drawer aparecerá abaixo do tab e abaixo do cabeçalho do stack. Você precisará tornar o navegador drawer o pai de qualquer navegador onde o drawer deve ser renderizado na parte superior de sua interface do usuário.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/native-stack-navigator.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">createNativeStackNavigator</span></a><a class="docs-next button" href="/docs/pt-BR/next/bottom-tab-navigator.html"><span class="function-name-prevnext">createBottomTabNavigator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a><ul class="toc-headings"><li><a href="#props">Props</a></li><li><a href="#options">Options</a></li><li><a href="#events">Events</a></li><li><a href="#helpers">Helpers</a></li></ul></li><li><a href="#example">Example</a></li><li><a href="#nesting-drawer-navigators-inside-others">Nesting drawer navigators inside others</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p>const translateX = Animated.interpolate(progress, {
+inputRange: [0, 1],
+outputRange: [-100, 0],
+});</p>
+<p>return (
+&lt;Animated.View style={{ transform: [{ translateX }] }}&gt;
+{/* ... drawer contents */}
+&lt;/Animated.View&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">  &lt;p&gt;
+    To use the custom component, we need to pass it in the &lt;code&gt;drawerContent&lt;/code&gt; prop:
+  &lt;/p&gt;
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Drawer.Navigator drawerContent={props =&amp;gt; &amp;lt;CustomDrawerContent {...props} /&amp;gt;}&amp;gt;
+</code></pre>
+<p>{/* screens */}
+&lt;/Drawer.Navigator&gt;
+</code></pre></p>
+<pre><code class="hljs">  &lt;h4&gt;
+    &lt;code&gt;drawerContentOptions&lt;/code&gt;
+  &lt;/h4&gt;
+  
+  &lt;p&gt;
+    An object containing the props for the drawer content component. See below for more details.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;activeTintColor&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Color for the icon and label in the active item in the drawer.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;activeBackgroundColor&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Background color for the active item in the drawer.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;inactiveTintColor&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Color for the icon and label in the inactive items in the drawer.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;inactiveBackgroundColor&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Background color for the inactive items in the drawer.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;itemStyle&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Style object for the single item, which can contain an icon and/or a label.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;labelStyle&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Style object to apply to the &lt;code&gt;Text&lt;/code&gt; style inside content section which renders a label.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;contentContainerStyle&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Style object for the content section inside the &lt;code&gt;ScrollView&lt;/code&gt;.
+  &lt;/p&gt;
+  
+  &lt;h5&gt;
+    &lt;code&gt;style&lt;/code&gt;
+  &lt;/h5&gt;
+  
+  &lt;p&gt;
+    Style object for the wrapper view.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    Exemplo:
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &lt;samp id=&quot;drawer-content-options&quot;&gt;&lt;/p&gt; 
+    
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Drawer.Navigator
+</code></pre>
+<p>drawerContentOptions={{
+activeTintColor: '#e91e63',
+itemStyle: { marginVertical: 30 },
+}}
+&gt;
+{/* screens */}
+&lt;/Drawer.Navigator&gt;
+</code></pre></p>
+<pre><code class="hljs">    &lt;h3&gt;
+      Options
+    &lt;/h3&gt;
+    
+    &lt;p&gt;
+      The &lt;code&gt;options&lt;/code&gt; prop can be used to configure individual screens inside the navigator. Supported options are:
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;title&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      Título genérico que pode ser usado como fallback para &lt;code&gt;headerTitle&lt;/code&gt; e &lt;code&gt;drawerLabel&lt;/code&gt;
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;drawerLabel&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      String or a function that given &lt;code&gt;{ focused: boolean, color: string }&lt;/code&gt; returns a React.Node, to display in drawer sidebar. When undefined, scene &lt;code&gt;title&lt;/code&gt; is used
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;drawerIcon&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      Function, that given &lt;code&gt;{ focused: boolean, color: string, size: number }&lt;/code&gt; returns a React.Node, to display in drawer sidebar
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;gestureEnabled&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      Whether you can use gestures to open or close the drawer. Defaults to &lt;code&gt;true&lt;/code&gt; on iOS, &lt;code&gt;false&lt;/code&gt; on Android.
+    &lt;/p&gt;
+    
+    &lt;h3&gt;
+      Events
+    &lt;/h3&gt;
+    
+    &lt;p&gt;
+      The navigator can emit events on certain actions. Supported events are:
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;drawerOpen&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      This event is fired when the drawer opens.
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;drawerClose&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      This event is fired when the drawer closes.
+    &lt;/p&gt;
+    
+    &lt;h3&gt;
+      Helpers
+    &lt;/h3&gt;
+    
+    &lt;p&gt;
+      The drawer navigator adds the following methods to the navigation prop:
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;openDrawer&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      Opens the drawer pane.
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      &lt;samp id=&quot;drawer-open-close-toggle&quot;&gt;&lt;/p&gt; 
+      
+      &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.openDrawer();
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">      &lt;h4&gt;
+        &lt;code&gt;closeDrawer&lt;/code&gt;
+      &lt;/h4&gt;
+      
+      &lt;p&gt;
+        Closes the drawer pane.
+      &lt;/p&gt;
+      
+      &lt;p&gt;
+        &lt;samp id=&quot;drawer-open-close-toggle&quot;&gt;&lt;/p&gt; 
+        
+        &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.closeDrawer();
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">        &lt;h4&gt;
+          &lt;code&gt;toggleDrawer&lt;/code&gt;
+        &lt;/h4&gt;
+        
+        &lt;p&gt;
+          Opens the drawer pane if closed, closes the drawer pane if opened.
+        &lt;/p&gt;
+        
+        &lt;p&gt;
+          &lt;samp id=&quot;drawer-open-close-toggle&quot;&gt;&lt;/p&gt; 
+          
+          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.toggleDrawer();
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">          &lt;h4&gt;
+            &lt;code&gt;jumpTo&lt;/code&gt;
+          &lt;/h4&gt;
+          
+          &lt;p&gt;
+            Navigates to an existing screen in the drawer navigator. The method accepts following arguments:
+          &lt;/p&gt;
+          
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;code&gt;name&lt;/code&gt; - &lt;em&gt;string&lt;/em&gt; - Name of the route to jump to.
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;params&lt;/code&gt; - &lt;em&gt;object&lt;/em&gt; - Screen params to merge into the destination route (found in the pushed screen through &lt;code&gt;route.params&lt;/code&gt;).
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          
+          &lt;p&gt;
+            &lt;samp id=&quot;drawer-example&quot;&gt;&lt;/p&gt; 
+            
+            &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.jumpTo('Profile', { owner: 'Satya' });
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">            &lt;h2&gt;
+              Example
+            &lt;/h2&gt;
+            
+            &lt;p&gt;
+              &lt;samp id=&quot;drawer-example&quot;&gt;&lt;/p&gt; 
+              
+              &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { createDrawerNavigator } from '@react-navigation/drawer';
+</code></pre>
+<p>const Drawer = createDrawerNavigator();</p>
+<p>function MyDrawer() {
+return (
+&lt;Drawer.Navigator initialRouteName=&quot;Feed&quot;&gt;
+&lt;Drawer.Screen
+name=&quot;Feed&quot;
+component={Feed}
+options={{ drawerLabel: 'Home' }}
+/&gt;
+&lt;Drawer.Screen
+name=&quot;Notifications&quot;
+component={Notifications}
+options={{ drawerLabel: 'Updates' }}
+/&gt;
+&lt;Drawer.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{ drawerLabel: 'Profile' }}
+/&gt;
+&lt;/Drawer.Navigator&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">              &lt;h2&gt;
+                Nesting drawer navigators inside others
+              &lt;/h2&gt;
+              
+              &lt;p&gt;
+                Se um navegador drawer estiver aninhado em outro navegador que forneça alguma interface do usuário, por exemplo, um navegador tabs ou um navegador stack, a gaveta será renderizada abaixo da interface do usuário a partir desses navegadores. O drawer aparecerá abaixo do tab e abaixo do cabeçalho do stack. Você precisará tornar o navegador drawer o pai de qualquer navegador onde o drawer deve ser renderizado na parte superior de sua interface do usuário.
+              &lt;/p&gt;</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/native-stack-navigator.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">createNativeStackNavigator</span></a><a class="docs-next button" href="/docs/pt-BR/next/bottom-tab-navigator.html"><span class="function-name-prevnext">createBottomTabNavigator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

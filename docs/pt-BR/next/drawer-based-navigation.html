@@ -119,20 +119,34 @@
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="opening-and-closing-drawer"></a><a href="#opening-and-closing-drawer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Opening and closing drawer</h2>
 <p>To open and close drawer, use the following helpers:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">openDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-navigation<span class="token punctuation">.</span><span class="token function">closeDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p><samp id="drawer-open-close-toggle"></p></p>
+<pre><code class="js">navigation.openDrawer();
+navigation.closeDrawer();
 </code></pre>
-<p>Se você gostaria de alternar o drawer, você chama o seguinte:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">toggleDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>
+  Se você gostaria de alternar o drawer, você chama o seguinte:
+</p>
+<p>
+  <samp id="drawer-open-close-toggle"></p> 
+  <pre><code class="js">navigation.toggleDrawer();
 </code></pre>
-<p>Cada uma dessas funções, atrás das cenas, são simplesmente ações de despacho:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>DrawerActions<span class="token punctuation">.</span><span class="token function">openDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>DrawerActions<span class="token punctuation">.</span><span class="token function">closeDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>DrawerActions<span class="token punctuation">.</span><span class="token function">toggleDrawer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <p>
+    Cada uma dessas funções, atrás das cenas, são simplesmente ações de despacho:
+  </p>
+  <p>
+    <samp id="drawer-dispatch"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.dispatch(DrawerActions.openDrawer());
 </code></pre>
-<p>Se você quiser determinar se o drawer está aberto ou fechado, faça o seguinte:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> isDrawerOpen <span class="token operator">=</span> <span class="token function">useNavigationState</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> state<span class="token punctuation">.</span>isDrawerOpen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>navigation.dispatch(DrawerActions.closeDrawer());
+navigation.dispatch(DrawerActions.toggleDrawer());
+</code></pre></p>
+<pre><code class="hljs">&lt;p&gt;
+  Se você quiser determinar se o drawer está aberto ou fechado, faça o seguinte:
+&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;const isDrawerOpen = useNavigationState(state =&amp;gt; state.isDrawerOpen);
 </code></pre>
+<p></code></pre></p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/tab-based-navigation.html"><span class="arrow-prev">← </span><span>Tab navigation</span></a><a class="docs-next button" href="/docs/pt-BR/next/auth-flow.html"><span>Fluxos de Autenticação</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#minimal-example-of-drawer-based-navigation">Minimal example of drawer-based navigation</a></li><li><a href="#opening-and-closing-drawer">Opening and closing drawer</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {

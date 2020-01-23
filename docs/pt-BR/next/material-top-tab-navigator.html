@@ -124,15 +124,16 @@ public class MainActivity extends ReactActivity {
 <p>Finally, run <code>react-native run-android</code> or <code>react-native run-ios</code> to launch the app on your device/simulator.</p>
 <h2><a class="anchor" aria-hidden="true" id="api-definition"></a><a href="#api-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Definition</h2>
 <p>To use this tab navigator, import it from <code>@react-navigation/material-top-tabs</code>:</p>
+<p><samp id="material-top-tab-based-navigation-minimal" /></p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createMaterialTopTabNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/material-top-tabs'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> Tab <span class="token operator">=</span> <span class="token function">createMaterialTopTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">MyTabs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Feed<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Article<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Article<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>SettingsScreen<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -228,182 +229,294 @@ public class MainActivity extends ReactActivity {
 <h4><a class="anchor" aria-hidden="true" id="tabbar"></a><a href="#tabbar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBar</code></h4>
 <p>Function that returns a React element to display as the tab bar.</p>
 <p>Exemplo:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> View<span class="token punctuation">,</span> TouchableOpacity <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Animated <span class="token keyword">from</span> <span class="token string">'react-native-reanimated'</span><span class="token punctuation">;</span>
+<p><samp id="material-top-tab-custom-tab-bar"></p></p>
+<pre><code class="js">import { View, TouchableOpacity } from 'react-native';
+import Animated from 'react-native-reanimated';
+<p>function MyTabBar({ state, descriptors, navigation, position }) {
+return (
+&lt;View style={{ flexDirection: 'row' }}&gt;
+{state.routes.map((route, index) =&gt; {
+const { options } = descriptors[route.key];
+const label =
+options.tabBarLabel !== undefined
+? options.tabBarLabel
+: options.title !== undefined
+? options.title
+: route.name;</p>
+<pre><code class="hljs">    const isFocused = state.index === index;
 
-<span class="token keyword">function</span> <span class="token function">MyTabBar</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> state<span class="token punctuation">,</span> descriptors<span class="token punctuation">,</span> navigation<span class="token punctuation">,</span> position <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> flexDirection<span class="token punctuation">:</span> <span class="token string">'row'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-      <span class="token punctuation">{</span>state<span class="token punctuation">.</span>routes<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">route<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> <span class="token punctuation">{</span> options <span class="token punctuation">}</span> <span class="token operator">=</span> descriptors<span class="token punctuation">[</span>route<span class="token punctuation">.</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">const</span> label <span class="token operator">=</span>
-          options<span class="token punctuation">.</span>tabBarLabel <span class="token operator">!==</span> <span class="token keyword">undefined</span>
-            <span class="token operator">?</span> options<span class="token punctuation">.</span>tabBarLabel
-            <span class="token punctuation">:</span> options<span class="token punctuation">.</span>title <span class="token operator">!==</span> <span class="token keyword">undefined</span>
-            <span class="token operator">?</span> options<span class="token punctuation">.</span>title
-            <span class="token punctuation">:</span> route<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+    const onPress = () =&amp;gt; {
+      const event = navigation.emit({
+        type: 'tabPress',
+        target: route.key,
+      });
 
-        <span class="token keyword">const</span> isFocused <span class="token operator">=</span> state<span class="token punctuation">.</span>index <span class="token operator">===</span> index<span class="token punctuation">;</span>
+      if (!isFocused &amp;&amp; !event.defaultPrevented) {
+        navigation.navigate(route.name);
+      }
+    };
 
-        <span class="token keyword">const</span> <span class="token function-variable function">onPress</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-          <span class="token keyword">const</span> event <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            type<span class="token punctuation">:</span> <span class="token string">'tabPress'</span><span class="token punctuation">,</span>
-            target<span class="token punctuation">:</span> route<span class="token punctuation">.</span>key<span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    const onLongPress = () =&amp;gt; {
+      navigation.emit({
+        type: 'tabLongPress',
+        target: route.key,
+      });
+    };
 
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isFocused <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>event<span class="token punctuation">.</span>defaultPrevented<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span>route<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    const inputRange = state.routes.map((_, i) =&amp;gt; i);
+    const opacity = Animated.interpolate(position, {
+      inputRange,
+      outputRange: inputRange.map(i =&amp;gt; (i === index ? 1 : 0)),
+    });
 
-        <span class="token keyword">const</span> <span class="token function-variable function">onLongPress</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-          navigation<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            type<span class="token punctuation">:</span> <span class="token string">'tabLongPress'</span><span class="token punctuation">,</span>
-            target<span class="token punctuation">:</span> route<span class="token punctuation">.</span>key<span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">const</span> opacity <span class="token operator">=</span> Animated<span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-          inputRange<span class="token punctuation">,</span>
-          outputRange<span class="token punctuation">:</span> inputRange<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">i</span> <span class="token operator">=></span> <span class="token punctuation">(</span>i <span class="token operator">===</span> index <span class="token operator">?</span> <span class="token number">1</span> <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TouchableOpacity</span></span>
-            <span class="token attr-name">accessibilityRole</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span>
-            <span class="token attr-name">accessibilityStates</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>isFocused <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token string">'selected'</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
-            <span class="token attr-name">accessibilityLabel</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>options<span class="token punctuation">.</span>tabBarAccessibilityLabel<span class="token punctuation">}</span></span>
-            <span class="token attr-name">testID</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>options<span class="token punctuation">.</span>tabBarTestID<span class="token punctuation">}</span></span>
-            <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onPress<span class="token punctuation">}</span></span>
-            <span class="token attr-name">onLongPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onLongPress<span class="token punctuation">}</span></span>
-            <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> flex<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-          <span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Animated.Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-              <span class="token punctuation">{</span>label<span class="token punctuation">}</span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Animated.Text</span></span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TouchableOpacity</span></span><span class="token punctuation">></span></span>
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// ...</span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span> <span class="token attr-name">tabBar</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">props</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyTabBar</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">props</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
+    return (
+      &amp;lt;TouchableOpacity
+        accessibilityRole=&quot;button&quot;
+        accessibilityStates={isFocused ? ['selected'] : []}
+        accessibilityLabel={options.tabBarAccessibilityLabel}
+        testID={options.tabBarTestID}
+        onPress={onPress}
+        onLongPress={onLongPress}
+        style={{ flex: 1 }}
+      &amp;gt;
+        &amp;lt;Animated.Text style={{ opacity }}&amp;gt;
+          {label}
+        &amp;lt;/Animated.Text&amp;gt;
+      &amp;lt;/TouchableOpacity&amp;gt;
+    );
+  })}
+&amp;lt;/View&amp;gt;
 </code></pre>
-<p>This example will render a basic tab bar with labels.</p>
-<h4><a class="anchor" aria-hidden="true" id="tabbaroptions"></a><a href="#tabbaroptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarOptions</code></h4>
-<p>An object containing the props for the tab bar component. It can contain the following properties:</p>
+<p>);
+}</p>
+<p>// ...</p>
+<p>&lt;Tab.Navigator tabBar={props =&gt; &lt;MyTabBar {...props} /&gt;}&gt;
+{...}
+&lt;/Tab.Navigator&gt;
+</code></pre></p>
+<p>
+  This example will render a basic tab bar with labels.
+</p>
+<p><h4>
+<code>tabBarOptions</code>
+</h4></p>
+<p>
+  An object containing the props for the tab bar component. It can contain the following properties:
+</p>
 <ul>
-<li><code>activeTintColor</code> - Label and icon color of the active tab.</li>
-<li><code>inactiveTintColor</code> - Label and icon color of the inactive tab.</li>
-<li><code>showIcon</code> - Whether to show icon for tab, default is false.</li>
-<li><code>showLabel</code> - Whether to show label for tab, default is true.</li>
-<li><code>pressColor</code> - Color for material ripple (Android &gt;= 5.0 only).</li>
-<li><code>pressOpacity</code> - Opacity for pressed tab (iOS and Android &lt; 5.0 only).</li>
-<li><code>scrollEnabled</code> - Whether to enable scrollable tabs.</li>
-<li><code>tabStyle</code> - Style object for the tab.</li>
-<li><code>indicatorStyle</code> - Style object for the tab indicator (line at the bottom of the tab).</li>
-<li><code>labelStyle</code> - Style object for the tab label. Specifying a color here will override the color specified in <code>activeTintColor</code> and <code>inactiveTintColor</code> for the label.</li>
-<li><code>iconStyle</code> - Style object for the tab icon.</li>
-<li><code>style</code> - Style object for the tab bar.</li>
-<li><code>allowFontScaling</code> - Whether label font should scale to respect Text Size accessibility settings, default is true.</li>
-<li><code>renderIndicator</code> - Função que pega um objeto com a rota atual e retorna um Elemento personalizado para ser usado como um indicador da aba.</li>
+  <li>
+    <code>activeTintColor</code> - Label and icon color of the active tab.
+  </li>
+  <li>
+    <code>inactiveTintColor</code> - Label and icon color of the inactive tab.
+  </li>
+  <li>
+    <code>showIcon</code> - Whether to show icon for tab, default is false.
+  </li>
+  <li>
+    <code>showLabel</code> - Whether to show label for tab, default is true.
+  </li>
+  <li>
+    <code>pressColor</code> - Color for material ripple (Android >= 5.0 only).
+  </li>
+  <li>
+    <code>pressOpacity</code> - Opacity for pressed tab (iOS and Android < 5.0 only).
+  </li>
+  <li>
+    <code>scrollEnabled</code> - Whether to enable scrollable tabs.
+  </li>
+  <li>
+    <code>tabStyle</code> - Style object for the tab.
+  </li>
+  <li>
+    <code>indicatorStyle</code> - Style object for the tab indicator (line at the bottom of the tab).
+  </li>
+  <li>
+    <code>labelStyle</code> - Style object for the tab label. Specifying a color here will override the color specified in <code>activeTintColor</code> and <code>inactiveTintColor</code> for the label.
+  </li>
+  <li>
+    <code>iconStyle</code> - Style object for the tab icon.
+  </li>
+  <li>
+    <code>style</code> - Style object for the tab bar.
+  </li>
+  <li>
+    <code>allowFontScaling</code> - Whether label font should scale to respect Text Size accessibility settings, default is true.
+  </li>
+  <li>
+    <code>renderIndicator</code> - Função que pega um objeto com a rota atual e retorna um Elemento personalizado para ser usado como um indicador da aba.
+  </li>
 </ul>
-<p>Exemplo:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span>
-  <span class="token attr-name">tabBarOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    labelStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> fontSize<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    tabStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> width<span class="token punctuation">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    style<span class="token punctuation">:</span> <span class="token punctuation">{</span> backgroundColor<span class="token punctuation">:</span> <span class="token string">'blue'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">></span></span>
-  <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
+<p>
+  Exemplo:
+</p>
+<p>
+  <samp id="material-top-tab-options"></p> 
+  <pre><code class="js">&lt;Tab.Navigator
+  tabBarOptions={{
+    labelStyle: { fontSize: 12 },
+    tabStyle: { width: 100 },
+    style: { backgroundColor: 'powderblue' },
+  }}
+&gt;
+  {/* ... */}
+&lt;/Tab.Navigator&gt;
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h3>
-<p>The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:</p>
-<h4><a class="anchor" aria-hidden="true" id="title"></a><a href="#title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>title</code></h4>
-<p>Título genérico que pode ser usado como fallback para <code>headerTitle</code> e <code>tabBarLabel</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="tabbaricon"></a><a href="#tabbaricon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarIcon</code></h4>
-<p>Function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in the tab bar.</p>
-<h4><a class="anchor" aria-hidden="true" id="tabbarlabel"></a><a href="#tabbarlabel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarLabel</code></h4>
-<p>Title string of a tab displayed in the tab bar or a function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in tab bar. Quando indefinido, a cena <code>title</code> é usada. Para ocultar, veja <code>tabBarOptions.showLabel</code> na seção anterior.</p>
-<h4><a class="anchor" aria-hidden="true" id="tabbaraccessibilitylabel"></a><a href="#tabbaraccessibilitylabel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarAccessibilityLabel</code></h4>
-<p>Etiqueta de acessibilidade para o botão do separador. Isso é lido pelo leitor de tela quando o usuário toca na guia. É recomendável definir isso se você não tiver um rótulo para a guia.</p>
-<h4><a class="anchor" aria-hidden="true" id="tabbartestid"></a><a href="#tabbartestid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabBarTestID</code></h4>
-<p>ID para localizar este botão da guia nos testes.</p>
-<h3><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h3>
-<p>The navigator can fire events on certain actions. Supported events are:</p>
-<h4><a class="anchor" aria-hidden="true" id="tabpress"></a><a href="#tabpress" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabPress</code></h4>
-<p>This event is fired when the user presses the tab button for the current screen in the tab bar. By default a tab press does several things:</p>
-<ul>
-<li>If the tab is not focused, tab press will focus that tab</li>
-<li>If the tab is already focused:
-<ul>
-<li>If the screen for the tab renders a scroll view, scroll to top is performed by <code>useScrollToTop</code></li>
-<li>If the screen for the tab renders a stack navigator, a <code>popToTop</code> action is performed on the stack</li>
-</ul></li>
-</ul>
-<p>To prevent the default behavior, you can call <code>eventPreventDefault</code>:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token string">'tabPress'</span><span class="token punctuation">,</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token comment">// Prevent default behavior</span>
-  e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p><h3>
+Options
+</h3></p>
+  <p>
+    The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:
+  </p>
+<p><h4>
+<code>title</code>
+</h4></p>
+  <p>
+    Título genérico que pode ser usado como fallback para <code>headerTitle</code> e <code>tabBarLabel</code>.
+  </p>
+<p><h4>
+<code>tabBarIcon</code>
+</h4></p>
+  <p>
+    Function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in the tab bar.
+  </p>
+<p><h4>
+<code>tabBarLabel</code>
+</h4></p>
+  <p>
+    Title string of a tab displayed in the tab bar or a function that given <code>{ focused: boolean, color: string }</code> returns a React.Node, to display in tab bar. Quando indefinido, a cena <code>title</code> é usada. Para ocultar, veja <code>tabBarOptions.showLabel</code> na seção anterior.
+  </p>
+<p><h4>
+<code>tabBarAccessibilityLabel</code>
+</h4></p>
+  <p>
+    Etiqueta de acessibilidade para o botão do separador. Isso é lido pelo leitor de tela quando o usuário toca na guia. É recomendável definir isso se você não tiver um rótulo para a guia.
+  </p>
+<p><h4>
+<code>tabBarTestID</code>
+</h4></p>
+  <p>
+    ID para localizar este botão da guia nos testes.
+  </p>
+<p><h3>
+Events
+</h3></p>
+  <p>
+    The navigator can fire events on certain actions. Supported events are:
+  </p>
+<p><h4>
+<code>tabPress</code>
+</h4></p>
+  <p>
+    This event is fired when the user presses the tab button for the current screen in the tab bar. By default a tab press does several things:
+  </p>
+  <ul>
+    <li>
+      If the tab is not focused, tab press will focus that tab
+    </li>
+    <li>
+      If the tab is already focused: <ul>
+        <li>
+          If the screen for the tab renders a scroll view, scroll to top is performed by <code>useScrollToTop</code>
+        </li>
+        <li>
+          If the screen for the tab renders a stack navigator, a <code>popToTop</code> action is performed on the stack
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p>
+    To prevent the default behavior, you can call <code>event.preventDefault</code>:
+  </p>
+  <p>
+    <samp id="material-top-tab-prevent-default"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.addListener('tabPress', e =&amp;gt; {
+</code></pre>
+<p>// Prevent default behavior
+e.preventDefault();</p>
+<p>// Do something manually
+// ...
+});
+</code></pre></p>
+<pre><code class="hljs">&lt;h4&gt;
+  &lt;code&gt;tabLongPress&lt;/code&gt;
+&lt;/h4&gt;
 
-  <span class="token comment">// Do something manually</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="tablongpress"></a><a href="#tablongpress" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>tabLongPress</code></h4>
-<p>This event is fired when the user presses the tab button for the current screen in the tab bar for an extended period.</p>
-<h3><a class="anchor" aria-hidden="true" id="helpers"></a><a href="#helpers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Helpers</h3>
-<p>The tab navigator adds the following methods to the navigation prop:</p>
-<h4><a class="anchor" aria-hidden="true" id="jumpto"></a><a href="#jumpto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>jumpTo</code></h4>
-<p>Navigates to an existing screen in the tab navigator. The method accepts following arguments:</p>
-<ul>
-<li><code>name</code> - <em>string</em> - Name of the route to jump to.</li>
-<li><code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).</li>
-</ul>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">jumpTo</span><span class="token punctuation">(</span><span class="token string">'Profile'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Michaś'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createMaterialTopTabNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/material-top-tabs'</span><span class="token punctuation">;</span>
+&lt;p&gt;
+  This event is fired when the user presses the tab button for the current screen in the tab bar for an extended period.
+&lt;/p&gt;
 
-<span class="token keyword">const</span> Tab <span class="token operator">=</span> <span class="token function">createMaterialTopTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+&lt;h3&gt;
+  Helpers
+&lt;/h3&gt;
 
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Navigator</span></span>
-      <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span>
-      <span class="token attr-name">tabBarOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-        activeTintColor<span class="token punctuation">:</span> <span class="token string">'#e91e63'</span><span class="token punctuation">,</span>
-        labelStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> fontSize<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        style<span class="token punctuation">:</span> <span class="token punctuation">{</span> backgroundColor<span class="token punctuation">:</span> <span class="token string">'tomato'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-    <span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Feed<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Feed<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Notifications<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Notifications<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Updates'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Tab.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Profile'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Tab.Navigator</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+&lt;p&gt;
+  The tab navigator adds the following methods to the navigation prop:
+&lt;/p&gt;
+
+&lt;h4&gt;
+  &lt;code&gt;jumpTo&lt;/code&gt;
+&lt;/h4&gt;
+
+&lt;p&gt;
+  Navigates to an existing screen in the tab navigator. The method accepts following arguments:
+&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;code&gt;name&lt;/code&gt; - &lt;em&gt;string&lt;/em&gt; - Name of the route to jump to.
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;code&gt;params&lt;/code&gt; - &lt;em&gt;object&lt;/em&gt; - Screen params to merge into the destination route (found in the pushed screen through &lt;code&gt;route.params&lt;/code&gt;).
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+  &lt;samp id=&quot;material-top-tab-jump-to&quot;&gt;&lt;/p&gt; 
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.jumpTo('Profile', { name: 'Michaś' });
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/material-bottom-tab-navigator.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">createMaterialBottomTabNavigator</span></a><a class="docs-next button" href="/docs/pt-BR/next/use-navigation.html"><span class="function-name-prevnext">useNavigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a><ul class="toc-headings"><li><a href="#props">Props</a></li><li><a href="#options">Options</a></li><li><a href="#events">Events</a></li><li><a href="#helpers">Helpers</a></li></ul></li><li><a href="#example">Example</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p></code></pre></p>
+<pre><code class="hljs">  &lt;h2&gt;
+    Example
+  &lt;/h2&gt;
+  
+  &lt;p&gt;
+    &lt;samp id=&quot;material-top-tab-example&quot;&gt;&lt;/p&gt; 
+    
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+</code></pre>
+<p>const Tab = createMaterialTopTabNavigator();</p>
+<p>function MyTabs() {
+return (
+&lt;Tab.Navigator
+initialRouteName=&quot;Feed&quot;
+tabBarOptions={{
+activeTintColor: '#e91e63',
+labelStyle: { fontSize: 12 },
+style: { backgroundColor: 'powderblue' },
+}}
+&gt;
+&lt;Tab.Screen
+name=&quot;Feed&quot;
+component={Feed}
+options={{ tabBarLabel: 'Home' }}
+/&gt;
+&lt;Tab.Screen
+name=&quot;Notifications&quot;
+component={Notifications}
+options={{ tabBarLabel: 'Updates' }}
+/&gt;
+&lt;Tab.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{ tabBarLabel: 'Profile' }}
+/&gt;
+&lt;/Tab.Navigator&gt;
+);
+}
+</code></pre></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/material-bottom-tab-navigator.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">createMaterialBottomTabNavigator</span></a><a class="docs-next button" href="/docs/pt-BR/next/use-navigation.html"><span class="function-name-prevnext">useNavigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a><ul class="toc-headings"><li><a href="#props">Props</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

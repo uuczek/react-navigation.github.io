@@ -81,443 +81,898 @@
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="api-definition"></a><a href="#api-definition" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API Definition</h2>
 <p>To use this navigator, import it from <code>@react-navigation/stack</code>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStackNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/stack'</span><span class="token punctuation">;</span>
+<p><samp id="simple-stack"></p></p>
+<pre><code class="js">import { createStackNavigator } from '@react-navigation/stack';
+<p>const Stack = createStackNavigator();</p>
+<p>function MyStack() {
+return (
+&lt;Stack.Navigator&gt;
+&lt;Stack.Screen name=&quot;Home&quot; component={Home} /&gt;
+&lt;Stack.Screen name=&quot;Notifications&quot; component={Notifications} /&gt;
+&lt;Stack.Screen name=&quot;Profile&quot; component={Profile} /&gt;
+&lt;Stack.Screen name=&quot;Settings&quot; component={Settings} /&gt;
+&lt;/Stack.Navigator&gt;
+);
+}
+</code></pre></p>
+<p><h3>
+Props
+</h3></p>
+<p>
+  The <code>Stack.Navigator</code> component accepts following props:
+</p>
+<p><h4>
+<code>initialRouteName</code>
+</h4></p>
+<p>
+  The name of the route to render on first load of the navigator.
+</p>
+<p><h4>
+<code>screenOptions</code>
+</h4></p>
+<p>
+  Default options to use for the screens in the navigator.
+</p>
+<p><h4>
+<code>keyboardHandlingEnabled</code>
+</h4></p>
+<p>
+  If <code>false</code>, the on screen keyboard will NOT automatically dismiss when navigating to a new screen. Defaults to <code>true</code>.
+</p>
+<p><h4>
+<code>mode</code>
+</h4></p>
+<p>
+  Defines the style for rendering and transitions:
+</p>
+<ul>
+  <li>
+    <code>card</code> - Usa as transições de tela padrão do iOS e do Android. É o padrão.
+  </li>
+  <li>
+    <code>modal</code> - Faz com que a tela deslize de baixo para cima, o que é um padrão iOS comum. Funciona apenas no iOS, não tem efeito no Android.
+  </li>
+</ul>
+<p><h4>
+<code>headerMode</code>
+</h4></p>
+<p>
+  Specifies how the header should be rendered:
+</p>
+<ul>
+  <li>
+    <code>float</code> - Renderiza um único header que fica no topo e é animado quando as telas são mudadas. É um padrão comum no iOS.
+  </li>
+  <li>
+    <code>screen</code> - Cada tela possui seu próprio header que some ou aparece junto da tela. É um padrão comum no Android.
+  </li>
+  <li>
+    <code>none</code> - Nenhum header será renderizado.
+  </li>
+</ul>
+<p><h3>
+Options
+</h3></p>
+<p>
+  The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:
+</p>
+<p><h4>
+<code>title</code>
+</h4></p>
+<p>
+  String que pode ser usada como substituta para <code>headerTitle</code>.
+</p>
+<p><h4>
+<code>header</code>
+</h4></p>
+<p>
+  Function that given <code>HeaderProps</code> returns a React Element, to display as a header.
+</p>
+<p>
+  Exemplo:
+</p>
+<pre><code class="js">header: ({ scene, previous, navigation }) =&gt; {
+  const { options } = scene.descriptor;
+  const title =
+    options.headerTitle !== undefined
+      ? options.headerTitle
+      : options.title !== undefined
+      ? options.title
+      : scene.route.name;
+<p>return (
+&lt;MyHeader
+title={title}
+leftButton={
+previous ? &lt;MyBackButton onPress={navigation.goBack} /&gt; : undefined
+}
+/&gt;
+);
+};
+</code></pre></p>
+<p>
+  By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another. When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code> so that you don't have to implement animations.
+</p>
+<p>
+  You should also specify a height in <code>headerStyle</code> to avoid glitches:
+</p>
+<pre><code class="js">headerStyle: {
+  height: 80, // Specify the height of your custom header
+};
+</code></pre>
+<p>
+  To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.
+</p>
+<p><h4>
+<code>headerShown</code>
+</h4></p>
+<p>
+  Whether to show or hide the header for the screen. The header is shown by default unless <code>headerMode</code> was set to <code>none</code>. Setting this to <code>false</code> hides the header.
+</p>
+<p>
+  When hiding the header on specific screens, you might also want to set <code>headerMode</code> prop to <code>screen</code>.
+</p>
+<p><h4>
+<code>headerTitle</code>
+</h4></p>
+<p>
+  String or a function that returns a React Element to be used by the header. O padrão é a propriedade <code>title</code>. When a function is specified, it receives an object containing <code>allowFontScaling</code>, <code>style</code> and <code>children</code> properties. The <code>children</code> property contains the title string.
+</p>
+<p><h4>
+<code>headerTitleAlign</code>
+</h4></p>
+<p>
+  How to align the header title. Possible values:
+</p>
+<ul>
+  <li>
+    <code>left</code>
+  </li>
+  <li>
+    <code>center</code>
+  </li>
+</ul>
+<p>
+  Defaults to <code>center</code> on iOS and <code>left</code> on Android.
+</p>
+<p><h4>
+<code>headerTitleAllowFontScaling</code>
+</h4></p>
+<p>
+  Whether header title font should scale to respect Text Size accessibility settings. Defaults to false.
+</p>
+<p><h4>
+<code>headerBackAllowFontScaling</code>
+</h4></p>
+<p>
+  Whether back button title font should scale to respect Text Size accessibility settings. Defaults to false.
+</p>
+<p><h4>
+<code>headerBackImage</code>
+</h4></p>
+<p>
+  Function which returns a React Element to display custom image in header's back button. When a function is used, it receives the <code>tintColor</code> in it's argument object. Defaults to Image component with back image source, which is the default back icon image for the platform (a chevron on iOS and an arrow on Android).
+</p>
+<p><h4>
+<code>headerBackTitle</code>
+</h4></p>
+<p>
+  Title string used by the back button on iOS. Defaults to the previous scene's <code>headerTitle</code>.
+</p>
+<p><h4>
+<code>headerBackTitleVisible</code>
+</h4></p>
+<p>
+  A reasonable default is supplied for whether the back button title should be visible or not, but if you want to override that you can use <code>true</code> or <code>false</code> in this option.
+</p>
+<p><h4>
+<code>headerTruncatedBackTitle</code>
+</h4></p>
+<p>
+  Title string used by the back button when <code>headerBackTitle</code> doesn't fit on the screen. <code>"Back"</code> by default.
+</p>
+<p><h4>
+<code>headerRight</code>
+</h4></p>
+<p>
+  Function which returns a React Element to display on the right side of the header.
+</p>
+<p><h4>
+<code>headerLeft</code>
+</h4></p>
+<p>
+  Function which returns a React Element to display on the left side of the header. When a function is used, it receives a number of arguments when rendered (<code>onPress</code>, <code>label</code>, <code>labelStyle</code> and more - check <a href="https://github.com/react-navigation/stack/blob/master/src/types.tsx">types.tsx</a> for the complete list).
+</p>
+<p><h4>
+<code>headerStyle</code>
+</h4></p>
+<p>
+  Style object for the header. You can specify a custom background color here, for example.
+</p>
+<p><h4>
+<code>headerTitleStyle</code>
+</h4></p>
+<p>
+  Style object for the title component
+</p>
+<p><h4>
+<code>headerBackTitleStyle</code>
+</h4></p>
+<p>
+  Style object for the back title
+</p>
+<p><h4>
+<code>headerLeftContainerStyle</code>
+</h4></p>
+<p>
+  Customize the style for the container of the <code>headerLeft</code> component, for example to add padding.
+</p>
+<p><h4>
+<code>headerRightContainerStyle</code>
+</h4></p>
+<p>
+  Customize the style for the container of the <code>headerRight</code> component, for example to add padding.
+</p>
+<p><h4>
+<code>headerTitleContainerStyle</code>
+</h4></p>
+<p>
+  Customize the style for the container of the <code>headerTitle</code> component, for example to add padding.
+</p>
+<p>
+  Por padrão, <code>headerTitleContainer</code> possui uma posição absoluta e atribui valores para <code>left</code> e <code>right</code>. Isso pode acarretar em um espaço branco ou sobreposição entre <code>headerLeft</code> e <code>headerTitle</code> caso um <code>headerLeft</code> personalizado seja utilizado. Esse problema pode ser solucionado ajustando os estilos de <code>left</code> e <code>right</code> no <code>headerTitleContainerStyle</code> e <code>marginHorizontal</code> em <code>headerTitleStyle</code>.
+</p>
+<p><h4>
+<code>headerTintColor</code>
+</h4></p>
+<p>
+  Tint color for the header
+</p>
+<p><h4>
+<code>headerPressColorAndroid</code>
+</h4></p>
+<p>
+  Color for material ripple (Android >= 5.0 only)
+</p>
+<p><h4>
+<code>headerTransparent</code>
+</h4></p>
+<p>
+  O padrão é <code>false</code>. If <code>true</code>, the header will not have a background unless you explicitly provide it with <code>headerBackground</code>. The header will also float over the screen so that it overlaps the content underneath.
+</p>
+<p>
+  This is useful if you want to render a semi-transparent header or a blurred background.
+</p>
+<p>
+  Note that if you don't want your content to appear under the header, you need to manually add a top margin to your content. React Navigation won't do it automatically.
+</p>
+<p>
+  To get the height of the header, you can use <code>useHeaderHeight</code>:
+</p>
+<pre><code class="js">import { useHeaderHeight } from '@react-navigation/stack';
+<p>// ...</p>
+<p>const headerHeight = useHeaderHeight();
+</code></pre></p>
+<p><h4>
+<code>headerBackground</code>
+</h4></p>
+<p>
+  Function which returns a React Element to render as the background of the header. This is useful for using backgrounds such as an image or a gradient.
+</p>
+<p>
+  For example, you can use this with <code>headerTransparent</code> to render a blur view to create a translucent header.
+</p>
+<p>
+  <samp id="header-blur"></p> 
+  <pre><code class="js">import { BlurView } from 'expo-blur';
+<p>// ...</p>
+<p>&lt;Screen
+name=&quot;Home&quot;
+component={HomeScreen}
+options={{
+headerTransparent: true,
+headerBackground: () =&gt; (
+&lt;BlurView tint=&quot;light&quot; intensity={100} style={StyleSheet.absoluteFill} /&gt;
+),
+}}
+/&gt;;
+</code></pre></p>
+<p><h4>
+<code>headerStatusBarHeight</code>
+</h4></p>
+  <p>
+    Extra padding to add at the top of header to account for translucent status bar. By default, it uses the top value from the safe area insets of the device. Pass 0 or a custom value to disable the default behavior, and customize the height.
+  </p>
+<p><h4>
+<code>cardShadowEnabled</code>
+</h4></p>
+  <p>
+    Use this prop to have visible shadows during transitions. Defaults to <code>true</code>.
+  </p>
+<p><h4>
+<code>cardOverlayEnabled</code>
+</h4></p>
+  <p>
+    Use this prop to have a semi-transparent dark overlay visible under the card during transitions. Defaults to <code>true</code> on Android and <code>false</code> on iOS.
+  </p>
+<p><h4>
+<code>cardStyle</code>
+</h4></p>
+  <p>
+    Style object for the card in stack. You can provide a custom background color to use instead of the default background here.
+  </p>
+  <p>
+    You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath. This is useful to implement things like modal dialogs. If you use <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>, you should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached.
+  </p>
+<p><h4>
+<code>animationEnabled</code>
+</h4></p>
+  <p>
+    Whether transition animation should be enabled on the screen. If you set it to <code>false</code>, the screen won't animate when pushing or popping. Defaults to <code>true</code>.
+  </p>
+<p><h4>
+<code>gestureEnabled</code>
+</h4></p>
+  <p>
+    Whether you can use gestures to dismiss this screen. Defaults to <code>true</code> on iOS, <code>false</code> on Android.
+  </p>
+<p><h4>
+<code>gestureResponseDistance</code>
+</h4></p>
+  <p>
+    Object to override the distance of touch start from the edge of the screen to recognize gestures. It takes the following properties:
+  </p>
+  <ul>
+    <li>
+      <code>horizontal</code> - <em>number</em> - Distância para a direção horizontal. O padrão é 25.
+    </li>
+    <li>
+      <code>vertical</code> - <em>number</em> - Distância para a direção vertical. O padrão é 135.
+    </li>
+  </ul>
+<p><h4>
+<code>gestureVelocityImpact</code>
+</h4></p>
+  <p>
+    Number which determines the relevance of velocity for the gesture. Defaults to 0.3.
+  </p>
+<p><h4>
+<code>gestureDirection</code>
+</h4></p>
+  <p>
+    Direction of the gesture. Refer the <a href="#animations">Animations section</a> for details.
+  </p>
+<p><h4>
+<code>transitionSpec</code>
+</h4></p>
+  <p>
+    Configuration object for the screen transition. Refer the <a href="#animations">Animations section</a> for details.
+  </p>
+<p><h4>
+<code>cardStyleInterpolator</code>
+</h4></p>
+  <p>
+    Interpolated styles for various parts of the card. Refer the <a href="#animations">Animations section</a> for details.
+  </p>
+<p><h4>
+<code>headerStyleInterpolator</code>
+</h4></p>
+  <p>
+    Interpolated styles for various parts of the header. Refer the <a href="#animations">Animations section</a> for details.
+  </p>
+<p><h4>
+<code>safeAreaInsets</code>
+</h4></p>
+  <p>
+    Safe area insets for the screen. This is used to avoid elements like notch and status bar. By default, the device's safe area insets are automatically detected. You can override the behavior with this option.
+  </p>
+  <p>
+    Takes an object containing following optional properties: <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code>.
+  </p>
+<p><h3>
+Events
+</h3></p>
+  <p>
+    The navigator can emit events on certain actions. Supported events are:
+  </p>
+<p><h4>
+<code>transitionStart</code>
+</h4></p>
+  <p>
+    This event is fired when the transition animation starts for the current screen.
+  </p>
+<p><h4>
+<code>transitionEnd</code>
+</h4></p>
+  <p>
+    This event is fired when the transition animation ends for the current screen.
+  </p>
+<p><h3>
+Helpers
+</h3></p>
+  <p>
+    The stack navigator adds the following methods to the navigation prop:
+  </p>
+<p><h4>
+<code>push</code>
+</h4></p>
+  <p>
+    Pushes a new screen to top of the stack and navigate to it. The method accepts following arguments:
+  </p>
+  <ul>
+    <li>
+      <code>name</code> - <em>string</em> - Name of the route to push onto the stack.
+    </li>
+    <li>
+      <code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).
+    </li>
+  </ul>
+  <p>
+    <samp id="stack-with-options"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.push('Profile', { owner: 'Michaś' });
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">&lt;h4&gt;
+  &lt;code&gt;pop&lt;/code&gt;
+&lt;/h4&gt;
 
-<span class="token keyword">const</span> Stack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+&lt;p&gt;
+  Pops the current screen from the stack and navigates back to the previous screen. It takes one optional argument (&lt;code&gt;count&lt;/code&gt;), which allows you to specify how many screens to pop back by.
+&lt;/p&gt;
 
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Notifications<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Notifications<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Settings<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+&lt;p&gt;
+  &lt;samp id=&quot;stack-with-options&quot;&gt;&lt;/p&gt; 
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.pop();
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="props"></a><a href="#props" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Props</h3>
-<p>The <code>Stack.Navigator</code> component accepts following props:</p>
-<h4><a class="anchor" aria-hidden="true" id="initialroutename"></a><a href="#initialroutename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>initialRouteName</code></h4>
-<p>The name of the route to render on first load of the navigator.</p>
-<h4><a class="anchor" aria-hidden="true" id="screenoptions"></a><a href="#screenoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>screenOptions</code></h4>
-<p>Default options to use for the screens in the navigator.</p>
-<h4><a class="anchor" aria-hidden="true" id="keyboardhandlingenabled"></a><a href="#keyboardhandlingenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>keyboardHandlingEnabled</code></h4>
-<p>If <code>false</code>, the on screen keyboard will NOT automatically dismiss when navigating to a new screen. Defaults to <code>true</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="mode"></a><a href="#mode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>mode</code></h4>
-<p>Defines the style for rendering and transitions:</p>
-<ul>
-<li><code>card</code> - Usa as transições de tela padrão do iOS e do Android. É o padrão.</li>
-<li><code>modal</code> - Faz com que a tela deslize de baixo para cima, o que é um padrão iOS comum. Funciona apenas no iOS, não tem efeito no Android.</li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" id="headermode"></a><a href="#headermode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerMode</code></h4>
-<p>Specifies how the header should be rendered:</p>
-<ul>
-<li><code>float</code> - Renderiza um único header que fica no topo e é animado quando as telas são mudadas. É um padrão comum no iOS.</li>
-<li><code>screen</code> - Cada tela possui seu próprio header que some ou aparece junto da tela. É um padrão comum no Android.</li>
-<li><code>none</code> - Nenhum header será renderizado.</li>
-</ul>
-<h3><a class="anchor" aria-hidden="true" id="options"></a><a href="#options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h3>
-<p>The <code>options</code> prop can be used to configure individual screens inside the navigator. Supported options are:</p>
-<h4><a class="anchor" aria-hidden="true" id="title"></a><a href="#title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>title</code></h4>
-<p>String que pode ser usada como substituta para <code>headerTitle</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="header"></a><a href="#header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>header</code></h4>
-<p>Function that given <code>HeaderProps</code> returns a React Element, to display as a header.</p>
-<p>Exemplo:</p>
-<pre><code class="hljs css language-js"><span class="token function-variable function">header</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> scene<span class="token punctuation">,</span> previous<span class="token punctuation">,</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> options <span class="token punctuation">}</span> <span class="token operator">=</span> scene<span class="token punctuation">.</span>descriptor<span class="token punctuation">;</span>
-  <span class="token keyword">const</span> title <span class="token operator">=</span>
-    options<span class="token punctuation">.</span>headerTitle <span class="token operator">!==</span> <span class="token keyword">undefined</span>
-      <span class="token operator">?</span> options<span class="token punctuation">.</span>headerTitle
-      <span class="token punctuation">:</span> options<span class="token punctuation">.</span>title <span class="token operator">!==</span> <span class="token keyword">undefined</span>
-      <span class="token operator">?</span> options<span class="token punctuation">.</span>title
-      <span class="token punctuation">:</span> scene<span class="token punctuation">.</span>route<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyHeader</span></span>
-      <span class="token attr-name">title</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>title<span class="token punctuation">}</span></span>
-      <span class="token attr-name">leftButton</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>
-        previous <span class="token operator">?</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyBackButton</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>navigation<span class="token punctuation">.</span>goBack<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span> <span class="token punctuation">:</span> <span class="token keyword">undefined</span>
-      <span class="token punctuation">}</span></span>
-    <span class="token punctuation">/></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<p></code></pre></p>
+<pre><code class="hljs">  &lt;h4&gt;
+    &lt;code&gt;popToTop&lt;/code&gt;
+  &lt;/h4&gt;
+  
+  &lt;p&gt;
+    Pops all of the screens in the stack except the first one and navigates to it.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &lt;samp id=&quot;stack-with-options&quot;&gt;&lt;/p&gt; 
+    
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.popToTop();
 </code></pre>
-<p>By default, there is one floating header which renders headers for multiple screens on iOS. These headers include animations to smoothly switch to one another. When using a custom header, it's recommended set the <code>headerMode</code> prop on the navigator to <code>screen</code> so that you don't have to implement animations.</p>
-<p>You should also specify a height in <code>headerStyle</code> to avoid glitches:</p>
-<pre><code class="hljs css language-js">headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-  height<span class="token punctuation">:</span> <span class="token number">80</span><span class="token punctuation">,</span> <span class="token comment">// Specify the height of your custom header</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<p></code></pre></p>
+<pre><code class="hljs">    &lt;h2&gt;
+      Example
+    &lt;/h2&gt;
+    
+    &lt;p&gt;
+      &lt;samp id=&quot;stack-with-options&quot;&gt;&lt;/p&gt; 
+      
+      &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { createStackNavigator } from '@react-navigation/stack';
 </code></pre>
-<p>To set a custom header for all the screens in the navigator, you can specify this option in the <code>screenOptions</code> prop of the navigator.</p>
-<h4><a class="anchor" aria-hidden="true" id="headershown"></a><a href="#headershown" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerShown</code></h4>
-<p>Whether to show or hide the header for the screen. The header is shown by default unless <code>headerMode</code> was set to <code>none</code>. Setting this to <code>false</code> hides the header.</p>
-<p>When hiding the header on specific screens, you might also want to set <code>headerMode</code> prop to <code>screen</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertitle"></a><a href="#headertitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitle</code></h4>
-<p>String or a function that returns a React Element to be used by the header. O padrão é a propriedade <code>title</code>. When a function is specified, it receives an object containing <code>allowFontScaling</code>, <code>style</code> and <code>children</code> properties. The <code>children</code> property contains the title string.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertitlealign"></a><a href="#headertitlealign" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleAlign</code></h4>
-<p>How to align the header title. Possible values:</p>
-<ul>
-<li><code>left</code></li>
-<li><code>center</code></li>
-</ul>
-<p>Defaults to <code>center</code> on iOS and <code>left</code> on Android.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertitleallowfontscaling"></a><a href="#headertitleallowfontscaling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleAllowFontScaling</code></h4>
-<p>Whether header title font should scale to respect Text Size accessibility settings. Defaults to false.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerbackallowfontscaling"></a><a href="#headerbackallowfontscaling" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackAllowFontScaling</code></h4>
-<p>Whether back button title font should scale to respect Text Size accessibility settings. Defaults to false.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerbackimage"></a><a href="#headerbackimage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackImage</code></h4>
-<p>Function which returns a React Element to display custom image in header's back button. When a function is used, it receives the <code>tintColor</code> in it's argument object. Defaults to Image component with back image source, which is the default back icon image for the platform (a chevron on iOS and an arrow on Android).</p>
-<h4><a class="anchor" aria-hidden="true" id="headerbacktitle"></a><a href="#headerbacktitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackTitle</code></h4>
-<p>Title string used by the back button on iOS. Defaults to the previous scene's <code>headerTitle</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerbacktitlevisible"></a><a href="#headerbacktitlevisible" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackTitleVisible</code></h4>
-<p>A reasonable default is supplied for whether the back button title should be visible or not, but if you want to override that you can use <code>true</code> or <code>false</code> in this option.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertruncatedbacktitle"></a><a href="#headertruncatedbacktitle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTruncatedBackTitle</code></h4>
-<p>Title string used by the back button when <code>headerBackTitle</code> doesn't fit on the screen. <code>&quot;Back&quot;</code> by default.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerright"></a><a href="#headerright" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerRight</code></h4>
-<p>Function which returns a React Element to display on the right side of the header.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerleft"></a><a href="#headerleft" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerLeft</code></h4>
-<p>Function which returns a React Element to display on the left side of the header. When a function is used, it receives a number of arguments when rendered (<code>onPress</code>, <code>label</code>, <code>labelStyle</code> and more - check <a href="https://github.com/react-navigation/stack/blob/master/src/types.tsx">types.tsx</a> for the complete list).</p>
-<h4><a class="anchor" aria-hidden="true" id="headerstyle"></a><a href="#headerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStyle</code></h4>
-<p>Style object for the header. You can specify a custom background color here, for example.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertitlestyle"></a><a href="#headertitlestyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleStyle</code></h4>
-<p>Style object for the title component</p>
-<h4><a class="anchor" aria-hidden="true" id="headerbacktitlestyle"></a><a href="#headerbacktitlestyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackTitleStyle</code></h4>
-<p>Style object for the back title</p>
-<h4><a class="anchor" aria-hidden="true" id="headerleftcontainerstyle"></a><a href="#headerleftcontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerLeftContainerStyle</code></h4>
-<p>Customize the style for the container of the <code>headerLeft</code> component, for example to add padding.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerrightcontainerstyle"></a><a href="#headerrightcontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerRightContainerStyle</code></h4>
-<p>Customize the style for the container of the <code>headerRight</code> component, for example to add padding.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertitlecontainerstyle"></a><a href="#headertitlecontainerstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTitleContainerStyle</code></h4>
-<p>Customize the style for the container of the <code>headerTitle</code> component, for example to add padding.</p>
-<p>Por padrão, <code>headerTitleContainer</code> possui uma posição absoluta e atribui valores para <code>left</code> e <code>right</code>. Isso pode acarretar em um espaço branco ou sobreposição entre <code>headerLeft</code> e <code>headerTitle</code> caso um <code>headerLeft</code> personalizado seja utilizado. Esse problema pode ser solucionado ajustando os estilos de <code>left</code> e <code>right</code> no <code>headerTitleContainerStyle</code> e <code>marginHorizontal</code> em <code>headerTitleStyle</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="headertintcolor"></a><a href="#headertintcolor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTintColor</code></h4>
-<p>Tint color for the header</p>
-<h4><a class="anchor" aria-hidden="true" id="headerpresscolorandroid"></a><a href="#headerpresscolorandroid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerPressColorAndroid</code></h4>
-<p>Color for material ripple (Android &gt;= 5.0 only)</p>
-<h4><a class="anchor" aria-hidden="true" id="headertransparent"></a><a href="#headertransparent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerTransparent</code></h4>
-<p>O padrão é <code>false</code>. If <code>true</code>, the header will not have a background unless you explicitly provide it with <code>headerBackground</code>. The header will also float over the screen so that it overlaps the content underneath.</p>
-<p>This is useful if you want to render a semi-transparent header or a blurred background.</p>
-<p>Note that if you don't want your content to appear under the header, you need to manually add a top margin to your content. React Navigation won't do it automatically.</p>
-<p>To get the height of the header, you can use <code>useHeaderHeight</code>:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useHeaderHeight <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/stack'</span><span class="token punctuation">;</span>
-
-<span class="token comment">// ...</span>
-
-<span class="token keyword">const</span> headerHeight <span class="token operator">=</span> <span class="token function">useHeaderHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>const Stack = createStackNavigator();</p>
+<p>function MyStack() {
+return (
+&lt;Stack.Navigator
+initialRouteName=&quot;Home&quot;
+headerMode=&quot;screen&quot;
+screenOptions={{
+headerTintColor: 'white',
+headerStyle: { backgroundColor: 'tomato' },
+}}
+&gt;
+&lt;Stack.Screen
+name=&quot;Home&quot;
+component={Home}
+options={{
+title: 'Awesome app',
+}}
+/&gt;
+&lt;Stack.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{
+title: 'My profile',
+}}
+/&gt;
+&lt;Stack.Screen
+name=&quot;Settings&quot;
+component={Settings}
+options={{
+gestureEnabled: false,
+}}
+/&gt;
+&lt;/Stack.Navigator&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">      &lt;h2&gt;
+        Animations
+      &lt;/h2&gt;
+      
+      &lt;p&gt;
+        Stack Navigator exposes various options to configure the transition animation when a screen is added or removed. These transition animations can be customized on a per-screen basis by specifying the options in the &lt;code&gt;options&lt;/code&gt; prop for each screen.
+      &lt;/p&gt;
+      
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;code&gt;gestureDirection&lt;/code&gt; - The direction of swipe gestures, &lt;code&gt;horizontal&lt;/code&gt;, &lt;code&gt;vertical&lt;/code&gt; or &lt;code&gt;vertical-inverted&lt;/code&gt;.
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;p&gt;
+            &lt;code&gt;transitionSpec&lt;/code&gt; - An object which specifies the animation type (&lt;code&gt;timing&lt;/code&gt; or &lt;code&gt;spring&lt;/code&gt;) and their options (such as &lt;code&gt;duration&lt;/code&gt; for &lt;code&gt;timing&lt;/code&gt;). It takes 2 properties:
+          &lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;code&gt;open&lt;/code&gt; - Configuration for the transition when adding a screen
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;close&lt;/code&gt; - Configuration for the transition when removing a screen.
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p&gt;
+            Each of the object should specify 2 properties:
+          &lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;code&gt;animation&lt;/code&gt; - The animation function to use for the animation. Supported values are &lt;code&gt;timing&lt;/code&gt; and &lt;code&gt;spring&lt;/code&gt;.
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;config&lt;/code&gt; - The configuration object for the timing function. For &lt;code&gt;timing&lt;/code&gt;, it can be &lt;code&gt;duration&lt;/code&gt; and &lt;code&gt;easing&lt;/code&gt;. For &lt;code&gt;spring&lt;/code&gt;, it can be &lt;code&gt;stiffness&lt;/code&gt;, &lt;code&gt;damping&lt;/code&gt;, &lt;code&gt;mass&lt;/code&gt;, &lt;code&gt;overshootClamping&lt;/code&gt;, &lt;code&gt;restDisplacementThreshold&lt;/code&gt; and &lt;code&gt;restSpeedThreshold&lt;/code&gt;.
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p&gt;
+            A config which uses spring animation looks like this:
+          &lt;/p&gt;
+          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;const config = {
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="headerbackground"></a><a href="#headerbackground" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerBackground</code></h4>
-<p>Function which returns a React Element to render as the background of the header. This is useful for using backgrounds such as an image or a gradient.</p>
-<p>For example, you can use this with <code>headerTransparent</code> to render a blur view to create a translucent header.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> BlurView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'expo-blur'</span><span class="token punctuation">;</span>
-
-<span class="token comment">// ...</span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Screen</span></span>
-  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
-  <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>HomeScreen<span class="token punctuation">}</span></span>
-  <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    headerTransparent<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">headerBackground</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BlurView</span></span> <span class="token attr-name">tint</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span> <span class="token attr-name">intensity</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">100</span><span class="token punctuation">}</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>StyleSheet<span class="token punctuation">.</span>absoluteFill<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+<p>animation: 'spring',
+config: {
+stiffness: 1000,
+damping: 500,
+mass: 3,
+overshootClamping: true,
+restDisplacementThreshold: 0.01,
+restSpeedThreshold: 0.01,
+},
+};
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="headerstatusbarheight"></a><a href="#headerstatusbarheight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStatusBarHeight</code></h4>
-<p>Extra padding to add at the top of header to account for translucent status bar. By default, it uses the top value from the safe area insets of the device. Pass 0 or a custom value to disable the default behavior, and customize the height.</p>
-<h4><a class="anchor" aria-hidden="true" id="cardshadowenabled"></a><a href="#cardshadowenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>cardShadowEnabled</code></h4>
-<p>Use this prop to have visible shadows during transitions. Defaults to <code>true</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="cardoverlayenabled"></a><a href="#cardoverlayenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>cardOverlayEnabled</code></h4>
-<p>Use this prop to have a semi-transparent dark overlay visible under the card during transitions. Defaults to <code>true</code> on Android and <code>false</code> on iOS.</p>
-<h4><a class="anchor" aria-hidden="true" id="cardstyle"></a><a href="#cardstyle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>cardStyle</code></h4>
-<p>Style object for the card in stack. You can provide a custom background color to use instead of the default background here.</p>
-<p>You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath. This is useful to implement things like modal dialogs. If you use <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>, you should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached.</p>
-<h4><a class="anchor" aria-hidden="true" id="animationenabled"></a><a href="#animationenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>animationEnabled</code></h4>
-<p>Whether transition animation should be enabled the screen. If you set it to <code>false</code>, the screen won't animate when pushing or popping. Defaults to <code>true</code>.</p>
-<h4><a class="anchor" aria-hidden="true" id="gestureenabled"></a><a href="#gestureenabled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureEnabled</code></h4>
-<p>Whether you can use gestures to dismiss this screen. Defaults to <code>true</code> on iOS, <code>false</code> on Android.</p>
-<h4><a class="anchor" aria-hidden="true" id="gestureresponsedistance"></a><a href="#gestureresponsedistance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureResponseDistance</code></h4>
-<p>Object to override the distance of touch start from the edge of the screen to recognize gestures. It takes the following properties:</p>
-<ul>
-<li><code>horizontal</code> - <em>number</em> - Distância para a direção horizontal. O padrão é 25.</li>
-<li><code>vertical</code> - <em>number</em> - Distância para a direção vertical. O padrão é 135.</li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" id="gesturevelocityimpact"></a><a href="#gesturevelocityimpact" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureVelocityImpact</code></h4>
-<p>Number which determines the relevance of velocity for the gesture. Defaults to 0.3.</p>
-<h4><a class="anchor" aria-hidden="true" id="gesturedirection"></a><a href="#gesturedirection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>gestureDirection</code></h4>
-<p>Direction of the gesture. Refer the <a href="#animations">Animations section</a> for details.</p>
-<h4><a class="anchor" aria-hidden="true" id="transitionspec"></a><a href="#transitionspec" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>transitionSpec</code></h4>
-<p>Configuration object for the screen transition. Refer the <a href="#animations">Animations section</a> for details.</p>
-<h4><a class="anchor" aria-hidden="true" id="cardstyleinterpolator"></a><a href="#cardstyleinterpolator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>cardStyleInterpolator</code></h4>
-<p>Interpolated styles for various parts of the card. Refer the <a href="#animations">Animations section</a> for details.</p>
-<h4><a class="anchor" aria-hidden="true" id="headerstyleinterpolator"></a><a href="#headerstyleinterpolator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>headerStyleInterpolator</code></h4>
-<p>Interpolated styles for various parts of the header. Refer the <a href="#animations">Animations section</a> for details.</p>
-<h4><a class="anchor" aria-hidden="true" id="safeareainsets"></a><a href="#safeareainsets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>safeAreaInsets</code></h4>
-<p>Safe area insets for the screen. This is used to avoid elements like notch and status bar. By default, the device's safe area insets are automatically detected. You can override the behavior with this option.</p>
-<p>Takes an object containing following optional properties: <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code>.</p>
-<h3><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h3>
-<p>The navigator can emit events on certain actions. Supported events are:</p>
-<h4><a class="anchor" aria-hidden="true" id="transitionstart"></a><a href="#transitionstart" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>transitionStart</code></h4>
-<p>This event is fired when the transition animation starts for the current screen.</p>
-<h4><a class="anchor" aria-hidden="true" id="transitionend"></a><a href="#transitionend" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>transitionEnd</code></h4>
-<p>This event is fired when the transition animation ends for the current screen.</p>
-<h3><a class="anchor" aria-hidden="true" id="helpers"></a><a href="#helpers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Helpers</h3>
-<p>The stack navigator adds the following methods to the navigation prop:</p>
-<h4><a class="anchor" aria-hidden="true" id="push"></a><a href="#push" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>push</code></h4>
-<p>Pushes a new screen to top of the stack and navigate to it. The method accepts following arguments:</p>
-<ul>
-<li><code>name</code> - <em>string</em> - Name of the route to push onto the stack.</li>
-<li><code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).</li>
-</ul>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'Profile'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Michaś'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>
+We can pass this config in the <code>transitionSpec</code> option:
+</p>
+<p>
+<samp id="stack-animation-config"></p></p>
+<pre><code class="hljs">            &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="pop"></a><a href="#pop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>pop</code></h4>
-<p>Pops the current screen from the stack and navigates back to the previous screen. It takes one optional argument (<code>count</code>), which allows you to specify how many screens to pop back by.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{
+transitionSpec: {
+open: config,
+close: config,
+},
+}}
+/&gt;
+</code></pre></li></p>
+<pre><code class="hljs">            &lt;li&gt;
+              &lt;p&gt;
+                &lt;code&gt;cardStyleInterpolator&lt;/code&gt; - This is a function which specifies interpolated styles for various parts of the card. It is expected to return at least empty object, possibly containing interpolated styles for container, the card itself, overlay and shadow. Supported properties are:
+              &lt;/p&gt;
+              &lt;ul&gt;
+                &lt;li&gt;
+                  &lt;code&gt;containerStyle&lt;/code&gt; - Style for the container view wrapping the card.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;cardStyle&lt;/code&gt; - Style for the view representing the card.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;overlayStyle&lt;/code&gt; - Style for the view representing the semi-transparent overlay below
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;shadowStyle&lt;/code&gt; - Style for the view representing the card shadow.
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;p&gt;
+                The function receives the following properties in it's argument:
+              &lt;/p&gt;
+              &lt;ul&gt;
+                &lt;li&gt;
+                  &lt;code&gt;current&lt;/code&gt; - Values for the current screen:
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;index&lt;/code&gt; - The index of the card in the stack.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;closing&lt;/code&gt; - Animated node representing whether the card is closing. &lt;code&gt;1&lt;/code&gt; when closing, &lt;code&gt;0&lt;/code&gt; if not.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation.
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen. Contains &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties.
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;p&gt;
+                A config which just fades the card looks like this:
+              &lt;/p&gt;
+              &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;const forFade = ({ current, closing }) =&amp;gt; ({
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="poptotop"></a><a href="#poptotop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>popToTop</code></h4>
-<p>Pops all of the screens in the stack except the first one and navigates to it.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">popToTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>cardStyle: {
+opacity: current.progress,
+},
+});
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStackNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/stack'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> Stack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span>
-      <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
-      <span class="token attr-name">headerMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>screen<span class="token punctuation">"</span></span>
-      <span class="token attr-name">screenOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-        headerTintColor<span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
-        headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> backgroundColor<span class="token punctuation">:</span> <span class="token string">'tomato'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-    <span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-          title<span class="token punctuation">:</span> <span class="token string">'Awesome app'</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-          title<span class="token punctuation">:</span> <span class="token string">'My profile'</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span>
-        <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Settings<span class="token punctuation">}</span></span>
-        <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-          gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p>
+We can pass this function in <code>cardStyleInterpolator</code> option:
+</p>
+<p>
+<samp id="stack-for-fade-card"></p></p>
+<pre><code class="hljs">                &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="animations"></a><a href="#animations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Animations</h2>
-<p>Stack Navigator exposes various options to configure the transition animation when a screen is added or removed. These transition animations can be customize on a per-screen basis by specifying the options in the <code>options</code> prop for each screen.</p>
-<ul>
-<li><p><code>gestureDirection</code> - The direction of swipe gestures, <code>horizontal</code>, <code>vertical</code> or <code>vertical-inverted</code>.</p></li>
-<li><p><code>transitionSpec</code> - An object which specifies the animation type (<code>timing</code> or <code>spring</code>) and their options (such as <code>duration</code> for <code>timing</code>). It takes 2 properties:</p>
-<ul>
-<li><code>open</code> - Configuration for the transition when adding a screen</li>
-<li><code>close</code> - Configuration for the transition when removing a screen.</li>
-</ul>
-<p>Each of the object should specify 2 properties:</p>
-<ul>
-<li><code>animation</code> - The animation function to use for the animation. Supported values are <code>timing</code> and <code>spring</code>.</li>
-<li><code>config</code> - The configuration object for the timing function. For <code>timing</code>, it can be <code>duration</code> and <code>easing</code>. For <code>spring</code>, it can be <code>stiffness</code>, <code>damping</code>, <code>mass</code>, <code>overshootClamping</code>, <code>restDisplacementThreshold</code> and <code>restSpeedThreshold</code>.</li>
-</ul>
-<p>A config which uses spring animation looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-animation<span class="token punctuation">:</span> <span class="token string">'spring'</span><span class="token punctuation">,</span>
-config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-  stiffness<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
-  damping<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
-  mass<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-  overshootClamping<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  restDisplacementThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
-  restSpeedThreshold<span class="token punctuation">:</span> <span class="token number">0.01</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{ cardStyleInterpolator: forFade }}
+/&gt;
+</code></pre></li></p>
+<pre><code class="hljs">                &lt;li&gt;
+                  &lt;p&gt;
+                    &lt;code&gt;headerStyleInterpolator&lt;/code&gt; - This is a function which specifies interpolated styles for various parts of the header. It is expected to return at least empty object, possibly containing interpolated styles for left label and button, right button, title and background. Supported properties are:
+                  &lt;/p&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;leftLabelStyle&lt;/code&gt; - Style for the label of the left button (back button label).
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;leftButtonStyle&lt;/code&gt; - Style for the left button (usually the back button).
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;rightButtonStyle&lt;/code&gt; - Style for the right button.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;titleStyle&lt;/code&gt; - Style for the header title text.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;backgroundStyle&lt;/code&gt; - Style for the header background.
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                  &lt;p&gt;
+                    The function receives the following properties in it's argument:
+                  &lt;/p&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;current&lt;/code&gt; - Values for the current screen (the screen which owns this header).
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation. Each layout object contain &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;title&lt;/code&gt; - Layout of the title element. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a title.
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;leftLabel&lt;/code&gt; - Layout of the back button label. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a back button label.
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                  &lt;p&gt;
+                    A config which just fades the elements looks like this:
+                  &lt;/p&gt;
+                  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;const forFade = ({ current, next }) =&amp;gt; {
 </code></pre>
-<p>We can pass this config in the <code>transitionSpec</code> option:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-  transitionSpec<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    open<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
-    close<span class="token punctuation">:</span> config<span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
-</code></pre></li>
-<li><p><code>cardStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the card. Is expected to return at least empty object, possibly containing interpolated styles for container, the card itself, overlay and shadow. Supported properties are:</p>
-<ul>
-<li><code>containerStyle</code> - Style for the container view wrapping the card.</li>
-<li><code>cardStyle</code> - Style for the view representing the card.</li>
-<li><code>overlayStyle</code> - Style for the view representing the semi-transparent overlay below</li>
-<li><code>shadowStyle</code> - Style for the view representing the card shadow.</li>
-</ul>
-<p>The function receives the following properties in it's argument:</p>
-<ul>
-<li><code>current</code> - Values for the current screen:</li>
-<li><code>progress</code> - Animated node representing the progress value of the current screen.</li>
-<li><code>next</code> - Values for the current screen the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.</li>
-<li><code>progress</code> - Animated node representing the progress value of the next screen.</li>
-<li><code>index</code> - The index of the card in the stack.</li>
-<li><code>closing</code> - Animated node representing whether the card is closing. <code>1</code> when closing, <code>0</code> if not.</li>
-<li><code>layouts</code> - Layout measurements for various items we use for animation.</li>
-<li><code>screen</code> - Layout of the whole screen. Contains <code>height</code> and <code>width</code> properties.</li>
-</ul>
-<p>A config which just fades the card looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> current<span class="token punctuation">,</span> closing <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-cardStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-  opacity<span class="token punctuation">:</span> current<span class="token punctuation">.</span>progress<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>const opacity = Animated.add(
+current.progress,
+next ? next.progress : 0
+).interpolate({
+inputRange: [0, 1, 2],
+outputRange: [0, 1, 0],
+});</p>
+<p>return {
+leftButtonStyle: { opacity },
+rightButtonStyle: { opacity },
+titleStyle: { opacity },
+backgroundStyle: { opacity },
+};
+};
 </code></pre>
-<p>We can pass this function in <code>cardStyleInterpolator</code> option:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> cardStyleInterpolator<span class="token punctuation">:</span> forFade <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
-</code></pre></li>
-<li><p><code>headerStyleInterpolator</code> - This is a function which specifies interpolated styles for various parts of the header. Is expected to return at least empty object, possibly containing interpolated styles for left label and button, right button, title and background. Supported properties are:</p>
-<ul>
-<li><code>leftLabelStyle</code> - Style for the label of the left button (back button label).</li>
-<li><code>leftButtonStyle</code> - Style for the left button (usually the back button).</li>
-<li><code>rightButtonStyle</code> - Style for the right button.</li>
-<li><code>titleStyle</code> - Style for the header title text.</li>
-<li><code>backgroundStyle</code> - Style for the header background.</li>
-</ul>
-<p>The function receives the following properties in it's argument:</p>
-<ul>
-<li><code>current</code> - Values for the current screen (the screen which owns this header).</li>
-<li><code>progress</code> - Animated node representing the progress value of the current screen.</li>
-<li><code>next</code> - Values for the current screen the screen after this one in the stack. This can be <code>undefined</code> in case the screen animating is the last one.</li>
-<li><code>progress</code> - Animated node representing the progress value of the next screen.</li>
-<li><code>layouts</code> - Layout measurements for various items we use for animation. Each layout object contain <code>height</code> and <code>width</code> properties.</li>
-<li><code>screen</code> - Layout of the whole screen.</li>
-<li><code>title</code> - Layout of the title element. Might be <code>undefined</code> when not rendering a title.</li>
-<li><code>leftLabel</code> - Layout of the back button label. Might be <code>undefined</code> when not rendering a back button label.</li>
-</ul>
-<p>A config which just fades the elements looks like this:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> <span class="token function-variable function">forFade</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> current<span class="token punctuation">,</span> next <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-<span class="token keyword">const</span> opacity <span class="token operator">=</span> Animated<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>
-  current<span class="token punctuation">.</span>progress<span class="token punctuation">,</span>
-  next <span class="token operator">?</span> next<span class="token punctuation">.</span>progress <span class="token punctuation">:</span> <span class="token number">0</span>
-<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">interpolate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  inputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  outputRange<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">return</span> <span class="token punctuation">{</span>
-  leftButtonStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  rightButtonStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  titleStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  backgroundStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span> opacity <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<p>
+We can pass this function in <code>headerStyleInterpolator</code> option:
+</p>
+<p>
+<samp id="stack-for-fade-header"></p></p>
+<pre><code class="hljs">                    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
 </code></pre>
-<p>We can pass this function in <code>headerStyleInterpolator</code> option:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> headerStyleInterpolator<span class="token punctuation">:</span> forFade <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
-</code></pre></li>
-</ul>
-<p>With these options, it's possible to build custom transition animations for screens. We also export various configs from the library with ready-made animations which you can use:</p>
-<ul>
-<li><p><code>TransitionSpecs</code></p>
-<ul>
-<li><code>TransitionIOSSpec</code> - Exact values from UINavigationController's animation configuration.</li>
-<li><code>FadeInFromBottomAndroidSpec</code> - Configuration for activity open animation from Android Nougat.</li>
-<li><code>FadeOutToBottomAndroidSpec</code> - Configuration for activity close animation from Android Nougat.</li>
-<li><code>RevealFromBottomAndroidSpec</code> - Approximate configuration for activity open animation from Android Pie.</li>
-</ul></li>
-<li><p><code>CardStyleInterpolators</code></p>
-<ul>
-<li><code>forHorizontalIOS</code> - Standard iOS-style slide in from the right.</li>
-<li><code>forVerticalIOS</code> - Standard iOS-style slide in from the bottom (used for modals).</li>
-<li><code>forModalPresentationIOS</code> - Standard iOS-style modal animation in iOS 13.</li>
-<li><code>forFadeFromBottomAndroid</code> - Standard Android-style fade in from the bottom for Android Oreo.</li>
-<li><code>forRevealFromBottomAndroid</code> - Standard Android-style reveal from the bottom for Android Pie.</li>
-</ul>
-<p>Example configuration for Android Oreo style vertical screen fade animation:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-<span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-  cardStyleInterpolator<span class="token punctuation">:</span> CardStyleInterpolators<span class="token punctuation">.</span>forFadeFromBottomAndroid<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
-</code></pre></li>
-<li><p><code>HeaderStyleInterpolators</code></p>
-<ul>
-<li><code>forUIKit</code> - Standard UIKit style animation for the header where the title fades into the back button label.</li>
-<li><code>forFade</code> - Simple fade animation for the header elements.</li>
-<li><code>forStatic</code> - Simple translate animation to translate the header along with the sliding screen.</li>
-</ul>
-<p>Example configuration for default iOS animation for header elements where the title fades into the back button:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-<span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-<span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-<span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-  headerStyleInterpolator<span class="token punctuation">:</span> HeaderStyleInterpolators<span class="token punctuation">.</span>forUIKit<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
-</code></pre></li>
-</ul>
-<blockquote>
-<p>Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.</p>
-</blockquote>
-<p>We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under <code>TransitionPresets</code>. Currently the following presets are available:</p>
-<ul>
-<li><code>SlideFromRightIOS</code> - Standard iOS navigation transition.</li>
-<li><code>ModalSlideFromBottomIOS</code> - Standard iOS navigation transition for modals.</li>
-<li><code>ModalPresentationIOS</code> - Standard iOS modal presentation style (introduced in iOS 13).</li>
-<li><code>FadeFromBottomAndroid</code> - Standard Android navigation transition when opening or closing an Activity on Android &lt; 9 (Oreo).</li>
-<li><code>RevealFromBottomAndroid</code> - Standard Android navigation transition when opening or closing an Activity on Android &gt;= 9 (Pie).</li>
-<li><code>DefaultTransition</code> - Default navigation transition for the current platform.</li>
-<li><code>ModalTransition</code> - Default modal transition for the current platform.</li>
-</ul>
-<p>You can spread these presets in <code>options</code> to customize the animation for a screen:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span>
-  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span>
-  <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span>
-  <span class="token attr-name">options</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-    <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalSlideFromBottomIOS<span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/></span></span>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{ headerStyleInterpolator: forFade }}
+/&gt;
+</code></pre></li> </ul></p>
+<pre><code class="hljs">                    &lt;p&gt;
+                      With these options, it's possible to build custom transition animations for screens. We also export various configs from the library with ready-made animations which you can use:
+                    &lt;/p&gt;
+                    
+                    &lt;ul&gt;
+                      &lt;li&gt;
+                        &lt;p&gt;
+                          &lt;code&gt;TransitionSpecs&lt;/code&gt;
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;TransitionIOSSpec&lt;/code&gt; - Exact values from UINavigationController's animation configuration.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;FadeInFromBottomAndroidSpec&lt;/code&gt; - Configuration for activity open animation from Android Nougat.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;FadeOutToBottomAndroidSpec&lt;/code&gt; - Configuration for activity close animation from Android Nougat.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;RevealFromBottomAndroidSpec&lt;/code&gt; - Approximate configuration for activity open animation from Android Pie.
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;p&gt;
+                          &lt;code&gt;CardStyleInterpolators&lt;/code&gt;
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;forHorizontalIOS&lt;/code&gt; - Standard iOS-style slide in from the right.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;forVerticalIOS&lt;/code&gt; - Standard iOS-style slide in from the bottom (used for modals).
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;forModalPresentationIOS&lt;/code&gt; - Standard iOS-style modal animation in iOS 13.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;forFadeFromBottomAndroid&lt;/code&gt; - Standard Android-style fade in from the bottom for Android Oreo.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;forRevealFromBottomAndroid&lt;/code&gt; - Standard Android-style reveal from the bottom for Android Pie.
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;p&gt;
+                          Example configuration for Android Oreo style vertical screen fade animation:
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;samp id=&quot;stack-card-style-interpolator&quot;&gt;&lt;/p&gt; 
+                          
+                          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
 </code></pre>
-<p>If you want to customize the transition animations for all of the screens in the navigator, you can specify it in <code>screenOptions</code> prop for the navigator.</p>
-<p>Example configuration for iOS modal presentation style:</p>
-<pre><code class="hljs css language-js"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span>
-  <span class="token attr-name">initialRouteName</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span>
-  <span class="token attr-name">screenOptions</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
-    gestureEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    cardOverlayEnabled<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token operator">...</span>TransitionPresets<span class="token punctuation">.</span>ModalPresentationIOS<span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
-  <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span>
-  <span class="token attr-name">headerMode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>none<span class="token punctuation">"</span></span>
-<span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Home<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Profile<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Profile<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Settings<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Settings<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{
+title: 'Profile',
+cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+}}
+/&gt;
+</code></pre></li></p>
+<pre><code class="hljs">                          &lt;li&gt;
+                            &lt;p&gt;
+                              &lt;code&gt;HeaderStyleInterpolators&lt;/code&gt;
+                            &lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li&gt;
+                                &lt;code&gt;forUIKit&lt;/code&gt; - Standard UIKit style animation for the header where the title fades into the back button label.
+                              &lt;/li&gt;
+                              &lt;li&gt;
+                                &lt;code&gt;forFade&lt;/code&gt; - Simple fade animation for the header elements.
+                              &lt;/li&gt;
+                              &lt;li&gt;
+                                &lt;code&gt;forStatic&lt;/code&gt; - Simple translate animation to translate the header along with the sliding screen.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;p&gt;
+                              Example configuration for default iOS animation for header elements where the title fades into the back button:
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              &lt;samp id=&quot;stack-for-ui-kit&quot;&gt;&lt;/p&gt; 
+                              
+                              &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/navigation-context.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">NavigationContext</span></a><a class="docs-next button" href="/docs/pt-BR/next/native-stack-navigator.html"><span class="function-name-prevnext">createNativeStackNavigator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a><ul class="toc-headings"><li><a href="#props">Props</a></li><li><a href="#options">Options</a></li><li><a href="#events">Events</a></li><li><a href="#helpers">Helpers</a></li></ul></li><li><a href="#example">Example</a></li><li><a href="#animations">Animations</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{
+title: 'Profile',
+headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
+}}
+/&gt;
+</code></pre></li> </ul></p>
+<pre><code class="hljs">                              &lt;blockquote&gt;
+                                &lt;p&gt;
+                                  Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.
+                                &lt;/p&gt;
+                              &lt;/blockquote&gt;
+                              
+                              &lt;p&gt;
+                                We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under &lt;code&gt;TransitionPresets&lt;/code&gt;. Currently the following presets are available:
+                              &lt;/p&gt;
+                              
+                              &lt;ul&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;SlideFromRightIOS&lt;/code&gt; - Standard iOS navigation transition.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;ModalSlideFromBottomIOS&lt;/code&gt; - Standard iOS navigation transition for modals.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;ModalPresentationIOS&lt;/code&gt; - Standard iOS modal presentation style (introduced in iOS 13).
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;FadeFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &lt; 9 (Oreo).
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;RevealFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &gt;= 9 (Pie).
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;DefaultTransition&lt;/code&gt; - Default navigation transition for the current platform.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;ModalTransition&lt;/code&gt; - Default modal transition for the current platform.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                              
+                              &lt;p&gt;
+                                You can spread these presets in &lt;code&gt;options&lt;/code&gt; to customize the animation for a screen:
+                              &lt;/p&gt;
+                              
+                              &lt;p&gt;
+                                &lt;samp id=&quot;stack-modal-slide-from-bottom&quot;&gt;&lt;/p&gt; 
+                                
+                                &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
+</code></pre>
+<p>name=&quot;Profile&quot;
+component={Profile}
+options={{
+title: 'Profile',
+...TransitionPresets.ModalSlideFromBottomIOS,
+}}
+/&gt;
+</code></pre></p>
+<pre><code class="hljs">                                &lt;p&gt;
+                                  If you want to customize the transition animations for all of the screens in the navigator, you can specify it in &lt;code&gt;screenOptions&lt;/code&gt; prop for the navigator.
+                                &lt;/p&gt;
+                                
+                                &lt;p&gt;
+                                  Example configuration for iOS modal presentation style:
+                                &lt;/p&gt;
+                                
+                                &lt;p&gt;
+                                  &lt;samp id=&quot;stack-modal-presentation&quot;&gt;&lt;/p&gt; 
+                                  
+                                  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Navigator
+</code></pre>
+<p>initialRouteName=&quot;Home&quot;
+screenOptions={{
+gestureEnabled: true,
+cardOverlayEnabled: true,
+...TransitionPresets.ModalPresentationIOS,
+}}
+mode=&quot;modal&quot;
+headerMode=&quot;none&quot;
+&gt;
+&lt;Stack.Screen name=&quot;Home&quot; component={Home} /&gt;
+&lt;Stack.Screen name=&quot;Profile&quot; component={Profile} /&gt;
+&lt;/Stack.Navigator&gt;
+</code></pre></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/navigation-context.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">NavigationContext</span></a><a class="docs-next button" href="/docs/pt-BR/next/native-stack-navigator.html"><span class="function-name-prevnext">createNativeStackNavigator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-definition">API Definition</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

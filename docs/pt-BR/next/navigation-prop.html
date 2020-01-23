@@ -88,7 +88,7 @@
 <li><code>dangerouslyGetParent</code> - função que retorna o navegador pai, se houver</li>
 </ul></li>
 </ul>
-<p>É importante destacar que a prop <code>navigation</code> <em>não</em> é passada para <em>todos</em> componentes; apenas componentes da <code>tela</code> recebem esta prop automaticamente! React Navigation doesn't do any magic here. Por exemplo, se você fosse definir um componente <code>MyBackButton</code> e renderizá-lo como um filho de um componente de tela, você não seria capaz de acessar a prop <code>navigation</code> nele. If, however, you wish to access the <code>navigation</code> prop in any of your components, you may use the <a href="/docs/pt-BR/next/use-navigation.html"><code>useNavigation</code></a> HOC.</p>
+<p>É importante destacar que a prop <code>navigation</code> <em>não</em> é passada para <em>todos</em> componentes; apenas componentes da <code>tela</code> recebem esta prop automaticamente! React Navigation doesn't do any magic here. Por exemplo, se você fosse definir um componente <code>MyBackButton</code> e renderizá-lo como um filho de um componente de tela, você não seria capaz de acessar a prop <code>navigation</code> nele. If, however, you wish to access the <code>navigation</code> prop in any of your components, you may use the <a href="/docs/pt-BR/next/use-navigation.html"><code>useNavigation</code></a> hook.</p>
 <h3><a class="anchor" aria-hidden="true" id="funcões-dependentes-do-navegador"></a><a href="#funcões-dependentes-do-navegador" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Funções dependentes do navegador</h3>
 <p>There are several additional functions present on <code>navigation</code> prop based on the kind of the current navigator.</p>
 <p>Se o navegador for um stack navigator, várias alternativas para <code>navigate</code> e <code>goBack</code> serão fornecidas e você poderá usar o que preferir. As funções são:</p>
@@ -127,132 +127,287 @@
 <li><code>name</code> - A destination name of the route that has been defined somewhere</li>
 <li><code>params</code> - Parâmetros para mesclar na rota de destino</li>
 </ul>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">HomeScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">:</span> <span class="token punctuation">{</span> navigate <span class="token punctuation">}</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span>This is the home screen <span class="token keyword">of</span> the app<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
-        <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
-          <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Profile'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> names<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Brent'</span><span class="token punctuation">,</span> <span class="token string">'Satya'</span><span class="token punctuation">,</span> <span class="token string">'Michaś'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span></span>
-        <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go to Brent's profile<span class="token punctuation">"</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p><samp id="navigate"></p></p>
+<pre><code class="js">function HomeScreen({ navigation: { navigate } }) {
+  return (
+    &lt;View&gt;
+      &lt;Text&gt;This is the home screen of the app&lt;/Text&gt;
+      &lt;Button
+        onPress={() =&gt;
+          navigate('Profile', { names: ['Brent', 'Satya', 'Michaś'] })
+        }
+        title="Go to Brent's profile"
+      /&gt;
+    &lt;/View&gt;
+  );
+}
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="goback-feche-a-tela-ativa-e-volte"></a><a href="#goback-feche-a-tela-ativa-e-volte" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>goBack</code> - Feche a tela ativa e volte</h3>
-<p>Optionally provide a key, which specifies the route to go back from. By default, <code>goBack</code> will close the route that it is called from:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">HomeScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">:</span> <span class="token punctuation">{</span> goBack <span class="token punctuation">}</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">goBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Go back from this HomeScreen<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p><h3>
+<code>goBack</code> - Feche a tela ativa e volte
+</h3></p>
+<p>
+  Optionally provide a key, which specifies the route to go back from. By default, <code>goBack</code> will close the route that it is called from:
+</p>
+<p>
+  <samp id="navigate"></p> 
+  <pre><code class="js">function ProfileScreen({ navigation: { goBack } }) {
+  return (
+    &lt;View&gt;
+      &lt;Button onPress={() =&gt; goBack()} title="Go back from ProfileScreen" /&gt;
+    &lt;/View&gt;
+  );
+}
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="voltando-de-uma-tela-especifica-com-o-goback"></a><a href="#voltando-de-uma-tela-especifica-com-o-goback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Voltando de uma tela específica com o <code>goBack</code></h4>
-<p>Considere o seguinte histórico da stack de navegação:</p>
-<pre><code class="hljs css language-javascript">navigation.navigate({ <span class="hljs-attr">name</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_A });
-navigation.navigate({ <span class="hljs-attr">name</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_B });
-navigation.navigate({ <span class="hljs-attr">name</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_C });
-navigation.navigate({ <span class="hljs-attr">name</span>: SCREEN, <span class="hljs-attr">key</span>: SCREEN_KEY_D });
+<p><h4>
+Voltando de uma tela específica com o <code>goBack</code>
+</h4></p>
+  <p>
+    Considere o seguinte histórico da stack de navegação:
+  </p>
+  <pre><code class="javascript">navigation.navigate({ name: SCREEN, key: SCREEN_KEY_A });
+navigation.navigate({ name: SCREEN, key: SCREEN_KEY_B });
+navigation.navigate({ name: SCREEN, key: SCREEN_KEY_C });
+navigation.navigate({ name: SCREEN, key: SCREEN_KEY_D });
 </code></pre>
-<p>Now you are on <em>screen D</em> and want to go back to <em>screen A</em> (popping D, C, and B). Then you can use <code>navigate</code>:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">:</span> <span class="token constant">SCREEN_KEY_A</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// will go to screen A FROM screen D</span>
+  <p>
+    Now you are on <em>screen D</em> and want to go back to <em>screen A</em> (popping D, C, and B). Then you can use <code>navigate</code>:
+  </p>
+  <pre><code class="js">navigation.navigate({ key: SCREEN_KEY_A }); // will go to screen A FROM screen D
 </code></pre>
-<p>Alternativamente, como a tela <em>A</em> é o topo da stack, você pode usar <code>navigation.popToTop()</code>.</p>
-<h3><a class="anchor" aria-hidden="true" id="replace"></a><a href="#replace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>replace</code></h3>
-<p>Chame isso para substituir a tela atual pela rota especificada, com params e sub-action.</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <p>
+    Alternativamente, como a tela <em>A</em> é o topo da stack, você pode usar <code>navigation.popToTop()</code>.
+  </p>
+<p><h3>
+<code>replace</code>
+</h3></p>
+  <p>
+    Chame isso para substituir a tela atual pela rota especificada, com params e sub-action.
+  </p>
+  <p>
+    <samp id="navigate-replace-reset"></p> 
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.replace(name, params);
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="reset"></a><a href="#reset" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>reset</code></h3>
-<p>Replace the navigator state to a new state:</p>
-<pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  index<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Profile'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="setparams-faca-alteracões-para-rotear-params"></a><a href="#setparams-faca-alteracões-para-rotear-params" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setParams</code> - Faça alterações para rotear params</h3>
-<p>Disparar a ação <code>setParams</code> permite que uma tela altere os parâmetros na rota, o que é útil para atualizar os botões e título do cabeçalho. <code>setParams</code> funciona como o <code>setState</code> do React - ele mescla o objeto params fornecido com os parâmetros atuais.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">ProfileScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation<span class="token punctuation">:</span> <span class="token punctuation">{</span> setParams <span class="token punctuation">}</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
-        <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"Lucy"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
-        <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Set title name to 'Lucy'<span class="token punctuation">"</span></span>
-      <span class="token punctuation">/></span></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="setoptions-update-screen-options-from-the-component"></a><a href="#setoptions-update-screen-options-from-the-component" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setOptions</code> - Update screen options from the component</h3>
-<p>The <code>setOptions</code> method lets us set screen options from within the component. This is useful if we need to use the component's props, state or context to configure our screen.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">SelectionScreen</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>selectCount<span class="token punctuation">,</span> setSelectCount<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p></code></pre></p>
+<pre><code class="hljs">&lt;h3&gt;
+  &lt;code&gt;reset&lt;/code&gt;
+&lt;/h3&gt;
 
-  navigation<span class="token punctuation">.</span><span class="token function">setOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> selectCount <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>selectCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> items selected</span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">:</span> <span class="token string">'Select some items'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+&lt;p&gt;
+  Replace the navigator state to a new state:
+&lt;/p&gt;
 
-  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SelectionList</span></span> <span class="token attr-name">onSelectCountChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>setSelectCount<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+&lt;p&gt;
+  &lt;samp id=&quot;navigate-replace-reset&quot;&gt;&lt;/p&gt; 
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.reset({
 </code></pre>
-<p>Any options specified here are shallow merged with the options specified when defining the screen.</p>
-<h2><a class="anchor" aria-hidden="true" id="navigation-events"></a><a href="#navigation-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigation events</h2>
-<p>Screens can add listeners on the <code>navigation</code> prop like in React Navigation. By default, there are 2 events available:</p>
-<ul>
-<li><code>focus</code> - This event is emitted when the screen comes into focus</li>
-<li><code>blur</code> - This event is emitted when the screen goes out of focus</li>
-</ul>
-<p>Exemplo:</p>
-<pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  React<span class="token punctuation">.</span><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> unsubscribe <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token string">'focus'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token comment">// do something</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> unsubscribe<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ProfileContent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<p>index: 0,
+routes: [{ name: 'Profile' }],
+});
+</code></pre></p>
+<pre><code class="hljs">  &lt;h3&gt;
+    &lt;code&gt;setParams&lt;/code&gt; - Faça alterações para rotear params
+  &lt;/h3&gt;
+  
+  &lt;p&gt;
+    Disparar a ação &lt;code&gt;setParams&lt;/code&gt; permite que uma tela altere os parâmetros na rota, o que é útil para atualizar os botões e título do cabeçalho. &lt;code&gt;setParams&lt;/code&gt; funciona como o &lt;code&gt;setState&lt;/code&gt; do React - ele mescla o objeto params fornecido com os parâmetros atuais.
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    &lt;samp id=&quot;navigate-set-params&quot;&gt;&lt;/p&gt; 
+    
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function ProfileScreen({ navigation: { setParams } }) {
 </code></pre>
-<p>The <code>navigation.addListener</code> method returns a function to remove the listener which can be returned as the cleanup function in an effect.</p>
-<p>Each event listener receives an event object as it's argument. The event object contains following properties:</p>
-<ul>
-<li><code>data</code> - Additional data regarding the event passed by the navigator. This can be <code>undefined</code> if no data was passed.</li>
-<li><code>preventDefault</code> - Calling this method may prevent the default action performed by the action (such as switching tabs on <code>tabPress</code>). Support for preventing actions depends on the navigator and won't work for all events.</li>
-</ul>
-<p>Apart from <code>focus</code> and <code>blur</code>, each navigator can emit their own custom events. For example, stack navigator emits <code>transitionStart</code> and <code>transitionEnd</code> events, tab navigator emits <code>tabPress</code> event etc. You can find details about the events emitted on the individual navigator's documentation.</p>
-<h3><a class="anchor" aria-hidden="true" id="isfocused-consultar-o-estado-focalizado-da-tela"></a><a href="#isfocused-consultar-o-estado-focalizado-da-tela" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>isFocused</code> - Consultar o estado focalizado da tela</h3>
-<p>Retorna <code>true</code> se a tela estiver focada e <code>false</code> caso contrário.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">const</span> isFocused <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">isFocused</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>render() {
+return (
+&lt;Button
+onPress={() =&gt;
+navigation.setParams({
+friends:
+route.params.friends[0] === 'Brent'
+? ['Wojciech', 'Szymon', 'Jakub']
+: ['Brent', 'Satya', 'Michaś'],
+title:
+route.params.title === &quot;Brent's Profile&quot;
+? &quot;Lucy's Profile&quot;
+: &quot;Brent's Profile&quot;,
+})
+}
+title=&quot;Swap title and friends&quot;
+/&gt;
+);
+}
+}
+</code></pre></p>
+<pre><code class="hljs">    &lt;h3&gt;
+      &lt;code&gt;setOptions&lt;/code&gt; - Update screen options from the component
+    &lt;/h3&gt;
+    
+    &lt;p&gt;
+      The &lt;code&gt;setOptions&lt;/code&gt; method lets us set screen options from within the component. This is useful if we need to use the component's props, state or context to configure our screen.
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+      &lt;samp id=&quot;navigate-set-options&quot;&gt;&lt;/p&gt; 
+      
+      &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function ProfileScreen({ navigation, route }) {
 </code></pre>
-<p>This method doesn't re-render the screen when the value changes and mainly useful in callbacks. You probably want to use <a href="/docs/pt-BR/next/use-is-focused.html">useIsFocused</a> instead of using this directly, it will return a boolean a prop to indicating if the screen is focused.</p>
-<h2><a class="anchor" aria-hidden="true" id="referencia-de-api-avancada"></a><a href="#referencia-de-api-avancada" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referência de API avançada</h2>
-<p>The <code>dispatch</code> function is much less commonly used, but a good escape hatch if you can't do what you need with the available methods such as <code>navigate</code>, <code>goBack</code> etc. We recommend to avoid using the <code>dispatch</code> method often unless absolutely necessary.</p>
-<h3><a class="anchor" aria-hidden="true" id="dispatch-envie-uma-acão-ao-roteador"></a><a href="#dispatch-envie-uma-acão-ao-roteador" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dispatch</code> - Envie uma ação ao roteador</h3>
-<p>Use o despacho para enviar qualquer ação de navegação ao roteador. As outras funções de navegação usam o envio nos bastidores.</p>
-<p>Observe que, se você desejar disparar ações do react-navigation, deverá usar os criadores de ações fornecidos nesta biblioteca.</p>
-<p>See <a href="/docs/pt-BR/next/navigation-actions.html">Navigation Actions Docs</a> for a full list of available actions.</p>
-<pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> CommonActions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@react-navigation/native'</span><span class="token punctuation">;</span>
-
-navigation<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>
-  CommonActions<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'Profile'</span><span class="token punctuation">,</span>
-    params<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>const [value, onChangeText] = React.useState(route.params.title);
+navigation.setOptions({
+title: value === '' ? 'No title' : value,
+});
+return (
+&lt;View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}&gt;
+&lt;TextInput
+style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+onChangeText={text =&gt; onChangeText(text)}
+value={value}
+/&gt;
+&lt;Button title=&quot;Go back&quot; onPress={() =&gt; navigation.goBack()} /&gt;
+&lt;/View&gt;
+);
+}
+</code></pre></p>
+<pre><code class="hljs">      &lt;p&gt;
+        Any options specified here are shallow merged with the options specified when defining the screen.
+      &lt;/p&gt;
+      
+      &lt;h2&gt;
+        Navigation events
+      &lt;/h2&gt;
+      
+      &lt;p&gt;
+        Screens can add listeners on the &lt;code&gt;navigation&lt;/code&gt; prop like in React Navigation. By default, there are 2 events available:
+      &lt;/p&gt;
+      
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;code&gt;focus&lt;/code&gt; - This event is emitted when the screen comes into focus
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;code&gt;blur&lt;/code&gt; - This event is emitted when the screen goes out of focus
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      
+      &lt;p&gt;
+        Exemplo:
+      &lt;/p&gt;
+      
+      &lt;p&gt;
+        &lt;samp id=&quot;simple-focus-and-blur&quot;&gt;&lt;/p&gt; 
+        
+        &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;function Profile({ navigation }) {
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="dangerouslygetparent-obter-navegador-pai"></a><a href="#dangerouslygetparent-obter-navegador-pai" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dangerouslyGetParent</code> - obter navegador pai</h3>
-<p>Se, por exemplo, você tem um componente de tela que pode ser apresentado em vários navegadores, você pode usá-lo para influenciar seu comportamento com base em qual navegador ele está.</p>
-<p>Outro bom caso de uso para isso é encontrar o índice da rota ativa na lista de rotas dos pais. Portanto, no caso de uma stack, se você estiver no índice 0, talvez não queira renderizar um botão Voltar, mas se estiver em outro lugar na lista, você renderizará um botão Voltar.</p>
-<p>Certifique-se sempre de verificar se a chamada retorna um valor válido.</p>
-<h3><a class="anchor" aria-hidden="true" id="dangerouslygetstate-get-state-of-navigator"></a><a href="#dangerouslygetstate-get-state-of-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>dangerouslyGetState</code> - get state of navigator</h3>
-<p>Getting the navigator state could be useful in very rare situations. You most likely don't need to use this method. If you do, make sure you have a good reason.</p>
-<p>If you need the state for rendering content, you should use <a href="/docs/pt-BR/next/use-navigation-state.html"><code>useNavigationState</code></a> instead of this method.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/upgrading-from-4.x.html"><span class="arrow-prev">← </span><span>Upgrading from 4.x</span></a><a class="docs-next button" href="/docs/pt-BR/next/navigation-context.html"><span class="function-name-prevnext">NavigationContext</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#referencia-de-api-comum">Referência de API comum</a><ul class="toc-headings"><li><a href="#navigate-link-para-outras-telas"><code>navigate</code> - Link para outras telas</a></li><li><a href="#goback-feche-a-tela-ativa-e-volte"><code>goBack</code> - Feche a tela ativa e volte</a></li><li><a href="#replace"><code>replace</code></a></li><li><a href="#reset"><code>reset</code></a></li><li><a href="#setparams-faca-alteracões-para-rotear-params"><code>setParams</code> - Faça alterações para rotear params</a></li><li><a href="#setoptions-update-screen-options-from-the-component"><code>setOptions</code> - Update screen options from the component</a></li></ul></li><li><a href="#navigation-events">Navigation events</a><ul class="toc-headings"><li><a href="#isfocused-consultar-o-estado-focalizado-da-tela"><code>isFocused</code> - Consultar o estado focalizado da tela</a></li></ul></li><li><a href="#referencia-de-api-avancada">Referência de API avançada</a><ul class="toc-headings"><li><a href="#dispatch-envie-uma-acão-ao-roteador"><code>dispatch</code> - Envie uma ação ao roteador</a></li><li><a href="#dangerouslygetparent-obter-navegador-pai"><code>dangerouslyGetParent</code> - obter navegador pai</a></li><li><a href="#dangerouslygetstate-get-state-of-navigator"><code>dangerouslyGetState</code> - get state of navigator</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+<p>React.useEffect(() =&gt; {
+const unsubscribe = navigation.addListener('focus', () =&gt; {
+// do something
+});</p>
+<pre><code class="hljs">return unsubscribe;
+</code></pre>
+<p>}, []);</p>
+<p>return &lt;ProfileContent /&gt;;
+}
+</code></pre></p>
+<pre><code class="hljs">        &lt;p&gt;
+          The &lt;code&gt;navigation.addListener&lt;/code&gt; method returns a function to remove the listener which can be returned as the cleanup function in an effect.
+        &lt;/p&gt;
+        
+        &lt;p&gt;
+          Each event listener receives an event object as it's argument. The event object contains following properties:
+        &lt;/p&gt;
+        
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;code&gt;data&lt;/code&gt; - Additional data regarding the event passed by the navigator. This can be &lt;code&gt;undefined&lt;/code&gt; if no data was passed.
+          &lt;/li&gt;
+          &lt;li&gt;
+            &lt;code&gt;preventDefault&lt;/code&gt; - Calling this method may prevent the default action performed by the action (such as switching tabs on &lt;code&gt;tabPress&lt;/code&gt;). Support for preventing actions depends on the navigator and won't work for all events.
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        
+        &lt;p&gt;
+          Apart from &lt;code&gt;focus&lt;/code&gt; and &lt;code&gt;blur&lt;/code&gt;, each navigator can emit their own custom events. For example, stack navigator emits &lt;code&gt;transitionStart&lt;/code&gt; and &lt;code&gt;transitionEnd&lt;/code&gt; events, tab navigator emits &lt;code&gt;tabPress&lt;/code&gt; event etc. You can find details about the events emitted on the individual navigator's documentation.
+        &lt;/p&gt;
+        
+        &lt;h3&gt;
+          &lt;code&gt;isFocused&lt;/code&gt; - Consultar o estado focalizado da tela
+        &lt;/h3&gt;
+        
+        &lt;p&gt;
+          Retorna &lt;code&gt;true&lt;/code&gt; se a tela estiver focada e &lt;code&gt;false&lt;/code&gt; caso contrário.
+        &lt;/p&gt;
+        
+        &lt;p&gt;
+          &lt;samp id=&quot;use-is-focused&quot;&gt;&lt;/p&gt; 
+          
+          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;const isFocused = navigation.isFocused();
+</code></pre>
+<p></code></pre></p>
+<pre><code class="hljs">          &lt;p&gt;
+            This method doesn't re-render the screen when the value changes and mainly useful in callbacks. You probably want to use &lt;a href=&quot;use-is-focused.md&quot;&gt;useIsFocused&lt;/a&gt; instead of using this directly, it will return a boolean a prop to indicating if the screen is focused.
+          &lt;/p&gt;
+          
+          &lt;h2&gt;
+            Referência de API avançada
+          &lt;/h2&gt;
+          
+          &lt;p&gt;
+            The &lt;code&gt;dispatch&lt;/code&gt; function is much less commonly used, but a good escape hatch if you can't do what you need with the available methods such as &lt;code&gt;navigate&lt;/code&gt;, &lt;code&gt;goBack&lt;/code&gt; etc. We recommend to avoid using the &lt;code&gt;dispatch&lt;/code&gt; method often unless absolutely necessary.
+          &lt;/p&gt;
+          
+          &lt;h3&gt;
+            &lt;code&gt;dispatch&lt;/code&gt; - Envie uma ação ao roteador
+          &lt;/h3&gt;
+          
+          &lt;p&gt;
+            Use o despacho para enviar qualquer ação de navegação ao roteador. As outras funções de navegação usam o envio nos bastidores.
+          &lt;/p&gt;
+          
+          &lt;p&gt;
+            Observe que, se você desejar disparar ações do react-navigation, deverá usar os criadores de ações fornecidos nesta biblioteca.
+          &lt;/p&gt;
+          
+          &lt;p&gt;
+            See &lt;a href=&quot;navigation-actions.md&quot;&gt;Navigation Actions Docs&lt;/a&gt; for a full list of available actions.
+          &lt;/p&gt;
+          
+          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { CommonActions } from '@react-navigation/native';
+</code></pre>
+<p>navigation.dispatch(
+CommonActions.navigate({
+name: 'Profile',
+params: {},
+})
+);
+</code></pre></p>
+<pre><code class="hljs">          &lt;h3&gt;
+            &lt;code&gt;dangerouslyGetParent&lt;/code&gt; - obter navegador pai
+          &lt;/h3&gt;
+          
+          &lt;p&gt;
+            Se, por exemplo, você tem um componente de tela que pode ser apresentado em vários navegadores, você pode usá-lo para influenciar seu comportamento com base em qual navegador ele está.
+          &lt;/p&gt;
+          
+          &lt;p&gt;
+            Outro bom caso de uso para isso é encontrar o índice da rota ativa na lista de rotas dos pais. Portanto, no caso de uma stack, se você estiver no índice 0, talvez não queira renderizar um botão Voltar, mas se estiver em outro lugar na lista, você renderizará um botão Voltar.
+          &lt;/p&gt;
+          
+          &lt;p&gt;
+            Certifique-se sempre de verificar se a chamada retorna um valor válido.
+          &lt;/p&gt;
+          
+          &lt;h3&gt;
+            &lt;code&gt;dangerouslyGetState&lt;/code&gt; - get state of navigator
+          &lt;/h3&gt;
+          
+          &lt;p&gt;
+            Getting the navigator state could be useful in very rare situations. You most likely don't need to use this method. If you do, make sure you have a good reason.
+          &lt;/p&gt;
+          
+          &lt;p&gt;
+            If you need the state for rendering content, you should use &lt;a href=&quot;use-navigation-state.md&quot;&gt;&lt;code&gt;useNavigationState&lt;/code&gt;&lt;/a&gt; instead of this method.
+          &lt;/p&gt;</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/upgrading-from-4.x.html"><span class="arrow-prev">← </span><span>Upgrading from 4.x</span></a><a class="docs-next button" href="/docs/pt-BR/next/navigation-context.html"><span class="function-name-prevnext">NavigationContext</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#referencia-de-api-comum">Referência de API comum</a><ul class="toc-headings"><li><a href="#navigate-link-para-outras-telas"><code>navigate</code> - Link para outras telas</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
