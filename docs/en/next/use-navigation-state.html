@@ -85,7 +85,7 @@
 <p>Note: This hook is useful for advanced cases and it's easy to introduce performance issues if you're not careful. For most of the cases, you don't need the navigator's state.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="how-is-usenavigationstate-different-from-navigationdangerouslygetstate"></a><a href="#how-is-usenavigationstate-different-from-navigationdangerouslygetstate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How is <code>useNavigationState</code> different from <code>navigation.dangerouslyGetState()</code>?</h2>
-<p>The <code>navigation.dangerouslyGetState()</code> function also returns the current navigation state. The main difference is that the <code>useNavigation</code> hook will trigger a re-render when values change, while <code>navigation.dangerouslyGetState()</code> won't. For example, the following code will be incorrect:</p>
+<p>The <code>navigation.dangerouslyGetState()</code> function also returns the current navigation state. The main difference is that the <code>useNavigationState</code> hook will trigger a re-render when values change, while <code>navigation.dangerouslyGetState()</code> won't. For example, the following code will be incorrect:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> routesLength <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">dangerouslyGetState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>routes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// Don't do this</span>
 
@@ -93,6 +93,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>In this example, even if you push a new screen, this text won't update. If you use the hook, it'll work as expected:</p>
+<p><samp id="use-navigation-state"></p>
 <pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> routesLength <span class="token operator">=</span> <span class="token function">useNavigationState</span><span class="token punctuation">(</span><span class="token parameter">state</span> <span class="token operator">=></span> state<span class="token punctuation">.</span>routes<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
