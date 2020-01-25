@@ -89,9 +89,7 @@
 <p>项目初始化成功后, 只要运行命令:<code>expo install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens</code>就可以了 现在你可以继续阅读 <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> 来写一些代码</p>
 <h2><a class="anchor" aria-hidden="true" id="在已创建的项目中安装-react-navigation"></a><a href="#在已创建的项目中安装-react-navigation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>在已创建的项目中安装 React Navigation</h2>
 <p>在你的 React Native 项目中安装<code>react-navigation</code>这个包</p>
-<pre><code class="hljs css language-bash">yarn add react-navigation
-<span class="hljs-comment"># or with npm</span>
-<span class="hljs-comment"># npm install react-navigation</span>
+<pre><code class="hljs css language-bash">npm install react-navigation
 </code></pre>
 <p>React Navigation由一些核心实用程序组成，然后导航使用它们在您的应用程序中创建导航结构。现在不必为此担心太多，它很快就会变得清楚起来！ 为了提前完成安装工作，我们还要安装和配置大多数导航器使用的依赖项，然后我们就可以开始编写一些代码了。</p>
 <p>The libraries we will install now are <a href="https://github.com/software-mansion/react-native-gesture-handler"><code>react-native-gesture-handler</code></a>, <a href="https://github.com/software-mansion/react-native-reanimated"><code>react-native-reanimated</code></a>, <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a> and <a href="https://github.com/th3rdwave/react-native-safe-area-context"><code>react-native-safe-area-context</code></a>. 如果你已经安装了这些库,并且是最新版本,那么到这儿就完成了 否则，请继续阅读。</p>
@@ -103,7 +101,7 @@
 <p>现在你可以继续阅读 <a href="hello-react-navigation.html">&quot;Hello React Navigation&quot;</a> 来写一些代码</p>
 <h4><a class="anchor" aria-hidden="true" id="给原生的-react-native-项目安装依赖"></a><a href="#给原生的-react-native-项目安装依赖" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>给原生的 React Native 项目安装依赖</h4>
 <p>In your project directory, run:</p>
-<pre><code class="hljs css language-sh">yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context
+<pre><code class="hljs css language-sh">npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context
 </code></pre>
 <blockquote>
 <p>Note: You might get warnings related to peer dependencies after installation. They are usually caused my incorrect version ranges specified in some packages. You can safely ignore most warnings as long as your app builds.</p>
@@ -132,9 +130,7 @@ react-native link react-native-screens
 react-native link react-native-safe-area-context
 </code></pre>
 <p>You also need to configure <a href="https://github.com/mikehardy/jetifier">jetifier</a> to support dependencies using <code>androidx</code>:</p>
-<pre><code class="hljs css language-sh">yarn add --dev jetifier
-<span class="hljs-comment"># or with npm</span>
-<span class="hljs-comment"># npm install --save-dev jetifier</span>
+<pre><code class="hljs css language-sh">npm install --save-dev jetifier
 </code></pre>
 <p>Then add it to the <code>postinstall</code> script in <code>package.json</code>:</p>
 <pre><code class="hljs css language-json">"scripts": {
@@ -145,9 +141,7 @@ react-native link react-native-safe-area-context
 <p>Note: Remember to remove this when you upgrade to React Native 0.60 and higher.</p>
 </blockquote>
 <p>Now, run the <code>postinstall</code> script manually:</p>
-<pre><code class="hljs css language-sh">yarn postinstall
-<span class="hljs-comment"># or with npm</span>
-<span class="hljs-comment"># npm run postinstall</span>
+<pre><code class="hljs css language-sh">npm run postinstall
 </code></pre>
 <p>To finalize installation of <code>react-native-gesture-handler</code> for Android, make the following modifications to <code>MainActivity.java</code>:</p>
 <pre><code class="hljs css language-diff">package com.reactnavigation.example;
