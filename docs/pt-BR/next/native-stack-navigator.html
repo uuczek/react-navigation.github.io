@@ -255,27 +255,7 @@ Options
   Whether you can use gestures to dismiss this screen. Defaults to <code>true</code>, Only supported on iOS.
 </p>
 <p><h4 spaces-before="0">
-<code>animation</code>
-</h4></p>
-<p spaces-before="0">
-  How the given screen should appear/disappear when pushed or popped at the top of the stack. Possible values:
-</p>
-<ul>
-  <li>
-    <code>default</code> - Use the platform default animation.
-  </li>
-  <li>
-    <code>fade</code> - Fade screen in or out.
-  </li>
-  <li>
-    <code>none</code> - Don't perform an animation.
-  </li>
-</ul>
-<p spaces-before="0">
-  Defaults to <code>default</code>. Only supported on Android.
-</p>
-<p><h4 spaces-before="0">
-<code>presentation</code>
+<code>stackPresentation</code>
 </h4></p>
 <p spaces-before="0">
   How should the screen be presented. Possible values:
@@ -294,11 +274,46 @@ Options
 <p spaces-before="0">
   Defaults to <code>push</code>.
 </p>
+<p><h4 spaces-before="0">
+<code>stackAnimation</code>
+</h4></p>
+<p spaces-before="0">
+  How the given screen should appear/disappear when pushed or popped at the top of the stack. Possible values:
+</p>
+<ul>
+  <li>
+    <code>default</code> - Uses a platform default animation.
+  </li>
+  <li>
+    <code>fade</code> - Fades screen in or out.
+  </li>
+  <li>
+    <code>flip</code> – Flips the screen, requires stackPresentation: <code>modal</code> (iOS only).
+  </li>
+  <li>
+    <code>none</code> - The screen appears/dissapears without an animation.
+  </li>
+</ul>
+<p spaces-before="0">
+  Defaults to <code>default</code>.
+</p>
 <p><h3 spaces-before="0">
 Events
 </h3></p>
 <p spaces-before="0">
-  The navigator doesn't emit any events.
+  The navigator can emit events on certain actions. Supported events are:
+</p>
+<p><h4 spaces-before="0">
+<code>appear</code>
+</h4></p>
+<p spaces-before="0">
+  Event which fires when the screen appears.
+</p>
+<p><h4 spaces-before="0">
+<code>dismiss</code>
+</h4></p>
+<p spaces-before="0">
+  Event which fires when the current screen is dismissed by hardware back (on Android) or dismiss gesture (swipe back or down).
 </p>
 <p><h3 spaces-before="0">
 Helpers

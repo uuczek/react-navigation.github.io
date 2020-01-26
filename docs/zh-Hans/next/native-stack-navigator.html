@@ -255,27 +255,7 @@ Options
   Whether you can use gestures to dismiss this screen. Defaults to <code>true</code>, Only supported on iOS.
 </p>
 <p><h4 spaces-before="0">
-<code>animation</code>
-</h4></p>
-<p spaces-before="0">
-  How the given screen should appear/disappear when pushed or popped at the top of the stack. Possible values:
-</p>
-<ul>
-  <li>
-    <code>default</code> - Use the platform default animation.
-  </li>
-  <li>
-    <code>fade</code> - Fade screen in or out.
-  </li>
-  <li>
-    <code>none</code> - Don't perform an animation.
-  </li>
-</ul>
-<p spaces-before="0">
-  Defaults to <code>default</code>. Only supported on Android.
-</p>
-<p><h4 spaces-before="0">
-<code>presentation</code>
+<code>stackPresentation</code>
 </h4></p>
 <p spaces-before="0">
   How should the screen be presented. Possible values:
@@ -293,6 +273,29 @@ Options
 </ul>
 <p spaces-before="0">
   Defaults to <code>push</code>.
+</p>
+<p><h4 spaces-before="0">
+<code>stackAnimation</code>
+</h4></p>
+<p spaces-before="0">
+  How the given screen should appear/disappear when pushed or popped at the top of the stack. Possible values:
+</p>
+<ul>
+  <li>
+    <code>default</code> - Uses a platform default animation.
+  </li>
+  <li>
+    <code>fade</code> - Fades screen in or out.
+  </li>
+  <li>
+    <code>flip</code> – Flips the screen, requires stackPresentation: <code>modal</code> (iOS only).
+  </li>
+  <li>
+    <code>none</code> - The screen appears/dissapears without an animation.
+  </li>
+</ul>
+<p spaces-before="0">
+  Defaults to <code>default</code>.
 </p>
 <p><h3 spaces-before="0">
 Events
