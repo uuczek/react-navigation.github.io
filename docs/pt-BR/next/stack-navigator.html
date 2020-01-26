@@ -439,7 +439,7 @@ headerBackground: () =&gt; (
 <code>gestureDirection</code>
 </h4></p>
   <p>
-    Direction of the gesture. Refer the <a href="#animations">Animations section</a> for details.
+    Direction of the gestures and animations. Refer the <a href="#animations">Animations section</a> for details.
   </p>
 <p><h4>
 <code>transitionSpec</code>
@@ -588,13 +588,33 @@ gestureEnabled: false,
         Animations
       &lt;/h2&gt;
       
+      &lt;h3&gt;
+        Animation related options
+      &lt;/h3&gt;
+      
       &lt;p&gt;
         Stack Navigator exposes various options to configure the transition animation when a screen is added or removed. These transition animations can be customized on a per-screen basis by specifying the options in the &lt;code&gt;options&lt;/code&gt; prop for each screen.
       &lt;/p&gt;
       
       &lt;ul&gt;
         &lt;li&gt;
-          &lt;code&gt;gestureDirection&lt;/code&gt; - The direction of swipe gestures, &lt;code&gt;horizontal&lt;/code&gt;, &lt;code&gt;vertical&lt;/code&gt; or &lt;code&gt;vertical-inverted&lt;/code&gt;.
+          &lt;p&gt;
+            &lt;code&gt;gestureDirection&lt;/code&gt; - The direction of swipe gestures as well as animations:
+          &lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;
+              &lt;code&gt;horizontal&lt;/code&gt; - The gesture to close the screen will start from the left, and from the right in RTL. For animations, screen will slide from the right with &lt;code&gt;SlideFromRightIOS&lt;/code&gt;, and from the left in RTL.
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;horizontal-inverted&lt;/code&gt; - The gesture to close the screen will start from the right, and from the left in RTL. For animations, screen will slide from the left with &lt;code&gt;SlideFromRightIOS&lt;/code&gt;, and from the right in RTL as the direction is inverted.
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;vertical&lt;/code&gt; - The gesture to close the screen will start from the top. For animations, screen will slide from the bottom.
+            &lt;/li&gt;
+            &lt;li&gt;
+              &lt;code&gt;vertical-inverted&lt;/code&gt; - The gesture to close the screen will start from the bottom. For animations, screen will slide from the top.
+            &lt;/li&gt;
+          &lt;/ul&gt;
         &lt;/li&gt;
         &lt;li&gt;
           &lt;p&gt;
@@ -750,7 +770,7 @@ options={{ cardStyleInterpolator: forFade }}
                       &lt;code&gt;current&lt;/code&gt; - Values for the current screen (the screen which owns this header).
                     &lt;/li&gt;
                     &lt;li&gt;
-                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen.
+                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen. &lt;code&gt;0&lt;/code&gt; when screen should start coming into view, &lt;code&gt;0.5&lt;/code&gt; when it's mid-way, &lt;code&gt;1&lt;/code&gt; when it should be fully in view.
                     &lt;/li&gt;
                     &lt;li&gt;
                       &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one.
@@ -803,142 +823,177 @@ component={Profile}
 options={{ headerStyleInterpolator: forFade }}
 /&gt;
 </code></pre></li> </ul></p>
-<pre><code class="hljs">                    &lt;p&gt;
+<pre><code class="hljs">                    &lt;h3&gt;
+                      Pre-made configs
+                    &lt;/h3&gt;
+                    
+                    &lt;p&gt;
                       With these options, it's possible to build custom transition animations for screens. We also export various configs from the library with ready-made animations which you can use:
                     &lt;/p&gt;
                     
+                    &lt;h4&gt;
+                      &lt;code&gt;TransitionSpecs&lt;/code&gt;
+                    &lt;/h4&gt;
+                    
                     &lt;ul&gt;
                       &lt;li&gt;
-                        &lt;p&gt;
-                          &lt;code&gt;TransitionSpecs&lt;/code&gt;
-                        &lt;/p&gt;
-                        &lt;ul&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;TransitionIOSSpec&lt;/code&gt; - Exact values from UINavigationController's animation configuration.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;FadeInFromBottomAndroidSpec&lt;/code&gt; - Configuration for activity open animation from Android Nougat.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;FadeOutToBottomAndroidSpec&lt;/code&gt; - Configuration for activity close animation from Android Nougat.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;RevealFromBottomAndroidSpec&lt;/code&gt; - Approximate configuration for activity open animation from Android Pie.
-                          &lt;/li&gt;
-                        &lt;/ul&gt;
+                        &lt;code&gt;TransitionIOSSpec&lt;/code&gt; - Exact values from UINavigationController's animation configuration.
                       &lt;/li&gt;
                       &lt;li&gt;
-                        &lt;p&gt;
-                          &lt;code&gt;CardStyleInterpolators&lt;/code&gt;
-                        &lt;/p&gt;
-                        &lt;ul&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;forHorizontalIOS&lt;/code&gt; - Standard iOS-style slide in from the right.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;forVerticalIOS&lt;/code&gt; - Standard iOS-style slide in from the bottom (used for modals).
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;forModalPresentationIOS&lt;/code&gt; - Standard iOS-style modal animation in iOS 13.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;forFadeFromBottomAndroid&lt;/code&gt; - Standard Android-style fade in from the bottom for Android Oreo.
-                          &lt;/li&gt;
-                          &lt;li&gt;
-                            &lt;code&gt;forRevealFromBottomAndroid&lt;/code&gt; - Standard Android-style reveal from the bottom for Android Pie.
-                          &lt;/li&gt;
-                        &lt;/ul&gt;
-                        &lt;p&gt;
-                          Example configuration for Android Oreo style vertical screen fade animation:
-                        &lt;/p&gt;
-                        &lt;p&gt;
-                          &lt;samp id=&quot;stack-card-style-interpolator&quot;&gt;&lt;/p&gt; 
-                          
-                          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
+                        &lt;code&gt;FadeInFromBottomAndroidSpec&lt;/code&gt; - Configuration for activity open animation from Android Nougat.
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;FadeOutToBottomAndroidSpec&lt;/code&gt; - Configuration for activity close animation from Android Nougat.
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;RevealFromBottomAndroidSpec&lt;/code&gt; - Approximate configuration for activity open animation from Android Pie.
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    
+                    &lt;p&gt;
+                      Exemplo:
+                    &lt;/p&gt;
+                    
+                    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { TransitionSpecs } from '@react-navigation/stack';
 </code></pre>
-<p>name=&quot;Profile&quot;
+<p>// ...</p>
+<p>&lt;Stack.Screen
+name=&quot;Profile&quot;
+component={Profile}
+options={{
+transitionSpec: {
+open: TransitionSpecs.TransitionIOSSpec,
+close: TransitionSpecs.TransitionIOSSpec,
+},
+}}
+/&gt;
+</code></pre></p>
+<pre><code class="hljs">                    &lt;h4&gt;
+                      &lt;code&gt;CardStyleInterpolators&lt;/code&gt;
+                    &lt;/h4&gt;
+                    
+                    &lt;ul&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;forHorizontalIOS&lt;/code&gt; - Standard iOS-style slide in from the right.
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;forVerticalIOS&lt;/code&gt; - Standard iOS-style slide in from the bottom (used for modals).
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;forModalPresentationIOS&lt;/code&gt; - Standard iOS-style modal animation in iOS 13.
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;forFadeFromBottomAndroid&lt;/code&gt; - Standard Android-style fade in from the bottom for Android Oreo.
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;code&gt;forRevealFromBottomAndroid&lt;/code&gt; - Standard Android-style reveal from the bottom for Android Pie.
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    
+                    &lt;p&gt;
+                      Example configuration for Android Oreo style vertical screen fade animation:
+                    &lt;/p&gt;
+                    
+                    &lt;p&gt;
+                      &lt;samp id=&quot;stack-card-style-interpolator&quot;&gt;&lt;/p&gt; 
+                      
+                      &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { CardStyleInterpolators } from '@react-navigation/stack';
+</code></pre>
+<p>// ...</p>
+<p>&lt;Stack.Screen
+name=&quot;Profile&quot;
 component={Profile}
 options={{
 title: 'Profile',
 cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
 }}
 /&gt;
-</code></pre></li></p>
-<pre><code class="hljs">                          &lt;li&gt;
-                            &lt;p&gt;
-                              &lt;code&gt;HeaderStyleInterpolators&lt;/code&gt;
-                            &lt;/p&gt;
-                            &lt;ul&gt;
-                              &lt;li&gt;
-                                &lt;code&gt;forUIKit&lt;/code&gt; - Standard UIKit style animation for the header where the title fades into the back button label.
-                              &lt;/li&gt;
-                              &lt;li&gt;
-                                &lt;code&gt;forFade&lt;/code&gt; - Simple fade animation for the header elements.
-                              &lt;/li&gt;
-                              &lt;li&gt;
-                                &lt;code&gt;forStatic&lt;/code&gt; - Simple translate animation to translate the header along with the sliding screen.
-                              &lt;/li&gt;
-                            &lt;/ul&gt;
-                            &lt;p&gt;
-                              Example configuration for default iOS animation for header elements where the title fades into the back button:
-                            &lt;/p&gt;
-                            &lt;p&gt;
-                              &lt;samp id=&quot;stack-for-ui-kit&quot;&gt;&lt;/p&gt; 
-                              
-                              &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
+</code></pre></p>
+<pre><code class="hljs">                      &lt;h4&gt;
+                        &lt;code&gt;HeaderStyleInterpolators&lt;/code&gt;
+                      &lt;/h4&gt;
+                      
+                      &lt;ul&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;forUIKit&lt;/code&gt; - Standard UIKit style animation for the header where the title fades into the back button label.
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;forFade&lt;/code&gt; - Simple fade animation for the header elements.
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;forStatic&lt;/code&gt; - Simple translate animation to translate the header along with the sliding screen.
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
+                      
+                      &lt;p&gt;
+                        Example configuration for default iOS animation for header elements where the title fades into the back button:
+                      &lt;/p&gt;
+                      
+                      &lt;p&gt;
+                        &lt;samp id=&quot;stack-for-ui-kit&quot;&gt;&lt;/p&gt; 
+                        
+                        &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { HeaderStyleInterpolators } from '@react-navigation/stack';
 </code></pre>
-<p>name=&quot;Profile&quot;
+<p>// ...</p>
+<p>&lt;Stack.Screen
+name=&quot;Profile&quot;
 component={Profile}
 options={{
 title: 'Profile',
 headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
 }}
 /&gt;
-</code></pre></li> </ul></p>
-<pre><code class="hljs">                              &lt;blockquote&gt;
-                                &lt;p&gt;
-                                  Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.
-                                &lt;/p&gt;
-                              &lt;/blockquote&gt;
-                              
-                              &lt;p&gt;
-                                We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under &lt;code&gt;TransitionPresets&lt;/code&gt;. Currently the following presets are available:
-                              &lt;/p&gt;
-                              
-                              &lt;ul&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;SlideFromRightIOS&lt;/code&gt; - Standard iOS navigation transition.
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;ModalSlideFromBottomIOS&lt;/code&gt; - Standard iOS navigation transition for modals.
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;ModalPresentationIOS&lt;/code&gt; - Standard iOS modal presentation style (introduced in iOS 13).
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;FadeFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &lt; 9 (Oreo).
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;RevealFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &gt;= 9 (Pie).
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;DefaultTransition&lt;/code&gt; - Default navigation transition for the current platform.
-                                &lt;/li&gt;
-                                &lt;li&gt;
-                                  &lt;code&gt;ModalTransition&lt;/code&gt; - Default modal transition for the current platform.
-                                &lt;/li&gt;
-                              &lt;/ul&gt;
-                              
-                              &lt;p&gt;
-                                You can spread these presets in &lt;code&gt;options&lt;/code&gt; to customize the animation for a screen:
-                              &lt;/p&gt;
-                              
-                              &lt;p&gt;
-                                &lt;samp id=&quot;stack-modal-slide-from-bottom&quot;&gt;&lt;/p&gt; 
-                                
-                                &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Screen
+</code></pre></p>
+<pre><code class="hljs">                        &lt;blockquote&gt;
+                          &lt;p&gt;
+                            Note: Always define your animation configuration at the top-level of the file to ensure that the references don't change across re-renders. This is important for smooth and reliable transition animations.
+                          &lt;/p&gt;
+                        &lt;/blockquote&gt;
+                        
+                        &lt;h4&gt;
+                          &lt;code&gt;TransitionPresets&lt;/code&gt;
+                        &lt;/h4&gt;
+                        
+                        &lt;p&gt;
+                          We export various transition presets which bundle various set of these options together to match certain native animations. A transition preset is an object containing few animation related screen options exported under &lt;code&gt;TransitionPresets&lt;/code&gt;. Currently the following presets are available:
+                        &lt;/p&gt;
+                        
+                        &lt;ul&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;SlideFromRightIOS&lt;/code&gt; - Standard iOS navigation transition.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;ModalSlideFromBottomIOS&lt;/code&gt; - Standard iOS navigation transition for modals.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;ModalPresentationIOS&lt;/code&gt; - Standard iOS modal presentation style (introduced in iOS 13).
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;FadeFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &lt; 9 (Oreo).
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;RevealFromBottomAndroid&lt;/code&gt; - Standard Android navigation transition when opening or closing an Activity on Android &gt;= 9 (Pie).
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;DefaultTransition&lt;/code&gt; - Default navigation transition for the current platform.
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;code&gt;ModalTransition&lt;/code&gt; - Default modal transition for the current platform.
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                        
+                        &lt;p&gt;
+                          You can spread these presets in &lt;code&gt;options&lt;/code&gt; to customize the animation for a screen:
+                        &lt;/p&gt;
+                        
+                        &lt;p&gt;
+                          &lt;samp id=&quot;stack-modal-slide-from-bottom&quot;&gt;&lt;/p&gt; 
+                          
+                          &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { TransitionPresets } from '@react-navigation/stack';
 </code></pre>
-<p>name=&quot;Profile&quot;
+<p>// ...</p>
+<p>&lt;Stack.Screen
+name=&quot;Profile&quot;
 component={Profile}
 options={{
 title: 'Profile',
@@ -946,20 +1001,22 @@ title: 'Profile',
 }}
 /&gt;
 </code></pre></p>
-<pre><code class="hljs">                                &lt;p&gt;
-                                  If you want to customize the transition animations for all of the screens in the navigator, you can specify it in &lt;code&gt;screenOptions&lt;/code&gt; prop for the navigator.
-                                &lt;/p&gt;
-                                
-                                &lt;p&gt;
-                                  Example configuration for iOS modal presentation style:
-                                &lt;/p&gt;
-                                
-                                &lt;p&gt;
-                                  &lt;samp id=&quot;stack-modal-presentation&quot;&gt;&lt;/p&gt; 
-                                  
-                                  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&amp;lt;Stack.Navigator
+<pre><code class="hljs">                          &lt;p&gt;
+                            If you want to customize the transition animations for all of the screens in the navigator, you can specify it in &lt;code&gt;screenOptions&lt;/code&gt; prop for the navigator.
+                          &lt;/p&gt;
+                          
+                          &lt;p&gt;
+                            Example configuration for iOS modal presentation style:
+                          &lt;/p&gt;
+                          
+                          &lt;p&gt;
+                            &lt;samp id=&quot;stack-modal-presentation&quot;&gt;&lt;/p&gt; 
+                            
+                            &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { TransitionPresets } from '@react-navigation/stack';
 </code></pre>
-<p>initialRouteName=&quot;Home&quot;
+<p>// ...</p>
+<p>&lt;Stack.Navigator
+initialRouteName=&quot;Home&quot;
 screenOptions={{
 gestureEnabled: true,
 cardOverlayEnabled: true,
