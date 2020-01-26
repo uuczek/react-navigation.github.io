@@ -76,38 +76,58 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/stack-actions.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">StackActions 参考</h1></header><article><div><span><p><code>StackActions</code> 是一个包含用于生成特定的基于 stack-based navigators的操作方法的的对象。 Its methods expand upon the actions available in <a href="navigation-actions.html"><code>NavigationActions</code></a>.</p>
 <p>支持以下操作：</p>
-<h3><a class="anchor" aria-hidden="true" id="push"></a><a href="#push" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>push</h3>
-<p><code>Push</code> - 在堆栈顶部添加一条路由，并导航至该路由. 与<code>navigate</code>的区别在于，如果有已经加载的页面，<code>navigate</code>方法将跳转到已经加载的页面，而不会重新创建一个新的页面。 <code>push</code> 总是会创建一个新的页面，所以一个页面可以被多次创建</p>
-<ul>
-<li><code>name</code> - <em>string</em> - Name of the route to push onto the stack.</li>
-<li><code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="replace"></a><a href="#replace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>replace</code></h3>
+<p>The <code>replace</code> action replaces the current route with the given route in the stack.</p>
 <p><samp id="stack-actions"></p></p>
 <pre><code class="js">import { StackActions } from '@react-navigation/routers';
+<p>const pushAction = StackActions.replace('Profile', { user: 'Wojtek' });</p>
+<p>navigation.dispatch(pushAction);
+</code></pre></p>
+<p><h3>
+push
+</h3></p>
+<p>
+  <code>Push</code> - 在堆栈顶部添加一条路由，并导航至该路由. 与<code> navigate </code>的区别在于，如果有已经加载的页面，<code> navigate </code>方法将跳转到已经加载的页面，而不会重新创建一个新的页面。 <code>push</code> 总是会创建一个新的页面，所以一个页面可以被多次创建
+</p>
+<ul>
+  <li>
+    <code>name</code> - <em>string</em> - Name of the route to push onto the stack.
+  </li>
+  <li>
+    <code>params</code> - <em>object</em> - Screen params to merge into the destination route (found in the pushed screen through <code>route.params</code>).
+  </li>
+</ul>
+<p>
+  <samp id="stack-actions"></p> 
+  <pre><code class="js">import { StackActions } from '@react-navigation/routers';
 <p>const pushAction = StackActions.push('Profile', { user: 'Wojtek' });</p>
 <p>navigation.dispatch(pushAction);
 </code></pre></p>
 <p><h3>
 pop
 </h3></p>
-<p>
-  The <code>pop</code> action takes you back to a previous screen in the stack. It takes one optional argument (<code>count</code>), which allows you to specify how many screens to pop back by.
-</p>
-<p>
-  <samp id="stack-actions"></p> 
-  <pre><code class="js">import { StackActions } from '@react-navigation/routers';
-<p>const popAction = StackActions.pop(1);</p>
-<p>navigation.dispatch(popAction);
-</code></pre></p>
-<p><h3>
-popToTop
-</h3></p>
   <p>
-    The <code>popToTop</code> 一个可以直接跳转到堆栈最顶层，并销毁其它所有页面的方法，它在功能上与<code> StackActions.pop({n：currentIndex}) </code>相同。
+    The <code>pop</code> action takes you back to a previous screen in the stack. It takes one optional argument (<code>count</code>), which allows you to specify how many screens to pop back by.
   </p>
   <p>
     <samp id="stack-actions"></p> 
 <pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { StackActions } from '@react-navigation/routers';
+</code></pre>
+<p>const popAction = StackActions.pop(1);</p>
+<p>navigation.dispatch(popAction);
+</code></pre></p>
+<pre><code class="hljs">&lt;h3&gt;
+  popToTop
+&lt;/h3&gt;
+
+&lt;p&gt;
+  The &lt;code&gt;popToTop&lt;/code&gt; 一个可以直接跳转到堆栈最顶层，并销毁其它所有页面的方法，它在功能上与&lt;code&gt; StackActions.pop({n：currentIndex}) &lt;/code&gt;相同。
+&lt;/p&gt;
+
+&lt;p&gt;
+  &lt;samp id=&quot;stack-actions&quot;&gt;&lt;/p&gt; 
+  
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { StackActions } from '@react-navigation/routers';
 </code></pre>
 <p>navigation.dispatch(StackActions.popToTop());
 </code></pre></p>

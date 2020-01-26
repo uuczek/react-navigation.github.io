@@ -78,7 +78,8 @@
 <p>Each navigation actions can contain at least the following properties:</p>
 <ul>
 <li><code>type</code> (required) - A string which represents the name of the action.</li>
-<li><code>source</code> (optional) - The route which dispatched the action. This is used by some routers to determine which route to apply the action on. By default, <code>navigation.dispatch</code> adds the key of the current route here.</li>
+<li><code>payload</code> (options) - An object containing additional information about the action. For example, it will contain <code>name</code> and <code>params</code> for <code>navigate</code>.</li>
+<li><code>source</code> (optional) - The key of the route which should be considered as the source of the action. This is used by some routers to determine which route to apply the action on. By default, <code>navigation.dispatch</code> adds the key of the route that dispatched the action.</li>
 <li><code>target</code> (optional) - The key of the navigation state the action should be applied on.</li>
 </ul>
 <p>It's important to highlight that dispatching a navigation action doesn't throw any error when the action is unhandled (similar to when you dispatch an action that isn't handled by a reducer in redux and nothing happens).</p>
