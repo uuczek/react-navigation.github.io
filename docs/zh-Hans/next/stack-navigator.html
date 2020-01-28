@@ -401,7 +401,7 @@ headerBackground: () =&gt; (
     Style object for the card in stack. You can provide a custom background color to use instead of the default background here.
   </p>
   <p>
-    You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath. This is useful to implement things like modal dialogs. If you use <a href="https://github.com/kmagiera/react-native-screens"><code>react-native-screens</code></a>, you should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached.
+    You can also specify <code>{ backgroundColor: 'transparent' }</code> to make the previous screen visible underneath. This is useful to implement things like modal dialogs. You should also specify <code>mode: 'modal'</code> in the stack view config when using a transparent background so previous screens aren't detached and stay visible underneath.
   </p>
 <p><h4>
 <code>animationEnabled</code>
