@@ -218,13 +218,17 @@ Events
 </p>
 <p>
   <samp id="material-bottom-tab-prevent-default"></p> 
-  <pre><code class="js">navigation.addListener('tabPress', e =&gt; {
-  // Prevent default behavior
-  e.preventDefault();
-  // Do something manually
-  // ...
-});
+  <pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('tabPress', e =&gt; {
+    // Prevent default behavior
+<pre><code class="hljs">e.preventDefault();
+// Do something manually
+// ...
 </code></pre>
+<p>});</p>
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h3>
 Helpers
 </h3></p>

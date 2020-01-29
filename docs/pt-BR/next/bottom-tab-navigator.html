@@ -228,12 +228,16 @@
 </ul>
 <p>To prevent the default behavior, you can call <code>event.preventDefault</code>:</p>
 <p><samp id="bottom-tab-prevent-default"></p></p>
-<pre><code class="js">navigation.addListener('tabPress', e =&gt; {
-  // Prevent default behavior
-  e.preventDefault();
-<p>// Do something manually
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('tabPress', e =&gt; {
+    // Prevent default behavior
+    e.preventDefault();
+<pre><code class="hljs">// Do something manually
 // ...
-});
+</code></pre>
+<p>});</p>
+<p>return unsubscribe;
+}, [navigation]);
 </code></pre></p>
 <p>
   If you have a custom tab bar, make sure to emit this event.
@@ -247,10 +251,13 @@
 <p>
   Exemplo:
 </p>
-<pre><code class="js">navigation.addListener('tabLongPress', e =&gt; {
-  // Do something
-});
-</code></pre>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('tabLongPress', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h3>
 Helpers
 </h3></p>

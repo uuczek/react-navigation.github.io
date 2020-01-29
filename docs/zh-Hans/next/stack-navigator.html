@@ -483,10 +483,13 @@ Events
   <p>
     例子:
   </p>
-  <pre><code class="js">navigation.addListener('transitionStart', e =&gt; {
-  // Do something
-});
-</code></pre>
+  <pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('transitionStart', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h4>
 <code>transitionEnd</code>
 </h4></p>
@@ -496,10 +499,13 @@ Events
   <p>
     例子:
   </p>
-  <pre><code class="js">navigation.addListener('transitionEnd', e =&gt; {
-  // Do something
-});
-</code></pre>
+  <pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('transitionEnd', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h3>
 Helpers
 </h3></p>
@@ -880,7 +886,7 @@ open: TransitionSpecs.TransitionIOSSpec,
 close: TransitionSpecs.TransitionIOSSpec,
 },
 }}
-/&gt;
+/&gt;;
 </code></pre></p>
 <pre><code class="hljs">                    &lt;h4&gt;
                       &lt;code&gt;CardStyleInterpolators&lt;/code&gt;
@@ -921,7 +927,7 @@ options={{
 title: 'Profile',
 cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
 }}
-/&gt;
+/&gt;;
 </code></pre></p>
 <pre><code class="hljs">                      &lt;h4&gt;
                         &lt;code&gt;HeaderStyleInterpolators&lt;/code&gt;
@@ -956,7 +962,7 @@ options={{
 title: 'Profile',
 headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
 }}
-/&gt;
+/&gt;;
 </code></pre></p>
 <pre><code class="hljs">                        &lt;blockquote&gt;
                           &lt;p&gt;
@@ -1013,7 +1019,7 @@ options={{
 title: 'Profile',
 ...TransitionPresets.ModalSlideFromBottomIOS,
 }}
-/&gt;
+/&gt;;
 </code></pre></p>
 <pre><code class="hljs">                          &lt;p&gt;
                             If you want to customize the transition animations for all of the screens in the navigator, you can specify it in &lt;code&gt;screenOptions&lt;/code&gt; prop for the navigator.
@@ -1041,7 +1047,7 @@ headerMode=&quot;none&quot;
 &gt;
 &lt;Stack.Screen name=&quot;Home&quot; component={Home} /&gt;
 &lt;Stack.Screen name=&quot;Profile&quot; component={Profile} /&gt;
-&lt;/Stack.Navigator&gt;
+&lt;/Stack.Navigator&gt;;
 </code></pre></p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/zh-Hans/next/navigation-context.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">NavigationContext</span></a><a class="docs-next button" href="/docs/zh-Hans/next/native-stack-navigator.html"><span class="function-name-prevnext">createNativeStackNavigator</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api-定义">API 定义</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/zh-Hans/getting-started.html">Getting Started</a><a href="/docs/zh-Hans/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/zh-Hans/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {

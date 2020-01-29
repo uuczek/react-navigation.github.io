@@ -512,10 +512,13 @@ itemStyle: { marginVertical: 30 },
       例子:
     &lt;/p&gt;
     
-    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.addListener('drawerOpen', e =&amp;gt; {
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;React.useEffect(() =&amp;gt; {
 </code></pre>
-<p>// Do something
-});
+<p>const unsubscribe = navigation.addListener('drawerOpen', e =&gt; {
+// Do something
+});</p>
+<p>return unsubscribe;
+}, [navigation]);
 </code></pre></p>
 <pre><code class="hljs">    &lt;h4&gt;
       &lt;code&gt;drawerClose&lt;/code&gt;
@@ -529,10 +532,13 @@ itemStyle: { marginVertical: 30 },
       例子:
     &lt;/p&gt;
     
-    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.addListener('drawerClose', e =&amp;gt; {
+    &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;React.useEffect(() =&amp;gt; {
 </code></pre>
-<p>// Do something
-});
+<p>const unsubscribe = navigation.addListener('drawerClose', e =&gt; {
+// Do something
+});</p>
+<p>return unsubscribe;
+}, [navigation]);
 </code></pre></p>
 <pre><code class="hljs">    &lt;h3&gt;
       Helpers

@@ -430,13 +430,17 @@ Events
   </p>
   <p>
     <samp id="material-top-tab-prevent-default"></p> 
-<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.addListener('tabPress', e =&amp;gt; {
+<pre><code class="hljs">&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;React.useEffect(() =&amp;gt; {
 </code></pre>
-<p>// Prevent default behavior
+<p>const unsubscribe = navigation.addListener('tabPress', e =&gt; {
+// Prevent default behavior
 e.preventDefault();</p>
-<p>// Do something manually
+<pre><code class="hljs">// Do something manually
 // ...
-});
+</code></pre>
+<p>});</p>
+<p>return unsubscribe;
+}, [navigation]);
 </code></pre></p>
 <pre><code class="hljs">&lt;h4&gt;
   &lt;code&gt;tabLongPress&lt;/code&gt;
@@ -450,10 +454,13 @@ e.preventDefault();</p>
   Exemplo:
 &lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;navigation.addListener('tabLongPress', e =&amp;gt; {
+&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;React.useEffect(() =&amp;gt; {
 </code></pre>
-<p>// Do something
-});
+<p>const unsubscribe = navigation.addListener('tabLongPress', e =&gt; {
+// Do something
+});</p>
+<p>return unsubscribe;
+}, [navigation]);
 </code></pre></p>
 <pre><code class="hljs">&lt;h3&gt;
   Helpers

@@ -312,10 +312,13 @@ Events
 <p spaces-before="0">
   例子:
 </p>
-<pre><code class="js">navigation.addListener('appear', e =&gt; {
-  // Do something
-});
-</code></pre>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('appear', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h4 spaces-before="0">
 <code>dismiss</code>
 </h4></p>
@@ -325,10 +328,13 @@ Events
 <p spaces-before="0">
   例子:
 </p>
-<pre><code class="js">navigation.addListener('dismiss', e =&gt; {
-  // Do something
-});
-</code></pre>
+<pre><code class="js">React.useEffect(() =&gt; {
+  const unsubscribe = navigation.addListener('dismiss', e =&gt; {
+    // Do something
+  });
+<p>return unsubscribe;
+}, [navigation]);
+</code></pre></p>
 <p><h3 spaces-before="0">
 Helpers
 </h3></p>
