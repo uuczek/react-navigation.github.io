@@ -191,7 +191,13 @@ navigation.navigate({ name: SCREEN, key: SCREEN_KEY_D });
 routes: [{ name: 'Profile' }],
 });
 </code></pre></p>
-<pre><code class="hljs">&lt;h3&gt;
+<pre><code class="hljs">&lt;blockquote&gt;
+  &lt;p&gt;
+    Note: Consider the navigator's state object to be internal and subject to change in a minor release. Avoid using properties from the navigation state object except &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;routes&lt;/code&gt;, unless you really need it. If there is some functionality you cannot achieve without relying on the structure of the state object, please open an issue.
+  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;
   &lt;code&gt; setParams &lt;/code&gt; - 对路由的参数进行更改
 &lt;/h3&gt;
 
@@ -410,6 +416,12 @@ target: 'someStatekey',
       &lt;h3&gt;
         &lt;code&gt;dangerouslyGetState&lt;/code&gt; - get state of navigator
       &lt;/h3&gt;
+      
+      &lt;blockquote&gt;
+        &lt;p&gt;
+          Note: Consider the navigator's state object to be internal and subject to change in a minor release. Avoid using properties from the navigation state object except &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;routes&lt;/code&gt;, unless you really need it. If there is some functionality you cannot achieve without relying on the structure of the state object, please open an issue.
+        &lt;/p&gt;
+      &lt;/blockquote&gt;
       
       &lt;p&gt;
         This method returns the state object of the navigator which contains the screen. Getting the navigator state could be useful in very rare situations. You most likely don't need to use this method. If you do, make sure you have a good reason.

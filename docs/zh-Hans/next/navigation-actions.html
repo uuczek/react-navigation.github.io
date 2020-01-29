@@ -177,7 +177,13 @@ params: { user: 'jane' },
 })
 );
 </code></pre></p>
-<pre><code class="hljs">  &lt;h3&gt;
+<pre><code class="hljs">  &lt;blockquote&gt;
+    &lt;p&gt;
+      Note: Consider the navigator's state object to be internal and subject to change in a minor release. Avoid using properties from the navigation state object except &lt;code&gt;index&lt;/code&gt; and &lt;code&gt;routes&lt;/code&gt;, unless you really need it. If there is some functionality you cannot achieve without relying on the structure of the state object, please open an issue.
+    &lt;/p&gt;
+  &lt;/blockquote&gt;
+  
+  &lt;h3&gt;
     goBack
   &lt;/h3&gt;
   

@@ -646,6 +646,19 @@ options={{ drawerLabel: 'Profile' }}
 }
 </code></pre></p>
 <pre><code class="hljs">              &lt;h2&gt;
+                Checking if the drawer is open
+              &lt;/h2&gt;
+              
+              &lt;p&gt;
+                You can check if the drawer is open by using the &lt;code&gt;useIsDrawerOpen&lt;/code&gt; hook.
+              &lt;/p&gt;
+              
+              &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;import { useIsDrawerOpen } from '@react-navigation/drawer';
+</code></pre>
+<p>// ...</p>
+<p>const isDrawerOpen = useIsDrawerOpen();
+</code></pre></p>
+<pre><code class="hljs">              &lt;h2&gt;
                 Nesting drawer navigators inside others
               &lt;/h2&gt;
               
