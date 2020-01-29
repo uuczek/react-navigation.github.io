@@ -207,12 +207,6 @@ Props
   Whether the screens should render the first time they are accessed. Defaults to <code>true</code>. Set it to <code>false</code> if you want to render all screens on initial render.
 </p>
 <p><h4>
-<code>unmountInactiveScreens</code>
-</h4></p>
-<p>
-  Whether a screen should be unmounted when navigating away from it. Unmounting a screen resets any local state in the screen as well as state of nested navigators in the screen. O padrão é <code>false</code>.
-</p>
-<p><h4>
 <code>sceneContainerStyle</code>
 </h4></p>
 <p>
@@ -490,6 +484,14 @@ itemStyle: { marginVertical: 30 },
     
     &lt;p&gt;
       Whether you can use gestures to open or close the drawer. Defaults to &lt;code&gt;true&lt;/code&gt; on iOS, &lt;code&gt;false&lt;/code&gt; on Android.
+    &lt;/p&gt;
+    
+    &lt;h4&gt;
+      &lt;code&gt;unmountOnBlur&lt;/code&gt;
+    &lt;/h4&gt;
+    
+    &lt;p&gt;
+      Whether this screen should be unmounted when navigating away from it. Unmounting a screen resets any local state in the screen as well as state of nested navigators in the screen. O padrão é &lt;code&gt;false&lt;/code&gt;.
     &lt;/p&gt;
     
     &lt;h3&gt;
