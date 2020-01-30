@@ -74,12 +74,12 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/headers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Configuring the header bar</h1></header><article><div><span><p>By now you're probably tired of seeing a blank grey bar on the top of your screen — you're ready for some <a href="https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg">flair</a>. So let's jump in to configuring the header bar.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/headers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Configuring the header bar</h1></header><article><div><span><p>By now you're probably tired of seeing a blank grey bar on the top of your screen — you're ready for some <a href="https://memegenerator.net/img/images/600x600/14303485/stan-flair-office-space.jpg">flair</a>. So let's jump in to configuring the header bar.</p>
 <h2><a class="anchor" aria-hidden="true" id="setting-the-header-title"></a><a href="#setting-the-header-title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting the header title</h2>
 <p>A screen component can have a static property called <code>navigationOptions</code> which is either an object or a function that returns an object that contains various configuration options. The one we use for the header title is <code>title</code>, as demonstrated in the following example.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">/* render function, etc */</span>
@@ -87,7 +87,7 @@
 
 <span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Details'</span><span class="token punctuation">,</span>
+    title<span class="token operator">:</span> <span class="token string">'Details'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">/* render function, etc */</span>
@@ -102,7 +102,7 @@
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">DetailsScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> <span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'otherParam'</span><span class="token punctuation">,</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      title<span class="token operator">:</span> navigation<span class="token punctuation">.</span><span class="token function">getParam</span><span class="token punctuation">(</span><span class="token string">'otherParam'</span><span class="token punctuation">,</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -122,7 +122,7 @@
 <pre><code class="hljs css language-js">  <span class="token comment">/* Inside of render() */</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span>
     <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Update the title<span class="token punctuation">"</span></span>
-    <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>otherParam<span class="token punctuation">:</span> <span class="token string">'Updated!'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+    <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>navigation<span class="token punctuation">.</span><span class="token function">setParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>otherParam<span class="token operator">:</span> <span class="token string">'Updated!'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
   <span class="token punctuation">/></span></span>
 </code></pre>
 <p><a href="https://snack.expo.io/@react-navigation/updating-navigationoptions-with-setparams-v3" target="blank" class="run-code-button">→ Run this code</a></p>
@@ -135,13 +135,13 @@
 </ul>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
-    headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      backgroundColor<span class="token punctuation">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      backgroundColor<span class="token operator">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    headerTintColor<span class="token punctuation">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
-    headerTitleStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      fontWeight<span class="token punctuation">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
+    headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+    headerTitleStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+      fontWeight<span class="token operator">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -158,7 +158,7 @@
 <p>It is common to want to configure the header in a similar way across many screens. For example, your company brand color might be red and so you want the header background color to be red and tint color to be white. Conveniently, these are the colors we're using in our running example, and you'll notice that when you navigate to the <code>DetailsScreen</code> the colors go back to the defaults. Wouldn't it be awful if we had to copy the <code>navigationOptions</code> header style properties from <code>HomeScreen</code> to <code>DetailsScreen</code>, and for every single screen component we use in our app? Thankfully, we do not. We can instead move the configuration up to the stack navigator under the property <code>defaultNavigationOptions</code>.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    title<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
     <span class="token comment">/* No more header config here! */</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -169,19 +169,19 @@
 
 <span class="token keyword">const</span> RootStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    Home<span class="token punctuation">:</span> HomeScreen<span class="token punctuation">,</span>
-    Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+    Home<span class="token operator">:</span> HomeScreen<span class="token punctuation">,</span>
+    Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
-    initialRouteName<span class="token punctuation">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
+    initialRouteName<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span>
     <span class="token comment">/* The header config from HomeScreen is now here */</span>
-    defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        backgroundColor<span class="token punctuation">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
+    defaultNavigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> <span class="token string">'#f4511e'</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      headerTintColor<span class="token punctuation">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
-      headerTitleStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        fontWeight<span class="token punctuation">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
+      headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+      headerTitleStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fontWeight<span class="token operator">:</span> <span class="token string">'bold'</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
@@ -195,17 +195,17 @@
 <p>The property <code>navigationOptions</code> can be used to configure the navigator itself:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    Feed<span class="token punctuation">:</span> ExampleScreen<span class="token punctuation">,</span>
-    Profile<span class="token punctuation">:</span> ExampleScreen<span class="token punctuation">,</span>
+    Feed<span class="token operator">:</span> ExampleScreen<span class="token punctuation">,</span>
+    Profile<span class="token operator">:</span> ExampleScreen<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    defaultNavigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      headerTintColor<span class="token punctuation">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
-      headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        backgroundColor<span class="token punctuation">:</span> <span class="token string">'#000'</span><span class="token punctuation">,</span>
+    defaultNavigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      headerTintColor<span class="token operator">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> <span class="token string">'#000'</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+    navigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -221,12 +221,12 @@
     <span class="token keyword">const</span> <span class="token punctuation">{</span> params <span class="token punctuation">}</span> <span class="token operator">=</span> navigation<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> params <span class="token operator">?</span> params<span class="token punctuation">.</span>otherParam <span class="token punctuation">:</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">,</span>
+      title<span class="token operator">:</span> params <span class="token operator">?</span> params<span class="token punctuation">.</span>otherParam <span class="token operator">:</span> <span class="token string">'A Nested Details Screen'</span><span class="token punctuation">,</span>
       <span class="token comment">/* These values are used instead of the shared configuration! */</span>
-      headerStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        backgroundColor<span class="token punctuation">:</span> navigationOptions<span class="token punctuation">.</span>headerTintColor<span class="token punctuation">,</span>
+      headerStyle<span class="token operator">:</span> <span class="token punctuation">{</span>
+        backgroundColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerTintColor<span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      headerTintColor<span class="token punctuation">:</span> navigationOptions<span class="token punctuation">.</span>headerStyle<span class="token punctuation">.</span>backgroundColor<span class="token punctuation">,</span>
+      headerTintColor<span class="token operator">:</span> navigationOptions<span class="token punctuation">.</span>headerStyle<span class="token punctuation">.</span>backgroundColor<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -241,7 +241,7 @@
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Image</span></span>
         <span class="token attr-name">source</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./spiro.png'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
-        <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> width<span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> width<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
       <span class="token punctuation">/></span></span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -250,7 +250,7 @@
 <span class="token keyword">class</span> <span class="token class-name">HomeScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token comment">// headerTitle instead of title</span>
-    headerTitle<span class="token punctuation">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LogoTitle</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span>
+    headerTitle<span class="token operator">:</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">LogoTitle</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">/* render function, etc */</span>
@@ -269,7 +269,7 @@
 <li>You can also specify shared <code>navigationOptions</code> in the stack navigator configuration when you initialize it. The static property takes precedence over that configuration.</li>
 <li><a href="https://snack.expo.io/@react-navigation/custom-header-title-component-v3">Full source of what we have built so far</a>.</li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/3.x/params.html"><span class="arrow-prev">← </span><span>Passing parameters to routes</span></a><a class="docs-next button" href="/docs/en/3.x/header-buttons.html"><span>Header buttons</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-the-header-title">Setting the header title</a></li><li><a href="#using-params-in-the-title">Using params in the title</a></li><li><a href="#updating-navigationoptions-with-setparams">Updating <code>navigationOptions</code> with <code>setParams</code></a></li><li><a href="#adjusting-header-styles">Adjusting header styles</a></li><li><a href="#sharing-common-navigationoptions-across-screens">Sharing common <code>navigationOptions</code> across screens</a></li><li><a href="#overriding-shared-navigationoptions">Overriding shared <code>navigationOptions</code></a></li><li><a href="#replacing-the-title-with-a-custom-component">Replacing the title with a custom component</a></li><li><a href="#additional-configuration">Additional configuration</a></li><li><a href="#summary">Summary</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/3.x/params.html"><span class="arrow-prev">← </span><span>Passing parameters to routes</span></a><a class="docs-next button" href="/docs/en/3.x/header-buttons.html"><span>Header buttons</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-the-header-title">Setting the header title</a></li><li><a href="#using-params-in-the-title">Using params in the title</a></li><li><a href="#updating-navigationoptions-with-setparams">Updating <code>navigationOptions</code> with <code>setParams</code></a></li><li><a href="#adjusting-header-styles">Adjusting header styles</a></li><li><a href="#sharing-common-navigationoptions-across-screens">Sharing common <code>navigationOptions</code> across screens</a></li><li><a href="#overriding-shared-navigationoptions">Overriding shared <code>navigationOptions</code></a></li><li><a href="#replacing-the-title-with-a-custom-component">Replacing the title with a custom component</a></li><li><a href="#additional-configuration">Additional configuration</a></li><li><a href="#summary">Summary</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

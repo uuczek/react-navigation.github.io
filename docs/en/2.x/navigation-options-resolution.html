@@ -74,13 +74,13 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/navigation-options-resolution.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Navigation options resolution</h1></header><article><div><span><p>Each screen can configure various aspects about how it gets presented in the navigator that renders it. In the <a href="headers.html">Configuring the header bar</a> section of the fundamentals documentation we explain the basics of how this works.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/navigation-options-resolution.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation options resolution</h1></header><article><div><span><p>Each screen can configure various aspects about how it gets presented in the navigator that renders it. In the <a href="headers.html">Configuring the header bar</a> section of the fundamentals documentation we explain the basics of how this works.</p>
 <p>In this document we'll explain how this works when there are multiple navigators. It's important to understand this so that you put your <code>navigationOptions</code> in the correct place and can properly configure your navigators. If you put them in the wrong place, at best nothing will happen and at worst something confusing and unexpected will happen. Thankfully, the logic for this could not be any easier to understand:</p>
 <p><strong>You can only modify navigation options for a navigator from one of its screen components. This applies equally to navigators that are nested as screens.</strong></p>
 <p>Let's take for example a tab navigator that contains a stack in each tab. What happens if we set the <code>navigationOptions</code> on a screen inside of the stack?</p>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+    tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">// etc..</span>
@@ -88,7 +88,7 @@
 
 <span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
+    tabBarLabel<span class="token operator">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">// etc..</span>
@@ -108,11 +108,11 @@
 <span class="token keyword">const</span> SettingsStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">B</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 HomeStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-  tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 SettingsStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-  tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Settings!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -124,7 +124,7 @@ SettingsStack<span class="token punctuation">.</span>navigationOptions <span cla
 <p>To understand what is going on here, first recall that in the following example, <code>MyComponent</code> and <code>MyOtherComponent</code> are identical:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+    title<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token comment">// etc.</span>
 <span class="token punctuation">}</span>
@@ -134,7 +134,7 @@ SettingsStack<span class="token punctuation">.</span>navigationOptions <span cla
 <span class="token punctuation">}</span>
 
 MyOtherComponent<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
+  title<span class="token operator">:</span> <span class="token string">'Hello!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We also know that <code>createStackNavigator</code> and related functions return React components. So when we set the <code>navigationOptions</code> directly on the <code>HomeStack</code> and <code>SettingsStack</code> component, it allows us to control the <code>navigationOptions</code> for its parent navigator when its used as a screen component. In this case, the <code>navigationOptions</code> on our stack components configure the label in the tab navigator that renders the stacks.</p>
@@ -143,34 +143,34 @@ MyOtherComponent<span class="token punctuation">.</span>navigationOptions <span 
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token constant">A</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   <span class="token comment">// This is the default for screens in the stack, so `A` will</span>
   <span class="token comment">// use this title unless it overrides it</span>
-  navigationOptions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'Welcome'</span>
+  navigationOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">'Welcome'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment">// These are the options that are used by the navigator that renders</span>
 <span class="token comment">// the HomeStack, in our example above this is a tab navigator.</span>
 HomeStack<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
-  tabBarLabel<span class="token punctuation">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
+  tabBarLabel<span class="token operator">:</span> <span class="token string">'Home!'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 <p>We understand that overloading the naming here is a little bit confusing. Please <a href="https://github.com/react-navigation/rfcs">open a RFC</a> if you have a suggestion about how we can make this API easier to learn and work with.</p>
 <h1><a class="anchor" aria-hidden="true" id="a-stack-contains-a-tab-navigator-and-you-want-to-set-the-title-on-the-stack-header"></a><a href="#a-stack-contains-a-tab-navigator-and-you-want-to-set-the-title-on-the-stack-header" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A stack contains a tab navigator and you want to set the title on the stack header</h1>
 <p>Imagine the following configuration:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Home<span class="token punctuation">:</span> TabNavigator<span class="token punctuation">,</span>
-  Settings<span class="token punctuation">:</span> SettingsScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Settings<span class="token operator">:</span> SettingsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If we were to set the <code>headerTitle</code> with <code>navigationOptions</code> on the <code>FeedScreen</code>, this would not work. This is because the <code>AppNavigator</code> stack will only look at its immediate children for configuration: <code>TabNavigator</code> and <code>SettingsScreen</code>. So we can set the <code>headerTitle</code> on the <code>TabNavigator</code> instead, like so:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 TabNavigator<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -186,28 +186,28 @@ TabNavigator<span class="token punctuation">.</span><span class="token function-
 </code></pre>
 <p>Another option is to re-organize your navigators, such that each tab has its own stack. You can then hide the top-level stack's header when the tab screen is focused.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* other routes here */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> ProfileStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  ProfileHome<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  ProfileHome<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
   <span class="token comment">/* other routes here */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedStack<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileStack<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileStack<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 TabNavigator<span class="token punctuation">.</span>navigationOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token comment">// Hide the header from AppNavigator stack</span>
-  header<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  header<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Home<span class="token punctuation">:</span> TabNavigator<span class="token punctuation">,</span>
-  Settings<span class="token punctuation">:</span> SettingsScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Settings<span class="token operator">:</span> SettingsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Using this configuration, the <code>headerTitle</code> or <code>title</code> from <code>navigationOptions</code> on <code>FeedScreen</code> and <code>ProfileScreen</code> will not determine the title in their headers.</p>
@@ -216,24 +216,24 @@ TabNavigator<span class="token punctuation">.</span>navigationOptions <span clas
 <p>Similar to the example above where a stack contains a tab navigator, we can solve this in two ways: add <code>navigationOptions</code> to our tab navigator to set the tab bar to hidden depending on which route is active in the child stack, or we can move the tab navigator inside of the stack.</p>
 <p>Imagine the following configuration:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedStack<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Auth<span class="token punctuation">:</span> AuthScreen<span class="token punctuation">,</span>
-  Home<span class="token punctuation">:</span> TabNavigator<span class="token punctuation">,</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If we want to hide the tab bar when we navigate from the feed home to a details screen without shuffling navigators, we cannot set the <code>tabBarVisible: false</code> configuration in <code>navigationOptions</code> on <code>DetailsScreen</code>, because those options will only apply to the <code>FeedStack</code>. Instead, we can do the following:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 FeedStack<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -250,48 +250,48 @@ FeedStack<span class="token punctuation">.</span><span class="token function-var
 <p>This will hide the tab bar any time we navigate away from the feed home. We could switch visibility based on route name, but it would be strange to have the tab bar be hidden and then appear again when pushing another route — it should only be visible when returning to a route where it was previously visible.</p>
 <p>Another option here would be to add another stack navigator as a parent of the tab navigator, and put the details screen there. This is recommended.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* any other route you want to render under the tab bar */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> TabNavigator <span class="token operator">=</span> <span class="token function">createBottomTabNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedStack<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Tabs<span class="token punctuation">:</span> TabNavigator<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  Tabs<span class="token operator">:</span> TabNavigator<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
   <span class="token comment">/* any other route you want to render above the tab bar */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Auth<span class="token punctuation">:</span> AuthScreen<span class="token punctuation">,</span>
-  Home<span class="token punctuation">:</span> HomeStack<span class="token punctuation">,</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> HomeStack<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h1><a class="anchor" aria-hidden="true" id="a-drawer-has-a-stack-inside-of-it-and-you-want-to-lock-the-drawer-on-certain-screens"></a><a href="#a-drawer-has-a-stack-inside-of-it-and-you-want-to-lock-the-drawer-on-certain-screens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A drawer has a stack inside of it and you want to lock the drawer on certain screens</h1>
 <p>This is conceptually identical to having a tab with a stack inside of it (read that above if you have not already), where you want to hide the tab bar on certain screens. The only difference is that rather than using <code>tabBarVisible</code> you will use <code>drawerLockMode</code>.</p>
 <p>Imagine the following configuration:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> DrawerNavigator <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedStack<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Auth<span class="token punctuation">:</span> AuthScreen<span class="token punctuation">,</span>
-  Home<span class="token punctuation">:</span> DrawerNavigator<span class="token punctuation">,</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> DrawerNavigator<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>In order to hide the drawer when we push the details screen to the feed stack, we need to set <code>navigationOptions</code> on the <code>FeedStack</code>. If we were to set <code>navigationOptions</code> on the <code>DetailsScreen</code>, they would be configuring the feed stack (its direct parent) and not the drawer.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 FeedStack<span class="token punctuation">.</span><span class="token function-variable function">navigationOptions</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigation <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -307,28 +307,28 @@ FeedStack<span class="token punctuation">.</span><span class="token function-var
 </code></pre>
 <p>Another option here would be to add another stack navigator as a parent of the drawer navigator, and put the details screen there. This is recommended.</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> FeedStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  FeedHome<span class="token punctuation">:</span> FeedScreen<span class="token punctuation">,</span>
+  FeedHome<span class="token operator">:</span> FeedScreen<span class="token punctuation">,</span>
   <span class="token comment">/* any other route where you want the drawer to remain available */</span>
   <span class="token comment">/* keep in mind that it will conflict with the swipe back gesture on ios */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> DrawerNavigator <span class="token operator">=</span> <span class="token function">createDrawerNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Feed<span class="token punctuation">:</span> FeedStack<span class="token punctuation">,</span>
-  Profile<span class="token punctuation">:</span> ProfileScreen<span class="token punctuation">,</span>
+  Feed<span class="token operator">:</span> FeedStack<span class="token punctuation">,</span>
+  Profile<span class="token operator">:</span> ProfileScreen<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> HomeStack <span class="token operator">=</span> <span class="token function">createStackNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Drawer<span class="token punctuation">:</span> DrawerNavigator<span class="token punctuation">,</span>
-  Details<span class="token punctuation">:</span> DetailsScreen<span class="token punctuation">,</span>
+  Drawer<span class="token operator">:</span> DrawerNavigator<span class="token punctuation">,</span>
+  Details<span class="token operator">:</span> DetailsScreen<span class="token punctuation">,</span>
   <span class="token comment">/* add routes here where you want the drawer to be locked */</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> AppNavigator <span class="token operator">=</span> <span class="token function">createSwitchNavigator</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  Auth<span class="token punctuation">:</span> AuthScreen<span class="token punctuation">,</span>
-  Home<span class="token punctuation">:</span> HomeStack<span class="token punctuation">,</span>
+  Auth<span class="token operator">:</span> AuthScreen<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> HomeStack<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/2.x/status-bar.html"><span class="arrow-prev">← </span><span>Different status bar configuration based on route</span></a><a class="docs-next button" href="/docs/en/2.x/custom-android-back-button-handling.html"><span>Custom Android back button behavior</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#caution-the-navigationoptions-property-vs-configuration"><strong>Caution</strong>: the navigationOptions property vs configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/2.x/status-bar.html"><span class="arrow-prev">← </span><span>Different status bar configuration based on route</span></a><a class="docs-next button" href="/docs/en/2.x/custom-android-back-button-handling.html"><span>Custom Android back button behavior</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#caution-the-navigationoptions-property-vs-configuration"><strong>Caution</strong>: the navigationOptions property vs configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

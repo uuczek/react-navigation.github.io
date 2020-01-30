@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/custom-routers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Roteadores personalizados</h1></header><article><div><span><p>The router object provides various helper methods to deal with the state and actions, a reducer to update the state as well as some action creators.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/custom-routers.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Roteadores personalizados</h1></header><article><div><span><p>The router object provides various helper methods to deal with the state and actions, a reducer to update the state as well as some action creators.</p>
 <p>The router is responsible for handling actions dispatched by calling methods on the navigation object. If the router cannot handle an action, it can return <code>null</code>, which would propagate the action to other routers until it's handled.</p>
 <p>Você pode criar seu próprio roteador construindo um objeto com as seguintes funções:</p>
 <ul>
@@ -89,24 +89,24 @@
 </ul>
 <p>Exemplo:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token punctuation">{</span>
-  type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
+  type<span class="token operator">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
 
   <span class="token function">getInitialState</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> routeNames<span class="token punctuation">,</span> routeParamList <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> index <span class="token operator">=</span>
       options<span class="token punctuation">.</span>initialRouteName <span class="token operator">===</span> <span class="token keyword">undefined</span>
         <span class="token operator">?</span> <span class="token number">0</span>
-        <span class="token punctuation">:</span> routeNames<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>initialRouteName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">:</span> routeNames<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>initialRouteName<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      stale<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
-      key<span class="token punctuation">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      stale<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
+      key<span class="token operator">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       index<span class="token punctuation">,</span>
       routeNames<span class="token punctuation">,</span>
-      routes<span class="token punctuation">:</span> routeNames<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+      routes<span class="token operator">:</span> routeNames<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
         name<span class="token punctuation">,</span>
-        key<span class="token punctuation">:</span> name<span class="token punctuation">,</span>
-        params<span class="token punctuation">:</span> routeParamList<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        key<span class="token operator">:</span> name<span class="token punctuation">,</span>
+        params<span class="token operator">:</span> routeParamList<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -124,31 +124,31 @@
         <span class="token parameter">route</span> <span class="token operator">=></span>
           <span class="token punctuation">(</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>route<span class="token punctuation">,</span>
-            key<span class="token punctuation">:</span> route<span class="token punctuation">.</span>key <span class="token operator">||</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-            params<span class="token punctuation">:</span>
+            key<span class="token operator">:</span> route<span class="token punctuation">.</span>key <span class="token operator">||</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>route<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+            params<span class="token operator">:</span>
               routeParamList<span class="token punctuation">[</span>route<span class="token punctuation">.</span>name<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token keyword">undefined</span>
                 <span class="token operator">?</span> <span class="token punctuation">{</span>
                     <span class="token operator">...</span>routeParamList<span class="token punctuation">[</span>route<span class="token punctuation">.</span>name<span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token operator">...</span>route<span class="token punctuation">.</span>params<span class="token punctuation">,</span>
                   <span class="token punctuation">}</span>
-                <span class="token punctuation">:</span> route<span class="token punctuation">.</span>params<span class="token punctuation">,</span>
-          <span class="token punctuation">}</span> <span class="token keyword">as</span> Route<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token operator">:</span> route<span class="token punctuation">.</span>params<span class="token punctuation">,</span>
+          <span class="token punctuation">}</span> <span class="token keyword">as</span> Route<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span><span class="token plain-text">)
+      );
 
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      stale<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      type<span class="token punctuation">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
-      key<span class="token punctuation">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      index<span class="token punctuation">:</span>
+    return </span><span class="token punctuation">{</span>
+      stale<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'tab'</span><span class="token punctuation">,</span>
+      key<span class="token operator">:</span> <span class="token function">shortid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      index<span class="token operator">:</span>
         <span class="token keyword">typeof</span> state<span class="token punctuation">.</span>index <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> state<span class="token punctuation">.</span>index <span class="token operator">&lt;</span> routes<span class="token punctuation">.</span>length
           <span class="token operator">?</span> state<span class="token punctuation">.</span>index
-          <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
       routeNames<span class="token punctuation">,</span>
       routes<span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token plain-text">;
+  },
 
-  <span class="token function">getStateForRouteNamesChange</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> <span class="token punctuation">{</span> routeNames <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  getStateForRouteNamesChange(state, { routeNames }) </span><span class="token punctuation">{</span>
     <span class="token keyword">const</span> routes <span class="token operator">=</span> state<span class="token punctuation">.</span>routes<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">route</span> <span class="token operator">=></span>
       routeNames<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>route<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -157,11 +157,11 @@
       <span class="token operator">...</span>state<span class="token punctuation">,</span>
       routeNames<span class="token punctuation">,</span>
       routes<span class="token punctuation">,</span>
-      index<span class="token punctuation">:</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>index<span class="token punctuation">,</span> routes<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      index<span class="token operator">:</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>index<span class="token punctuation">,</span> routes<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token plain-text">,
 
-  <span class="token function">getStateForRouteFocus</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  getStateForRouteFocus(state, key) </span><span class="token punctuation">{</span>
     <span class="token keyword">const</span> index <span class="token operator">=</span> state<span class="token punctuation">.</span>routes<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token operator">=></span> r<span class="token punctuation">.</span>key <span class="token operator">===</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> index <span class="token operator">===</span> state<span class="token punctuation">.</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -169,11 +169,11 @@
     <span class="token punctuation">}</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>state<span class="token punctuation">,</span> index <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token plain-text">,
 
-  <span class="token function">getStateForAction</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  getStateForAction(state, action) </span><span class="token punctuation">{</span>
     <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">case</span> <span class="token string">'NAVIGATE'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token keyword">case</span> <span class="token string">'NAVIGATE'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> index <span class="token operator">=</span> state<span class="token punctuation">.</span>routes<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span>
           <span class="token parameter">route</span> <span class="token operator">=></span> route<span class="token punctuation">.</span>name <span class="token operator">===</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>name
         <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -185,20 +185,20 @@
         <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>state<span class="token punctuation">,</span> index <span class="token punctuation">}</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
 
-      <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">default</span><span class="token operator">:</span>
         <span class="token keyword">return</span> BaseRouter<span class="token punctuation">.</span><span class="token function">getStateForAction</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token plain-text">,
 
-  <span class="token function">shouldActionChangeFocus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  shouldActionChangeFocus() </span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token plain-text">,
+};
 
-<span class="token keyword">const</span> <span class="token function-variable function">SimpleRouter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> router<span class="token punctuation">;</span>
+const SimpleRouter = () => router;
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> SimpleRouter<span class="token punctuation">;</span>
-</code></pre>
+export default SimpleRouter;
+</span></code></pre>
 <h2><a class="anchor" aria-hidden="true" id="built-in-routers"></a><a href="#built-in-routers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Built-In Routers</h2>
 <p>The <code>@react-navigation/routers</code> package ships with a few standard routers:</p>
 <ul>
@@ -220,20 +220,20 @@
     <span class="token operator">...</span>router<span class="token punctuation">,</span>
     <span class="token function">getStateForAction</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> action<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">case</span> <span class="token string">'CLEAR_HISTORY'</span><span class="token punctuation">:</span>
+        <span class="token keyword">case</span> <span class="token string">'CLEAR_HISTORY'</span><span class="token operator">:</span>
           <span class="token keyword">return</span> <span class="token punctuation">{</span>
             <span class="token operator">...</span>state<span class="token punctuation">,</span>
-            routeKeyHistory<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            routeKeyHistory<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token keyword">default</span><span class="token punctuation">:</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
           <span class="token keyword">return</span> router<span class="token punctuation">.</span><span class="token function">getStateForAction</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    actionCreators<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    actionCreators<span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token operator">...</span>router<span class="token punctuation">.</span>actionCreators<span class="token punctuation">,</span>
       <span class="token function">clearHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'CLEAR_HISTORY'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'CLEAR_HISTORY'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -254,7 +254,7 @@
       <span class="token keyword">if</span> <span class="token punctuation">(</span>
         result <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span>
         result<span class="token punctuation">.</span>index <span class="token operator">&lt;</span> state<span class="token punctuation">.</span>index <span class="token operator">&amp;&amp;</span>
-        state<span class="token punctuation">.</span>routes<span class="token punctuation">[</span>state<span class="token punctuation">.</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>params<span class="token operator">?</span><span class="token punctuation">.</span>isEditing
+        state<span class="token punctuation">.</span>routes<span class="token punctuation">[</span>state<span class="token punctuation">.</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>params<span class="token operator">?.</span>isEditing
       <span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// Returning the current state means that the action has been handled, but we don't have a new state</span>
         <span class="token keyword">return</span> state<span class="token punctuation">;</span>
@@ -265,7 +265,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/tab-actions.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">TabActions</span></a><a class="docs-next button" href="/docs/pt-BR/next/custom-navigators.html"><span>Navegadores personalizados</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#built-in-routers">Built-In Routers</a></li><li><a href="#customizing-routers">Customizing Routers</a><ul class="toc-headings"><li><a href="#custom-navigation-actions">Custom Navigation Actions</a></li><li><a href="#blocking-navigation-actions">Blocking Navigation Actions</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/pt-BR/next/tab-actions.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">TabActions</span></a><a class="docs-next button" href="/docs/pt-BR/next/custom-navigators.html"><span>Navegadores personalizados</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#built-in-routers">Built-In Routers</a></li><li><a href="#customizing-routers">Customizing Routers</a><ul class="toc-headings"><li><a href="#custom-navigation-actions">Custom Navigation Actions</a></li><li><a href="#blocking-navigation-actions">Blocking Navigation Actions</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/pt-BR/getting-started.html">Getting Started</a><a href="/docs/pt-BR/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/pt-BR/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

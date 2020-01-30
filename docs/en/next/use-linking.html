@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/use-linking.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">useLinking</h1></header><article><div><span><p>The <code>useLinking</code> hook lets us handle deep links in our apps.</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/use-linking.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">useLinking</h1></header><article><div><span><p>The <code>useLinking</code> hook lets us handle deep links in our apps.</p>
 <p>Example:</p>
 <pre><code class="hljs css language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> ScrollView <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span><span class="token punctuation">;</span>
@@ -82,9 +82,9 @@
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> getInitialState <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useLinking</span><span class="token punctuation">(</span>ref<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    prefixes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      Chat<span class="token punctuation">:</span> <span class="token string">'feed/:sort'</span><span class="token punctuation">,</span>
+    prefixes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'https://mychat.com'</span><span class="token punctuation">,</span> <span class="token string">'mychat://'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    config<span class="token operator">:</span> <span class="token punctuation">{</span>
+      Chat<span class="token operator">:</span> <span class="token string">'feed/:sort'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -108,9 +108,9 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationNativeContainer</span></span> <span class="token attr-name">initialState</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>initialState<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-      <span class="token punctuation">{</span><span class="token comment">/* content */</span><span class="token punctuation">}</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationNativeContainer</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationNativeContainer</span></span> <span class="token attr-name">initialState</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>initialState<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span><span class="token comment">/* content */</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationNativeContainer</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -123,11 +123,11 @@
 <p>Config to fine-tune how to parse the path. The config object should represent the structure of the navigators in the app.</p>
 <p>For example, if we have <code>Catalog</code> screen inside <code>Home</code> screen and want it to handle the <code>item/:id</code> pattern:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
-  Home<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    Catalog<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      path<span class="token punctuation">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
-      parse<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        id<span class="token punctuation">:</span> Number<span class="token punctuation">,</span>
+  Home<span class="token operator">:</span> <span class="token punctuation">{</span>
+    Catalog<span class="token operator">:</span> <span class="token punctuation">{</span>
+      path<span class="token operator">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
+      parse<span class="token operator">:</span> <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> Number<span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -135,17 +135,17 @@
 </code></pre>
 <p>The options for parsing can be an object or a string:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
-  Catalog<span class="token punctuation">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
+  Catalog<span class="token operator">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>When a string is specified, it's equivalent to providing the <code>path</code> option.</p>
 <p>The <code>path</code> option is a pattern to match against the path. Any segments starting with <code>:</code> are recognized as a param with the same name. For example <code>item/42</code> will be parsed to <code>{ name: 'item', params: { id: '42' } }</code>.</p>
 <p>The <code>parse</code> option controls how the params are parsed. Here, you can provide the name of the param to parse as a key, and a function which takes the string value for the param and returns a parsed value:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
-  Catalog<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
-    parse<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      <span class="token function-variable function">id</span><span class="token punctuation">:</span> <span class="token parameter">id</span> <span class="token operator">=></span> <span class="token function">parseInt</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  Catalog<span class="token operator">:</span> <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">'item/:id'</span><span class="token punctuation">,</span>
+    parse<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">id</span><span class="token operator">:</span> <span class="token parameter">id</span> <span class="token operator">=></span> <span class="token function">parseInt</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
@@ -153,20 +153,20 @@
 <p>If no custom function is provided for parsing a param, it'll be parsed as a string.</p>
 <p>Different segments of the same path can be handled by different parts of the config. For example, say we have the URL <code>/rooms/chat/jane</code>. We can provide the following config to handle it:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
-  Rooms<span class="token punctuation">:</span> <span class="token string">'rooms'</span><span class="token punctuation">,</span>
-  Chat<span class="token punctuation">:</span> <span class="token string">'chat/:user'</span>
+  Rooms<span class="token operator">:</span> <span class="token string">'rooms'</span><span class="token punctuation">,</span>
+  Chat<span class="token operator">:</span> <span class="token string">'chat/:user'</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>This will result in the following navigation state:</p>
 <pre><code class="hljs css language-js"><span class="token punctuation">{</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      name<span class="token punctuation">:</span> <span class="token string">'Rooms'</span><span class="token punctuation">,</span>
-      state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      name<span class="token operator">:</span> <span class="token string">'Rooms'</span><span class="token punctuation">,</span>
+      state<span class="token operator">:</span> <span class="token punctuation">{</span>
+        routes<span class="token operator">:</span> <span class="token punctuation">[</span>
           <span class="token punctuation">{</span>
-            name<span class="token punctuation">:</span> <span class="token string">'Chat'</span><span class="token punctuation">,</span>
-            params<span class="token punctuation">:</span> <span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'jane'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'Chat'</span><span class="token punctuation">,</span>
+            params<span class="token operator">:</span> <span class="token punctuation">{</span> user<span class="token operator">:</span> <span class="token string">'jane'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -174,7 +174,7 @@
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/next/use-is-focused.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">useIsFocused</span></a><a class="docs-next button" href="/docs/en/next/use-scroll-to-top.html"><span class="function-name-prevnext">useScrollToTop</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/next/use-is-focused.html"><span class="arrow-prev">← </span><span class="function-name-prevnext">useIsFocused</span></a><a class="docs-next button" href="/docs/en/next/use-scroll-to-top.html"><span class="function-name-prevnext">useScrollToTop</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer" style="padding-top:0"><div style="margin-bottom:2em;background-color:#fff;display:flex;flex:1;position:relative;padding-top:35px;padding-bottom:35px;max-height:412px;border-top-width:1px;border-top-color:#eee;border-top-style:solid"><div style="z-index:0;opacity:0.4;position:absolute;bottom:0;right:0;top:0;left:0;background-image:url(/img/expo_spiro.png);background-repeat:repeat;background-color:#fff;background-position-x:center"></div><p style="justify-content:center;flex:1;margin-bottom:0;z-index:1;text-align:center;padding-left:20px;padding-right:20px;color:#7b7b7b">React Navigation is built and funded by <a href="https://expo.io" style="font-weight:bold">Expo</a><span> &amp; </span><a href="https://swmansion.com/" style="font-weight:bold">Software Mansion</a>, with contributions from the <a style="font-weight:bold" href="https://github.com/react-navigation/react-navigation/graphs/contributors">community</a>.</p></div><section class="sitemap"><a href="/" class="nav-home"><img src="/img/spiro_white.svg" alt="React Navigation" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started.html">Getting Started</a><a href="/docs/en/custom-navigator-overview.html">Building your own Navigator</a><a href="/docs/en/contributing.html">Contributing</a></div><div><h5>Support</h5><a href="https://discord.gg/4xEK3nD">Chat in our Discord channel</a><a href="https://react-navigation.canny.io/feature-requests">Request a feature on Canny</a><a href="https://github.com/react-navigation/react-navigation/issues">Report a bug on Github</a><a href="https://stackoverflow.com/questions/tagged/react-navigation" target="_blank">Get help on Stack Overflow</a></div><div><h5>More</h5><a href="https://github.com/react-navigation/react-navigation">GitHub</a><a class="github-button" href="https://github.com/react-navigation/react-navigation" data-icon="octicon-star" data-count-href="/react-community/react-navigation/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
