@@ -130,7 +130,14 @@ Props
     <code>card</code> - Usa as transições de tela padrão do iOS e do Android. É o padrão.
   </li>
   <li>
-    <code>modal</code> - Faz com que a tela deslize de baixo para cima, o que é um padrão iOS comum. Funciona apenas no iOS, não tem efeito no Android.
+    <code>modal</code> - This does 2 things: <ul>
+      <li>
+        Sets <code>headerMode</code> to <code>screen</code> for the stack unless specified
+      </li>
+      <li>
+        Make the screens slide in from the bottom on iOS which is a common iOS pattern.
+      </li>
+    </ul>
   </li>
 </ul>
 <p><h4>
@@ -749,16 +756,18 @@ close: config,
               &lt;/p&gt;
               &lt;ul&gt;
                 &lt;li&gt;
-                  &lt;code&gt;current&lt;/code&gt; - Values for the current screen:
+                  &lt;code&gt;current&lt;/code&gt; - Values for the current screen: &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen.
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
                 &lt;/li&gt;
                 &lt;li&gt;
-                  &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen.
-                &lt;/li&gt;
-                &lt;li&gt;
-                  &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one.
-                &lt;/li&gt;
-                &lt;li&gt;
-                  &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
+                  &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one. &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
                 &lt;/li&gt;
                 &lt;li&gt;
                   &lt;code&gt;index&lt;/code&gt; - The index of the card in the stack.
@@ -767,10 +776,11 @@ close: config,
                   &lt;code&gt;closing&lt;/code&gt; - Animated node representing whether the card is closing. &lt;code&gt;1&lt;/code&gt; when closing, &lt;code&gt;0&lt;/code&gt; if not.
                 &lt;/li&gt;
                 &lt;li&gt;
-                  &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation.
-                &lt;/li&gt;
-                &lt;li&gt;
-                  &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen. Contains &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties.
+                  &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation. &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen. Contains &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties.
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
                 &lt;/li&gt;
               &lt;/ul&gt;
               &lt;p&gt;
@@ -821,28 +831,31 @@ options={{ cardStyleInterpolator: forFade }}
                   &lt;/p&gt;
                   &lt;ul&gt;
                     &lt;li&gt;
-                      &lt;code&gt;current&lt;/code&gt; - Values for the current screen (the screen which owns this header).
+                      &lt;code&gt;current&lt;/code&gt; - Values for the current screen (the screen which owns this header). &lt;ul&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen. &lt;code&gt;0&lt;/code&gt; when screen should start coming into view, &lt;code&gt;0.5&lt;/code&gt; when it's mid-way, &lt;code&gt;1&lt;/code&gt; when it should be fully in view.
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the current screen. &lt;code&gt;0&lt;/code&gt; when screen should start coming into view, &lt;code&gt;0.5&lt;/code&gt; when it's mid-way, &lt;code&gt;1&lt;/code&gt; when it should be fully in view.
+                      &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one. &lt;ul&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                      &lt;code&gt;next&lt;/code&gt; - Values for the screen after this one in the stack. This can be &lt;code&gt;undefined&lt;/code&gt; in case the screen animating is the last one.
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                      &lt;code&gt;progress&lt;/code&gt; - Animated node representing the progress value of the next screen.
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                      &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation. Each layout object contain &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties.
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                      &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen.
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                      &lt;code&gt;title&lt;/code&gt; - Layout of the title element. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a title.
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                      &lt;code&gt;leftLabel&lt;/code&gt; - Layout of the back button label. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a back button label.
+                      &lt;code&gt;layouts&lt;/code&gt; - Layout measurements for various items we use for animation. Each layout object contain &lt;code&gt;height&lt;/code&gt; and &lt;code&gt;width&lt;/code&gt; properties. &lt;ul&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;screen&lt;/code&gt; - Layout of the whole screen.
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;title&lt;/code&gt; - Layout of the title element. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a title.
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;code&gt;leftLabel&lt;/code&gt; - Layout of the back button label. Might be &lt;code&gt;undefined&lt;/code&gt; when not rendering a back button label.
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
                     &lt;/li&gt;
                   &lt;/ul&gt;
                   &lt;p&gt;

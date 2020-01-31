@@ -121,7 +121,12 @@
 <li><code>mode</code> - Defines the style for rendering and transitions:
 <ul>
 <li><code>card</code> - Use the standard iOS and Android screen transitions. This is the default.</li>
-<li><code>modal</code> - Make the screens slide in from the bottom which is a common iOS pattern. Only works on iOS, has no effect on the transition on Android. This also disables <code>react-native-screens</code> for the stack.</li>
+<li><code>modal</code> - This does few things:
+<ul>
+<li>Sets <code>headerMode</code> to <code>screen</code> for the stack unless specified</li>
+<li>Prevents last inactive screen from being detached so that it stays visible underneath the active screen</li>
+<li>Make the screens slide in from the bottom on iOS which is a common iOS pattern.</li>
+</ul></li>
 </ul></li>
 <li><code>headerMode</code> - Specifies how the header should be rendered:
 <ul>

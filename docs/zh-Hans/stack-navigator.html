@@ -121,7 +121,12 @@
 <li><code>mode</code> - 定义渲染和转换的样式：
 <ul>
 <li><code>card</code> - 使用标准的 iOS 和 Android 屏幕转换， 这是默认设置。</li>
-<li><code>modal</code> - 页面从屏幕底部滑入，这是iOS的常用模式， 只在 iOS 上生效，在 Android 上无效。 这还会禁用堆栈的<code>react-native-screens</code>。</li>
+<li><code>modal</code> - This does few things:
+<ul>
+<li>Sets <code>headerMode</code> to <code>screen</code> for the stack unless specified</li>
+<li>Prevents last inactive screen from being detached so that it stays visible underneath the active screen</li>
+<li>Make the screens slide in from the bottom on iOS which is a common iOS pattern.</li>
+</ul></li>
 </ul></li>
 <li><code>headerMode</code> - 指定标题的呈现方式：
 <ul>
