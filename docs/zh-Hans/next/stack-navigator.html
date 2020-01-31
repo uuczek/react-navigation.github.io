@@ -410,6 +410,26 @@ headerBackground: () =&gt; (
     Whether transition animation should be enabled on the screen. If you set it to <code>false</code>, the screen won't animate when pushing or popping. Defaults to <code>true</code>.
   </p>
 <p><h4>
+<code>animationTypeForReplace</code>
+</h4></p>
+  <p>
+    The type of animation to use when this screen replaces another screen. It takes the following values:
+  </p>
+  <ul>
+    <li>
+      <code>push</code> - The animation of a new screen being pushed will be used
+    </li>
+    <li>
+      <code>pop</code> - The animation of a screen being popped will be used
+    </li>
+  </ul>
+  <p>
+    Defaults to <code>push</code>.
+  </p>
+  <p>
+    When <code>pop</code> is used, the <code>pop</code> animation is applied to the screen being replaced.
+  </p>
+<p><h4>
 <code>gestureEnabled</code>
 </h4></p>
   <p>
@@ -419,7 +439,7 @@ headerBackground: () =&gt; (
 <code>gestureResponseDistance</code>
 </h4></p>
   <p>
-    用于覆盖从屏幕边缘开始触摸的距离以识别手势的对象。 它具有以下属性：
+    Object to override the distance of touch start from the edge of the screen to recognize gestures. The object can contain the following properties:
   </p>
   <ul>
     <li>
@@ -466,8 +486,22 @@ headerBackground: () =&gt; (
     Safe area insets for the screen. This is used to avoid elements like notch and status bar. By default, the device's safe area insets are automatically detected. You can override the behavior with this option.
   </p>
   <p>
-    Takes an object containing following optional properties: <code>top</code>, <code>right</code>, <code>bottom</code> and <code>left</code>.
+    Takes an object containing following optional properties:
   </p>
+  <ul>
+    <li>
+      <code>top</code> - <em>number</em> - The value of the top inset, e.g. area containing the status bar and notch.
+    </li>
+    <li>
+      <code>right</code> - <em>number</em> - The value of the left inset.
+    </li>
+    <li>
+      <code>bottom</code> - <em>number</em> - The value of the top inset, e.g. area navigation bar on bottom.
+    </li>
+    <li>
+      <code>left</code>. - <em>number</em> - The value of the right inset.
+    </li>
+  </ul>
 <p><h3>
 Events
 </h3></p>
