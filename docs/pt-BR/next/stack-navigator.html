@@ -353,7 +353,18 @@ previous ? &lt;MyBackButton onPress={navigation.goBack} /&gt; : undefined
   Note that if you don't want your content to appear under the header, you need to manually add a top margin to your content. React Navigation won't do it automatically.
 </p>
 <p>
-  To get the height of the header, you can use <code>useHeaderHeight</code>:
+  To get the height of the header, you can use <code>HeaderHeightContext</code> with <a href="https://reactjs.org/docs/context.html#contextconsumer">React's Context API</a> or <code>useHeaderHeight</code>:
+</p>
+<pre><code class="js">import { HeaderHeightContext } from '@react-navigation/stack';
+<p>// ...</p>
+<p>&lt;HeaderHeightContext.Consumer&gt;
+{headerHeight =&gt; (
+/* render something */
+)}
+&lt;/HeaderHeightContext.Consumer&gt;
+</code></pre></p>
+<p>
+  ou
 </p>
 <pre><code class="js">import { useHeaderHeight } from '@react-navigation/stack';
 <p>// ...</p>
