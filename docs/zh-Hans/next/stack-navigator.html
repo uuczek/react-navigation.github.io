@@ -477,7 +477,7 @@ headerBackground: () =&gt; (
 <code>gestureDirection</code>
 </h4></p>
   <p>
-    Direction of the gestures and animations. Refer the <a href="#animations">Animations section</a> for details.
+    Direction of the gestures. Refer the <a href="#animations">Animations section</a> for details.
   </p>
 <p><h4>
 <code>transitionSpec</code>
@@ -671,7 +671,7 @@ gestureEnabled: false,
       &lt;ul&gt;
         &lt;li&gt;
           &lt;p&gt;
-            &lt;code&gt;gestureDirection&lt;/code&gt; - The direction of swipe gestures as well as animations:
+            &lt;code&gt;gestureDirection&lt;/code&gt; - The direction of swipe gestures:
           &lt;/p&gt;
           &lt;ul&gt;
             &lt;li&gt;
@@ -687,6 +687,9 @@ gestureEnabled: false,
               &lt;code&gt;vertical-inverted&lt;/code&gt; - The gesture to close the screen will start from the bottom. For animations, screen will slide from the top.
             &lt;/li&gt;
           &lt;/ul&gt;
+          &lt;p&gt;
+            You may want to specify a matching horizontal/vertical animation along with &lt;code&gt;gestureDirection&lt;/code&gt; as well. For the animations included in the library, if you set &lt;code&gt;gestureDirection&lt;/code&gt; to one of the inverted ones, it'll also flip the animation direction.
+          &lt;/p&gt;
         &lt;/li&gt;
         &lt;li&gt;
           &lt;p&gt;
