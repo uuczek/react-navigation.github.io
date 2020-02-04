@@ -140,7 +140,7 @@
 <li>Legacy deep link support by defining <code>path</code> in route configuration is not supported. See <a href="/docs/zh-Hans/next/deep-linking.html">deep linking documentation</a> for more details now how to handle deep links.</li>
 <li>Navigating to a navigator doesn't work the same, i.e. we can't navigate to a screen in a navigator that's not rendered already, and params aren't merged to all child screens. See <a href="/docs/zh-Hans/next/nesting-navigators.html">nesting navigators documentation</a> for more details on how to navigate to screens in a different navigator.</li>
 <li>Some methods such as the legacy <code>reset</code> method which take an array of actions aren't supported anymore. Unsupported methods will throw errors when using them as well as give type errors if we're using TypeScript.</li>
-<li>It doesn't export <code>createAppContainer</code>, so you'll need to use the v5 API for the container (<code>NavigationNativeContainer</code>). This also means any features supported by the container need to be migrated to the new API.</li>
+<li>It doesn't export <code>createAppContainer</code>, so you'll need to use the v5 API for the container (<code>NavigationContainer</code>). This also means any features supported by the container need to be migrated to the new API.</li>
 <li>If you're using advanced APIs like Redux integration, custom routers and actions etc., they aren't supported anymore and you'll need to remove Redux integration.</li>
 </ul>
 <p>While we have tried our best to make the compatibility layer handle most of the differences, there might be something missing. So make sure to test the code that you've migrated.</p>
