@@ -127,7 +127,7 @@
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="configuring-the-navigator"></a><a href="#configuring-the-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuring the navigator</h3>
 <p>All of the route configuration is specified as props to our navigator. We haven't passed any props to our navigator, so it just uses the default configuration.</p>
-<p>Let's add a second screen to our stack navigator and configure the screen to render first:</p>
+<p>Let's add a second screen to our stack navigator and configure the <code>Home</code> screen to render first:</p>
 <p><samp id="hello-react-navigation-full" /></p>
 <pre><code class="hljs css language-js"><span class="token keyword">function</span> <span class="token function">DetailsScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -151,7 +151,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>Now our stack has two <em>routes</em>, a <code>Home</code> route and a <code>Details</code> route. A route can be specified by using the <code>Screen</code> component. The <code>Screen</code> component accepts a <code>name</code> prop which corresponds to the name of the route we will use to navigate, and a <code>component</code> prop which corresponds to the component it'll render.</p>
-<p>Here, the <code>Home</code> route corresponds to the <code>HomeScreen</code> component, and the <code>Details</code> route corresponds to the <code>DetailsScreen</code> component. A rota inicial para o stack é a rota <code>Home</code>.</p>
+<p>Here, the <code>Home</code> route corresponds to the <code>HomeScreen</code> component, and the <code>Details</code> route corresponds to the <code>DetailsScreen</code> component. A rota inicial para o stack é a rota <code>Home</code>. Try changing it to <code>Details</code> and reload the app (React Native's Fast Refresh won't update changes from <code>initialRouteName</code>, as you might expect), notice that you will now see the <code>Details</code> screen. Then change it back to <code>Home</code> and reload once more.</p>
 <blockquote>
 <p>Note: The <code>component</code> prop accepts component, not a render function. Don't pass a inline function (e.g. <code>component={() =&gt; &lt;HomeScreen /&gt;}</code>), or your component will unmount and remount losing all state when the parent component re-renders. See <a href="#passing-additional-props">Passing additional props</a> for alternatives.</p>
 </blockquote>
