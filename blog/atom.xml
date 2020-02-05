@@ -2,12 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://reactnavigation.org/blog</id>
     <title>React Navigation Blog</title>
-    <updated>2020-01-29T06:00:00.000Z</updated>
+    <updated>2020-02-06T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://reactnavigation.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest React Navigation news and events.</subtitle>
     <logo>https://reactnavigation.org/img/spiro_white.svg</logo>
     <rights>None</rights>
+    <entry>
+        <title type="html"><![CDATA[React Navigation 5.0 - A new way to navigate]]></title>
+        <id>https://reactnavigation.org/blog/2020/02/06/react-navigation-5.0.html</id>
+        <link href="https://reactnavigation.org/blog/2020/02/06/react-navigation-5.0.html"/>
+        <updated>2020-02-06T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Exactly two years ago, we published the first stable version of React Navigation. Throughout this time, the library has been actively developed by adding many new features and bug fixes. The essence of React Navigation was that it was a project that ...</p>]]></summary>
+        <author>
+            <name>Satyajit Sahoo, Michał Osadnik</name>
+            <email/>
+            <uri>https://twitter.com/reactnavigation</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[React Navigation v5 + React Native Paper = ❤️]]></title>
         <id>https://reactnavigation.org/blog/2020/01/29/using-react-navigation-5-with-react-native-paper.html</id>
@@ -109,7 +121,7 @@
         <id>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</id>
         <link href="https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html"/>
         <updated>2018-02-06T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “<a href="https://github.com/react-navigation/react-navigation/issues/2585">Renewed Path to React Navigation V1.0</a>” issue. Thank you to everybody who has filed high-quality bug reports, su...</p>]]></summary>
+        <summary type="html"><![CDATA[<p>As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “<a href="https://github.com/react-navigation/react-navigation-4/issues/2585">Renewed Path to React Navigation V1.0</a>” issue. Thank you to everybody who has filed high-quality bug reports, su...</p>]]></summary>
         <author>
             <name>Core Team</name>
             <email/>
