@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/handling-iphonex.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Supporting safe areas</h1></header><article><div><span><p>默认情况下，React Navigation有助于确保你的应用程序在iPhone X和其他带有缺口和“安全区域”的设备上正确显示。 它通过在可能与传感器集群（“齐刘海”）或 Home 主页指示器交互的UI元素内部使用<code>SafeAreaView</code>来实现。</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.xhandling-iphonex.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Supporting safe areas</h1></header><article><div><span><p>默认情况下，React Navigation有助于确保你的应用程序在iPhone X和其他带有缺口和“安全区域”的设备上正确显示。 它通过在可能与传感器集群（“齐刘海”）或 Home 主页指示器交互的UI元素内部使用<code>SafeAreaView</code>来实现。</p>
 <p>目标是（a）最大化屏幕的使用率（b）而不隐藏内容，也不会因物理显示切口或某些操作系统UI遮住内容而使其难以与之交互。</p>
 <p>试图通过将整个应用程序包装在带有填充物的容器中来解决问题（a），以确保所有内容都不会被遮挡。 但是这样做会浪费屏幕上的一堆空间，如左下方的图片所示。 我们理想中想要的是右侧图片。 我们可以为此使用<code>SafeAreaView</code>。 本指南的其余部分提供了有关如何在React Navigation中支持安全区域的更多信息。</p>
 <p><img src="/docs/assets/iphoneX/00-intro.png" alt=""></p>

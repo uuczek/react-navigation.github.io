@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/edit/source/docs/navigation-options-resolution.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation options resolution</h1></header><article><div><span><p>每个屏幕都可以配置有关如何在父导航中显示的各个方面。 在基础知识文档的<a href="headers.html">配置标题栏</a>部分，我们将介绍它的工作原理。</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.xnavigation-options-resolution.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation options resolution</h1></header><article><div><span><p>每个屏幕都可以配置有关如何在父导航中显示的各个方面。 在基础知识文档的<a href="headers.html">配置标题栏</a>部分，我们将介绍它的工作原理。</p>
 <p>在本文档中，我们将解释当有多个导航器时这是如何工作的。 了解这一点非常重要，以便您将<code>navigationOptions</code>放在正确的位置，并且可以正确配置导航器。 如果你把它们放在错误的地方，最好的情况是什么都不会发生，最坏的情况是会出现混乱和意想不到的情况。 幸运的是，这里面的逻辑不难理解：</p>
 <p><strong>你只能从其中一个屏幕组件修改导航器的导航选项。 这同样适用于嵌套为屏幕的导航器。</strong></p>
 <p>我们以一个tab navigator 为例，其中包含每个标签中的堆栈。 如果我们在栈内的屏幕上设置<code>navigationOptions</code>，看看会发生什么？</p>
