@@ -94,7 +94,7 @@
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>In the above example, the <code>Home</code> component contains a tab navigator. The <code>Home</code> component is also used for the <code>Home</code> screen in our stack navigator inside the <code>App</code> component. So here, a tab navigator is nested inside a stack navigator:</p>
+<p>In the above example, the <code>Home</code> component contains a tab navigator. The <code>Home</code> component is also used for the <code>Home</code> screen in your stack navigator inside the <code>App</code> component. So here, a tab navigator is nested inside a stack navigator:</p>
 <ul>
 <li><code>Stack.Navigator</code>
 <ul>
@@ -107,15 +107,24 @@
 <li><code>Settings</code> (<code>Screen</code>)</li>
 </ul></li>
 </ul>
-<p>To achieve the behavior we want, it's often necessary to nest multiple navigators. For example, if you want.</p>
-<p>When nesting navigators, we get some interesting behavior:</p>
+<p>To achieve the behavior you want, it's often necessary to nest multiple navigators. For example, if you want.</p>
+<p>When nesting navigators, there are some things to keep in mind:</p>
 <ul>
 <li><p><strong>Each navigator keeps its own navigation history.</strong></p>
-<p>For example, when we press the back button inside a nested stack navigator, it'll go back to the previous screen inside the stack.</p></li>
+<p>For example, when you press the back button inside a nested stack navigator, it'll go back to the previous screen inside the nested stack even if there's another navigator as the parent.</p></li>
 <li><p><strong>Navigation actions are handled by current navigator and bubble up if couldn't be handled.</strong></p>
-<p>For example, if we're calling <code>navigation.goBack()</code> in a nested screen, it'll only go back in the parent navigator if you're already on the first screen of the navigator. Other actions such as <code>navigate</code> work similarly, i.e. navigation will happen in the nested navigator and if the nested navigator couldn't handle it, then the parent navigator will try to handle it. In the above example, when calling <code>navigate('Settings')</code>, inside <code>Profile</code> screen, the nested stack navigator will handle it, but if we call <code>navigate('Home')</code>, the parent tab navigator will handle it.</p></li>
+<p>For example, if you're calling <code>navigation.goBack()</code> in a nested screen, it'll only go back in the parent navigator if you're already on the first screen of the navigator. Other actions such as <code>navigate</code> work similarly, i.e. navigation will happen in the nested navigator and if the nested navigator couldn't handle it, then the parent navigator will try to handle it. In the above example, when calling <code>navigate('Settings')</code>, inside <code>Profile</code> screen, the nested stack navigator will handle it, but if you call <code>navigate('Home')</code>, the parent tab navigator will handle it.</p></li>
+<li><p><strong>Navigator specific methods are available in the navigators nested inside</strong></p>
+<p>For example, if you have a stack inside a drawer navigator, the drawer's <code>openDrawer</code>, <code>closeDrawer</code> methods etc. will also be available on the <code>navigation</code> prop in the screen's inside the stack navigator. But say you have a stack navigator as the parent of the drawer, then the screens inside the stack navigator won't have access to these methods, because they aren't nested inside the drawer.</p>
+<p>Similarly, if you have a tab navigator inside stack navigator, the screens in the tab navigator will get the <code>push</code> and <code>replace</code> methods for stack in their <code>navigation</code> prop.</p></li>
 <li><p><strong>Parent navigator's UI is rendered on top of child navigator.</strong></p>
-<p>For example, when we nest a stack navigator inside a drawer navigator, we'll see that the drawer appears above the stack navigator's header. However, if we nest the drawer navigator inside a stack, the drawer will appear below the header. This is an important point to consider when deciding how to nest our navigators. Common patterns are to nest stack navigator inside drawer/tab navigators so that the drawer/tab bar are rendered on top of stack navigator's screens.</p></li>
+<p>For example, when you nest a stack navigator inside a drawer navigator, you'll see that the drawer appears above the stack navigator's header. However, if you nest the drawer navigator inside a stack, the drawer will appear below the header. This is an important point to consider when deciding how to nest your navigators.</p>
+<p>In your app, you will probably use one of these patterns depending on the behavior you want:</p>
+<ul>
+<li>Stack navigator nested inside drawer navigator - The drawer appears over the header from the stack.</li>
+<li>Tab navigator nested inside stack navigator - New screens cover the tab bar when you push them.</li>
+<li>Stack navigator nested inside tab navigator - The tab bar is always visible. Usually pressing the tab again also pops the stack to top.</li>
+</ul></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="navigating-to-a-screen-in-a-nested-navigator"></a><a href="#navigating-to-a-screen-in-a-nested-navigator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Navigating to a screen in a nested navigator</h2>
 <p>Consider the following example:</p>
@@ -137,13 +146,13 @@
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Here, we might want to navigate to the <code>Root</code> stack from our <code>Home</code> component:</p>
+<p>Here, you might want to navigate to the <code>Root</code> stack from your <code>Home</code> component:</p>
 <pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Root'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>It works, and the initial screen inside the <code>Root</code> component is shown, which is <code>Profile</code>. But sometimes we may want to control the screen that should be shown upon navigation. To achieve it, we can pass the name of the screen in params:</p>
+<p>It works, and the initial screen inside the <code>Root</code> component is shown, which is <code>Profile</code>. But sometimes you may want to control the screen that should be shown upon navigation. To achieve it, you can pass the name of the screen in params:</p>
 <pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Root'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> screen<span class="token operator">:</span> <span class="token string">'Settings'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Now, the <code>Settings</code> screen will be rendered instead of <code>Profile</code> upon navigation. We can also pass params this way:</p>
+<p>Now, the <code>Settings</code> screen will be rendered instead of <code>Profile</code> upon navigation. You can also pass params this way:</p>
 <p><samp id="nest-navigators" /></p>
 <pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Root'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   screen<span class="token operator">:</span> <span class="token string">'Settings'</span><span class="token punctuation">,</span>
@@ -151,7 +160,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>If the navigator was already rendered, navigating to another screen will push a new screen in case of stack navigator.</p>
-<p>You can follow similar approach for deeply nested screens. Note that the second argument to <code>navigate</code> here is just <code>params</code>, so we ca do something like:</p>
+<p>You can follow similar approach for deeply nested screens. Note that the second argument to <code>navigate</code> here is just <code>params</code>, so you ca do something like:</p>
 <pre><code class="hljs css language-js">navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">'Root'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   screen<span class="token operator">:</span> <span class="token string">'Settings'</span><span class="token punctuation">,</span>
   params<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -162,8 +171,8 @@
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>In the above case, we're navigating to the <code>Media</code> screen, which is in a navigator nested inside the <code>Sound</code> screen, which is in a navigator nested inside the <code>Settings</code> screen.</p>
-<p>This may look very different from the way navigation used to work with nested screens previously. The difference is that in the previous versions, all configuration was static, so React Navigation could statically find the list of all the navigators and their screens by recursing into nested configurations. But with dynamic configuration, we don't know which screens are available and where until the navigator containing the screen renders. Normally, a screen doesn't render its contents until you navigate to it, so the configuration of navigators which haven't rendered is not yet available. This makes it necessary to specify the hierarchy we're navigating to. This is also why you should have as little nesting of navigators as possible to keep your code simpler.</p>
+<p>In the above case, you're navigating to the <code>Media</code> screen, which is in a navigator nested inside the <code>Sound</code> screen, which is in a navigator nested inside the <code>Settings</code> screen.</p>
+<p>This may look very different from the way navigation used to work with nested screens previously. The difference is that in the previous versions, all configuration was static, so React Navigation could statically find the list of all the navigators and their screens by recursing into nested configurations. But with dynamic configuration, React Navigation doesn't know which screens are available and where until the navigator containing the screen renders. Normally, a screen doesn't render its contents until you navigate to it, so the configuration of navigators which haven't rendered is not yet available. This makes it necessary to specify the hierarchy you're navigating to. This is also why you should have as little nesting of navigators as possible to keep your code simpler.</p>
 <h2><a class="anchor" aria-hidden="true" id="best-practices-when-nesting"></a><a href="#best-practices-when-nesting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Best practices when nesting</h2>
 <p>We recommend to reduce nesting navigators to minimal. Try to achieve the behavior you want with as little nesting as possible. Nesting has many downsides:</p>
 <ul>
