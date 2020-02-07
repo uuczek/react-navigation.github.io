@@ -235,21 +235,21 @@ navigation.navigate({ name: SCREEN, key: SCREEN_KEY_D });
   <samp id="navigate-set-options"></p> 
   <pre><code class="js">function ProfileScreen({ navigation, route }) {
   const [value, onChangeText] = React.useState(route.params.title);
-  navigation.setOptions({
-    title: value === '' ? 'No title' : value,
-  });
-  return (
-    &lt;View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}&gt;
-      &lt;TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-        onChangeText={text =&gt; onChangeText(text)}
-        value={value}
-      /&gt;
-      &lt;Button title="Go back" onPress={() =&gt; navigation.goBack()} /&gt;
-    &lt;/View&gt;
-  );
+<p>navigation.setOptions({
+title: value === '' ? 'No title' : value,
+});</p>
+<p>return (
+&lt;View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}&gt;
+&lt;TextInput
+style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+onChangeText={text =&gt; onChangeText(text)}
+value={value}
+/&gt;
+&lt;Button title=&quot;Go back&quot; onPress={() =&gt; navigation.goBack()} /&gt;
+&lt;/View&gt;
+);
 }
-</code></pre>
+</code></pre></p>
   <p spaces-before="0">
     Any options specified here are shallow merged with the options specified when defining the screen.
   </p>
