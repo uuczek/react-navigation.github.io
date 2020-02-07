@@ -74,7 +74,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.xnavigation-lifecycle.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation lifecycle</h1></header><article><div><span><p>在上一节，我们写了一个包含两个页面（Home 、Details）的StackNavigator，学会了如何使用<code>this.props.navigation.navigate('RouteName')</code>在路由间切换。</p>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/react-navigation/react-navigation.github.io/tree/source/website/versioned_docs/version-5.x/navigation-lifecycle.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Navigation lifecycle</h1></header><article><div><span><p>在上一节，我们写了一个包含两个页面（Home 、Details）的StackNavigator，学会了如何使用<code>this.props.navigation.navigate('RouteName')</code>在路由间切换。</p>
 <p>本文中一个重要的问题是：当我们从 Home 页面离开时， 页面发生了什么？我们返回是又发生了什么？ 路由是如何发现用户将要离开或将要回来的？</p>
 <p>如果你是从 Web 开发转到 React Navigation, 你可以假设:当用户从 A 页面跳转到 B 页面时, A 页面将被卸载并且 A 页面的 <code>componentWillUnmount</code> 生命周期方法将会被调用. 你可能还会期望,在用户返回时,` A &lt;/ code&gt;页面会再次重新加载。 在 React Navigation, 中这些 React 生命周期方法仍然有效且可用，只是用法与 Web 不同， 这是因为手机导航的需求更加复杂。</p></p>
 <p><h2>示例</h2></p>

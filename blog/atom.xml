@@ -121,7 +121,7 @@
         <id>https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html</id>
         <link href="https://reactnavigation.org/blog/2018/02/06/react-navigation-1.0.html"/>
         <updated>2018-02-06T06:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “<a href="https://github.com/react-navigation/react-navigation-4/issues/2585">Renewed Path to React Navigation V1.0</a>” issue. Thank you to everybody who has filed high-quality bug reports, su...</p>]]></summary>
+        <summary type="html"><![CDATA[<p>As of today, React Navigation version 1.0 has been released! To see a list of recent improvements leading up to the release, refer to the “<a href="https://github.com/react-navigation/react-navigation/issues/2585">Renewed Path to React Navigation V1.0</a>” issue. Thank you to everybody who has filed high-quality bug reports, su...</p>]]></summary>
         <author>
             <name>Core Team</name>
             <email/>
